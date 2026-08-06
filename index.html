@@ -20,7 +20,7 @@
         /* --- 검색 / 필터 패널 스타일 --- */
         .filter-panel {
             background-color: white;
-            padding: 18px 20px;
+            padding: 18px 20px 30px 20px; /* 우측 하단 날짜 여백 확보 */
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             margin-bottom: 15px;
@@ -28,6 +28,7 @@
             flex-wrap: wrap;
             gap: 12px;
             align-items: center;
+            position: relative; /* 우측 하단 배치 기준점 */
         }
         .filter-group {
             display: flex;
@@ -79,6 +80,16 @@
         }
         .btn-reset:hover {
             background-color: #cbd5e0;
+        }
+
+        /* --- 상자 우측 하단 최신화 날짜 스타일 --- */
+        .last-updated {
+            position: absolute;
+            right: 18px;
+            bottom: 8px;
+            font-size: 12px;
+            color: #718096;
+            font-weight: 500;
         }
 
         /* --- 상태 표시바 --- */
@@ -207,7 +218,6 @@
             </select>
         </div>
 
-        <!-- 키워드 검색 항목 선택 드롭다운 -->
         <div class="filter-group">
             <label for="searchFieldSelect">🔍 검색항목:</label>
             <select id="searchFieldSelect" class="select-filter" onchange="applyFilters()">
@@ -217,6 +227,9 @@
         </div>
 
         <button class="btn-reset" onclick="resetFilters()">🔄 필터 초기화</button>
+
+        <!-- 상자 우측 하단 최신화 날짜 표시 영역 -->
+        <div id="lastUpdated" class="last-updated"></div>
     </div>
     
     <div class="status-bar">
@@ -315,6 +328,17 @@
         async function loadAircraftData() {
             try {
                 const response = await fetch('data.json');
+
+                // data.json 파일의 깃허브 업로드(수정) 날짜 추출
+                const lastModifiedHeader = response.headers.get('Last-Modified');
+                if (lastModifiedHeader) {
+                    const modDate = new Date(lastModifiedHeader);
+                    const yy = String(modDate.getFullYear()).slice(-2);
+                    const mm = String(modDate.getMonth() + 1).padStart(2, '0');
+                    const dd = String(modDate.getDate()).padStart(2, '0');
+                    document.getElementById('lastUpdated').innerText = `${yy}.${mm}.${dd}. 기준`;
+                }
+
                 rawGlobalData = await response.json();
 
                 activeHeaders = rawGlobalData.headers.filter(h => !EXCLUDED_COLUMNS.includes(h));
@@ -345,7 +369,6 @@
             }
         }
 
-        // 검색 필드 드롭다운 옵션 구성 (기본값을 '전체'로 설정)
         function populateSearchFieldOptions(headers) {
             const searchFieldSelect = document.getElementById('searchFieldSelect');
             searchFieldSelect.innerHTML = '<option value="">전체</option>';
