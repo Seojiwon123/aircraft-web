@@ -242,16 +242,27 @@
     </div>
 
     <script>
-        // 보잉 공식 Airport Planning Manual (D6-58325-7, Rev C) 기준 기종 제원 데이터 세분화
+        // 보잉 공식 Airport Planning Manual (D6-58325-7 & D6-58329 기준) 기종 제원 데이터 세분화
         const aircraftSpecs = {
+            // B737 계열
             'B737-600': { name: 'Boeing 737-600', mfr: 'Boeing', length: '31.24 m', wingspan: '34.32 m (Winglet: 35.79 m)', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '65,770 kg' },
             'B737-700': { name: 'Boeing 737-700 / 700W', mfr: 'Boeing', length: '33.63 m', wingspan: '34.32 m (Winglet: 35.79 m)', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '70,306 kg' },
             'B737-800BCF': { name: 'Boeing 737-800BCF (Freighter)', mfr: 'Boeing', length: '39.47 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
             'B737-800': { name: 'Boeing 737-800 / 800W', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m (Winglet: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
+            'B737-8': { name: 'Boeing 737 MAX 8', mfr: 'Boeing', length: '39.52 m', wingspan: '35.92 m', height: '12.30 m', engine: 'CFM LEAP-1B x2', mtow: '82,190 kg' },
             'B737-900ER': { name: 'Boeing 737-900ER / 900ERW', mfr: 'Boeing', length: '42.11 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '85,366 kg' },
             'B737-900': { name: 'Boeing 737-900 / 900W', mfr: 'Boeing', length: '42.11 m', wingspan: '34.32 m (Winglet: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,016 kg' },
             'B737': { name: 'Boeing 737 Next-Generation', mfr: 'Boeing', length: '39.47 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
-            'B777': { name: 'Boeing 777-300ER', mfr: 'Boeing', length: '73.9 m', wingspan: '64.8 m', height: '18.5 m', engine: 'GE90-115B x2', mtow: '351,500 kg' },
+            
+            // B777 계열 (D6-58329 Rev E 공식 수치 반영)
+            'B777-200ER': { name: 'Boeing 777-200ER', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '297,550 kg' },
+            'B777-200': { name: 'Boeing 777-200', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '247,200 kg' },
+            'B777-300ER': { name: 'Boeing 777-300ER', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,533 kg' },
+            'B777-300': { name: 'Boeing 777-300', mfr: 'Boeing', length: '73.08 m', wingspan: '60.93 m', height: '18.50 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '299,370 kg' },
+            'B777F': { name: 'Boeing 777F (Freighter)', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.60 m', engine: 'GE90-110B / 115B x2', mtow: '347,815 kg' },
+            'B777': { name: 'Boeing 777 Family', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,533 kg' },
+
+            // 타 기종
             'B787': { name: 'Boeing 787-9', mfr: 'Boeing', length: '63.0 m', wingspan: '60.1 m', height: '17.0 m', engine: 'GEnx-1B / Trent 1000 x2', mtow: '254,000 kg' },
             'A320': { name: 'Airbus A320-200', mfr: 'Airbus', length: '37.57 m', wingspan: '35.8 m', height: '11.76 m', engine: 'CFM56 / V2500 x2', mtow: '78,000 kg' },
             'A321': { name: 'Airbus A321neo', mfr: 'Airbus', length: '44.51 m', wingspan: '35.8 m', height: '11.76 m', engine: 'LEAP-1A / PW1100G x2', mtow: '97,000 kg' },
@@ -437,8 +448,9 @@
         function openModal(rawModelName) {
             let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
             
-            // 키 매칭 우선순위 부여 (예: B737-800BCF -> B737-800 -> B737 순으로 상세 검색)
-            let matchedKey = Object.keys(aircraftSpecs).find(key => {
+            // 키 매칭 매칭 우선순위 (가장 긴 키 이름부터 매칭)
+            let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
+            let matchedKey = sortedKeys.find(key => {
                 let cleanKey = key.toUpperCase().replace(/[\s-]/g, '');
                 return cleanName.includes(cleanKey);
             });
