@@ -207,7 +207,7 @@
             </select>
         </div>
 
-        <!-- 새로 추가된 키워드 검색 항목 선택 드롭다운 -->
+        <!-- 키워드 검색 항목 선택 드롭다운 (기본값: 전체) -->
         <div class="filter-group">
             <label for="searchFieldSelect">🔍 검색항목:</label>
             <select id="searchFieldSelect" class="select-filter" onchange="applyFilters()">
@@ -305,7 +305,6 @@
         };
 
         const EXCLUDED_COLUMNS = ['감항증명유효기간'];
-        // 앞선 두 드롭다운 항목 중복 제외용 목록
         const FILTER_EXCLUDED_COLUMNS = ['사업구분', '항공사', '소유자', '감항증명유효기간'];
 
         let rawGlobalData = null;
@@ -345,10 +344,10 @@
             }
         }
 
-        // 검색 필드 드롭다운 옵션 자동 채우기 (앞선 두 드롭다운 항목 제외)
+        // 검색 필드 드롭다운 옵션 구성 (기본값을 '전체'로 설정)
         function populateSearchFieldOptions(headers) {
             const searchFieldSelect = document.getElementById('searchFieldSelect');
-            searchFieldSelect.innerHTML = '<option value="">전체 필드</option>';
+            searchFieldSelect.innerHTML = '<option value="">전체</option>';
 
             headers.forEach(header => {
                 if (!FILTER_EXCLUDED_COLUMNS.includes(header) && header !== '순번') {
@@ -463,11 +462,9 @@
                 let matchesKeyword = true;
                 if (keyword) {
                     if (targetField) {
-                        // 특정 항목(필드) 지정 검색
                         const fieldValue = String(row[targetField] || '').toLowerCase();
                         matchesKeyword = fieldValue.includes(keyword);
                     } else {
-                        // 전체 필드 검색
                         matchesKeyword = Object.values(row).some(val => 
                             String(val).toLowerCase().includes(keyword)
                         );
