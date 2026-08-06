@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대한민국 항공기 등록 현황 & 제원 정보</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+            color: #2d3748;
+        }
+        h1 {
+            color: #1a365d;
+            border-bottom: 3px solid #2b6cb0;
+            padding-bottom: 10px;
+        }
+
+        /* --- 검색 / 필터 패널 스타일 --- */
+        .filter-panel {
+            background-color: white;
+            padding: 18px 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .filter-group label {
+            font-size: 13px;
+            font-weight: bold;
+            color: #4a5568;
+            white-space: nowrap;
+        }
+        .input-search {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 220px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        .input-search:focus {
+            border-color: #3182ce;
+            box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.2);
+        }
+        .select-filter {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+            background-color: white;
+            cursor: pointer;
+            width: 220px;
+            box-sizing: border-box;
+            text-overflow: ellipsis;
+        }
+        .btn-reset {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .btn-reset:hover {
+            background-color: #cbd5e0;
+        }
+
+        /* --- 상태 표시바 --- */
+        .status-bar {
+            background-color: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* --- 테이블 스타일 --- */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 6px;
+        }
+        table {
+            width: 100%;
+            min-width: 1450px;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 6px;
+            text-align: center;
+            font-size: 13px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #2b6cb0;
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+        .btn-spec {
+            background-color: #319795;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .btn-spec:hover {
+            background-color: #2b6cb0;
+        }
+
+        /* --- 팝업(모달) 스타일 --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 440px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .modal-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2b6cb0;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f7fafc;
+            font-size: 14px;
+        }
+        .spec-label { font-weight: bold; color: #4a5568; }
+        .spec-value { color: #2d3748; }
+        .btn-close {
+            margin-top: 20px;
+            width: 100%;
+            background-color: #e53e3e;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-close:hover { background-color: #c53030; }
+    </style>
+</head>
+<body>
+
+    <h1>✈️ 대한민국 항공기 등록 현황 & 기종 제원</h1>
+
+    <!-- 🔍 검색 및 카테고리 필터 패널 -->
+    <div class="filter-panel">
+        <div class="filter-group">
+            <label for="bizSelect">📋 사업구분:</label>
+            <select id="bizSelect" class="select-filter" onchange="onBizChange()">
+                <option value="">전체 사업구분</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="ownerSelect">🏢 항공사/소유자:</label>
+            <select id="ownerSelect" class="select-filter" onchange="applyFilters()">
+                <option value="">전체 항공사</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="searchInput">🔍 키워드 검색:</label>
+            <input type="text" id="searchInput" class="input-search" placeholder="등록기호, 기종명, 정치장 등..." oninput="applyFilters()">
+        </div>
+
+        <button class="btn-reset" onclick="resetFilters()">🔄 필터 초기화</button>
+    </div>
+    
+    <div class="status-bar">
+        <div>💡 <b>안내:</b> 사업구분을 선택하면 연동된 항공사 목록만 표시됩니다.</div>
+        <div id="dataCount">데이터 불러오는 중...</div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr id="tableHeaderRow"></tr>
+            </thead>
+            <tbody id="aircraftTableBody">
+                <tr>
+                    <td colspan="14">데이터를 불러오는 중입니다...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 기종 상세제원 팝업 -->
+    <div id="specModal" class="modal-overlay">
+        <div class="modal-content">
+            <div id="modalTitle" class="modal-header">기종 제원 정보</div>
+            <div id="modalBody"></div>
+            <button class="btn-close" onclick="closeModal()">닫기</button>
+        </div>
+    </div>
+
+    <script>
+        const aircraftSpecs = {
+            'B737': { name: 'Boeing 737-800', mfr: 'Boeing', length: '39.5 m', wingspan: '35.8 m', height: '12.5 m', engine: 'CFM56-7B x2', mtow: '79,010 kg' },
+            'B777': { name: 'Boeing 777-300ER', mfr: 'Boeing', length: '73.9 m', wingspan: '64.8 m', height: '18.5 m', engine: 'GE90-115B x2', mtow: '351,500 kg' },
+            'B787': { name: 'Boeing 787-9', mfr: 'Boeing', length: '63.0 m', wingspan: '60.1 m', height: '17.0 m', engine: 'GEnx-1B / Trent 1000 x2', mtow: '254,000 kg' },
+            'A320': { name: 'Airbus A320-200', mfr: 'Airbus', length: '37.57 m', wingspan: '35.8 m', height: '11.76 m', engine: 'CFM56 / V2500 x2', mtow: '78,000 kg' },
+            'A321': { name: 'Airbus A321neo', mfr: 'Airbus', length: '44.51 m', wingspan: '35.8 m', height: '11.76 m', engine: 'LEAP-1A / PW1100G x2', mtow: '97,000 kg' },
+            'A330': { name: 'Airbus A330-300', mfr: 'Airbus', length: '63.66 m', wingspan: '60.3 m', height: '16.79 m', engine: 'Trent 700 / CF6 x2', mtow: '242,000 kg' },
+            'A350': { name: 'Airbus A350-900', mfr: 'Airbus', length: '66.8 m', wingspan: '64.75 m', height: '17.05 m', engine: 'Trent XWB x2', mtow: '280,000 kg' },
+            'A380': { name: 'Airbus A380-800', mfr: 'Airbus', length: '72.72 m', wingspan: '79.75 m', height: '24.09 m', engine: 'Trent 900 / GP7200 x4', mtow: '575,000 kg' },
+            'BELL206': { name: 'Bell 206 JetRanger', mfr: 'Bell Textron', length: '12.11 m', wingspan: '10.16 m', height: '2.83 m', engine: 'Allison 250-C20B', mtow: '1,451 kg' },
+            'MI-2': { name: 'Mil Mi-2', mfr: 'Mil / PZL-Świdnik', length: '11.4 m', wingspan: '14.5 m', height: '3.75 m', engine: 'PZL GTD-350 x2', mtow: '3,550 kg' }
+        };
+
+        const columnWidths = {
+            '순번': '50px',
+            '사업구분': '130px',
+            '항공사': '150px',
+            '등록기호': '90px',
+            '형식': '120px',
+            '제작번호': '120px',
+            '제작일자': '90px',
+            '기령(년)': '70px',
+            '등록일자': '90px',
+            '좌석': '60px',
+            '최대이륙중량': '100px',
+            '정치장': '160px',
+            '도입형태': '80px',
+            '상세 제원': '95px'
+        };
+
+        const EXCLUDED_COLUMNS = ['감항증명유효기간'];
+
+        let rawGlobalData = null;
+        let activeHeaders = [];
+        let activeRawHeaders = [];
+
+        async function loadAircraftData() {
+            try {
+                const response = await fetch('data.json');
+                rawGlobalData = await response.json();
+
+                activeHeaders = rawGlobalData.headers.filter(h => !EXCLUDED_COLUMNS.includes(h));
+                activeRawHeaders = rawGlobalData.raw_headers.filter(h => !EXCLUDED_COLUMNS.includes(h));
+
+                const headerRow = document.getElementById('tableHeaderRow');
+                headerRow.innerHTML = '';
+                activeHeaders.forEach(header => {
+                    const th = document.createElement('th');
+                    th.innerText = header;
+                    if (columnWidths[header]) {
+                        th.style.width = columnWidths[header];
+                    } else {
+                        th.style.width = '110px';
+                    }
+                    headerRow.appendChild(th);
+                });
+
+                populateBizOptions(rawGlobalData.rows);
+                updateOwnerOptions();
+                renderTableRows(rawGlobalData.rows);
+
+            } catch (error) {
+                console.error("데이터 로드 실패:", error);
+                document.getElementById('aircraftTableBody').innerHTML = 
+                    '<tr><td colspan="14" style="color:red;">data.json 파일을 불러올 수 없습니다. process_data.py를 먼저 실행해 주세요.</td></tr>';
+            }
+        }
+
+        function populateBizOptions(rows) {
+            const bizSelect = document.getElementById('bizSelect');
+            const bizTypes = new Set();
+
+            rows.forEach(row => {
+                if (row['사업구분']) bizTypes.add(row['사업구분']);
+            });
+
+            Array.from(bizTypes).sort((a, b) => a.localeCompare(b, 'ko')).forEach(biz => {
+                const option = document.createElement('option');
+                option.value = biz;
+                option.innerText = biz;
+                bizSelect.appendChild(option);
+            });
+        }
+
+        function updateOwnerOptions() {
+            const bizSelect = document.getElementById('bizSelect');
+            const ownerSelect = document.getElementById('ownerSelect');
+
+            const selectedBiz = bizSelect.value;
+            const currentSelectedOwner = ownerSelect.value;
+
+            const owners = new Set();
+
+            rawGlobalData.rows.forEach(row => {
+                if (!selectedBiz || row['사업구분'] === selectedBiz) {
+                    if (row['항공사']) owners.add(row['항공사']);
+                }
+            });
+
+            ownerSelect.innerHTML = '<option value="">전체 항공사</option>';
+
+            const sortedOwners = Array.from(owners).sort((a, b) => a.localeCompare(b, 'ko'));
+            sortedOwners.forEach(owner => {
+                const option = document.createElement('option');
+                option.value = owner;
+                option.innerText = owner;
+                ownerSelect.appendChild(option);
+            });
+
+            if (owners.has(currentSelectedOwner)) {
+                ownerSelect.value = currentSelectedOwner;
+            } else {
+                ownerSelect.value = '';
+            }
+        }
+
+        function onBizChange() {
+            updateOwnerOptions();
+            applyFilters();
+        }
+
+        function renderTableRows(rowsToRender) {
+            const tbody = document.getElementById('aircraftTableBody');
+            document.getElementById('dataCount').innerText = `총 ${rowsToRender.length}대 검색됨 (전체 ${rawGlobalData.rows.length}대)`;
+
+            tbody.innerHTML = '';
+
+            if (rowsToRender.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="14" style="padding: 30px; color: #a0aec0;">검색 결과가 없습니다.</td></tr>';
+                return;
+            }
+
+            rowsToRender.forEach((row, index) => {
+                const tr = document.createElement('tr');
+
+                activeRawHeaders.forEach(col => {
+                    const td = document.createElement('td');
+                    if (col === '순번') {
+                        td.innerText = index + 1;
+                        td.style.fontWeight = 'bold';
+                    } else {
+                        td.innerText = row[col];
+                    }
+                    td.title = td.innerText;
+                    tr.appendChild(td);
+                });
+
+                const specTd = document.createElement('td');
+                const modelName = row['형식'] || row['기종'] || '';
+                specTd.innerHTML = `<button class="btn-spec" onclick="openModal('${modelName}')">제원 보기</button>`;
+                tr.appendChild(specTd);
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        function applyFilters() {
+            if (!rawGlobalData) return;
+
+            const selectedBiz = document.getElementById('bizSelect').value;
+            const selectedOwner = document.getElementById('ownerSelect').value;
+            const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            const filteredRows = rawGlobalData.rows.filter(row => {
+                const matchesBiz = !selectedBiz || row['사업구분'] === selectedBiz;
+                const matchesOwner = !selectedOwner || row['항공사'] === selectedOwner;
+                const matchesKeyword = !keyword || Object.values(row).some(val => 
+                    String(val).toLowerCase().includes(keyword)
+                );
+
+                return matchesBiz && matchesOwner && matchesKeyword;
+            });
+
+            renderTableRows(filteredRows);
+        }
+
+        function resetFilters() {
+            document.getElementById('bizSelect').value = '';
+            document.getElementById('ownerSelect').value = '';
+            document.getElementById('searchInput').value = '';
+            
+            updateOwnerOptions();
+            renderTableRows(rawGlobalData.rows);
+        }
+
+        function openModal(rawModelName) {
+            let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
+            let matchedKey = Object.keys(aircraftSpecs).find(key => 
+                cleanName.includes(key.replace(/[\s-]/g, ''))
+            );
+
+            const modal = document.getElementById('specModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+
+            const spec = matchedKey ? aircraftSpecs[matchedKey] : null;
+
+            if (spec) {
+                modalTitle.innerText = `✈️ ${spec.name} (${rawModelName}) 제원`;
+                modalBody.innerHTML = `
+                    <div class="spec-item"><span class="spec-label">제조사</span><span class="spec-value">${spec.mfr}</span></div>
+                    <div class="spec-item"><span class="spec-label">전장 (길이)</span><span class="spec-value">${spec.length}</span></div>
+                    <div class="spec-item"><span class="spec-label">전폭 (날개폭)</span><span class="spec-value">${spec.wingspan}</span></div>
+                    <div class="spec-item"><span class="spec-label">전고 (높이)</span><span class="spec-value">${spec.height}</span></div>
+                    <div class="spec-item"><span class="spec-label">엔진</span><span class="spec-value">${spec.engine}</span></div>
+                    <div class="spec-item"><span class="spec-label">최대이륙중량(MTOW)</span><span class="spec-value">${spec.mtow}</span></div>
+                `;
+            } else {
+                modalTitle.innerText = `✈️ ${rawModelName}`;
+                modalBody.innerHTML = `<p style="text-align:center; padding:20px 0; color:#718096;">해당 기종('${rawModelName}')의 상세 제원 데이터가 준비 중입니다.</p>`;
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('specModal').style.display = 'none';
+        }
+
+        loadAircraftData();
+    </script>
+</body>
+</html>
