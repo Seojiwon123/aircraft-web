@@ -8,7 +8,6 @@ async def download_atis_excel():
     os.makedirs(DOWNLOAD_DIR, exist_ok=True)
     
     async with async_playwright() as p:
-        # headless=True 로 설정하여 화면이 없는 GitHub 서버에서도 동작하도록 수정
         browser = await p.chromium.launch(
             headless=True,
             args=['--no-sandbox', '--disable-setuid-sandbox']
@@ -17,11 +16,11 @@ async def download_atis_excel():
         page = await context.new_page()
 
         print("ATIS 페이지 접속 중...")
-        await page.goto("https://atis.kotsu.or.kr/ATIS/stts/sttsEnggAt/sttsAtAc.do", wait_until="networkidle")
+        # kotsu -> kotsa 로 올바른 도메인 수정
+        await page.goto("https://atis.kotsa.or.kr/ATIS/stts/sttsEnggAt/sttsAtAc.do", wait_until="networkidle")
 
         # 엑셀 다운로드 버튼 클릭
         async with page.expect_download(timeout=60000) as download_info:
-            # 엑셀 다운로드 버튼 (id 또는 onclick 속성 기반 선택)
             await page.click("a:has-text('엑셀'), button:has-text('엑셀'), #excelDownBtn, [onclick*='excel']")
 
         download = await download_info.value
