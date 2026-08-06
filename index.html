@@ -89,7 +89,7 @@
             margin-bottom: 15px;
             font-size: 14px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* 데이터 개수 표시 우측 정렬 */
             align-items: center;
         }
 
@@ -215,8 +215,8 @@
         <button class="btn-reset" onclick="resetFilters()">🔄 필터 초기화</button>
     </div>
     
+    <!-- 안내문구 제거 후 개수 카운트만 유지 -->
     <div class="status-bar">
-        <div>💡 <b>안내:</b> 사업구분을 선택하면 연동된 항공사 목록만 표시됩니다.</div>
         <div id="dataCount">데이터 불러오는 중...</div>
     </div>
 
