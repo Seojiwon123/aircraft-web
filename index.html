@@ -26,7 +26,7 @@
             margin-bottom: 15px;
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
         }
         .filter-group {
@@ -45,7 +45,7 @@
             border: 1px solid #cbd5e0;
             border-radius: 4px;
             font-size: 14px;
-            width: 220px;
+            width: 200px;
             box-sizing: border-box;
             outline: none;
         }
@@ -61,7 +61,7 @@
             outline: none;
             background-color: white;
             cursor: pointer;
-            width: 220px;
+            width: 170px;
             box-sizing: border-box;
             text-overflow: ellipsis;
         }
@@ -207,9 +207,13 @@
             </select>
         </div>
 
+        <!-- 새로 추가된 키워드 검색 항목 선택 드롭다운 -->
         <div class="filter-group">
-            <label for="searchInput">🔍 키워드 검색:</label>
-            <input type="text" id="searchInput" class="input-search" placeholder="등록기호, 기종명, 정치장 등..." oninput="applyFilters()">
+            <label for="searchFieldSelect">🔍 검색항목:</label>
+            <select id="searchFieldSelect" class="select-filter" onchange="applyFilters()">
+                <option value="">전체 필드</option>
+            </select>
+            <input type="text" id="searchInput" class="input-search" placeholder="검색어 입력..." oninput="applyFilters()">
         </div>
 
         <button class="btn-reset" onclick="resetFilters()">🔄 필터 초기화</button>
@@ -301,6 +305,8 @@
         };
 
         const EXCLUDED_COLUMNS = ['감항증명유효기간'];
+        // 앞선 두 드롭다운 항목 중복 제외용 목록
+        const FILTER_EXCLUDED_COLUMNS = ['사업구분', '항공사', '소유자', '감항증명유효기간'];
 
         let rawGlobalData = null;
         let activeHeaders = [];
@@ -328,6 +334,7 @@
                 });
 
                 populateBizOptions(rawGlobalData.rows);
+                populateSearchFieldOptions(activeRawHeaders);
                 updateOwnerOptions();
                 renderTableRows(rawGlobalData.rows);
 
@@ -336,6 +343,21 @@
                 document.getElementById('aircraftTableBody').innerHTML = 
                     '<tr><td colspan="14" style="color:red;">data.json 파일을 불러올 수 없습니다. process_data.py를 먼저 실행해 주세요.</td></tr>';
             }
+        }
+
+        // 검색 필드 드롭다운 옵션 자동 채우기 (앞선 두 드롭다운 항목 제외)
+        function populateSearchFieldOptions(headers) {
+            const searchFieldSelect = document.getElementById('searchFieldSelect');
+            searchFieldSelect.innerHTML = '<option value="">전체 필드</option>';
+
+            headers.forEach(header => {
+                if (!FILTER_EXCLUDED_COLUMNS.includes(header) && header !== '순번') {
+                    const opt = document.createElement('option');
+                    opt.value = header;
+                    opt.innerText = header;
+                    searchFieldSelect.appendChild(opt);
+                }
+            });
         }
 
         function populateBizOptions(rows) {
@@ -431,14 +453,26 @@
 
             const selectedBiz = document.getElementById('bizSelect').value;
             const selectedOwner = document.getElementById('ownerSelect').value;
+            const targetField = document.getElementById('searchFieldSelect').value;
             const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
 
             const filteredRows = rawGlobalData.rows.filter(row => {
                 const matchesBiz = !selectedBiz || row['사업구분'] === selectedBiz;
                 const matchesOwner = !selectedOwner || row['항공사'] === selectedOwner;
-                const matchesKeyword = !keyword || Object.values(row).some(val => 
-                    String(val).toLowerCase().includes(keyword)
-                );
+
+                let matchesKeyword = true;
+                if (keyword) {
+                    if (targetField) {
+                        // 특정 항목(필드) 지정 검색
+                        const fieldValue = String(row[targetField] || '').toLowerCase();
+                        matchesKeyword = fieldValue.includes(keyword);
+                    } else {
+                        // 전체 필드 검색
+                        matchesKeyword = Object.values(row).some(val => 
+                            String(val).toLowerCase().includes(keyword)
+                        );
+                    }
+                }
 
                 return matchesBiz && matchesOwner && matchesKeyword;
             });
@@ -449,6 +483,7 @@
         function resetFilters() {
             document.getElementById('bizSelect').value = '';
             document.getElementById('ownerSelect').value = '';
+            document.getElementById('searchFieldSelect').value = '';
             document.getElementById('searchInput').value = '';
             
             updateOwnerOptions();
