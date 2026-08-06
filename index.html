@@ -207,7 +207,7 @@
             </select>
         </div>
 
-        <!-- 키워드 검색 항목 선택 드롭다운 (기본값: 전체) -->
+        <!-- 키워드 검색 항목 선택 드롭다운 -->
         <div class="filter-group">
             <label for="searchFieldSelect">🔍 검색항목:</label>
             <select id="searchFieldSelect" class="select-filter" onchange="applyFilters()">
@@ -268,13 +268,14 @@
             'B737-900': { name: 'Boeing 737-900 / 900W', mfr: 'Boeing', length: '42.11 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,016 kg' },
             'B737': { name: 'Boeing 737 Next-Generation', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
             
-            // B777 계열 (D6-58329 Rev E 공식 수치 기준)
+            // B777 계열 (D6-58329 & D6-58329-2 기준)
+            'B777-200LR': { name: 'Boeing 777-200LR Worldliner', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.48 m', engine: 'GE90-110B / 115B x2', mtow: '347,451 kg' },
             'B777-200ER': { name: 'Boeing 777-200ER', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '297,550 kg' },
             'B777-200': { name: 'Boeing 777-200', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '247,200 kg' },
-            'B777-300ER': { name: 'Boeing 777-300ER', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,533 kg' },
+            'B777-300ER': { name: 'Boeing 777-300ER', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,534 kg' },
             'B777-300': { name: 'Boeing 777-300', mfr: 'Boeing', length: '73.08 m', wingspan: '60.93 m', height: '18.50 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '299,370 kg' },
-            'B777F': { name: 'Boeing 777F (화물기)', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.60 m', engine: 'GE90-110B / 115B x2', mtow: '347,815 kg' },
-            'B777': { name: 'Boeing 777 Family', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,533 kg' },
+            'B777F': { name: 'Boeing 777F (화물기)', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.58 m', engine: 'GE90-110B / 115B x2', mtow: '347,814 kg' },
+            'B777': { name: 'Boeing 777 Family', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,534 kg' },
 
             // 기타 기종
             'B787': { name: 'Boeing 787-9 Dreamliner', mfr: 'Boeing', length: '63.0 m', wingspan: '60.1 m', height: '17.0 m', engine: 'GEnx-1B / Trent 1000 x2', mtow: '254,000 kg' },
