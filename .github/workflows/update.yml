@@ -4,7 +4,11 @@ on:
   schedule:
     # 매일 한국 시간 새벽 3시 (UTC 기준 18:00) 자동 실행
     - cron: '0 18 * * *'
-  workflow_dispatch: # GitHub 웹에서 [수동 실행] 버튼 제공
+  workflow_dispatch: # 수동 실행 버튼 제공
+
+# GitHub Actions 쓰기 권한 명시
+permissions:
+  contents: write
 
 jobs:
   update-data:
@@ -26,12 +30,13 @@ jobs:
         playwright install chromium
         playwright install-deps
 
-    - name: ATIS 엑셀 다운로드 및 데이터 변환 실행
+    - name: 다운로드 폴더 생성 및 ATIS 데이터 수집 실행
       run: |
+        mkdir -p downloads
         python test_atis_download.py
         python process_data.py
 
-    - name: 변경된 data.json 자동 저장 및 커밋
+    - name: 변경된 data.json 및 downloads 커밋 & 푸시
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
