@@ -89,7 +89,7 @@
             margin-bottom: 15px;
             font-size: 14px;
             display: flex;
-            justify-content: flex-end; /* 데이터 개수 표시 우측 정렬 */
+            justify-content: flex-end;
             align-items: center;
         }
 
@@ -215,7 +215,6 @@
         <button class="btn-reset" onclick="resetFilters()">🔄 필터 초기화</button>
     </div>
     
-    <!-- 안내문구 제거 후 개수 카운트만 유지 -->
     <div class="status-bar">
         <div id="dataCount">데이터 불러오는 중...</div>
     </div>
@@ -243,8 +242,15 @@
     </div>
 
     <script>
+        // 보잉 공식 Airport Planning Manual (D6-58325-7, Rev C) 기준 기종 제원 데이터 세분화
         const aircraftSpecs = {
-            'B737': { name: 'Boeing 737-800', mfr: 'Boeing', length: '39.5 m', wingspan: '35.8 m', height: '12.5 m', engine: 'CFM56-7B x2', mtow: '79,010 kg' },
+            'B737-600': { name: 'Boeing 737-600', mfr: 'Boeing', length: '31.24 m', wingspan: '34.32 m (Winglet: 35.79 m)', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '65,770 kg' },
+            'B737-700': { name: 'Boeing 737-700 / 700W', mfr: 'Boeing', length: '33.63 m', wingspan: '34.32 m (Winglet: 35.79 m)', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '70,306 kg' },
+            'B737-800BCF': { name: 'Boeing 737-800BCF (Freighter)', mfr: 'Boeing', length: '39.47 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
+            'B737-800': { name: 'Boeing 737-800 / 800W', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m (Winglet: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
+            'B737-900ER': { name: 'Boeing 737-900ER / 900ERW', mfr: 'Boeing', length: '42.11 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '85,366 kg' },
+            'B737-900': { name: 'Boeing 737-900 / 900W', mfr: 'Boeing', length: '42.11 m', wingspan: '34.32 m (Winglet: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,016 kg' },
+            'B737': { name: 'Boeing 737 Next-Generation', mfr: 'Boeing', length: '39.47 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
             'B777': { name: 'Boeing 777-300ER', mfr: 'Boeing', length: '73.9 m', wingspan: '64.8 m', height: '18.5 m', engine: 'GE90-115B x2', mtow: '351,500 kg' },
             'B787': { name: 'Boeing 787-9', mfr: 'Boeing', length: '63.0 m', wingspan: '60.1 m', height: '17.0 m', engine: 'GEnx-1B / Trent 1000 x2', mtow: '254,000 kg' },
             'A320': { name: 'Airbus A320-200', mfr: 'Airbus', length: '37.57 m', wingspan: '35.8 m', height: '11.76 m', engine: 'CFM56 / V2500 x2', mtow: '78,000 kg' },
@@ -430,9 +436,12 @@
 
         function openModal(rawModelName) {
             let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
-            let matchedKey = Object.keys(aircraftSpecs).find(key => 
-                cleanName.includes(key.replace(/[\s-]/g, ''))
-            );
+            
+            // 키 매칭 우선순위 부여 (예: B737-800BCF -> B737-800 -> B737 순으로 상세 검색)
+            let matchedKey = Object.keys(aircraftSpecs).find(key => {
+                let cleanKey = key.toUpperCase().replace(/[\s-]/g, '');
+                return cleanName.includes(cleanKey);
+            });
 
             const modal = document.getElementById('specModal');
             const modalTitle = document.getElementById('modalTitle');
