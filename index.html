@@ -242,35 +242,35 @@
     </div>
 
     <script>
-        // 보잉 공식 Airport Planning Manual 기준 기종 제원 데이터 (영문 표기 완전 한글화 및 레이아웃 통일)
+        // 보잉 공식 Airport Planning Manual 기준 기종 제원 데이터
         const aircraftSpecs = {
             // B737 계열 (D6-58325-7 기준)
-            'B737-600': { name: 'Boeing 737-600', mfr: 'Boeing', length: '31.24 m', wingspan: '34.32 m (윙렛 적용 시 35.79 m)', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '65,770 kg' },
-            'B737-700': { name: 'Boeing 737-700 / 700W', mfr: 'Boeing', length: '33.63 m', wingspan: '34.32 m (윙렛 적용 시 35.79 m)', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '70,306 kg' },
-            'B737-800BCF': { name: 'Boeing 737-800BCF (화물기)', mfr: 'Boeing', length: '39.47 m', wingspan: '35.79 m (윙렛 기본 적용)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
-            'B737-800': { name: 'Boeing 737-800 / 800W', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m (윙렛 적용 시 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
-            'B737-8': { name: 'Boeing 737 MAX 8', mfr: 'Boeing', length: '39.52 m', wingspan: '35.92 m (AT 윙렛 기본 적용)', height: '12.30 m', engine: 'CFM LEAP-1B x2', mtow: '82,190 kg' },
-            'B737-900ER': { name: 'Boeing 737-900ER / 900ERW', mfr: 'Boeing', length: '42.11 m', wingspan: '35.79 m (윙렛 기본 적용)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '85,366 kg' },
-            'B737-900': { name: 'Boeing 737-900 / 900W', mfr: 'Boeing', length: '42.11 m', wingspan: '34.32 m (윙렛 적용 시 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,016 kg' },
-            'B737': { name: 'Boeing 737 Next-Generation', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m (윙렛 적용 시 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
+            'B737-600': { name: 'Boeing 737-600', mfr: 'Boeing', length: '31.24 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '65,770 kg' },
+            'B737-700': { name: 'Boeing 737-700 / 700W', mfr: 'Boeing', length: '33.63 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '70,306 kg' },
+            'B737-800BCF': { name: 'Boeing 737-800BCF (화물기)', mfr: 'Boeing', length: '39.47 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
+            'B737-800': { name: 'Boeing 737-800 / 800W', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
+            'B737-8': { name: 'Boeing 737 MAX 8', mfr: 'Boeing', length: '39.52 m', wingspan: '35.92 m', height: '12.30 m', engine: 'CFM LEAP-1B x2', mtow: '82,190 kg' },
+            'B737-900ER': { name: 'Boeing 737-900ER / 900ERW', mfr: 'Boeing', length: '42.11 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '85,366 kg' },
+            'B737-900': { name: 'Boeing 737-900 / 900W', mfr: 'Boeing', length: '42.11 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,016 kg' },
+            'B737': { name: 'Boeing 737 Next-Generation', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
             
             // B777 계열 (D6-58329 Rev E 공식 수치 기준)
-            'B777-200ER': { name: 'Boeing 777-200ER', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m (기본 날개)', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '297,550 kg' },
-            'B777-200': { name: 'Boeing 777-200', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m (기본 날개)', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '247,200 kg' },
-            'B777-300ER': { name: 'Boeing 777-300ER', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m (레이크드 윙팁 적용)', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,533 kg' },
-            'B777-300': { name: 'Boeing 777-300', mfr: 'Boeing', length: '73.08 m', wingspan: '60.93 m (기본 날개)', height: '18.50 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '299,370 kg' },
-            'B777F': { name: 'Boeing 777F (화물기)', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m (레이크드 윙팁 적용)', height: '18.60 m', engine: 'GE90-110B / 115B x2', mtow: '347,815 kg' },
-            'B777': { name: 'Boeing 777 Family', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m (레이크드 윙팁 적용)', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,533 kg' },
+            'B777-200ER': { name: 'Boeing 777-200ER', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '297,550 kg' },
+            'B777-200': { name: 'Boeing 777-200', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '247,200 kg' },
+            'B777-300ER': { name: 'Boeing 777-300ER', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,533 kg' },
+            'B777-300': { name: 'Boeing 777-300', mfr: 'Boeing', length: '73.08 m', wingspan: '60.93 m', height: '18.50 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '299,370 kg' },
+            'B777F': { name: 'Boeing 777F (화물기)', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.60 m', engine: 'GE90-110B / 115B x2', mtow: '347,815 kg' },
+            'B777': { name: 'Boeing 777 Family', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,533 kg' },
 
-            // 타 민항기 및 헬리콥터 기종
+            // 기타 기종
             'B787': { name: 'Boeing 787-9 Dreamliner', mfr: 'Boeing', length: '63.0 m', wingspan: '60.1 m', height: '17.0 m', engine: 'GEnx-1B / Trent 1000 x2', mtow: '254,000 kg' },
-            'A320': { name: 'Airbus A320-200', mfr: 'Airbus', length: '37.57 m', wingspan: '35.8 m (샤크렛 적용 시)', height: '11.76 m', engine: 'CFM56 / V2500 x2', mtow: '78,000 kg' },
-            'A321': { name: 'Airbus A321neo', mfr: 'Airbus', length: '44.51 m', wingspan: '35.8 m (샤크렛 기본 적용)', height: '11.76 m', engine: 'LEAP-1A / PW1100G x2', mtow: '97,000 kg' },
+            'A320': { name: 'Airbus A320-200', mfr: 'Airbus', length: '37.57 m', wingspan: '35.8 m', height: '11.76 m', engine: 'CFM56 / V2500 x2', mtow: '78,000 kg' },
+            'A321': { name: 'Airbus A321neo', mfr: 'Airbus', length: '44.51 m', wingspan: '35.8 m', height: '11.76 m', engine: 'LEAP-1A / PW1100G x2', mtow: '97,000 kg' },
             'A330': { name: 'Airbus A330-300', mfr: 'Airbus', length: '63.66 m', wingspan: '60.3 m', height: '16.79 m', engine: 'Trent 700 / CF6 x2', mtow: '242,000 kg' },
             'A350': { name: 'Airbus A350-900', mfr: 'Airbus', length: '66.8 m', wingspan: '64.75 m', height: '17.05 m', engine: 'Trent XWB x2', mtow: '280,000 kg' },
             'A380': { name: 'Airbus A380-800', mfr: 'Airbus', length: '72.72 m', wingspan: '79.75 m', height: '24.09 m', engine: 'Trent 900 / GP7200 x4', mtow: '575,000 kg' },
-            'BELL206': { name: 'Bell 206 JetRanger', mfr: 'Bell Textron', length: '12.11 m', wingspan: '10.16 m (메인 로터 지름)', height: '2.83 m', engine: 'Allison 250-C20B', mtow: '1,451 kg' },
-            'MI-2': { name: 'Mil Mi-2', mfr: 'Mil / PZL-Świdnik', length: '11.4 m', wingspan: '14.5 m (메인 로터 지름)', height: '3.75 m', engine: 'PZL GTD-350 x2', mtow: '3,550 kg' }
+            'BELL206': { name: 'Bell 206 JetRanger', mfr: 'Bell Textron', length: '12.11 m', wingspan: '10.16 m', height: '2.83 m', engine: 'Allison 250-C20B', mtow: '1,451 kg' },
+            'MI-2': { name: 'Mil Mi-2', mfr: 'Mil / PZL-Świdnik', length: '11.4 m', wingspan: '14.5 m', height: '3.75 m', engine: 'PZL GTD-350 x2', mtow: '3,550 kg' }
         };
 
         const columnWidths = {
@@ -448,7 +448,6 @@
         function openModal(rawModelName) {
             let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
             
-            // 키 문자열 길이가 긴 것부터 우선적으로 매칭 (예: B737-800BCF -> B737-800 -> B737 순)
             let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
             let matchedKey = sortedKeys.find(key => {
                 let cleanKey = key.toUpperCase().replace(/[\s-]/g, '');
@@ -466,7 +465,7 @@
                 modalBody.innerHTML = `
                     <div class="spec-item"><span class="spec-label">제조사</span><span class="spec-value">${spec.mfr}</span></div>
                     <div class="spec-item"><span class="spec-label">전장 (길이)</span><span class="spec-value">${spec.length}</span></div>
-                    <div class="spec-item"><span class="spec-label">전폭 (날개폭)</span><span class="spec-value">${spec.wingspan}</span></div>
+                    <div class="spec-item"><span class="spec-label">날개폭</span><span class="spec-value">${spec.wingspan}</span></div>
                     <div class="spec-item"><span class="spec-label">전고 (높이)</span><span class="spec-value">${spec.height}</span></div>
                     <div class="spec-item"><span class="spec-label">엔진</span><span class="spec-value">${spec.engine}</span></div>
                     <div class="spec-item"><span class="spec-label">최대이륙중량(MTOW)</span><span class="spec-value">${spec.mtow}</span></div>
