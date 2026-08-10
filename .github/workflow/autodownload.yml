@@ -1,56 +1,57 @@
-name: Weekly Aircraft Data & Boeing Manuals Auto Update
+name: Weekly Aircraft Data & Manuals Auto Update
 
 on:
   schedule:
     # 한국 시간(KST) 매주 월요일 오전 10시 = UTC 월요일 01:00
     - cron: "0 1 * * 1"
-  workflow_dispatch: # Actions 탭에서 언제든 수동 실행 가능
+  workflow_dispatch:
 
 jobs:
   update-aircraft-data:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. 저장소 최신 코드 가져오기
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    # 2. 파이썬 환경 세팅
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
 
-    # 3. 크롤링 및 데이터 처리에 필요한 파이썬 패키지 설치
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install requests beautifulsoup4 pandas openpyxl playwright
 
-    # 4. Playwright용 가상 브라우저(Chromium) 및 필수 패키지 설치
     - name: Install Playwright Browsers
       run: |
         playwright install chromium --with-deps
 
-    # 5. ATIS 엑셀 다운로드 및 data.json 자동 생성 (파일명 공백 대응)
+    # 1. ATIS 엑셀 다운로드 및 data.json 변환
     - name: Run ATIS Downloader & JSON Converter
       run: |
         python "ATIS download.py"
 
-    # 6. 보잉 제원 매뉴얼 PDF 자동 다운로드
+    # 2. 보잉 매뉴얼 자동 다운로드
     - name: Run Boeing Downloader
       run: |
         python download_boeing.py
 
-    # 7. 웹사이트용 manuals.json 목록 갱신
+    # 3. 에어버스 매뉴얼 자동 다운로드 (신규 추가!)
+    - name: Run Airbus Downloader
+      run: |
+        python download_airbus.py
+
+    # 4. 전체 manuals.json 매뉴얼 목록 갱신 (AC/Boeing 및 AC/Airbus 포함)
     - name: Update Manuals JSON
       run: |
         python generate_manuals.py
 
-    # 8. 변경된 파일들(data.json, AC/Boeing/ 폴더, manuals.json) 자동 Commit & Push
+    # 5. 변경된 파일 전체(data.json, AC/ 폴더 하위 파일들, manuals.json) Commit & Push
     - name: Commit and Push Changes
       run: |
         git config --global user.name "GitHub Actions Bot"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add data.json AC/Boeing/ manuals.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 [Bot] Auto-update ATIS data & Boeing manuals" && git push)
+        git add data.json AC/ manuals.json
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 [Bot] Auto-update ATIS data, Boeing & Airbus manuals" && git push)
