@@ -15,29 +15,30 @@ def generate_manuals_list():
         os.makedirs(ac_dir)
         print(f"📁 '{ac_dir}' 폴더가 생성되었습니다.")
 
-    # AC 폴더 및 모든 하위 폴더(AC/Boeing 등)를 구석구석 탐색 (os.walk 사용)
+    # AC 폴더 및 하위 폴더 전체 탐색
     pdf_files = []
     for root, dirs, files in os.walk(ac_dir):
         for file in files:
             if file.lower().endswith('.pdf'):
-                # 상대 경로 생성 (예: AC/Boeing/747-400.pdf)
+                # 윈도우/맥 경로 구분자 표준화 (/)
                 full_path = os.path.join(root, file).replace("\\", "/")
-                pdf_files.append((file, full_path))
+                pdf_files.append((file, full_path, root.replace("\\", "/")))
 
-    for filename, rel_path in sorted(pdf_files):
+    for filename, rel_path, folder_path in sorted(pdf_files):
+        folder_lower = folder_path.lower()
         name_lower = filename.lower()
-        path_lower = rel_path.lower()
         
-        # 파일명이나 폴더 경로에 보잉/에어버스 키워드가 있는지 확인
-        if any(keyword in name_lower or keyword in path_lower for keyword in ['707', '717', '727', '737', '747', '757', '767', '777', '787', 'boeing']):
+        # 1. 'AC/Boeing' 폴더 안에 있거나 파일명/경로에 보잉 키워드가 있으면 무조건 Boeing 탭으로 지정
+        if "boeing" in folder_lower or "boeing" in name_lower or any(k in name_lower for k in ['707', '717', '720', '727', '737', '747', '757', '767', '777', '787']):
             category = "Boeing"
-            display_title = f"Boeing {filename.replace('.pdf', '')} Manual"
-        elif any(keyword in name_lower or keyword in path_lower for keyword in ['a320', 'a330', 'a350', 'a380', 'airbus']):
+        # 2. 'AC/Airbus' 폴더 안에 있거나 에어버스 키워드가 있으면 Airbus 탭으로 지정
+        elif "airbus" in folder_lower or "airbus" in name_lower or any(k in name_lower for k in ['a300', 'a310', 'a320', 'a330', 'a340', 'a350', 'a380']):
             category = "Airbus"
-            display_title = f"Airbus {filename.replace('.pdf', '')} Manual"
         else:
             category = "Others"
-            display_title = f"{filename.replace('.pdf', '')} Manual"
+
+        # 화면에는 확장자(.pdf)만 뗀 실제 파일명 그대로 표시
+        display_title = os.path.splitext(filename)[0]
 
         manuals_data[category].append({
             "title": display_title,
