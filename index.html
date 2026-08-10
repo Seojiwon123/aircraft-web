@@ -46,7 +46,7 @@
             border: 1px solid #cbd5e0;
             border-radius: 4px;
             font-size: 14px;
-            width: 200px;
+            width: 180px;
             box-sizing: border-box;
             outline: none;
         }
@@ -62,13 +62,28 @@
             outline: none;
             background-color: white;
             cursor: pointer;
-            width: 170px;
+            width: 160px;
             box-sizing: border-box;
             text-overflow: ellipsis;
         }
         .btn-reset {
             background-color: #e2e8f0;
             color: #4a5568;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .btn-reset:hover { background-color: #cbd5e0; }
+
+        /* --- 상단 제원 매뉴얼 모달 오픈 버튼 --- */
+        .btn-manual-open {
+            background-color: #2b6cb0;
+            color: white;
             border: none;
             padding: 8px 14px;
             border-radius: 4px;
@@ -78,9 +93,7 @@
             transition: background 0.2s;
             white-space: nowrap;
         }
-        .btn-reset:hover {
-            background-color: #cbd5e0;
-        }
+        .btn-manual-open:hover { background-color: #2c5282; }
 
         /* --- 상자 우측 하단 최신화 날짜 스타일 --- */
         .last-updated {
@@ -132,57 +145,21 @@
             color: white;
             font-weight: 600;
         }
-        tr:hover {
-            background-color: #f1f5f9;
-        }
+        tr:hover { background-color: #f1f5f9; }
+
         .btn-spec {
             background-color: #319795;
             color: white;
             border: none;
-            padding: 5px 8px;
+            padding: 5px 10px;
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
             font-size: 12px;
-            vertical-align: middle;
         }
-        .btn-spec:hover {
-            background-color: #2b6cb0;
-        }
+        .btn-spec:hover { background-color: #2b6cb0; }
 
-        /* --- 열 제목 내 업데이트 확인 버튼 스타일 --- */
-        .btn-update-check {
-            background-color: #ffffff;
-            color: #2b6cb0;
-            border: none;
-            padding: 3px 6px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 11px;
-            font-weight: bold;
-            margin-left: 4px;
-            vertical-align: middle;
-            transition: background 0.2s;
-        }
-        .btn-update-check:hover {
-            background-color: #e2e8f0;
-        }
-
-        /* --- PDF 다운로드 아이콘 버튼 스타일 --- */
-        .btn-pdf-download {
-            text-decoration: none;
-            font-size: 14px;
-            margin-left: 4px;
-            cursor: pointer;
-            vertical-align: middle;
-            display: inline-block;
-            transition: transform 0.1s;
-        }
-        .btn-pdf-download:hover {
-            transform: scale(1.25);
-        }
-
-        /* --- 팝업(모달) 스타일 --- */
+        /* --- 공통 팝업(모달) 스타일 --- */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -197,7 +174,8 @@
             background-color: white;
             padding: 25px;
             border-radius: 8px;
-            width: 440px;
+            width: 480px;
+            max-width: 90%;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
         .modal-header {
@@ -208,15 +186,6 @@
             padding-bottom: 10px;
             margin-bottom: 15px;
         }
-        .spec-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f7fafc;
-            font-size: 14px;
-        }
-        .spec-label { font-weight: bold; color: #4a5568; }
-        .spec-value { color: #2d3748; }
         .btn-close {
             margin-top: 20px;
             width: 100%;
@@ -229,6 +198,72 @@
             font-weight: bold;
         }
         .btn-close:hover { background-color: #c53030; }
+
+        /* 기종 상세제원 항목 스타일 */
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f7fafc;
+            font-size: 14px;
+        }
+        .spec-label { font-weight: bold; color: #4a5568; }
+        .spec-value { color: #2d3748; }
+
+        /* --- 제원 매뉴얼 다운로드 모달 전용 스타일 --- */
+        .manufacturer-tab {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        .tab-btn {
+            padding: 6px 14px;
+            border: 1px solid #cbd5e0;
+            background-color: #f7fafc;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            color: #4a5568;
+        }
+        .tab-btn.active {
+            background-color: #2b6cb0;
+            color: white;
+            border-color: #2b6cb0;
+        }
+        .manual-list-container {
+            max-height: 280px;
+            overflow-y: auto;
+            border: 1px solid #edf2f7;
+            border-radius: 4px;
+            padding: 8px;
+        }
+        .manual-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .manual-item:last-child { border-bottom: none; }
+        .manual-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: #2d3748;
+        }
+        .btn-download-file {
+            background-color: #319795;
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .btn-download-file:hover { background-color: #2b6cb0; }
     </style>
 </head>
 <body>
@@ -260,6 +295,7 @@
         </div>
 
         <button class="btn-reset" onclick="resetFilters()">🔄 필터 초기화</button>
+        <button class="btn-manual-open" onclick="openManualModal()">📁 제원 매뉴얼</button>
 
         <!-- 상자 우측 하단 최신화 날짜 표시 영역 -->
         <div id="lastUpdated" class="last-updated"></div>
@@ -282,73 +318,74 @@
         </table>
     </div>
 
-    <!-- 기종 상세제원 팝업 -->
+    <!-- 1. 기종 상세제원 팝업 -->
     <div id="specModal" class="modal-overlay">
         <div class="modal-content">
             <div id="modalTitle" class="modal-header">기종 제원 정보</div>
             <div id="modalBody"></div>
-            <button class="btn-close" onclick="closeModal()">닫기</button>
+            <button class="btn-close" onclick="closeModal('specModal')">닫기</button>
+        </div>
+    </div>
+
+    <!-- 2. 제조사별 제원 매뉴얼 다운로드 팝업 -->
+    <div id="manualModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">📁 제조사별 공식 제원 매뉴얼 (PDF)</div>
+            
+            <!-- 제조사 선택 탭 -->
+            <div class="manufacturer-tab">
+                <button class="tab-btn active" onclick="switchManufacturer('Boeing')">Boeing</button>
+                <button class="tab-btn" onclick="switchManufacturer('Airbus')">Airbus</button>
+                <button class="tab-btn" onclick="switchManufacturer('Others')">기타</button>
+            </div>
+
+            <!-- PDF 파일 목록 영역 -->
+            <div id="manualListContainer" class="manual-list-container">
+                <p style="text-align:center; color:#718096; padding:20px;">목록을 불러오는 중...</p>
+            </div>
+
+            <button class="btn-close" onclick="closeModal('manualModal')">닫기</button>
         </div>
     </div>
 
     <script>
-        // 보잉 공식 Airport Planning Manual 기준 기종 제원 데이터 (AC/ 폴더 내 파일명 연결)
         const aircraftSpecs = {
-            // B747 계열
-            'B747-8F': { name: 'Boeing 747-8F (화물기)', pdfFile: '747-8_Rev_E.pdf', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.56 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
-            'B747-8I': { name: 'Boeing 747-8 Intercontinental', pdfFile: '747-8_Rev_E.pdf', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.51 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
-            'B747-8': { name: 'Boeing 747-8', pdfFile: '747-8_Rev_E.pdf', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.51 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
-            'B747-400ERF': { name: 'Boeing 747-400ERF (화물기)', pdfFile: '747-400_Rev_F.pdf', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.54 m', engine: 'CF6-80C2 / PW4062 / RB211 x4', mtow: '412,770 kg' },
-            'B747-400F': { name: 'Boeing 747-400F (화물기)', pdfFile: '747-400_Rev_F.pdf', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.54 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
-            'B747-400ER': { name: 'Boeing 747-400ER', pdfFile: '747-400_Rev_F.pdf', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4062 / RB211 x4', mtow: '412,770 kg' },
-            'B747-400': { name: 'Boeing 747-400', pdfFile: '747-400_Rev_F.pdf', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
-            'B747': { name: 'Boeing 747 Family', pdfFile: '747-400_Rev_F.pdf', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
-
-            // B737 계열 (D6-58325-7 기준)
-            'B737-600': { name: 'Boeing 737-600', mfr: 'Boeing', length: '31.24 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '65,770 kg' },
-            'B737-700': { name: 'Boeing 737-700 / 700W', mfr: 'Boeing', length: '33.63 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '70,306 kg' },
+            'B747-8F': { name: 'Boeing 747-8F (화물기)', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.56 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
+            'B747-8I': { name: 'Boeing 747-8 Intercontinental', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.51 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
+            'B747-8': { name: 'Boeing 747-8', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.51 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
+            'B747-400ERF': { name: 'Boeing 747-400ERF (화물기)', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.54 m', engine: 'CF6-80C2 / PW4062 / RB211 x4', mtow: '412,770 kg' },
+            'B747-400F': { name: 'Boeing 747-400F (화물기)', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.54 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
+            'B747-400ER': { name: 'Boeing 747-400ER', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4062 / RB211 x4', mtow: '412,770 kg' },
+            'B747-400': { name: 'Boeing 747-400', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
+            'B747': { name: 'Boeing 747 Family', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
+            'B737-600': { name: 'Boeing 737-600', mfr: 'Boeing', length: '31.24 m', wingspan: '34.32 m', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '65,770 kg' },
+            'B737-700': { name: 'Boeing 737-700 / 700W', mfr: 'Boeing', length: '33.63 m', wingspan: '34.32 m', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '70,306 kg' },
             'B737-800BCF': { name: 'Boeing 737-800BCF (화물기)', mfr: 'Boeing', length: '39.47 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
-            'B737-800': { name: 'Boeing 737-800 / 800W', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
+            'B737-800': { name: 'Boeing 737-800 / 800W', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
             'B737-8': { name: 'Boeing 737 MAX 8', mfr: 'Boeing', length: '39.52 m', wingspan: '35.92 m', height: '12.30 m', engine: 'CFM LEAP-1B x2', mtow: '82,190 kg' },
             'B737-900ER': { name: 'Boeing 737-900ER / 900ERW', mfr: 'Boeing', length: '42.11 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '85,366 kg' },
-            'B737-900': { name: 'Boeing 737-900 / 900W', mfr: 'Boeing', length: '42.11 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,016 kg' },
-            'B737': { name: 'Boeing 737 Next-Generation', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
-            
-            // B777 계열
-            'B777-200LR': { name: 'Boeing 777-200LR Worldliner', pdfFile: '777-200LR-300ER-F_Rev_G.pdf', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.48 m', engine: 'GE90-110B / 115B x2', mtow: '347,451 kg' },
+            'B737-900': { name: 'Boeing 737-900 / 900W', mfr: 'Boeing', length: '42.11 m', wingspan: '34.32 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,016 kg' },
+            'B737': { name: 'Boeing 737 Next-Generation', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
+            'B777-200LR': { name: 'Boeing 777-200LR Worldliner', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.48 m', engine: 'GE90-110B / 115B x2', mtow: '347,451 kg' },
             'B777-200ER': { name: 'Boeing 777-200ER', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '297,550 kg' },
             'B777-200': { name: 'Boeing 777-200', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '247,200 kg' },
-            'B777-300ER': { name: 'Boeing 777-300ER', pdfFile: '777-200LR-300ER-F_Rev_G.pdf', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,534 kg' },
+            'B777-300ER': { name: 'Boeing 777-300ER', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,534 kg' },
             'B777-300': { name: 'Boeing 777-300', mfr: 'Boeing', length: '73.08 m', wingspan: '60.93 m', height: '18.50 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '299,370 kg' },
-            'B777F': { name: 'Boeing 777F (화물기)', pdfFile: '777-200LR-300ER-F_Rev_G.pdf', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.58 m', engine: 'GE90-110B / 115B x2', mtow: '347,814 kg' },
+            'B777F': { name: 'Boeing 777F (화물기)', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.58 m', engine: 'GE90-110B / 115B x2', mtow: '347,814 kg' },
             'B777': { name: 'Boeing 777 Family', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,534 kg' },
-
-            // 기타 기종
             'B787': { name: 'Boeing 787-9 Dreamliner', mfr: 'Boeing', length: '63.0 m', wingspan: '60.1 m', height: '17.0 m', engine: 'GEnx-1B / Trent 1000 x2', mtow: '254,000 kg' },
             'A320': { name: 'Airbus A320-200', mfr: 'Airbus', length: '37.57 m', wingspan: '35.8 m', height: '11.76 m', engine: 'CFM56 / V2500 x2', mtow: '78,000 kg' },
             'A321': { name: 'Airbus A321neo', mfr: 'Airbus', length: '44.51 m', wingspan: '35.8 m', height: '11.76 m', engine: 'LEAP-1A / PW1100G x2', mtow: '97,000 kg' },
             'A330': { name: 'Airbus A330-300', mfr: 'Airbus', length: '63.66 m', wingspan: '60.3 m', height: '16.79 m', engine: 'Trent 700 / CF6 x2', mtow: '242,000 kg' },
             'A350': { name: 'Airbus A350-900', mfr: 'Airbus', length: '66.8 m', wingspan: '64.75 m', height: '17.05 m', engine: 'Trent XWB x2', mtow: '280,000 kg' },
-            'A380': { name: 'Airbus A380-800', mfr: 'Airbus', length: '72.72 m', wingspan: '79.75 m', height: '24.09 m', engine: 'Trent 900 / GP7200 x4', mtow: '575,000 kg' },
-            'BELL206': { name: 'Bell 206 JetRanger', mfr: 'Bell Textron', length: '12.11 m', wingspan: '10.16 m', height: '2.83 m', engine: 'Allison 250-C20B', mtow: '1,451 kg' },
-            'MI-2': { name: 'Mil Mi-2', mfr: 'Mil / PZL-Świdnik', length: '11.4 m', wingspan: '14.5 m', height: '3.75 m', engine: 'PZL GTD-350 x2', mtow: '3,550 kg' }
+            'A380': { name: 'Airbus A380-800', mfr: 'Airbus', length: '72.72 m', wingspan: '79.75 m', height: '24.09 m', engine: 'Trent 900 / GP7200 x4', mtow: '575,000 kg' }
         };
 
         const columnWidths = {
-            '순번': '50px',
-            '사업구분': '130px',
-            '항공사': '150px',
-            '등록기호': '90px',
-            '형식': '120px',
-            '제작번호': '120px',
-            '제작일자': '90px',
-            '기령(년)': '70px',
-            '등록일자': '90px',
-            '좌석': '60px',
-            '최대이륙중량': '100px',
-            '정치장': '160px',
-            '도입형태': '80px',
-            '상세 제원': '110px'
+            '순번': '50px', '사업구분': '130px', '항공사': '150px', '등록기호': '90px',
+            '형식': '120px', '제작번호': '120px', '제작일자': '90px', '기령(년)': '70px',
+            '등록일자': '90px', '좌석': '60px', '최대이륙중량': '100px', '정치장': '160px',
+            '도입형태': '80px', '상세 제원': '100px'
         };
 
         const EXCLUDED_COLUMNS = ['감항증명유효기간'];
@@ -357,20 +394,17 @@
         let rawGlobalData = null;
         let activeHeaders = [];
         let activeRawHeaders = [];
+        let globalManualsData = null; // manuals.json 저장용
 
         async function loadAircraftData() {
             try {
                 const response = await fetch('data.json');
                 const lastModifiedHeader = response.headers.get('Last-Modified');
-
                 rawGlobalData = await response.json();
 
-                // 1) data.json 내부 필드(updated_at) 확인
                 if (rawGlobalData.updated_at) {
                     document.getElementById('lastUpdated').innerText = `${rawGlobalData.updated_at} 기준`;
-                } 
-                // 2) 내부 필드가 없을 경우 HTTP Last-Modified 헤더 사용
-                else if (lastModifiedHeader) {
+                } else if (lastModifiedHeader) {
                     const modDate = new Date(lastModifiedHeader);
                     const yy = String(modDate.getFullYear()).slice(-2);
                     const mm = String(modDate.getMonth() + 1).padStart(2, '0');
@@ -385,19 +419,8 @@
                 headerRow.innerHTML = '';
                 activeHeaders.forEach(header => {
                     const th = document.createElement('th');
-                    
-                    // '상세 제원' 열 제목일 경우 업데이트 확인 버튼 추가
-                    if (header === '상세 제원') {
-                        th.innerHTML = `상세 제원 <button class="btn-update-check" onclick="checkUpdateStatus()" title="최신 제원 업데이트 확인">🔄 확인</button>`;
-                    } else {
-                        th.innerText = header;
-                    }
-
-                    if (columnWidths[header]) {
-                        th.style.width = columnWidths[header];
-                    } else {
-                        th.style.width = '110px';
-                    }
+                    th.innerText = header;
+                    th.style.width = columnWidths[header] || '110px';
                     headerRow.appendChild(th);
                 });
 
@@ -409,19 +432,17 @@
             } catch (error) {
                 console.error("데이터 로드 실패:", error);
                 document.getElementById('aircraftTableBody').innerHTML = 
-                    '<tr><td colspan="14" style="color:red;">data.json 파일을 불러올 수 없습니다. process_data.py를 먼저 실행해 주세요.</td></tr>';
+                    '<tr><td colspan="14" style="color:red;">data.json 파일 로드 실패. process_data.py를 먼저 실행해 주세요.</td></tr>';
             }
         }
 
         function populateSearchFieldOptions(headers) {
             const searchFieldSelect = document.getElementById('searchFieldSelect');
             searchFieldSelect.innerHTML = '<option value="">전체</option>';
-
             headers.forEach(header => {
                 if (!FILTER_EXCLUDED_COLUMNS.includes(header) && header !== '순번') {
                     const opt = document.createElement('option');
-                    opt.value = header;
-                    opt.innerText = header;
+                    opt.value = header; opt.innerText = header;
                     searchFieldSelect.appendChild(opt);
                 }
             });
@@ -430,15 +451,10 @@
         function populateBizOptions(rows) {
             const bizSelect = document.getElementById('bizSelect');
             const bizTypes = new Set();
-
-            rows.forEach(row => {
-                if (row['사업구분']) bizTypes.add(row['사업구분']);
-            });
-
+            rows.forEach(row => { if (row['사업구분']) bizTypes.add(row['사업구분']); });
             Array.from(bizTypes).sort((a, b) => a.localeCompare(b, 'ko')).forEach(biz => {
                 const option = document.createElement('option');
-                option.value = biz;
-                option.innerText = biz;
+                option.value = biz; option.innerText = biz;
                 bizSelect.appendChild(option);
             });
         }
@@ -446,10 +462,8 @@
         function updateOwnerOptions() {
             const bizSelect = document.getElementById('bizSelect');
             const ownerSelect = document.getElementById('ownerSelect');
-
             const selectedBiz = bizSelect.value;
             const currentSelectedOwner = ownerSelect.value;
-
             const owners = new Set();
 
             rawGlobalData.rows.forEach(row => {
@@ -459,31 +473,21 @@
             });
 
             ownerSelect.innerHTML = '<option value="">전체 항공사</option>';
-
-            const sortedOwners = Array.from(owners).sort((a, b) => a.localeCompare(b, 'ko'));
-            sortedOwners.forEach(owner => {
+            Array.from(owners).sort((a, b) => a.localeCompare(b, 'ko')).forEach(owner => {
                 const option = document.createElement('option');
-                option.value = owner;
-                option.innerText = owner;
+                option.value = owner; option.innerText = owner;
                 ownerSelect.appendChild(option);
             });
 
-            if (owners.has(currentSelectedOwner)) {
-                ownerSelect.value = currentSelectedOwner;
-            } else {
-                ownerSelect.value = '';
-            }
+            if (owners.has(currentSelectedOwner)) ownerSelect.value = currentSelectedOwner;
+            else ownerSelect.value = '';
         }
 
-        function onBizChange() {
-            updateOwnerOptions();
-            applyFilters();
-        }
+        function onBizChange() { updateOwnerOptions(); applyFilters(); }
 
         function renderTableRows(rowsToRender) {
             const tbody = document.getElementById('aircraftTableBody');
             document.getElementById('dataCount').innerText = `총 ${rowsToRender.length}대 검색됨 (전체 ${rawGlobalData.rows.length}대)`;
-
             tbody.innerHTML = '';
 
             if (rowsToRender.length === 0) {
@@ -493,35 +497,17 @@
 
             rowsToRender.forEach((row, index) => {
                 const tr = document.createElement('tr');
-
                 activeRawHeaders.forEach(col => {
                     const td = document.createElement('td');
-                    if (col === '순번') {
-                        td.innerText = index + 1;
-                        td.style.fontWeight = 'bold';
-                    } else {
-                        td.innerText = row[col];
-                    }
+                    td.innerText = (col === '순번') ? index + 1 : row[col];
+                    if (col === '순번') td.style.fontWeight = 'bold';
                     td.title = td.innerText;
                     tr.appendChild(td);
                 });
 
                 const specTd = document.createElement('td');
                 const modelName = row['형식'] || row['기종'] || '';
-                
-                // 해당 기종의 PDF 매핑 정보 확인
-                let cleanName = modelName.toUpperCase().replace(/[\s-]/g, '');
-                let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
-                let matchedKey = sortedKeys.find(key => cleanName.includes(key.toUpperCase().replace(/[\s-]/g, '')));
-
-                let pdfIconHtml = '';
-                if (matchedKey && aircraftSpecs[matchedKey].pdfFile) {
-                    const fileName = aircraftSpecs[matchedKey].pdfFile;
-                    // AC 폴더 안의 PDF 파일 매핑 및 다운로드 아이콘 생성
-                    pdfIconHtml = `<a href="AC/${fileName}" download="${fileName}" class="btn-pdf-download" title="${fileName} 다운로드">📥</a>`;
-                }
-
-                specTd.innerHTML = `<button class="btn-spec" onclick="openModal('${modelName}')">제원 보기</button>${pdfIconHtml}`;
+                specTd.innerHTML = `<button class="btn-spec" onclick="openModal('${modelName}')">제원 보기</button>`;
                 tr.appendChild(specTd);
 
                 tbody.appendChild(tr);
@@ -530,7 +516,6 @@
 
         function applyFilters() {
             if (!rawGlobalData) return;
-
             const selectedBiz = document.getElementById('bizSelect').value;
             const selectedOwner = document.getElementById('ownerSelect').value;
             const targetField = document.getElementById('searchFieldSelect').value;
@@ -539,19 +524,15 @@
             const filteredRows = rawGlobalData.rows.filter(row => {
                 const matchesBiz = !selectedBiz || row['사업구분'] === selectedBiz;
                 const matchesOwner = !selectedOwner || row['항공사'] === selectedOwner;
-
                 let matchesKeyword = true;
+
                 if (keyword) {
                     if (targetField) {
-                        const fieldValue = String(row[targetField] || '').toLowerCase();
-                        matchesKeyword = fieldValue.includes(keyword);
+                        matchesKeyword = String(row[targetField] || '').toLowerCase().includes(keyword);
                     } else {
-                        matchesKeyword = Object.values(row).some(val => 
-                            String(val).toLowerCase().includes(keyword)
-                        );
+                        matchesKeyword = Object.values(row).some(val => String(val).toLowerCase().includes(keyword));
                     }
                 }
-
                 return matchesBiz && matchesOwner && matchesKeyword;
             });
 
@@ -563,19 +544,15 @@
             document.getElementById('ownerSelect').value = '';
             document.getElementById('searchFieldSelect').value = '';
             document.getElementById('searchInput').value = '';
-            
             updateOwnerOptions();
             renderTableRows(rawGlobalData.rows);
         }
 
+        // 1. 기종 상세제원 팝업 관련 함수
         function openModal(rawModelName) {
             let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
-            
             let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
-            let matchedKey = sortedKeys.find(key => {
-                let cleanKey = key.toUpperCase().replace(/[\s-]/g, '');
-                return cleanName.includes(cleanKey);
-            });
+            let matchedKey = sortedKeys.find(key => cleanName.includes(key.toUpperCase().replace(/[\s-]/g, '')));
 
             const modal = document.getElementById('specModal');
             const modalTitle = document.getElementById('modalTitle');
@@ -597,31 +574,62 @@
                 modalTitle.innerText = `✈️ ${rawModelName}`;
                 modalBody.innerHTML = `<p style="text-align:center; padding:20px 0; color:#718096;">해당 기종('${rawModelName}')의 상세 제원 데이터가 준비 중입니다.</p>`;
             }
-
             modal.style.display = 'flex';
         }
 
-        function closeModal() {
-            document.getElementById('specModal').style.display = 'none';
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
         }
 
-        // 제원 업데이트 상태 확인 함수 (status.json 읽기)
-        async function checkUpdateStatus() {
+        // 2. 제원 매뉴얼 다운로드 팝업 관련 함수
+        async function openManualModal() {
+            document.getElementById('manualModal').style.display = 'flex';
+            
+            // manuals.json 읽어오기
             try {
-                const response = await fetch('status.json?t=' + new Date().getTime()); // 캐시 방지
-                if (!response.ok) throw new Error();
-                
-                const statusData = await response.json();
-
-                if (statusData.has_update && statusData.updated_models.length > 0) {
-                    const models = statusData.updated_models.join(', ');
-                    alert(`📢 제원 업데이트가 있습니다.\n[업데이트 기종: ${models}]`);
+                const response = await fetch('manuals.json?t=' + new Date().getTime());
+                if (response.ok) {
+                    globalManualsData = await response.json();
+                    switchManufacturer('Boeing'); // 기본값: 보잉 탭
                 } else {
-                    alert('✅ 현재 모든 제원이 최신 상태입니다.');
+                    document.getElementById('manualListContainer').innerHTML = 
+                        '<p style="text-align:center; color:red; padding:20px;">manuals.json 파일이 존재하지 않습니다.<br>generate_manuals.py를 실행해 주세요.</p>';
                 }
-            } catch (error) {
-                alert('ℹ️ 현재 확인된 제원 업데이트가 없습니다.');
+            } catch (e) {
+                document.getElementById('manualListContainer').innerHTML = 
+                    '<p style="text-align:center; color:red; padding:20px;">매뉴얼 목록을 불러오는 중 오류가 발생했습니다.</p>';
             }
+        }
+
+        function switchManufacturer(mfr) {
+            // 탭 버튼 스타일 변경
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                if (tab.innerText.trim() === mfr || (mfr === 'Others' && tab.innerText.trim() === '기타')) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            const container = document.getElementById('manualListContainer');
+            container.innerHTML = '';
+
+            if (!globalManualsData || !globalManualsData[mfr] || globalManualsData[mfr].length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:#718096; padding:20px;">등록된 ${mfr} 매뉴얼 PDF가 없습니다.</p>`;
+                return;
+            }
+
+            // 파일 목록 랜더링
+            globalManualsData[mfr].forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'manual-item';
+                div.innerHTML = `
+                    <span class="manual-title">📄 ${item.title}</span>
+                    <a href="${item.path}" download="${item.filename}" class="btn-download-file">📥 다운로드</a>
+                `;
+                container.appendChild(div);
+            });
         }
 
         loadAircraftData();
