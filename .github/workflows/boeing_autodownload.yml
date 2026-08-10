@@ -2,9 +2,9 @@ name: Weekly Boeing Manuals Download
 
 on:
   schedule:
-    # 한국 시간(KST) 매주 월요일 오전 7시 = UTC 일요일 22:00
-    - cron: '0 22 * * 0'
-  workflow_dispatch: # 필요 시 깃허브 웹 화면에서 수동 실행 가능
+    # 한국 시간(KST) 매주 월요일 오전 10시 = UTC 월요일 01:00
+    - cron: '0 1 * * 1'
+  workflow_dispatch:
 
 jobs:
   download-and-commit:
