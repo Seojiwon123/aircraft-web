@@ -1,1 +1,38 @@
+name: Auto Generate Aircraft Manuals JSON
 
+# 실행 조건 설정
+on:
+  push:
+    paths:
+      - 'AC/**'                     # AC 폴더 내 파일이 추가/수정/삭제되어 push될 때 자동 실행
+      - 'generate_manuals.py'      # 파이썬 코드가 수정될 때 자동 실행
+  workflow_dispatch:               # 깃허브 웹사이트에서 [Run workflow] 버튼으로 수동 실행도 가능
+
+jobs:
+  build-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. 저장소의 최신 코드 및 파일 가져오기
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    # 2. 파이썬 환경 세팅
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    # 3. manuals.json 생성 파이썬 스크립트 실행
+    - name: Run generate_manuals.py
+      run: python generate_manuals.py
+
+    # 4. 변경된 manuals.json 파일이 있으면 자동으로 Git Commit & Push
+    - name: Commit and Push changes
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add manuals.json
+        
+        # 변경사항이 있을 때만 커밋 수행 (에러 방지)
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 [Bot] Auto-generated manuals.json from AC directory" && git push)
