@@ -20,7 +20,7 @@
         /* --- 검색 / 필터 패널 스타일 --- */
         .filter-panel {
             background-color: white;
-            padding: 18px 20px 30px 20px; /* 우측 하단 날짜 여백 확보 */
+            padding: 18px 20px 30px 20px;
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             margin-bottom: 15px;
@@ -28,7 +28,7 @@
             flex-wrap: wrap;
             gap: 12px;
             align-items: center;
-            position: relative; /* 우측 하단 배치 기준점 */
+            position: relative;
         }
         .filter-group {
             display: flex;
@@ -139,14 +139,47 @@
             background-color: #319795;
             color: white;
             border: none;
-            padding: 5px 10px;
+            padding: 5px 8px;
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
             font-size: 12px;
+            vertical-align: middle;
         }
         .btn-spec:hover {
             background-color: #2b6cb0;
+        }
+
+        /* --- 열 제목 내 업데이트 확인 버튼 스타일 --- */
+        .btn-update-check {
+            background-color: #ffffff;
+            color: #2b6cb0;
+            border: none;
+            padding: 3px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 4px;
+            vertical-align: middle;
+            transition: background 0.2s;
+        }
+        .btn-update-check:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* --- PDF 다운로드 아이콘 버튼 스타일 --- */
+        .btn-pdf-download {
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 4px;
+            cursor: pointer;
+            vertical-align: middle;
+            display: inline-block;
+            transition: transform 0.1s;
+        }
+        .btn-pdf-download:hover {
+            transform: scale(1.25);
         }
 
         /* --- 팝업(모달) 스타일 --- */
@@ -259,17 +292,17 @@
     </div>
 
     <script>
-        // 보잉 공식 Airport Planning Manual 기준 기종 제원 데이터
+        // 보잉 공식 Airport Planning Manual 기준 기종 제원 데이터 (AC/ 폴더 내 파일명 연결)
         const aircraftSpecs = {
-            // B747 계열 (D6-58326-1 및 D6-58326-3 기준)
-            'B747-8F': { name: 'Boeing 747-8F (화물기)', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.56 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
-            'B747-8I': { name: 'Boeing 747-8 Intercontinental', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.51 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
-            'B747-8': { name: 'Boeing 747-8', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.51 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
-            'B747-400ERF': { name: 'Boeing 747-400ERF (화물기)', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.54 m', engine: 'CF6-80C2 / PW4062 / RB211 x4', mtow: '412,770 kg' },
-            'B747-400F': { name: 'Boeing 747-400F (화물기)', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.54 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
-            'B747-400ER': { name: 'Boeing 747-400ER', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4062 / RB211 x4', mtow: '412,770 kg' },
-            'B747-400': { name: 'Boeing 747-400', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
-            'B747': { name: 'Boeing 747 Family', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
+            // B747 계열
+            'B747-8F': { name: 'Boeing 747-8F (화물기)', pdfFile: '747-8_Rev_E.pdf', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.56 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
+            'B747-8I': { name: 'Boeing 747-8 Intercontinental', pdfFile: '747-8_Rev_E.pdf', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.51 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
+            'B747-8': { name: 'Boeing 747-8', pdfFile: '747-8_Rev_E.pdf', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.51 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
+            'B747-400ERF': { name: 'Boeing 747-400ERF (화물기)', pdfFile: '747-400_Rev_F.pdf', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.54 m', engine: 'CF6-80C2 / PW4062 / RB211 x4', mtow: '412,770 kg' },
+            'B747-400F': { name: 'Boeing 747-400F (화물기)', pdfFile: '747-400_Rev_F.pdf', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.54 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
+            'B747-400ER': { name: 'Boeing 747-400ER', pdfFile: '747-400_Rev_F.pdf', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4062 / RB211 x4', mtow: '412,770 kg' },
+            'B747-400': { name: 'Boeing 747-400', pdfFile: '747-400_Rev_F.pdf', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
+            'B747': { name: 'Boeing 747 Family', pdfFile: '747-400_Rev_F.pdf', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
 
             // B737 계열 (D6-58325-7 기준)
             'B737-600': { name: 'Boeing 737-600', mfr: 'Boeing', length: '31.24 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '65,770 kg' },
@@ -281,13 +314,13 @@
             'B737-900': { name: 'Boeing 737-900 / 900W', mfr: 'Boeing', length: '42.11 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,016 kg' },
             'B737': { name: 'Boeing 737 Next-Generation', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m (날개폭: 35.79 m)', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
             
-            // B777 계열 (D6-58329 & D6-58329-2 기준)
-            'B777-200LR': { name: 'Boeing 777-200LR Worldliner', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.48 m', engine: 'GE90-110B / 115B x2', mtow: '347,451 kg' },
+            // B777 계열
+            'B777-200LR': { name: 'Boeing 777-200LR Worldliner', pdfFile: '777-200LR-300ER-F_Rev_G.pdf', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.48 m', engine: 'GE90-110B / 115B x2', mtow: '347,451 kg' },
             'B777-200ER': { name: 'Boeing 777-200ER', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '297,550 kg' },
             'B777-200': { name: 'Boeing 777-200', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '247,200 kg' },
-            'B777-300ER': { name: 'Boeing 777-300ER', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,534 kg' },
+            'B777-300ER': { name: 'Boeing 777-300ER', pdfFile: '777-200LR-300ER-F_Rev_G.pdf', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,534 kg' },
             'B777-300': { name: 'Boeing 777-300', mfr: 'Boeing', length: '73.08 m', wingspan: '60.93 m', height: '18.50 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '299,370 kg' },
-            'B777F': { name: 'Boeing 777F (화물기)', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.58 m', engine: 'GE90-110B / 115B x2', mtow: '347,814 kg' },
+            'B777F': { name: 'Boeing 777F (화물기)', pdfFile: '777-200LR-300ER-F_Rev_G.pdf', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.58 m', engine: 'GE90-110B / 115B x2', mtow: '347,814 kg' },
             'B777': { name: 'Boeing 777 Family', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,534 kg' },
 
             // 기타 기종
@@ -315,7 +348,7 @@
             '최대이륙중량': '100px',
             '정치장': '160px',
             '도입형태': '80px',
-            '상세 제원': '95px'
+            '상세 제원': '110px'
         };
 
         const EXCLUDED_COLUMNS = ['감항증명유효기간'];
@@ -328,18 +361,22 @@
         async function loadAircraftData() {
             try {
                 const response = await fetch('data.json');
-
-                // data.json 파일의 깃허브 업로드(수정) 날짜 추출
                 const lastModifiedHeader = response.headers.get('Last-Modified');
-                if (lastModifiedHeader) {
+
+                rawGlobalData = await response.json();
+
+                // 1) data.json 내부 필드(updated_at) 확인
+                if (rawGlobalData.updated_at) {
+                    document.getElementById('lastUpdated').innerText = `${rawGlobalData.updated_at} 기준`;
+                } 
+                // 2) 내부 필드가 없을 경우 HTTP Last-Modified 헤더 사용
+                else if (lastModifiedHeader) {
                     const modDate = new Date(lastModifiedHeader);
                     const yy = String(modDate.getFullYear()).slice(-2);
                     const mm = String(modDate.getMonth() + 1).padStart(2, '0');
                     const dd = String(modDate.getDate()).padStart(2, '0');
                     document.getElementById('lastUpdated').innerText = `${yy}.${mm}.${dd}. 기준`;
                 }
-
-                rawGlobalData = await response.json();
 
                 activeHeaders = rawGlobalData.headers.filter(h => !EXCLUDED_COLUMNS.includes(h));
                 activeRawHeaders = rawGlobalData.raw_headers.filter(h => !EXCLUDED_COLUMNS.includes(h));
@@ -348,7 +385,14 @@
                 headerRow.innerHTML = '';
                 activeHeaders.forEach(header => {
                     const th = document.createElement('th');
-                    th.innerText = header;
+                    
+                    // '상세 제원' 열 제목일 경우 업데이트 확인 버튼 추가
+                    if (header === '상세 제원') {
+                        th.innerHTML = `상세 제원 <button class="btn-update-check" onclick="checkUpdateStatus()" title="최신 제원 업데이트 확인">🔄 확인</button>`;
+                    } else {
+                        th.innerText = header;
+                    }
+
                     if (columnWidths[header]) {
                         th.style.width = columnWidths[header];
                     } else {
@@ -464,7 +508,20 @@
 
                 const specTd = document.createElement('td');
                 const modelName = row['형식'] || row['기종'] || '';
-                specTd.innerHTML = `<button class="btn-spec" onclick="openModal('${modelName}')">제원 보기</button>`;
+                
+                // 해당 기종의 PDF 매핑 정보 확인
+                let cleanName = modelName.toUpperCase().replace(/[\s-]/g, '');
+                let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
+                let matchedKey = sortedKeys.find(key => cleanName.includes(key.toUpperCase().replace(/[\s-]/g, '')));
+
+                let pdfIconHtml = '';
+                if (matchedKey && aircraftSpecs[matchedKey].pdfFile) {
+                    const fileName = aircraftSpecs[matchedKey].pdfFile;
+                    // AC 폴더 안의 PDF 파일 매핑 및 다운로드 아이콘 생성
+                    pdfIconHtml = `<a href="AC/${fileName}" download="${fileName}" class="btn-pdf-download" title="${fileName} 다운로드">📥</a>`;
+                }
+
+                specTd.innerHTML = `<button class="btn-spec" onclick="openModal('${modelName}')">제원 보기</button>${pdfIconHtml}`;
                 tr.appendChild(specTd);
 
                 tbody.appendChild(tr);
@@ -546,6 +603,25 @@
 
         function closeModal() {
             document.getElementById('specModal').style.display = 'none';
+        }
+
+        // 제원 업데이트 상태 확인 함수 (status.json 읽기)
+        async function checkUpdateStatus() {
+            try {
+                const response = await fetch('status.json?t=' + new Date().getTime()); // 캐시 방지
+                if (!response.ok) throw new Error();
+                
+                const statusData = await response.json();
+
+                if (statusData.has_update && statusData.updated_models.length > 0) {
+                    const models = statusData.updated_models.join(', ');
+                    alert(`📢 제원 업데이트가 있습니다.\n[업데이트 기종: ${models}]`);
+                } else {
+                    alert('✅ 현재 모든 제원이 최신 상태입니다.');
+                }
+            } catch (error) {
+                alert('ℹ️ 현재 확인된 제원 업데이트가 없습니다.');
+            }
         }
 
         loadAircraftData();
