@@ -3,636 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>대한민국 항공기 등록 현황 & 제원 정보</title>
+    <title>항공기 등록 현황 및 제원</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
         body {
-            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-            margin: 20px;
             background-color: #f8f9fa;
-            color: #2d3748;
+            color: #333;
+            padding: 20px;
         }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
         h1 {
-            color: #1a365d;
-            border-bottom: 3px solid #2b6cb0;
-            padding-bottom: 10px;
+            font-size: 1.5rem;
+            color: #1e293b;
         }
 
-        /* --- 검색 / 필터 패널 스타일 --- */
-        .filter-panel {
-            background-color: white;
-            padding: 18px 20px 30px 20px;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            align-items: center;
-            position: relative;
-        }
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .filter-group label {
-            font-size: 13px;
-            font-weight: bold;
-            color: #4a5568;
-            white-space: nowrap;
-        }
-        .input-search {
-            padding: 8px 12px;
-            border: 1px solid #cbd5e0;
-            border-radius: 4px;
-            font-size: 14px;
-            width: 180px;
-            box-sizing: border-box;
-            outline: none;
-        }
-        .input-search:focus {
-            border-color: #3182ce;
-            box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.2);
-        }
-        .select-filter {
-            padding: 8px 12px;
-            border: 1px solid #cbd5e0;
-            border-radius: 4px;
-            font-size: 14px;
-            outline: none;
-            background-color: white;
-            cursor: pointer;
-            width: 160px;
-            box-sizing: border-box;
-            text-overflow: ellipsis;
-        }
-        .btn-reset {
-            background-color: #e2e8f0;
-            color: #4a5568;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: bold;
-            transition: background 0.2s;
-            white-space: nowrap;
-        }
-        .btn-reset:hover { background-color: #cbd5e0; }
-
-        /* --- 상단 제원 매뉴얼 모달 오픈 버튼 --- */
-        .btn-manual-open {
-            background-color: #2b6cb0;
+        .btn-manual-modal {
+            background-color: #2563eb;
             color: white;
             border: none;
-            padding: 8px 14px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: bold;
-            transition: background 0.2s;
-            white-space: nowrap;
-        }
-        .btn-manual-open:hover { background-color: #2c5282; }
-
-        /* --- 상자 우측 하단 최신화 날짜 스타일 --- */
-        .last-updated {
-            position: absolute;
-            right: 18px;
-            bottom: 8px;
-            font-size: 12px;
-            color: #718096;
-            font-weight: 500;
-        }
-
-        /* --- 상태 표시바 --- */
-        .status-bar {
-            background-color: #ebf8ff;
-            border-left: 4px solid #3182ce;
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            font-size: 14px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        /* --- 테이블 스타일 --- */
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-            background-color: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 10px 18px;
+            font-size: 0.95rem;
+            font-weight: 600;
             border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
         }
+
+        .btn-manual-modal:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* 테이블 스타일 */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
         table {
             width: 100%;
-            min-width: 1450px;
-            table-layout: fixed;
             border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
         }
-        th, td {
-            border: 1px solid #e2e8f0;
-            padding: 10px 6px;
-            text-align: center;
-            font-size: 13px;
-            overflow: hidden;
-            text-overflow: ellipsis;
+
+        th {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-weight: 600;
+            padding: 12px 14px;
+            border-bottom: 2px solid #cbd5e1;
             white-space: nowrap;
         }
-        th {
-            background-color: #2b6cb0;
-            color: white;
-            font-weight: 600;
+
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: middle;
+            color: #475569;
         }
-        tr:hover { background-color: #f1f5f9; }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* 💡 정치장 컬럼 넓이 확대 및 글자 짤림 방지 */
+        .col-location {
+            min-width: 160px;
+            white-space: nowrap;
+        }
+
+        /* 💡 상세 제원 버튼 컬럼 너비 최적화 */
+        .col-spec-btn {
+            width: 80px;
+            text-align: center;
+        }
 
         .btn-spec {
-            background-color: #319795;
+            background-color: #0d9488;
             color: white;
             border: none;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 4px;
+            font-size: 0.85rem;
             cursor: pointer;
-            font-weight: bold;
-            font-size: 12px;
+            transition: background 0.2s;
+            white-space: nowrap;
         }
-        .btn-spec:hover { background-color: #2b6cb0; }
 
-        /* --- 공통 팝업(모달) 스타일 --- */
+        .btn-spec:hover {
+            background-color: #0f766e;
+        }
+
+        /* 모달 스타일 (제원 매뉴얼 & 상세제원) */
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
-        .modal-content {
-            background-color: white;
-            padding: 25px;
-            border-radius: 8px;
-            width: 480px;
-            max-width: 90%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        .modal-header {
-            font-size: 18px;
-            font-weight: bold;
-            color: #2b6cb0;
-            border-bottom: 2px solid #edf2f7;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-        .btn-close {
-            margin-top: 20px;
-            width: 100%;
-            background-color: #e53e3e;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .btn-close:hover { background-color: #c53030; }
 
-        /* 기종 상세제원 항목 스타일 */
-        .spec-item {
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 650px;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f7fafc;
-            font-size: 14px;
+            align-items: center;
+            margin-bottom: 16px;
         }
-        .spec-label { font-weight: bold; color: #4a5568; }
-        .spec-value { color: #2d3748; }
 
-        /* --- 제원 매뉴얼 다운로드 모달 전용 스타일 --- */
-        .manufacturer-tab {
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0f172a;
+        }
+
+        .tab-group {
             display: flex;
             gap: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
+
         .tab-btn {
-            padding: 6px 14px;
-            border: 1px solid #cbd5e0;
-            background-color: #f7fafc;
-            border-radius: 4px;
+            padding: 6px 16px;
+            border: 1px solid #cbd5e1;
+            background: #fff;
+            border-radius: 6px;
             cursor: pointer;
-            font-weight: bold;
-            font-size: 13px;
-            color: #4a5568;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
+
         .tab-btn.active {
-            background-color: #2b6cb0;
+            background: #2563eb;
             color: white;
-            border-color: #2b6cb0;
+            border-color: #2563eb;
         }
-        .manual-list-container {
-            max-height: 280px;
+
+        .manual-list {
             overflow-y: auto;
-            border: 1px solid #edf2f7;
-            border-radius: 4px;
-            padding: 8px;
+            flex: 1;
+            max-height: 400px;
+            padding-right: 5px;
         }
+
         .manual-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #edf2f7;
+            padding: 10px 12px;
+            border: 1px solid #f1f5f9;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            background-color: #fafafa;
         }
-        .manual-item:last-child { border-bottom: none; }
-        .manual-title {
-            font-size: 13px;
-            font-weight: 500;
-            color: #2d3748;
+
+        .manual-item-title {
+            font-size: 0.9rem;
+            color: #334155;
+            word-break: break-all;
         }
-        .btn-download-file {
-            background-color: #319795;
+
+        .btn-download {
+            background-color: #0284c7;
             color: white;
             text-decoration: none;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
+            font-size: 0.82rem;
             white-space: nowrap;
         }
-        .btn-download-file:hover { background-color: #2b6cb0; }
+
+        .btn-close {
+            margin-top: 16px;
+            width: 100%;
+            padding: 10px;
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-    <h1>✈️ 대한민국 항공기 등록 현황 & 기종 제원</h1>
-
-    <!-- 🔍 검색 및 카테고리 필터 패널 -->
-    <div class="filter-panel">
-        <div class="filter-group">
-            <label for="bizSelect">📋 사업구분:</label>
-            <select id="bizSelect" class="select-filter" onchange="onBizChange()">
-                <option value="">전체 사업구분</option>
-            </select>
-        </div>
-
-        <div class="filter-group">
-            <label for="ownerSelect">🏢 항공사/소유자:</label>
-            <select id="ownerSelect" class="select-filter" onchange="applyFilters()">
-                <option value="">전체 항공사</option>
-            </select>
-        </div>
-
-        <div class="filter-group">
-            <label for="searchFieldSelect">🔍 검색항목:</label>
-            <select id="searchFieldSelect" class="select-filter" onchange="applyFilters()">
-                <option value="">전체</option>
-            </select>
-            <input type="text" id="searchInput" class="input-search" placeholder="검색어 입력..." oninput="applyFilters()">
-        </div>
-
-        <button class="btn-reset" onclick="resetFilters()">🔄 필터 초기화</button>
-        <button class="btn-manual-open" onclick="openManualModal()">📁 항공기 제원 다운로드</button>
-
-        <!-- 상자 우측 하단 최신화 날짜 표시 영역 -->
-        <div id="lastUpdated" class="last-updated"></div>
-    </div>
-    
-    <div class="status-bar">
-        <div id="dataCount">데이터 불러오는 중...</div>
+<div class="container">
+    <div class="header-section">
+        <h1>✈️ 대한민국 항공기 등록 현황</h1>
+        <button class="btn-manual-modal" onclick="openManualModal()">📑 제조사별 제원 매뉴얼 (PDF)</button>
     </div>
 
-    <div class="table-container">
-        <table>
+    <div class="table-wrapper">
+        <table id="aircraft-table">
             <thead>
-                <tr id="tableHeaderRow"></tr>
-            </thead>
-            <tbody id="aircraftTableBody">
-                <tr>
-                    <td colspan="14">데이터를 불러오는 중입니다...</td>
+                <tr id="table-header">
+                    <!-- JavaScript에서 자동 생성 -->
                 </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- JavaScript에서 자동 생성 -->
             </tbody>
         </table>
     </div>
+</div>
 
-    <!-- 1. 기종 상세제원 팝업 -->
-    <div id="specModal" class="modal-overlay">
-        <div class="modal-content">
-            <div id="modalTitle" class="modal-header">기종 제원 정보</div>
-            <div id="modalBody"></div>
-            <button class="btn-close" onclick="closeModal('specModal')">닫기</button>
+<!-- 1. 제조사별 공식 제원 매뉴얼 모달 -->
+<div class="modal-overlay" id="manual-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">📑 제조사별 공식 제원 매뉴얼</div>
         </div>
-    </div>
-
-    <!-- 2. 제조사별 제원 매뉴얼 다운로드 팝업 -->
-    <div id="manualModal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">📁 제조사별 공식 제원 매뉴얼 (PDF)</div>
-            
-            <!-- 제조사 선택 탭 -->
-            <div class="manufacturer-tab">
-                <button class="tab-btn active" onclick="switchManufacturer('Boeing')">Boeing</button>
-                <button class="tab-btn" onclick="switchManufacturer('Airbus')">Airbus</button>
-                <button class="tab-btn" onclick="switchManufacturer('Others')">기타</button>
-            </div>
-
-            <!-- PDF 파일 목록 영역 -->
-            <div id="manualListContainer" class="manual-list-container">
-                <p style="text-align:center; color:#718096; padding:20px;">목록을 불러오는 중...</p>
-            </div>
-
-            <button class="btn-close" onclick="closeModal('manualModal')">닫기</button>
+        <div class="tab-group">
+            <button class="tab-btn active" onclick="switchTab('Boeing')">Boeing</button>
+            <button class="tab-btn" onclick="switchTab('Airbus')">Airbus</button>
+            <button class="tab-btn" onclick="switchTab('Others')">기타</button>
         </div>
+        <div class="manual-list" id="manual-list-container">
+            <!-- manuals.json 연동 목록 생성 -->
+        </div>
+        <button class="btn-close" onclick="closeManualModal()">닫기</button>
     </div>
+</div>
 
-    <script>
-        const aircraftSpecs = {
-            'B747-8F': { name: 'Boeing 747-8F (화물기)', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.56 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
-            'B747-8I': { name: 'Boeing 747-8 Intercontinental', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.51 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
-            'B747-8': { name: 'Boeing 747-8', mfr: 'Boeing', length: '76.25 m', wingspan: '68.40 m', height: '19.51 m', engine: 'GEnx-2B67 x4', mtow: '447,695 kg' },
-            'B747-400ERF': { name: 'Boeing 747-400ERF (화물기)', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.54 m', engine: 'CF6-80C2 / PW4062 / RB211 x4', mtow: '412,770 kg' },
-            'B747-400F': { name: 'Boeing 747-400F (화물기)', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.54 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
-            'B747-400ER': { name: 'Boeing 747-400ER', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4062 / RB211 x4', mtow: '412,770 kg' },
-            'B747-400': { name: 'Boeing 747-400', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
-            'B747': { name: 'Boeing 747 Family', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2 / PW4056 / RB211 x4', mtow: '396,893 kg' },
-            'B737-600': { name: 'Boeing 737-600', mfr: 'Boeing', length: '31.24 m', wingspan: '34.32 m', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '65,770 kg' },
-            'B737-700': { name: 'Boeing 737-700 / 700W', mfr: 'Boeing', length: '33.63 m', wingspan: '34.32 m', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '70,306 kg' },
-            'B737-800BCF': { name: 'Boeing 737-800BCF (화물기)', mfr: 'Boeing', length: '39.47 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
-            'B737-800': { name: 'Boeing 737-800 / 800W', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
-            'B737-8': { name: 'Boeing 737 MAX 8', mfr: 'Boeing', length: '39.52 m', wingspan: '35.92 m', height: '12.30 m', engine: 'CFM LEAP-1B x2', mtow: '82,190 kg' },
-            'B737-900ER': { name: 'Boeing 737-900ER / 900ERW', mfr: 'Boeing', length: '42.11 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '85,366 kg' },
-            'B737-900': { name: 'Boeing 737-900 / 900W', mfr: 'Boeing', length: '42.11 m', wingspan: '34.32 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,016 kg' },
-            'B737': { name: 'Boeing 737 Next-Generation', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,242 kg' },
-            'B777-200LR': { name: 'Boeing 777-200LR Worldliner', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.48 m', engine: 'GE90-110B / 115B x2', mtow: '347,451 kg' },
-            'B777-200ER': { name: 'Boeing 777-200ER', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '297,550 kg' },
-            'B777-200': { name: 'Boeing 777-200', mfr: 'Boeing', length: '62.94 m', wingspan: '60.93 m', height: '18.42 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '247,200 kg' },
-            'B777-300ER': { name: 'Boeing 777-300ER', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,534 kg' },
-            'B777-300': { name: 'Boeing 777-300', mfr: 'Boeing', length: '73.08 m', wingspan: '60.93 m', height: '18.50 m', engine: 'GE90 / PW4000 / Trent800 x2', mtow: '299,370 kg' },
-            'B777F': { name: 'Boeing 777F (화물기)', mfr: 'Boeing', length: '62.94 m', wingspan: '64.80 m', height: '18.58 m', engine: 'GE90-110B / 115B x2', mtow: '347,814 kg' },
-            'B777': { name: 'Boeing 777 Family', mfr: 'Boeing', length: '73.08 m', wingspan: '64.80 m', height: '18.50 m', engine: 'GE90-115B x2', mtow: '351,534 kg' },
-            'B787': { name: 'Boeing 787-9 Dreamliner', mfr: 'Boeing', length: '63.0 m', wingspan: '60.1 m', height: '17.0 m', engine: 'GEnx-1B / Trent 1000 x2', mtow: '254,000 kg' },
-            'A320': { name: 'Airbus A320-200', mfr: 'Airbus', length: '37.57 m', wingspan: '35.8 m', height: '11.76 m', engine: 'CFM56 / V2500 x2', mtow: '78,000 kg' },
-            'A321': { name: 'Airbus A321neo', mfr: 'Airbus', length: '44.51 m', wingspan: '35.8 m', height: '11.76 m', engine: 'LEAP-1A / PW1100G x2', mtow: '97,000 kg' },
-            'A330': { name: 'Airbus A330-300', mfr: 'Airbus', length: '63.66 m', wingspan: '60.3 m', height: '16.79 m', engine: 'Trent 700 / CF6 x2', mtow: '242,000 kg' },
-            'A350': { name: 'Airbus A350-900', mfr: 'Airbus', length: '66.8 m', wingspan: '64.75 m', height: '17.05 m', engine: 'Trent XWB x2', mtow: '280,000 kg' },
-            'A380': { name: 'Airbus A380-800', mfr: 'Airbus', length: '72.72 m', wingspan: '79.75 m', height: '24.09 m', engine: 'Trent 900 / GP7200 x4', mtow: '575,000 kg' }
-        };
+<!-- 2. 개별 항공기 상세 제원 모달 -->
+<div class="modal-overlay" id="detail-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title" id="detail-title">🔍 상세 제원 정보</div>
+        </div>
+        <div class="manual-list" id="detail-content" style="font-size:0.9rem;">
+            <!-- 개별 데이터 표시 -->
+        </div>
+        <button class="btn-close" onclick="closeDetailModal()">닫기</button>
+    </div>
+</div>
 
-        const columnWidths = {
-            '순번': '50px', '사업구분': '130px', '항공사': '150px', '등록기호': '90px',
-            '형식': '120px', '제작번호': '120px', '제작일자': '90px', '기령(년)': '70px',
-            '등록일자': '90px', '좌석': '60px', '최대이륙중량': '100px', '정치장': '160px',
-            '도입형태': '80px', '상세 제원': '100px'
-        };
+<script>
+    let manualsData = { Boeing: [], Airbus: [], Others: [] };
+    let currentTab = 'Boeing';
 
-        const EXCLUDED_COLUMNS = ['감항증명유효기간'];
-        const FILTER_EXCLUDED_COLUMNS = ['사업구분', '항공사', '소유자', '감항증명유효기간'];
+    // 1. data.json 로드하여 테이블 생성
+    fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            renderTable(data);
+        })
+        .catch(err => console.error("data.json 로드 실패:", err));
 
-        let rawGlobalData = null;
-        let activeHeaders = [];
-        let activeRawHeaders = [];
-        let globalManualsData = null; // manuals.json 저장용
+    // 2. manuals.json 로드
+    fetch('manuals.json')
+        .then(response => response.json())
+        .then(data => {
+            manualsData = data;
+        })
+        .catch(err => console.error("manuals.json 로드 실패:", err));
 
-        async function loadAircraftData() {
-            try {
-                const response = await fetch('data.json');
-                const lastModifiedHeader = response.headers.get('Last-Modified');
-                rawGlobalData = await response.json();
+    function renderTable(data) {
+        const headerTr = document.getElementById('table-header');
+        const bodyTbody = document.getElementById('table-body');
 
-                if (rawGlobalData.updated_at) {
-                    document.getElementById('lastUpdated').innerText = `${rawGlobalData.updated_at} 기준`;
-                } else if (lastModifiedHeader) {
-                    const modDate = new Date(lastModifiedHeader);
-                    const yy = String(modDate.getFullYear()).slice(-2);
-                    const mm = String(modDate.getMonth() + 1).padStart(2, '0');
-                    const dd = String(modDate.getDate()).padStart(2, '0');
-                    document.getElementById('lastUpdated').innerText = `${yy}.${mm}.${dd}. 기준`;
-                }
+        headerTr.innerHTML = '';
+        bodyTbody.innerHTML = '';
 
-                activeHeaders = rawGlobalData.headers.filter(h => !EXCLUDED_COLUMNS.includes(h));
-                activeRawHeaders = rawGlobalData.raw_headers.filter(h => !EXCLUDED_COLUMNS.includes(h));
-
-                const headerRow = document.getElementById('tableHeaderRow');
-                headerRow.innerHTML = '';
-                activeHeaders.forEach(header => {
-                    const th = document.createElement('th');
-                    th.innerText = header;
-                    th.style.width = columnWidths[header] || '110px';
-                    headerRow.appendChild(th);
-                });
-
-                populateBizOptions(rawGlobalData.rows);
-                populateSearchFieldOptions(activeRawHeaders);
-                updateOwnerOptions();
-                renderTableRows(rawGlobalData.rows);
-
-            } catch (error) {
-                console.error("데이터 로드 실패:", error);
-                document.getElementById('aircraftTableBody').innerHTML = 
-                    '<tr><td colspan="14" style="color:red;">data.json 파일 로드 실패. process_data.py를 먼저 실행해 주세요.</td></tr>';
-            }
-        }
-
-        function populateSearchFieldOptions(headers) {
-            const searchFieldSelect = document.getElementById('searchFieldSelect');
-            searchFieldSelect.innerHTML = '<option value="">전체</option>';
-            headers.forEach(header => {
-                if (!FILTER_EXCLUDED_COLUMNS.includes(header) && header !== '순번') {
-                    const opt = document.createElement('option');
-                    opt.value = header; opt.innerText = header;
-                    searchFieldSelect.appendChild(opt);
-                }
-            });
-        }
-
-        function populateBizOptions(rows) {
-            const bizSelect = document.getElementById('bizSelect');
-            const bizTypes = new Set();
-            rows.forEach(row => { if (row['사업구분']) bizTypes.add(row['사업구분']); });
-            Array.from(bizTypes).sort((a, b) => a.localeCompare(b, 'ko')).forEach(biz => {
-                const option = document.createElement('option');
-                option.value = biz; option.innerText = biz;
-                bizSelect.appendChild(option);
-            });
-        }
-
-        function updateOwnerOptions() {
-            const bizSelect = document.getElementById('bizSelect');
-            const ownerSelect = document.getElementById('ownerSelect');
-            const selectedBiz = bizSelect.value;
-            const currentSelectedOwner = ownerSelect.value;
-            const owners = new Set();
-
-            rawGlobalData.rows.forEach(row => {
-                if (!selectedBiz || row['사업구분'] === selectedBiz) {
-                    if (row['항공사']) owners.add(row['항공사']);
-                }
-            });
-
-            ownerSelect.innerHTML = '<option value="">전체 항공사</option>';
-            Array.from(owners).sort((a, b) => a.localeCompare(b, 'ko')).forEach(owner => {
-                const option = document.createElement('option');
-                option.value = owner; option.innerText = owner;
-                ownerSelect.appendChild(option);
-            });
-
-            if (owners.has(currentSelectedOwner)) ownerSelect.value = currentSelectedOwner;
-            else ownerSelect.value = '';
-        }
-
-        function onBizChange() { updateOwnerOptions(); applyFilters(); }
-
-        function renderTableRows(rowsToRender) {
-            const tbody = document.getElementById('aircraftTableBody');
-            document.getElementById('dataCount').innerText = `총 ${rowsToRender.length}대 검색됨 (전체 ${rawGlobalData.rows.length}대)`;
-            tbody.innerHTML = '';
-
-            if (rowsToRender.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="14" style="padding: 30px; color: #a0aec0;">검색 결과가 없습니다.</td></tr>';
-                return;
-            }
-
-            rowsToRender.forEach((row, index) => {
-                const tr = document.createElement('tr');
-                activeRawHeaders.forEach(col => {
-                    const td = document.createElement('td');
-                    td.innerText = (col === '순번') ? index + 1 : row[col];
-                    if (col === '순번') td.style.fontWeight = 'bold';
-                    td.title = td.innerText;
-                    tr.appendChild(td);
-                });
-
-                const specTd = document.createElement('td');
-                const modelName = row['형식'] || row['기종'] || '';
-                specTd.innerHTML = `<button class="btn-spec" onclick="openModal('${modelName}')">제원 보기</button>`;
-                tr.appendChild(specTd);
-
-                tbody.appendChild(tr);
-            });
-        }
-
-        function applyFilters() {
-            if (!rawGlobalData) return;
-            const selectedBiz = document.getElementById('bizSelect').value;
-            const selectedOwner = document.getElementById('ownerSelect').value;
-            const targetField = document.getElementById('searchFieldSelect').value;
-            const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
-
-            const filteredRows = rawGlobalData.rows.filter(row => {
-                const matchesBiz = !selectedBiz || row['사업구분'] === selectedBiz;
-                const matchesOwner = !selectedOwner || row['항공사'] === selectedOwner;
-                let matchesKeyword = true;
-
-                if (keyword) {
-                    if (targetField) {
-                        matchesKeyword = String(row[targetField] || '').toLowerCase().includes(keyword);
-                    } else {
-                        matchesKeyword = Object.values(row).some(val => String(val).toLowerCase().includes(keyword));
-                    }
-                }
-                return matchesBiz && matchesOwner && matchesKeyword;
-            });
-
-            renderTableRows(filteredRows);
-        }
-
-        function resetFilters() {
-            document.getElementById('bizSelect').value = '';
-            document.getElementById('ownerSelect').value = '';
-            document.getElementById('searchFieldSelect').value = '';
-            document.getElementById('searchInput').value = '';
-            updateOwnerOptions();
-            renderTableRows(rawGlobalData.rows);
-        }
-
-        // 1. 기종 상세제원 팝업 관련 함수
-        function openModal(rawModelName) {
-            let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
-            let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
-            let matchedKey = sortedKeys.find(key => cleanName.includes(key.toUpperCase().replace(/[\s-]/g, '')));
-
-            const modal = document.getElementById('specModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalBody = document.getElementById('modalBody');
-
-            const spec = matchedKey ? aircraftSpecs[matchedKey] : null;
-
-            if (spec) {
-                modalTitle.innerText = `✈️ ${spec.name} (${rawModelName}) 제원`;
-                modalBody.innerHTML = `
-                    <div class="spec-item"><span class="spec-label">제조사</span><span class="spec-value">${spec.mfr}</span></div>
-                    <div class="spec-item"><span class="spec-label">전장 (길이)</span><span class="spec-value">${spec.length}</span></div>
-                    <div class="spec-item"><span class="spec-label">날개폭</span><span class="spec-value">${spec.wingspan}</span></div>
-                    <div class="spec-item"><span class="spec-label">전고 (높이)</span><span class="spec-value">${spec.height}</span></div>
-                    <div class="spec-item"><span class="spec-label">엔진</span><span class="spec-value">${spec.engine}</span></div>
-                    <div class="spec-item"><span class="spec-label">최대이륙중량(MTOW)</span><span class="spec-value">${spec.mtow}</span></div>
-                `;
-            } else {
-                modalTitle.innerText = `✈️ ${rawModelName}`;
-                modalBody.innerHTML = `<p style="text-align:center; padding:20px 0; color:#718096;">해당 기종('${rawModelName}')의 상세 제원 데이터가 준비 중입니다.</p>`;
-            }
-            modal.style.display = 'flex';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        // 2. 제원 매뉴얼 다운로드 팝업 관련 함수
-        async function openManualModal() {
-            document.getElementById('manualModal').style.display = 'flex';
+        // 헤더 생성
+        data.headers.forEach(headerText => {
+            const th = document.createElement('th');
+            th.textContent = headerText;
             
-            // manuals.json 읽어오기
-            try {
-                const response = await fetch('manuals.json?t=' + new Date().getTime());
-                if (response.ok) {
-                    globalManualsData = await response.json();
-                    switchManufacturer('Boeing'); // 기본값: 보잉 탭
-                } else {
-                    document.getElementById('manualListContainer').innerHTML = 
-                        '<p style="text-align:center; color:red; padding:20px;">manuals.json 파일이 존재하지 않습니다.<br>generate_manuals.py를 실행해 주세요.</p>';
-                }
-            } catch (e) {
-                document.getElementById('manualListContainer').innerHTML = 
-                    '<p style="text-align:center; color:red; padding:20px;">매뉴얼 목록을 불러오는 중 오류가 발생했습니다.</p>';
+            // 정치장 헤더 클래스 추가
+            if (headerText.includes('정치장')) {
+                th.classList.add('col-location');
+            } else if (headerText.includes('상세')) {
+                th.classList.add('col-spec-btn');
             }
-        }
+            headerTr.appendChild(th);
+        });
 
-        function switchManufacturer(mfr) {
-            // 탭 버튼 스타일 변경
-            const tabs = document.querySelectorAll('.tab-btn');
-            tabs.forEach(tab => {
-                if (tab.innerText.trim() === mfr || (mfr === 'Others' && tab.innerText.trim() === '기타')) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
+        // 행 데이터 생성
+        data.rows.forEach(row => {
+            const tr = document.createElement('tr');
+            
+            data.raw_headers.forEach(header => {
+                const td = document.createElement('td');
+                td.textContent = row[header] || '-';
+                
+                // 정치장 셀 짤림 방지 클래스 적용
+                if (header.includes('정치장')) {
+                    td.classList.add('col-location');
                 }
+                tr.appendChild(td);
             });
 
-            const container = document.getElementById('manualListContainer');
-            container.innerHTML = '';
+            // 💡 상세 제원 버튼 셀 ('제원 보기' -> '제원'으로 짧게 변경)
+            const tdSpec = document.createElement('td');
+            tdSpec.classList.add('col-spec-btn');
+            
+            const btnSpec = document.createElement('button');
+            btnSpec.className = 'btn-spec';
+            btnSpec.textContent = '제원'; // 문구 수정!
+            btnSpec.onclick = () => openDetailModal(row);
+            
+            tdSpec.appendChild(btnSpec);
+            tr.appendChild(tdSpec);
 
-            if (!globalManualsData || !globalManualsData[mfr] || globalManualsData[mfr].length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:#718096; padding:20px;">등록된 ${mfr} 매뉴얼 PDF가 없습니다.</p>`;
-                return;
-            }
+            bodyTbody.appendChild(tr);
+        });
+    }
 
-            // 파일 목록 랜더링
-            globalManualsData[mfr].forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'manual-item';
-                div.innerHTML = `
-                    <span class="manual-title">📄 ${item.title}</span>
-                    <a href="${item.path}" download="${item.filename}" class="btn-download-file">📥 다운로드</a>
-                `;
-                container.appendChild(div);
-            });
+    // 제원 매뉴얼 모달 제어
+    function openManualModal() {
+        document.getElementById('manual-modal').classList.add('active');
+        renderManualList();
+    }
+
+    function closeManualModal() {
+        document.getElementById('manual-modal').classList.remove('active');
+    }
+
+    function switchTab(category) {
+        currentTab = category;
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.textContent.includes(category) || (category === 'Others' && btn.textContent.includes('기타')));
+        });
+        renderManualList();
+    }
+
+    function renderManualList() {
+        const container = document.getElementById('manual-list-container');
+        container.innerHTML = '';
+
+        const list = manualsData[currentTab] || [];
+        if (list.length === 0) {
+            container.innerHTML = '<div style="text-align:center; padding:20px; color:#94a3b8;">등록된 매뉴얼이 없습니다.</div>';
+            return;
         }
 
-        loadAircraftData();
-    </script>
+        list.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'manual-item';
+            div.innerHTML = `
+                <span class="manual-item-title">📄 ${item.title}</span>
+                <a href="${item.path}" class="btn-download" download>다운로드</a>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    // 개별 상세 제원 모달
+    function openDetailModal(row) {
+        const container = document.getElementById('detail-content');
+        const title = document.getElementById('detail-title');
+        
+        title.textContent = `🔍 ${row['등록번호'] || '항공기'} 상세 제원`;
+        container.innerHTML = '';
+
+        Object.keys(row).forEach(key => {
+            const item = document.createElement('div');
+            item.style.padding = '8px 0';
+            item.style.borderBottom = '1px solid #f1f5f9';
+            item.innerHTML = `<strong>${key}:</strong> ${row[key]}`;
+            container.appendChild(item);
+        });
+
+        document.getElementById('detail-modal').classList.add('active');
+    }
+
+    function closeDetailModal() {
+        document.getElementById('detail-modal').classList.remove('active');
+    }
+</script>
+
 </body>
 </html>
