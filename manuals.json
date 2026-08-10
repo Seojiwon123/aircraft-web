@@ -1,102 +1,102 @@
 {
   "Boeing": [
     {
-      "title": "Boeing 707 Manual",
+      "title": "707",
       "filename": "707.pdf",
       "path": "AC/Boeing/707.pdf"
     },
     {
-      "title": "Boeing 717 Manual",
+      "title": "717",
       "filename": "717.pdf",
       "path": "AC/Boeing/717.pdf"
     },
     {
-      "title": "Boeing 720 Manual",
+      "title": "720",
       "filename": "720.pdf",
       "path": "AC/Boeing/720.pdf"
     },
     {
-      "title": "Boeing 727 Manual",
+      "title": "727",
       "filename": "727.pdf",
       "path": "AC/Boeing/727.pdf"
     },
     {
-      "title": "Boeing 737CL_REV_E Manual",
+      "title": "737CL_REV_E",
       "filename": "737CL_REV_E.pdf",
       "path": "AC/Boeing/737CL_REV_E.pdf"
     },
     {
-      "title": "Boeing 737MAX_RevK Manual",
+      "title": "737MAX_RevK",
       "filename": "737MAX_RevK.pdf",
       "path": "AC/Boeing/737MAX_RevK.pdf"
     },
     {
-      "title": "Boeing 737NG_REV_C Manual",
+      "title": "737NG_REV_C",
       "filename": "737NG_REV_C.pdf",
       "path": "AC/Boeing/737NG_REV_C.pdf"
     },
     {
-      "title": "Boeing 747-400_Rev_F Manual",
+      "title": "747-400_Rev_F",
       "filename": "747-400_Rev_F.pdf",
       "path": "AC/Boeing/747-400_Rev_F.pdf"
     },
     {
-      "title": "Boeing 747-8_Rev_E Manual",
+      "title": "747-8_Rev_E",
       "filename": "747-8_Rev_E.pdf",
       "path": "AC/Boeing/747-8_Rev_E.pdf"
     },
     {
-      "title": "Boeing 747_123sp Manual",
+      "title": "747_123sp",
       "filename": "747_123sp.pdf",
       "path": "AC/Boeing/747_123sp.pdf"
     },
     {
-      "title": "Boeing 747_8_Ground_Wireless_System_Brochure Manual",
+      "title": "747_8_Ground_Wireless_System_Brochure",
       "filename": "747_8_Ground_Wireless_System_Brochure.pdf",
       "path": "AC/Boeing/747_8_Ground_Wireless_System_Brochure.pdf"
     },
     {
-      "title": "Boeing 757_Rev_H Manual",
+      "title": "757_Rev_H",
       "filename": "757_Rev_H.pdf",
       "path": "AC/Boeing/757_Rev_H.pdf"
     },
     {
-      "title": "Boeing 767_REV_K Manual",
+      "title": "767_REV_K",
       "filename": "767_REV_K.pdf",
       "path": "AC/Boeing/767_REV_K.pdf"
     },
     {
-      "title": "Boeing 777-200-200ER-300_Rev_E Manual",
+      "title": "777-200-200ER-300_Rev_E",
       "filename": "777-200-200ER-300_Rev_E.pdf",
       "path": "AC/Boeing/777-200-200ER-300_Rev_E.pdf"
     },
     {
-      "title": "Boeing 777-200LR-300ER-F_Rev_G Manual",
+      "title": "777-200LR-300ER-F_Rev_G",
       "filename": "777-200LR-300ER-F_Rev_G.pdf",
       "path": "AC/Boeing/777-200LR-300ER-F_Rev_G.pdf"
     },
     {
-      "title": "Boeing 777X_Rev_G Manual",
+      "title": "777X_Rev_G",
       "filename": "777X_Rev_G.pdf",
       "path": "AC/Boeing/777X_Rev_G.pdf"
     },
     {
-      "title": "Boeing 777_8F_Brochure Manual",
+      "title": "777_8F_Brochure",
       "filename": "777_8F_Brochure.pdf",
       "path": "AC/Boeing/777_8F_Brochure.pdf"
     },
     {
-      "title": "Boeing 787_ACAP_Rev_Q Manual",
+      "title": "787_ACAP_Rev_Q",
       "filename": "787_ACAP_Rev_Q.pdf",
       "path": "AC/Boeing/787_ACAP_Rev_Q.pdf"
     },
     {
-      "title": "Boeing 787_Electrical_Requirements_Brochure Manual",
+      "title": "787_Electrical_Requirements_Brochure",
       "filename": "787_Electrical_Requirements_Brochure.pdf",
       "path": "AC/Boeing/787_Electrical_Requirements_Brochure.pdf"
     },
     {
-      "title": "Boeing 787_Wireless_System_Brochure Manual",
+      "title": "787_Wireless_System_Brochure",
       "filename": "787_Wireless_System_Brochure.pdf",
       "path": "AC/Boeing/787_Wireless_System_Brochure.pdf"
     }
