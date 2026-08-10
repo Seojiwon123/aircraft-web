@@ -127,7 +127,7 @@
         }
         table {
             width: 100%;
-            min-width: 1450px;
+            min-width: 1500px;
             table-layout: fixed;
             border-collapse: collapse;
         }
@@ -147,15 +147,23 @@
         }
         tr:hover { background-color: #f1f5f9; }
 
+        /* 💡 정치장 셀 전용 스타일 (긴 주소/이름도 줄바꿈되어 전체 표시되도록 설정) */
+        td.cell-location {
+            white-space: normal !important;
+            word-break: keep-all;
+            line-height: 1.4;
+        }
+
         .btn-spec {
             background-color: #319795;
             color: white;
             border: none;
-            padding: 5px 10px;
+            padding: 5px 8px;
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
             font-size: 12px;
+            white-space: nowrap;
         }
         .btn-spec:hover { background-color: #2b6cb0; }
 
@@ -295,7 +303,7 @@
         </div>
 
         <button class="btn-reset" onclick="resetFilters()">🔄 필터 초기화</button>
-        <button class="btn-manual-open" onclick="openManualModal()">📁 항공기 제원 다운로드</button>
+        <button class="btn-manual-open" onclick="openManualModal()">📁 제원 매뉴얼</button>
 
         <!-- 상자 우측 하단 최신화 날짜 표시 영역 -->
         <div id="lastUpdated" class="last-updated"></div>
@@ -381,11 +389,12 @@
             'A380': { name: 'Airbus A380-800', mfr: 'Airbus', length: '72.72 m', wingspan: '79.75 m', height: '24.09 m', engine: 'Trent 900 / GP7200 x4', mtow: '575,000 kg' }
         };
 
+        // 💡 수정 1: '정치장' 너비를 160px -> 220px로 확장, '상세 제원' 너비를 100px -> 80px로 축소
         const columnWidths = {
             '순번': '50px', '사업구분': '130px', '항공사': '150px', '등록기호': '90px',
             '형식': '120px', '제작번호': '120px', '제작일자': '90px', '기령(년)': '70px',
-            '등록일자': '90px', '좌석': '60px', '최대이륙중량': '100px', '정치장': '160px',
-            '도입형태': '80px', '상세 제원': '100px'
+            '등록일자': '90px', '좌석': '60px', '최대이륙중량': '100px', '정치장': '220px',
+            '도입형태': '80px', '상세 제원': '80px'
         };
 
         const EXCLUDED_COLUMNS = ['감항증명유효기간'];
@@ -501,13 +510,21 @@
                     const td = document.createElement('td');
                     td.innerText = (col === '순번') ? index + 1 : row[col];
                     if (col === '순번') td.style.fontWeight = 'bold';
+                    
+                    // 💡 수정 2: '정치장' 항목일 경우 글자가 잘리지 않고 줄바꿈되도록 전용 클래스 적용
+                    if (col === '정치장') {
+                        td.classList.add('cell-location');
+                    }
+                    
                     td.title = td.innerText;
                     tr.appendChild(td);
                 });
 
                 const specTd = document.createElement('td');
                 const modelName = row['형식'] || row['기종'] || '';
-                specTd.innerHTML = `<button class="btn-spec" onclick="openModal('${modelName}')">제원 보기</button>`;
+                
+                // 💡 수정 3: 버튼 문구를 '제원 보기' -> '제원'으로 변경
+                specTd.innerHTML = `<button class="btn-spec" onclick="openModal('${modelName}')">제원</button>`;
                 tr.appendChild(specTd);
 
                 tbody.appendChild(tr);
