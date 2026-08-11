@@ -187,7 +187,7 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
-        /* 💡 상세제원 전용 모달 너비 확장 (좌우 배치용) */
+        /* 상세제원 전용 모달 너비 확장 (좌우 배치용) */
         .spec-modal-content {
             width: 820px !important;
             max-width: 95% !important;
@@ -214,7 +214,7 @@
         }
         .btn-close:hover { background-color: #c53030; }
 
-        /* 💡 좌우 2단 배치 레이아웃 스타일 */
+        /* 좌우 2단 배치 레이아웃 스타일 */
         .spec-container {
             display: flex;
             gap: 20px;
@@ -234,11 +234,12 @@
             border: 1px solid #e2e8f0;
             border-radius: 6px;
             padding: 12px;
-            min-height: 260px;
+            min-height: 280px;
+            position: relative;
         }
         .spec-image {
             max-width: 100%;
-            max-height: 280px;
+            max-height: 250px;
             object-fit: contain;
             border-radius: 4px;
             cursor: pointer;
@@ -251,6 +252,33 @@
             color: #a0aec0;
             font-size: 13px;
             text-align: center;
+        }
+
+        /* 💡 이미지 컨트롤러 슬라이더 버튼 스타일 */
+        .image-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .btn-nav {
+            background-color: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-nav:hover {
+            background-color: #1a365d;
+        }
+        .page-indicator {
+            font-size: 12px;
+            font-weight: bold;
+            color: #4a5568;
         }
 
         /* 기종 상세제원 항목 스타일 */
@@ -453,6 +481,10 @@
         let activeRawHeaders = [];
         let globalManualsData = null;
 
+        // 슬라이더 전역 상태
+        let currentImages = [];
+        let currentImgIndex = 0;
+
         async function loadAircraftData() {
             try {
                 const response = await fetch('data.json');
@@ -611,8 +643,8 @@
             renderTableRows(rawGlobalData.rows);
         }
 
-        // 1. 기종 상세제원 팝업 관련 함수 (💡 좌우 2단 배치 및 AC Photo 이미지 연동 적용)
-        function openModal(rawModelName) {
+        // 1. 기종 상세제원 팝업 관련 함수 (💡 보잉/에어버스 단일 및 다중 도면 슬라이드 자동 탐색)
+        async function openModal(rawModelName) {
             let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
             let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
             let matchedKey = sortedKeys.find(key => cleanName.includes(key.toUpperCase().replace(/[\s-]/g, '')));
@@ -626,8 +658,20 @@
             if (spec) {
                 modalTitle.innerText = `✈️ ${spec.name} (${rawModelName}) 제원`;
                 
-                // 💡 AC Photo/Boeing/{matchedKey}.png 이미지 경로 설정
-                const imagePath = `AC Photo/${spec.mfr}/${matchedKey}.png`;
+                // 💡 제조사별 이미지 경로 결정
+                currentImages = [];
+                currentImgIndex = 0;
+
+                if (spec.mfr === 'Airbus') {
+                    // 에어버스: A320-300_page1.png 형태 및 연속 페이지 체킹
+                    const firstPage = `AC Photo/Airbus/${matchedKey}_page1.png`;
+                    currentImages.push(firstPage);
+                    // 백그라운드에서 _page2, _page3 ... 체킹
+                    checkNextPages(spec.mfr, matchedKey);
+                } else {
+                    // 보잉 및 기타 단일 파일
+                    currentImages.push(`AC Photo/${spec.mfr}/${matchedKey}.png`);
+                }
 
                 let omgwsHtml = spec.omgws ? `<div class="spec-item"><span class="spec-label">주륜외곽의 폭(OMGWS)</span><span class="spec-value">${spec.omgws}</span></div>` : '';
 
@@ -644,15 +688,24 @@
                             <div class="spec-item"><span class="spec-label">최대이륙중량(MTOW)</span><span class="spec-value">${spec.mtow}</span></div>
                         </div>
                         
-                        <!-- 우측: 항공기 도면 이미지 영역 -->
+                        <!-- 우측: 항공기 도면 이미지 및 슬라이더 영역 -->
                         <div class="spec-right">
-                            <img src="${imagePath}" 
+                            <img id="specImg" 
+                                 src="${currentImages[0]}" 
                                  alt="${matchedKey} 도면" 
                                  class="spec-image" 
                                  onclick="window.open(this.src, '_blank')"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <div class="no-image-text" style="display:none;">
-                                🖼️ 도면 이미지 준비 중<br><span style="font-size:11px; color:#cbd5e0;">(${imagePath})</span>
+                                 onerror="handleImgError(this)">
+                            
+                            <div id="noImgText" class="no-image-text" style="display:none;">
+                                🖼️ 도면 이미지 준비 중<br><span style="font-size:11px; color:#cbd5e0;">(${currentImages[0]})</span>
+                            </div>
+
+                            <!-- 다중 페이지 슬라이드 컨트롤러 -->
+                            <div id="imgControls" class="image-controls" style="display:none;">
+                                <button class="btn-nav" onclick="changeImage(-1)">◀ 이전</button>
+                                <span id="pageIndicator" class="page-indicator">1 / 1</span>
+                                <button class="btn-nav" onclick="changeImage(1)">다음 ▶</button>
                             </div>
                         </div>
                     </div>
@@ -662,6 +715,65 @@
                 modalBody.innerHTML = `<p style="text-align:center; padding:20px 0; color:#718096;">해당 기종('${rawModelName}')의 상세 제원 데이터가 준비 중입니다.</p>`;
             }
             modal.style.display = 'flex';
+        }
+
+        // 이미지 로드 에러 처리
+        function handleImgError(imgElem) {
+            imgElem.style.display = 'none';
+            document.getElementById('noImgText').style.display = 'block';
+            document.getElementById('imgControls').style.display = 'none';
+        }
+
+        // 💡 에어버스 연속 페이지(_page2, _page3...) 탐색 함수
+        function checkNextPages(mfr, key) {
+            let pageNum = 2;
+            function checkNext() {
+                const testPath = `AC Photo/${mfr}/${key}_page${pageNum}.png`;
+                const img = new Image();
+                img.onload = function() {
+                    currentImages.push(testPath);
+                    updateControls();
+                    pageNum++;
+                    checkNext(); // 다음 페이지 계속 체킹
+                };
+                img.onerror = function() {
+                    // 더 이상 없으면 중단 및 컨트롤러 업데이트
+                    updateControls();
+                };
+                img.src = testPath;
+            }
+            checkNext();
+        }
+
+        // 컨트롤러 상태 업데이트
+        function updateControls() {
+            const controls = document.getElementById('imgControls');
+            const indicator = document.getElementById('pageIndicator');
+            
+            if (currentImages.length > 1) {
+                if (controls) controls.style.display = 'flex';
+                if (indicator) indicator.innerText = `${currentImgIndex + 1} / ${currentImages.length}`;
+            } else {
+                if (controls) controls.style.display = 'none';
+            }
+        }
+
+        // 이미지 슬라이드 넘기기 함수
+        function changeImage(direction) {
+            if (currentImages.length <= 1) return;
+            
+            currentImgIndex += direction;
+            if (currentImgIndex < 0) {
+                currentImgIndex = currentImages.length - 1; // 처음에서 이전을 누르면 마지막으로
+            } else if (currentImgIndex >= currentImages.length) {
+                currentImgIndex = 0; // 마지막에서 다음을 누르면 처음으로
+            }
+
+            const imgElem = document.getElementById('specImg');
+            if (imgElem) {
+                imgElem.src = currentImages[currentImgIndex];
+            }
+            updateControls();
         }
 
         function closeModal(modalId) {
