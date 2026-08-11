@@ -366,7 +366,7 @@
             'B747-400ER': { name: 'Boeing 747-400ER', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2B5-F / PW4062 / RB211-524H8-T', mtow: '412,769 kg' },
             'B747-400': { name: 'Boeing 747-400', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2B1 / PW4056 / RB211-524G2', mtow: '396,893 kg' },
             'B747': { name: 'Boeing 747 Family', mfr: 'Boeing', length: '70.67 m', wingspan: '64.44 m ~ 64.92 m', height: '19.51 m', engine: 'CF6-80C2B1 / PW4056 / RB211-524G2', mtow: '396,893 kg' },
-            'B737-600': { name: 'Boeing 737-600', mfr: 'Boeing', length: '31.24 m', wingspan: '34.32 m', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '65,544 kg' },
+            'B737-600': { name: 'Boeing 737-600', mfr: 'Boeing', length: '31.24 m', wingspan: '34.32 m', omgws: '6.99 m', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '65,544 kg' },
             'B737-700': { name: 'Boeing 737-700 / 700W', mfr: 'Boeing', length: '33.63 m', wingspan: '34.32 m', height: '12.57 m', engine: 'CFM56-7B x2', mtow: '70,080 kg' },
             'B737-800BCF': { name: 'Boeing 737-800BCF (화물기)', mfr: 'Boeing', length: '39.47 m', wingspan: '35.79 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,015 kg' },
             'B737-800': { name: 'Boeing 737-800 / 800W', mfr: 'Boeing', length: '39.47 m', wingspan: '34.32 m', height: '12.55 m', engine: 'CFM56-7B x2', mtow: '79,015 kg' },
@@ -585,6 +585,7 @@
                     <div class="spec-item"><span class="spec-label">제조사</span><span class="spec-value">${spec.mfr}</span></div>
                     <div class="spec-item"><span class="spec-label">전장 (길이)</span><span class="spec-value">${spec.length}</span></div>
                     <div class="spec-item"><span class="spec-label">날개폭</span><span class="spec-value">${spec.wingspan}</span></div>
+                    <div class="spec-item"><span class="spec-label">주륜외곽의 폭</span><span class="spec-value">${spec.omgws}</span></div>
                     <div class="spec-item"><span class="spec-label">전고 (높이)</span><span class="spec-value">${spec.height}</span></div>
                     <div class="spec-item"><span class="spec-label">엔진</span><span class="spec-value">${spec.engine}</span></div>
                     <div class="spec-item"><span class="spec-label">최대이륙중량(MTOW)</span><span class="spec-value">${spec.mtow}</span></div>
