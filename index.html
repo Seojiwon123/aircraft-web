@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>대한민국 항공기 등록 현황 & 제원 정보</title>
+
+    <!-- 💡 1. 엑셀 내보내기용 SheetJS 라이브러리 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
     <style>
         body {
             font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
@@ -79,6 +83,21 @@
             white-space: nowrap;
         }
         .btn-reset:hover { background-color: #cbd5e0; }
+
+        /* 💡 2. 엑셀 다운로드 버튼 전용 스타일 */
+        .btn-excel-export {
+            background-color: #276749;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .btn-excel-export:hover { background-color: #1c4532; }
 
         /* --- 상단 제원 매뉴얼 모달 오픈 버튼 --- */
         .btn-manual-open {
@@ -377,6 +396,8 @@
         </div>
 
         <button class="btn-reset" onclick="resetFilters()">🔄 필터 초기화</button>
+        <!-- 💡 3. 엑셀 내보내기 버튼 추가 -->
+        <button class="btn-excel-export" onclick="exportToExcel()">📊 엑셀 다운로드</button>
         <button class="btn-manual-open" onclick="openManualModal()">📁 항공기 제원 다운로드</button>
 
         <!-- 상자 우측 하단 최신화 날짜 표시 영역 -->
@@ -481,6 +502,9 @@
         let activeRawHeaders = [];
         let globalManualsData = null;
 
+        // 현재 검색/필터링되어 표출 중인 데이터 저장용 변수
+        let currentFilteredRows = [];
+
         // 슬라이더 전역 상태
         let currentImages = [];
         let currentImgIndex = 0;
@@ -575,6 +599,8 @@
         function onBizChange() { updateOwnerOptions(); applyFilters(); }
 
         function renderTableRows(rowsToRender) {
+            currentFilteredRows = rowsToRender; // 현재 검색/필터링 결과 저장
+
             const tbody = document.getElementById('aircraftTableBody');
             document.getElementById('dataCount').innerText = `총 ${rowsToRender.length}대 검색됨 (전체 ${rawGlobalData.rows.length}대)`;
             tbody.innerHTML = '';
@@ -643,7 +669,43 @@
             renderTableRows(rawGlobalData.rows);
         }
 
-        // 1. 기종 상세제원 팝업 관련 함수 (💡 대문자 Page 파일명 매칭 적용)
+        // 💡 4. 현재 필터링된 테이블 데이터 엑셀 내보내기 함수
+        function exportToExcel() {
+            if (!currentFilteredRows || currentFilteredRows.length === 0) {
+                alert("다운로드할 데이터가 없습니다.");
+                return;
+            }
+
+            // 엑셀 헤더 및 행 데이터 가공
+            const excelData = currentFilteredRows.map((row, index) => {
+                const rowObj = {};
+                activeHeaders.forEach((header, i) => {
+                    const rawCol = activeRawHeaders[i];
+                    if (rawCol === '순번') {
+                        rowObj[header] = index + 1;
+                    } else {
+                        rowObj[header] = row[rawCol] || '-';
+                    }
+                });
+                return rowObj;
+            });
+
+            // SheetJS를 활용한 워크시트 생성
+            const worksheet = XLSX.utils.json_to_sheet(excelData);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "항공기_등록현황");
+
+            // 오늘 날짜 구하기 (파일명용 YYYYMMDD)
+            const today = new Date();
+            const dateStr = today.getFullYear() +
+                String(today.getMonth() + 1).padStart(2, '0') +
+                String(today.getDate()).padStart(2, '0');
+
+            // 엑셀 파일 다운로드 실행
+            XLSX.writeFile(workbook, `대한민국_항공기_등록현황_${dateStr}.xlsx`);
+        }
+
+        // 1. 기종 상세제원 팝업 관련 함수 (대문자 Page 파일명 매칭 적용)
         async function openModal(rawModelName) {
             let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
             let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
@@ -662,7 +724,7 @@
                 currentImgIndex = 0;
 
                 if (spec.mfr === 'Airbus') {
-                    // 💡 에어버스: 대문자 '_Page1.png' 적용 및 연속 체킹
+                    // 에어버스: 대문자 '_Page1.png' 적용 및 연속 체킹
                     const firstPage = `AC Photo/Airbus/${matchedKey}_Page1.png`;
                     currentImages.push(firstPage);
                     checkNextPages(spec.mfr, matchedKey);
@@ -722,7 +784,7 @@
             document.getElementById('imgControls').style.display = 'none';
         }
 
-        // 💡 에어버스 연속 페이지(_Page2, _Page3...) 탐색 함수 (대문자 Page 적용)
+        // 에어버스 연속 페이지(_Page2, _Page3...) 탐색 함수 (대문자 Page 적용)
         function checkNextPages(mfr, key) {
             let pageNum = 2;
             function checkNext() {
