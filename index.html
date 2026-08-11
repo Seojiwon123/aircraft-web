@@ -147,7 +147,7 @@
         }
         tr:hover { background-color: #f1f5f9; }
 
-        /* 💡 정치장 셀 전용 스타일 (긴 주소/이름도 줄바꿈되어 전체 표시되도록 설정) */
+        /* 정치장 셀 전용 스타일 */
         td.cell-location {
             white-space: normal !important;
             word-break: keep-all;
@@ -186,6 +186,13 @@
             max-width: 90%;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
+
+        /* 💡 상세제원 전용 모달 너비 확장 (좌우 배치용) */
+        .spec-modal-content {
+            width: 820px !important;
+            max-width: 95% !important;
+        }
+
         .modal-header {
             font-size: 18px;
             font-weight: bold;
@@ -206,6 +213,45 @@
             font-weight: bold;
         }
         .btn-close:hover { background-color: #c53030; }
+
+        /* 💡 좌우 2단 배치 레이아웃 스타일 */
+        .spec-container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .spec-left {
+            flex: 1;
+            min-width: 320px;
+        }
+        .spec-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px;
+            min-height: 260px;
+        }
+        .spec-image {
+            max-width: 100%;
+            max-height: 280px;
+            object-fit: contain;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .spec-image:hover {
+            transform: scale(1.02);
+        }
+        .no-image-text {
+            color: #a0aec0;
+            font-size: 13px;
+            text-align: center;
+        }
 
         /* 기종 상세제원 항목 스타일 */
         .spec-item {
@@ -326,9 +372,9 @@
         </table>
     </div>
 
-    <!-- 1. 기종 상세제원 팝업 -->
+    <!-- 1. 기종 상세제원 팝업 (좌우 2단 레이아웃 확장 적용) -->
     <div id="specModal" class="modal-overlay">
-        <div class="modal-content">
+        <div class="modal-content spec-modal-content">
             <div id="modalTitle" class="modal-header">기종 제원 정보</div>
             <div id="modalBody"></div>
             <button class="btn-close" onclick="closeModal('specModal')">닫기</button>
@@ -390,7 +436,6 @@
             'A380': { name: 'Airbus A380-800', mfr: 'Airbus', length: '72.72 m', wingspan: '79.75 m', height: '24.09 m', engine: 'Trent 900 / GP7200 x4', mtow: '575,000 kg' }
         };
 
-        // 💡 수정 1: '정치장' 너비를 160px -> 220px로 확장, '상세 제원' 너비를 100px -> 80px로 축소
         const columnWidths = {
             '순번': '50px', '사업구분': '130px', '항공사': '150px', '등록기호': '90px',
             '형식': '120px', '제작번호': '120px', '제작일자': '90px', '기령(년)': '70px',
@@ -404,7 +449,7 @@
         let rawGlobalData = null;
         let activeHeaders = [];
         let activeRawHeaders = [];
-        let globalManualsData = null; // manuals.json 저장용
+        let globalManualsData = null;
 
         async function loadAircraftData() {
             try {
@@ -512,7 +557,6 @@
                     td.innerText = (col === '순번') ? index + 1 : row[col];
                     if (col === '순번') td.style.fontWeight = 'bold';
                     
-                    // 💡 수정 2: '정치장' 항목일 경우 글자가 잘리지 않고 줄바꿈되도록 전용 클래스 적용
                     if (col === '정치장') {
                         td.classList.add('cell-location');
                     }
@@ -524,7 +568,6 @@
                 const specTd = document.createElement('td');
                 const modelName = row['형식'] || row['기종'] || '';
                 
-                // 💡 수정 3: 버튼 문구를 '제원 보기' -> '제원'으로 변경
                 specTd.innerHTML = `<button class="btn-spec" onclick="openModal('${modelName}')">제원</button>`;
                 tr.appendChild(specTd);
 
@@ -566,7 +609,7 @@
             renderTableRows(rawGlobalData.rows);
         }
 
-        // 1. 기종 상세제원 팝업 관련 함수
+        // 1. 기종 상세제원 팝업 관련 함수 (💡 좌우 2단 배치 및 AC Photo 이미지 연동 적용)
         function openModal(rawModelName) {
             let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
             let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
@@ -580,14 +623,37 @@
 
             if (spec) {
                 modalTitle.innerText = `✈️ ${spec.name} (${rawModelName}) 제원`;
+                
+                // 💡 AC Photo/Boeing/{matchedKey}.png 이미지 경로 설정
+                const imagePath = `AC Photo/${spec.mfr}/${matchedKey}.png`;
+
+                let omgwsHtml = spec.omgws ? `<div class="spec-item"><span class="spec-label">주륜외곽의 폭(OMGWS)</span><span class="spec-value">${spec.omgws}</span></div>` : '';
+
                 modalBody.innerHTML = `
-                    <div class="spec-item"><span class="spec-label">제조사</span><span class="spec-value">${spec.mfr}</span></div>
-                    <div class="spec-item"><span class="spec-label">전장 (길이)</span><span class="spec-value">${spec.length}</span></div>
-                    <div class="spec-item"><span class="spec-label">날개폭</span><span class="spec-value">${spec.wingspan}</span></div>
-                    <div class="spec-item"><span class="spec-label">주륜외곽의 폭(OMGWS)</span><span class="spec-value">${spec.omgws}</span></div>
-                    <div class="spec-item"><span class="spec-label">전고 (높이)</span><span class="spec-value">${spec.height}</span></div>
-                    <div class="spec-item"><span class="spec-label">엔진</span><span class="spec-value">${spec.engine}</span></div>
-                    <div class="spec-item"><span class="spec-label">최대이륙중량(MTOW)</span><span class="spec-value">${spec.mtow}</span></div>
+                    <div class="spec-container">
+                        <!-- 좌측: 텍스트 제원표 -->
+                        <div class="spec-left">
+                            <div class="spec-item"><span class="spec-label">제조사</span><span class="spec-value">${spec.mfr}</span></div>
+                            <div class="spec-item"><span class="spec-label">전장 (길이)</span><span class="spec-value">${spec.length}</span></div>
+                            <div class="spec-item"><span class="spec-label">날개폭</span><span class="spec-value">${spec.wingspan}</span></div>
+                            ${omgwsHtml}
+                            <div class="spec-item"><span class="spec-label">전고 (높이)</span><span class="spec-value">${spec.height}</span></div>
+                            <div class="spec-item"><span class="spec-label">엔진</span><span class="spec-value">${spec.engine}</span></div>
+                            <div class="spec-item"><span class="spec-label">최대이륙중량(MTOW)</span><span class="spec-value">${spec.mtow}</span></div>
+                        </div>
+                        
+                        <!-- 우측: 항공기 도면 이미지 영역 -->
+                        <div class="spec-right">
+                            <img src="${imagePath}" 
+                                 alt="${matchedKey} 도면" 
+                                 class="spec-image" 
+                                 onclick="window.open(this.src, '_blank')"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="no-image-text" style="display:none;">
+                                🖼️ 도면 이미지 준비 중<br><span style="font-size:11px; color:#cbd5e0;">(${imagePath})</span>
+                            </div>
+                        </div>
+                    </div>
                 `;
             } else {
                 modalTitle.innerText = `✈️ ${rawModelName}`;
@@ -604,12 +670,11 @@
         async function openManualModal() {
             document.getElementById('manualModal').style.display = 'flex';
             
-            // manuals.json 읽어오기
             try {
                 const response = await fetch('manuals.json?t=' + new Date().getTime());
                 if (response.ok) {
                     globalManualsData = await response.json();
-                    switchManufacturer('Boeing'); // 기본값: 보잉 탭
+                    switchManufacturer('Boeing');
                 } else {
                     document.getElementById('manualListContainer').innerHTML = 
                         '<p style="text-align:center; color:red; padding:20px;">manuals.json 파일이 존재하지 않습니다.<br>generate_manuals.py를 실행해 주세요.</p>';
@@ -621,7 +686,6 @@
         }
 
         function switchManufacturer(mfr) {
-            // 탭 버튼 스타일 변경
             const tabs = document.querySelectorAll('.tab-btn');
             tabs.forEach(tab => {
                 if (tab.innerText.trim() === mfr || (mfr === 'Others' && tab.innerText.trim() === '기타')) {
@@ -639,7 +703,6 @@
                 return;
             }
 
-            // 파일 목록 랜더링
             globalManualsData[mfr].forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'manual-item';
