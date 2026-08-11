@@ -49,9 +49,9 @@ def download_atis_excel():
             browser.close()
 
 def process_atis_excel(excel_path):
-    """2단계: 다운로드받은 엑셀을 data.json으로 변환"""
+    """2단계: 다운로드받은 엑셀을 정렬(항공사 가나다순 -> 형식 ABC순) 후 data.json으로 변환"""
     print("=" * 60)
-    print("⚙️ [2/2] 엑셀 데이터 파싱 및 data.json 변환 시작")
+    print("⚙️ [2/2] 엑셀 데이터 파싱, 정렬 및 data.json 변환 시작")
     print("=" * 60)
 
     if not excel_path or not os.path.exists(excel_path):
@@ -62,6 +62,20 @@ def process_atis_excel(excel_path):
         # ATIS 엑셀 원본은 2번째 줄(header=1)이 데이터 제목
         df = pd.read_excel(excel_path, header=1)
         
+        # 💡 [핵심 추가] 항공사(가나다순) -> 형식/기종(ABC순) 다중 정렬 적용
+        sort_columns = []
+        if '항공사' in df.columns:
+            sort_columns.append('항공사')
+        if '형식' in df.columns:
+            sort_columns.append('형식')
+        elif '기종' in df.columns:
+            sort_columns.append('기종')
+
+        if sort_columns:
+            # fillna('')를 활용해 빈 값으로 인한 정렬 오류 방지 후 오름차순 정렬
+            df = df.sort_values(by=sort_columns, ascending=True, na_position='last')
+            print(f"📌 데이터 정렬 완료 (정렬 기준: {' -> '.join(sort_columns)})")
+
         # 유효 컬럼 추출
         raw_headers = [
             str(col).strip() for col in df.columns 
@@ -98,7 +112,7 @@ def process_atis_excel(excel_path):
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump(result_data, f, ensure_ascii=False, indent=2)
 
-        print(f"🎉 성공: 총 {len(rows)}건의 항공기 등록 데이터를 '{json_path}'로 가공했습니다!")
+        print(f"🎉 성공: 총 {len(rows)}건의 정돈된 항공기 데이터를 '{json_path}'로 가공했습니다!")
         print("=" * 60)
 
     except Exception as e:
