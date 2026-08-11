@@ -254,7 +254,7 @@
             text-align: center;
         }
 
-        /* 💡 이미지 컨트롤러 슬라이더 버튼 스타일 */
+        /* 이미지 컨트롤러 슬라이더 버튼 스타일 */
         .image-controls {
             display: flex;
             align-items: center;
@@ -643,7 +643,7 @@
             renderTableRows(rawGlobalData.rows);
         }
 
-        // 1. 기종 상세제원 팝업 관련 함수 (💡 보잉/에어버스 단일 및 다중 도면 슬라이드 자동 탐색)
+        // 1. 기종 상세제원 팝업 관련 함수 (💡 대문자 Page 파일명 매칭 적용)
         async function openModal(rawModelName) {
             let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
             let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
@@ -658,15 +658,13 @@
             if (spec) {
                 modalTitle.innerText = `✈️ ${spec.name} (${rawModelName}) 제원`;
                 
-                // 💡 제조사별 이미지 경로 결정
                 currentImages = [];
                 currentImgIndex = 0;
 
                 if (spec.mfr === 'Airbus') {
-                    // 에어버스: A320-300_page1.png 형태 및 연속 페이지 체킹
-                    const firstPage = `AC Photo/Airbus/${matchedKey}_page1.png`;
+                    // 💡 에어버스: 대문자 '_Page1.png' 적용 및 연속 체킹
+                    const firstPage = `AC Photo/Airbus/${matchedKey}_Page1.png`;
                     currentImages.push(firstPage);
-                    // 백그라운드에서 _page2, _page3 ... 체킹
                     checkNextPages(spec.mfr, matchedKey);
                 } else {
                     // 보잉 및 기타 단일 파일
@@ -724,20 +722,19 @@
             document.getElementById('imgControls').style.display = 'none';
         }
 
-        // 💡 에어버스 연속 페이지(_page2, _page3...) 탐색 함수
+        // 💡 에어버스 연속 페이지(_Page2, _Page3...) 탐색 함수 (대문자 Page 적용)
         function checkNextPages(mfr, key) {
             let pageNum = 2;
             function checkNext() {
-                const testPath = `AC Photo/${mfr}/${key}_page${pageNum}.png`;
+                const testPath = `AC Photo/${mfr}/${key}_Page${pageNum}.png`;
                 const img = new Image();
                 img.onload = function() {
                     currentImages.push(testPath);
                     updateControls();
                     pageNum++;
-                    checkNext(); // 다음 페이지 계속 체킹
+                    checkNext();
                 };
                 img.onerror = function() {
-                    // 더 이상 없으면 중단 및 컨트롤러 업데이트
                     updateControls();
                 };
                 img.src = testPath;
@@ -764,9 +761,9 @@
             
             currentImgIndex += direction;
             if (currentImgIndex < 0) {
-                currentImgIndex = currentImages.length - 1; // 처음에서 이전을 누르면 마지막으로
+                currentImgIndex = currentImages.length - 1;
             } else if (currentImgIndex >= currentImages.length) {
-                currentImgIndex = 0; // 마지막에서 다음을 누르면 처음으로
+                currentImgIndex = 0;
             }
 
             const imgElem = document.getElementById('specImg');
