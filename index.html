@@ -38,6 +38,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            position: relative;
         }
         .filter-group label {
             font-size: 13px;
@@ -70,6 +71,90 @@
             box-sizing: border-box;
             text-overflow: ellipsis;
         }
+
+        /* 💡 기종 다중 선택(체크박스) 직사각형 드롭다운 전용 스타일 */
+        .multi-select-btn {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+            cursor: pointer;
+            width: 180px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #2d3748;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .multi-select-panel {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 4px;
+            width: 260px;
+            background-color: white;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 500;
+            padding: 10px;
+        }
+        .multi-select-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #edf2f7;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+        }
+        .btn-check-action {
+            background-color: #edf2f7;
+            border: 1px solid #cbd5e0;
+            border-radius: 3px;
+            font-size: 11px;
+            padding: 3px 6px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #4a5568;
+        }
+        .btn-check-action:hover {
+            background-color: #cbd5e0;
+        }
+        .multi-select-search {
+            width: 100%;
+            padding: 5px 8px;
+            font-size: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 8px;
+            outline: none;
+        }
+        .multi-select-list {
+            max-height: 200px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .multi-select-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            color: #2d3748;
+            user-select: none;
+        }
+        .multi-select-item input {
+            cursor: pointer;
+        }
+
         .btn-reset {
             background-color: #e2e8f0;
             color: #4a5568;
@@ -84,7 +169,6 @@
         }
         .btn-reset:hover { background-color: #cbd5e0; }
 
-        /* 엑셀 다운로드 버튼 전용 스타일 */
         .btn-excel-export {
             background-color: #276749;
             color: white;
@@ -99,7 +183,6 @@
         }
         .btn-excel-export:hover { background-color: #1c4532; }
 
-        /* --- 상단 제원 매뉴얼 모달 오픈 버튼 --- */
         .btn-manual-open {
             background-color: #2b6cb0;
             color: white;
@@ -114,7 +197,6 @@
         }
         .btn-manual-open:hover { background-color: #2c5282; }
 
-        /* --- 상자 우측 하단 최신화 날짜 스타일 --- */
         .last-updated {
             position: absolute;
             right: 18px;
@@ -124,7 +206,6 @@
             font-weight: 500;
         }
 
-        /* --- 상태 표시바 --- */
         .status-bar {
             background-color: #ebf8ff;
             border-left: 4px solid #3182ce;
@@ -136,7 +217,6 @@
             align-items: center;
         }
 
-        /* --- 테이블 스타일 --- */
         .table-container {
             width: 100%;
             overflow-x: auto;
@@ -166,7 +246,6 @@
         }
         tr:hover { background-color: #f1f5f9; }
 
-        /* 정치장 셀 전용 스타일 */
         td.cell-location {
             white-space: normal !important;
             word-break: keep-all;
@@ -186,7 +265,6 @@
         }
         .btn-spec:hover { background-color: #2b6cb0; }
 
-        /* --- 공통 팝업(모달) 스타일 --- */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -206,7 +284,6 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
-        /* 상세제원 전용 모달 너비 확장 (좌우 배치용) */
         .spec-modal-content {
             width: 820px !important;
             max-width: 95% !important;
@@ -233,7 +310,6 @@
         }
         .btn-close:hover { background-color: #c53030; }
 
-        /* 좌우 2단 배치 레이아웃 스타일 */
         .spec-container {
             display: flex;
             gap: 20px;
@@ -270,7 +346,6 @@
             text-align: center;
         }
 
-        /* 이미지 컨트롤러 슬라이더 버튼 스타일 */
         .image-controls {
             display: flex;
             align-items: center;
@@ -297,7 +372,6 @@
             color: #4a5568;
         }
 
-        /* 기종 상세제원 항목 스타일 */
         .spec-item {
             display: flex;
             justify-content: space-between;
@@ -308,7 +382,6 @@
         .spec-label { font-weight: bold; color: #4a5568; }
         .spec-value { color: #2d3748; }
 
-        /* 도면 풀스크린 라이트박스 및 상하 스크롤/Ctrl+확대 전용 스타일 */
         .lightbox-overlay {
             display: none;
             position: fixed;
@@ -363,7 +436,6 @@
             z-index: 2010;
         }
 
-        /* --- 제원 매뉴얼 다운로드 모달 전용 스타일 --- */
         .manufacturer-tab {
             display: flex;
             gap: 8px;
@@ -439,6 +511,29 @@
             </select>
         </div>
 
+        <!-- 💡 [신규] 기종 다중 선택 직사각형 멀티 패널 -->
+        <div class="filter-group" id="modelMultiSelectGroup">
+            <label>✈️ 기종/형식:</label>
+            <div class="multi-select-btn" onclick="toggleModelPanel(event)">
+                <span id="modelBtnLabel">전체 기종</span>
+                <span style="font-size:10px; color:#a0aec0;">▼</span>
+            </div>
+            
+            <div class="multi-select-panel" id="modelSelectPanel" onclick="event.stopPropagation()">
+                <div class="multi-select-header">
+                    <span style="font-size:12px; font-weight:bold; color:#4a5568;">기종 다중 선택</span>
+                    <div>
+                        <button class="btn-check-action" onclick="selectAllModels(true)">전체선택</button>
+                        <button class="btn-check-action" onclick="selectAllModels(false)">전체해제</button>
+                    </div>
+                </div>
+                <input type="text" id="modelSearchInput" class="multi-select-search" placeholder="기종 검색..." oninput="filterModelList()">
+                <div class="multi-select-list" id="modelListContainer">
+                    <!-- 스크립트에서 자동 생성 -->
+                </div>
+            </div>
+        </div>
+
         <div class="filter-group">
             <label for="searchFieldSelect">🔍 검색항목:</label>
             <select id="searchFieldSelect" class="select-filter" onchange="applyFilters()">
@@ -451,7 +546,6 @@
         <button class="btn-excel-export" onclick="exportToExcel()">📊 엑셀 다운로드</button>
         <button class="btn-manual-open" onclick="openManualModal()">📁 항공기 제원 다운로드</button>
 
-        <!-- 상자 우측 하단 최신화 날짜 표시 영역 -->
         <div id="lastUpdated" class="last-updated"></div>
     </div>
     
@@ -472,7 +566,7 @@
         </table>
     </div>
 
-    <!-- 1. 기종 상세제원 팝업 (좌우 2단 레이아웃) -->
+    <!-- 1. 기종 상세제원 팝업 -->
     <div id="specModal" class="modal-overlay">
         <div class="modal-content spec-modal-content">
             <div id="modalTitle" class="modal-header">기종 제원 정보</div>
@@ -486,14 +580,12 @@
         <div class="modal-content">
             <div class="modal-header">📁 제조사별 공식 제원 매뉴얼 (PDF)</div>
             
-            <!-- 제조사 선택 탭 -->
             <div class="manufacturer-tab">
                 <button class="tab-btn active" onclick="switchManufacturer('Boeing')">Boeing</button>
                 <button class="tab-btn" onclick="switchManufacturer('Airbus')">Airbus</button>
                 <button class="tab-btn" onclick="switchManufacturer('Others')">기타</button>
             </div>
 
-            <!-- PDF 파일 목록 영역 -->
             <div id="manualListContainer" class="manual-list-container">
                 <p style="text-align:center; color:#718096; padding:20px;">목록을 불러오는 중...</p>
             </div>
@@ -508,7 +600,7 @@
         <div class="lightbox-wrapper">
             <img id="lightboxImg" class="lightbox-content" src="" alt="도면 확대" onclick="event.stopPropagation();">
         </div>
-        <div class="lightbox-guide">🔍 Ctrl + 마우스 휠: 확대/축소</div>
+        <div class="lightbox-guide">🔍 Ctrl + 마우스 휠: 확대/축소 | 마우스 휠: 범위 내 위아래 이동</div>
     </div>
 
     <script>
@@ -566,6 +658,10 @@
         let currentImages = [];
         let currentImgIndex = 0;
 
+        // 💡 [신규] 기종 다중 선택 상태 관리
+        let allModelNames = [];
+        let selectedModels = new Set();
+
         let zoomScale = 1;
         let translateY = 0;
 
@@ -599,6 +695,7 @@
 
                 populateBizOptions(rawGlobalData.rows);
                 populateSearchFieldOptions(activeRawHeaders);
+                populateModelOptions(rawGlobalData.rows); // 💡 기종 다중 옵션 생성
                 updateOwnerOptions();
                 renderTableRows(rawGlobalData.rows);
 
@@ -606,6 +703,101 @@
                 console.error("데이터 로드 실패:", error);
                 document.getElementById('aircraftTableBody').innerHTML = 
                     '<tr><td colspan="14" style="color:red;">data.json 파일 로드 실패. process_data.py를 먼저 실행해 주세요.</td></tr>';
+            }
+        }
+
+        // 💡 [신규] 데이터에서 전체 기종 목록 추출 및 체크박스 생성
+        function populateModelOptions(rows) {
+            const modelsSet = new Set();
+            rows.forEach(row => {
+                const m = row['형식'] || row['기종'];
+                if (m && m.trim() !== '-') modelsSet.add(m.trim());
+            });
+
+            allModelNames = Array.from(modelsSet).sort((a, b) => a.localeCompare(b, 'en'));
+            selectedModels = new Set(allModelNames); // 초기엔 전체 선택
+
+            renderModelCheckboxes(allModelNames);
+            updateModelBtnLabel();
+        }
+
+        function renderModelCheckboxes(modelsToRender) {
+            const container = document.getElementById('modelListContainer');
+            container.innerHTML = '';
+
+            if (modelsToRender.length === 0) {
+                container.innerHTML = '<div style="font-size:12px; color:#a0aec0; text-align:center; padding:10px;">검색 결과 없음</div>';
+                return;
+            }
+
+            modelsToRender.forEach(m => {
+                const label = document.createElement('label');
+                label.className = 'multi-select-item';
+                
+                const isChecked = selectedModels.has(m) ? 'checked' : '';
+                label.innerHTML = `
+                    <input type="checkbox" value="${m}" ${isChecked} onchange="onModelCheckChange('${m}', this.checked)">
+                    <span>${m}</span>
+                `;
+                container.appendChild(label);
+            });
+        }
+
+        function toggleModelPanel(e) {
+            e.stopPropagation();
+            const panel = document.getElementById('modelSelectPanel');
+            const isVisible = panel.style.display === 'block';
+            panel.style.display = isVisible ? 'none' : 'block';
+        }
+
+        // 패널 외부 클릭 시 드롭다운 닫기
+        document.addEventListener('click', function() {
+            const panel = document.getElementById('modelSelectPanel');
+            if (panel) panel.style.display = 'none';
+        });
+
+        function filterModelList() {
+            const keyword = document.getElementById('modelSearchInput').value.toLowerCase().trim();
+            const filtered = allModelNames.filter(m => m.toLowerCase().includes(keyword));
+            renderModelCheckboxes(filtered);
+        }
+
+        function onModelCheckChange(modelName, isChecked) {
+            if (isChecked) {
+                selectedModels.add(modelName);
+            } else {
+                selectedModels.delete(modelName);
+            }
+            updateModelBtnLabel();
+            applyFilters();
+        }
+
+        function selectAllModels(select) {
+            if (select) {
+                selectedModels = new Set(allModelNames);
+            } else {
+                selectedModels.clear();
+            }
+            
+            // 현재 화면의 체크박스 상태 업데이트
+            const searchKw = document.getElementById('modelSearchInput').value.toLowerCase().trim();
+            const filtered = allModelNames.filter(m => m.toLowerCase().includes(searchKw));
+            renderModelCheckboxes(filtered);
+            
+            updateModelBtnLabel();
+            applyFilters();
+        }
+
+        function updateModelBtnLabel() {
+            const label = document.getElementById('modelBtnLabel');
+            if (selectedModels.size === allModelNames.length) {
+                label.innerText = "전체 기종";
+            } else if (selectedModels.size === 0) {
+                label.innerText = "선택 안함 (0개)";
+            } else if (selectedModels.size === 1) {
+                label.innerText = Array.from(selectedModels)[0];
+            } else {
+                label.innerText = `${Array.from(selectedModels)[0]} 외 ${selectedModels.size - 1}개`;
             }
         }
 
@@ -695,6 +887,7 @@
             });
         }
 
+        // 💡 [수정] 기종 체크박스 필터링 조건 추가
         function applyFilters() {
             if (!rawGlobalData) return;
             const selectedBiz = document.getElementById('bizSelect').value;
@@ -705,6 +898,11 @@
             const filteredRows = rawGlobalData.rows.filter(row => {
                 const matchesBiz = !selectedBiz || row['사업구분'] === selectedBiz;
                 const matchesOwner = !selectedOwner || row['항공사'] === selectedOwner;
+                
+                // 기종 체크박스 일치 조건
+                const rowModel = (row['형식'] || row['기종'] || '').trim();
+                const matchesModel = selectedModels.has(rowModel);
+
                 let matchesKeyword = true;
 
                 if (keyword) {
@@ -714,7 +912,7 @@
                         matchesKeyword = Object.values(row).some(val => String(val).toLowerCase().includes(keyword));
                     }
                 }
-                return matchesBiz && matchesOwner && matchesKeyword;
+                return matchesBiz && matchesOwner && matchesModel && matchesKeyword;
             });
 
             renderTableRows(filteredRows);
@@ -725,6 +923,13 @@
             document.getElementById('ownerSelect').value = '';
             document.getElementById('searchFieldSelect').value = '';
             document.getElementById('searchInput').value = '';
+            
+            // 기종 전체 선택 리셋
+            selectedModels = new Set(allModelNames);
+            document.getElementById('modelSearchInput').value = '';
+            renderModelCheckboxes(allModelNames);
+            updateModelBtnLabel();
+
             updateOwnerOptions();
             renderTableRows(rawGlobalData.rows);
         }
@@ -830,7 +1035,7 @@
             modal.style.display = 'flex';
         }
 
-        // 💡 돋보기(Ctrl + 마우스 휠: 확대/축소 & 마우스 휠: 범위 내 위아래 이동) 로직
+        // 돋보기(Ctrl + 마우스 휠: 확대/축소 & 마우스 휠: 범위 내 위아래 이동) 로직
         function openLightbox(imgSrc) {
             const lightbox = document.getElementById('lightboxOverlay');
             const lightboxImg = document.getElementById('lightboxImg');
@@ -863,7 +1068,6 @@
             }
         }
 
-        // 💡 [Ctrl + 마우스 휠]로 확대/축소 & [일반 마우스 휠]로 "이미지 범위 내" 위아래 이동
         document.getElementById('lightboxOverlay').addEventListener('wheel', function(e) {
             e.preventDefault();
 
@@ -871,26 +1075,19 @@
             const overlay = document.getElementById('lightboxOverlay');
 
             if (e.ctrlKey) {
-                // 1. Ctrl 키를 누르고 휠을 굴릴 때 확대/축소 실행
                 const delta = e.deltaY < 0 ? 0.2 : -0.2;
-                zoomScale = Math.min(Math.max(1, zoomScale + delta), 5); // 1배~5배 제한
-                
-                // 축소 시 이동 범위 재계산 및 보정
+                zoomScale = Math.min(Math.max(1, zoomScale + delta), 5);
                 clampTranslateY(overlay, lightboxImg);
             } else {
-                // 2. Ctrl 키 없이 일반 휠을 굴릴 때 확대한 상태에서 범위 내 위아래 스크롤
                 if (zoomScale > 1) {
                     const scrollSpeed = 40;
                     translateY += (e.deltaY < 0) ? scrollSpeed : -scrollSpeed;
-                    
-                    // 💡 상하 한계범위(Boundary) 계산 및 적용
                     clampTranslateY(overlay, lightboxImg);
                 }
             }
             applyTransform();
         }, { passive: false });
 
-        // 💡 이미지가 화면 범위를 이탈하지 않도록 이동 한계값을 계산하는 보정 함수
         function clampTranslateY(overlayElem, imgElem) {
             if (zoomScale <= 1) {
                 translateY = 0;
@@ -900,7 +1097,6 @@
             const imgHeight = imgElem.offsetHeight * zoomScale;
             const containerHeight = overlayElem.offsetHeight;
 
-            // 이미지가 화면 높이보다 커진 경우에만 이동 가능
             if (imgHeight > containerHeight) {
                 const maxTranslateY = (imgHeight - containerHeight) / 2;
                 translateY = Math.min(Math.max(translateY, -maxTranslateY), maxTranslateY);
@@ -909,7 +1105,6 @@
             }
         }
 
-        // ESC 키 입력 시 팝업 닫기
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeLightbox();
