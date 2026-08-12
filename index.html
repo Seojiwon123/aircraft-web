@@ -241,6 +241,7 @@
             align-items: center;
         }
 
+        /* --- 테이블 및 클릭 정렬 헤더 스타일 --- */
         .table-container {
             width: 100%;
             overflow-x: auto;
@@ -267,7 +268,26 @@
             background-color: #2b6cb0;
             color: white;
             font-weight: 600;
+            user-select: none;
         }
+        /* 💡 정렬 가능한 헤더 전용 스타일 */
+        th.sortable {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        th.sortable:hover {
+            background-color: #1a365d;
+        }
+        .sort-icon {
+            font-size: 10px;
+            margin-left: 4px;
+            color: #a0aec0;
+        }
+        th.active-sort .sort-icon {
+            color: #f6e05e;
+            font-weight: bold;
+        }
+
         tr:hover { background-color: #f1f5f9; }
 
         td.cell-location {
@@ -694,6 +714,10 @@
         let selectedModels = new Set();
         let currentMfrTab = 'ALL';
 
+        // 💡 [신규] 컬럼 클릭 정렬 전역 상태
+        let currentSortColumn = null;
+        let currentSortOrder = 'asc'; // 'asc' 또는 'desc'
+
         let zoomScale = 1;
         let translateY = 0;
 
@@ -716,14 +740,7 @@
                 activeHeaders = rawGlobalData.headers.filter(h => !EXCLUDED_COLUMNS.includes(h));
                 activeRawHeaders = rawGlobalData.raw_headers.filter(h => !EXCLUDED_COLUMNS.includes(h));
 
-                const headerRow = document.getElementById('tableHeaderRow');
-                headerRow.innerHTML = '';
-                activeHeaders.forEach(header => {
-                    const th = document.createElement('th');
-                    th.innerText = header;
-                    th.style.width = columnWidths[header] || '110px';
-                    headerRow.appendChild(th);
-                });
+                renderTableHeader();
 
                 populateBizOptions(rawGlobalData.rows);
                 populateSearchFieldOptions(activeRawHeaders);
@@ -736,6 +753,77 @@
                 document.getElementById('aircraftTableBody').innerHTML = 
                     '<tr><td colspan="14" style="color:red;">data.json 파일 로드 실패. process_data.py를 먼저 실행해 주세요.</td></tr>';
             }
+        }
+
+        // 💡 [신규] 클릭 정렬이 가능한 테이블 헤더 생성 및 상태 표시
+        function renderTableHeader() {
+            const headerRow = document.getElementById('tableHeaderRow');
+            headerRow.innerHTML = '';
+
+            activeHeaders.forEach((header, index) => {
+                const rawCol = activeRawHeaders[index];
+                const th = document.createElement('th');
+                th.style.width = columnWidths[header] || '110px';
+
+                if (header === '상세 제원') {
+                    th.innerText = header;
+                } else {
+                    th.classList.add('sortable');
+                    
+                    let sortIconStr = '↕';
+                    if (currentSortColumn === rawCol) {
+                        th.classList.add('active-sort');
+                        sortIconStr = currentSortOrder === 'asc' ? '▲' : '▼';
+                    }
+
+                    th.innerHTML = `${header}<span class="sort-icon">${sortIconStr}</span>`;
+                    th.onclick = () => handleSortClick(rawCol);
+                }
+
+                headerRow.appendChild(th);
+            });
+        }
+
+        // 💡 [신규] 헤더 클릭 시 정렬 컬럼 및 차순 변경
+        function handleSortClick(rawCol) {
+            if (currentSortColumn === rawCol) {
+                currentSortOrder = (currentSortOrder === 'asc') ? 'desc' : 'asc';
+            } else {
+                currentSortColumn = rawCol;
+                currentSortOrder = 'asc';
+            }
+            renderTableHeader();
+            applyFilters();
+        }
+
+        // 💡 [신규] 값의 타입을 자동 추론하여 스마트 정렬하는 비교 함수
+        function sortRowsData(rows) {
+            if (!currentSortColumn) return rows;
+
+            return [...rows].sort((a, b) => {
+                let valA = a[currentSortColumn];
+                let valB = b[currentSortColumn];
+
+                if (valA === undefined || valA === null || valA === '-') valA = '';
+                if (valB === undefined || valB === null || valB === '-') valB = '';
+
+                // 숫자인 경우 (예: 기령, 좌석수, 최대이륙중량 등)
+                let numA = parseFloat(String(valA).replace(/,/g, ''));
+                let numB = parseFloat(String(valB).replace(/,/g, ''));
+
+                let isNumA = !isNaN(numA) && isFinite(numA);
+                let isNumB = !isNaN(numB) && isFinite(numB);
+
+                let comparison = 0;
+
+                if (isNumA && isNumB) {
+                    comparison = numA - numB;
+                } else {
+                    comparison = String(valA).localeCompare(String(valB), 'ko', { numeric: true });
+                }
+
+                return currentSortOrder === 'asc' ? comparison : -comparison;
+            });
         }
 
         function getModelMfr(modelName) {
@@ -951,7 +1039,7 @@
             const targetField = document.getElementById('searchFieldSelect').value;
             const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
 
-            const filteredRows = rawGlobalData.rows.filter(row => {
+            let filteredRows = rawGlobalData.rows.filter(row => {
                 const matchesBiz = !selectedBiz || row['사업구분'] === selectedBiz;
                 const matchesOwner = !selectedOwner || row['항공사'] === selectedOwner;
                 
@@ -970,20 +1058,27 @@
                 return matchesBiz && matchesOwner && matchesModel && matchesKeyword;
             });
 
+            // 💡 클릭 정렬 상태 적용
+            filteredRows = sortRowsData(filteredRows);
+
             renderTableRows(filteredRows);
         }
 
-        // 💡 [수정] 필터 초기화 시 기종 버튼 라벨('전체 기종') 즉시 갱신 처리
         function resetFilters() {
             document.getElementById('bizSelect').value = '';
             document.getElementById('ownerSelect').value = '';
             document.getElementById('searchFieldSelect').value = '';
             document.getElementById('searchInput').value = '';
             
+            // 💡 정렬 상태 초기화
+            currentSortColumn = null;
+            currentSortOrder = 'asc';
+            renderTableHeader();
+
             selectedModels = new Set(allModelNames);
             document.getElementById('modelSearchInput').value = '';
             switchModelMfrTab('ALL');
-            updateModelBtnLabel(); // 👈 기종/형식 버튼 문구 리셋 호출
+            updateModelBtnLabel();
 
             updateOwnerOptions();
             renderTableRows(rawGlobalData.rows);
