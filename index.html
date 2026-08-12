@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>대한민국 항공기 등록 현황 & 제원 정보</title>
 
-    <!-- 💡 1. 엑셀 내보내기용 SheetJS 라이브러리 -->
+    <!-- 1. 엑셀 내보내기용 SheetJS 라이브러리 -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
     <style>
@@ -256,16 +256,14 @@
             min-height: 280px;
             position: relative;
         }
+        
+        /* 💡 제원창 내 미리보기 이미지는 마우스 오버 시 크기 변화 없이 '돋보기' 커서만 표시 */
         .spec-image {
             max-width: 100%;
             max-height: 250px;
             object-fit: contain;
             border-radius: 4px;
             cursor: zoom-in;
-            transition: transform 0.2s;
-        }
-        .spec-image:hover {
-            transform: scale(1.02);
         }
         .no-image-text {
             color: #a0aec0;
@@ -311,39 +309,63 @@
         .spec-label { font-weight: bold; color: #4a5568; }
         .spec-value { color: #2d3748; }
 
-        /* 💡 2. 도면 원본 대형 풀스크린 라이트박스 전용 스타일 */
+        /* 💡 도면 풀스크린 라이트박스 및 돋보기(Zoom/Pan) 전용 스타일 */
         .lightbox-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background-color: rgba(0, 0, 0, 0.88);
+            background-color: rgba(0, 0, 0, 0.9);
             justify-content: center;
             align-items: center;
             z-index: 2000;
-            cursor: zoom-out;
+            overflow: hidden;
+        }
+        .lightbox-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
         .lightbox-content {
-            max-width: 92vw;
-            max-height: 92vh;
+            max-width: 90vw;
+            max-height: 90vh;
             object-fit: contain;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
             border-radius: 4px;
             background-color: #ffffff;
+            cursor: grab;
+            transition: transform 0.05s ease-out;
+            user-select: none;
+        }
+        .lightbox-content:active {
+            cursor: grabbing;
         }
         .lightbox-close {
             position: absolute;
-            top: 20px;
-            right: 30px;
+            top: 20px; right: 30px;
             color: #ffffff;
-            font-size: 32px;
+            font-size: 36px;
             font-weight: bold;
             cursor: pointer;
+            z-index: 2010;
             user-select: none;
-            transition: color 0.2s;
         }
         .lightbox-close:hover {
             color: #ef4444;
+        }
+        .lightbox-guide {
+            position: absolute;
+            bottom: 20px;
+            color: #cbd5e0;
+            font-size: 13px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 6px 14px;
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 2010;
         }
 
         /* --- 제원 매뉴얼 다운로드 모달 전용 스타일 --- */
@@ -455,7 +477,7 @@
         </table>
     </div>
 
-    <!-- 1. 기종 상세제원 팝업 (좌우 2단 레이아웃 확장 적용) -->
+    <!-- 1. 기종 상세제원 팝업 (좌우 2단 레이아웃) -->
     <div id="specModal" class="modal-overlay">
         <div class="modal-content spec-modal-content">
             <div id="modalTitle" class="modal-header">기종 제원 정보</div>
@@ -485,10 +507,13 @@
         </div>
     </div>
 
-    <!-- 💡 3. 도면 풀스크린 확대 라이트박스 모달 -->
-    <div id="lightboxOverlay" class="lightbox-overlay" onclick="closeLightbox()">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img id="lightboxImg" class="lightbox-content" src="" alt="도면 확대" onclick="event.stopPropagation();">
+    <!-- 💡 3. 풀스크린 라이트박스 & 돋보기 모달 -->
+    <div id="lightboxOverlay" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <div class="lightbox-wrapper">
+            <img id="lightboxImg" class="lightbox-content" src="" alt="도면 확대" onclick="event.stopPropagation();">
+        </div>
+        <div class="lightbox-guide">🔍 마우스 휠: 확대/축소 | 마우스 드래그: 이동</div>
     </div>
 
     <script>
@@ -542,12 +567,17 @@
         let activeRawHeaders = [];
         let globalManualsData = null;
 
-        // 현재 검색/필터링되어 표출 중인 데이터 저장용 변수
         let currentFilteredRows = [];
-
-        // 슬라이더 전역 상태
         let currentImages = [];
         let currentImgIndex = 0;
+
+        // 💡 돋보기(Zoom & Pan) 상태 변수
+        let zoomScale = 1;
+        let translateX = 0;
+        let translateY = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
 
         async function loadAircraftData() {
             try {
@@ -709,7 +739,6 @@
             renderTableRows(rawGlobalData.rows);
         }
 
-        // 현재 필터링된 테이블 데이터 엑셀 내보내기 함수
         function exportToExcel() {
             if (!currentFilteredRows || currentFilteredRows.length === 0) {
                 alert("다운로드할 데이터가 없습니다.");
@@ -784,7 +813,6 @@
                         
                         <!-- 우측: 항공기 도면 이미지 및 슬라이더 영역 -->
                         <div class="spec-right">
-                            <!-- 💡 클릭 시 원본 풀스크린 라이트박스 오픈 함수(openLightbox) 연동 -->
                             <img id="specImg" 
                                  src="${currentImages[0]}" 
                                  alt="${matchedKey} 도면" 
@@ -797,7 +825,6 @@
                                 🖼️ 도면 이미지 준비 중<br><span style="font-size:11px; color:#cbd5e0;">(${currentImages[0]})</span>
                             </div>
 
-                            <!-- 다중 페이지 슬라이드 컨트롤러 -->
                             <div id="imgControls" class="image-controls" style="display:none;">
                                 <button class="btn-nav" onclick="changeImage(-1)">◀ 이전</button>
                                 <span id="pageIndicator" class="page-indicator">1 / 1</span>
@@ -813,24 +840,77 @@
             modal.style.display = 'flex';
         }
 
-        // 💡 4. 도면 풀스크린 라이트박스 제어 함수
+        // 💡 돋보기(라이트박스 팝업 및 Zoom/Pan) 로직 구현
         function openLightbox(imgSrc) {
             const lightbox = document.getElementById('lightboxOverlay');
             const lightboxImg = document.getElementById('lightboxImg');
             if (lightbox && lightboxImg) {
                 lightboxImg.src = imgSrc;
                 lightbox.style.display = 'flex';
+                resetZoom(); // Zoom 상태 초기화
             }
         }
 
-        function closeLightbox() {
+        function closeLightbox(event) {
+            if (event) event.stopPropagation();
             const lightbox = document.getElementById('lightboxOverlay');
             if (lightbox) {
                 lightbox.style.display = 'none';
+                resetZoom();
             }
         }
 
-        // ESC 키 입력 시 라이트박스 및 모달 닫기
+        function resetZoom() {
+            zoomScale = 1;
+            translateX = 0;
+            translateY = 0;
+            applyTransform();
+        }
+
+        function applyTransform() {
+            const lightboxImg = document.getElementById('lightboxImg');
+            if (lightboxImg) {
+                lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${zoomScale})`;
+            }
+        }
+
+        // 마우스 휠 스크롤 확대/축소 이벤트
+        document.getElementById('lightboxOverlay').addEventListener('wheel', function(e) {
+            e.preventDefault();
+            const delta = e.deltaY < 0 ? 0.15 : -0.15;
+            zoomScale = Math.min(Math.max(1, zoomScale + delta), 5); // 최소 1배 ~ 최대 5배 제한
+            
+            if (zoomScale === 1) {
+                translateX = 0;
+                translateY = 0;
+            }
+            applyTransform();
+        }, { passive: false });
+
+        // 마우스 드래그로 도면 위치 이동 이벤트
+        const lightboxImg = document.getElementById('lightboxImg');
+        
+        lightboxImg.addEventListener('mousedown', function(e) {
+            if (zoomScale > 1) {
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+            }
+        });
+
+        window.addEventListener('mousemove', function(e) {
+            if (isDragging && zoomScale > 1) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                applyTransform();
+            }
+        });
+
+        window.addEventListener('mouseup', function() {
+            isDragging = false;
+        });
+
+        // ESC 키 입력 시 팝업 닫기
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeLightbox();
@@ -839,14 +919,12 @@
             }
         });
 
-        // 이미지 로드 에러 처리
         function handleImgError(imgElem) {
             imgElem.style.display = 'none';
             document.getElementById('noImgText').style.display = 'block';
             document.getElementById('imgControls').style.display = 'none';
         }
 
-        // 에어버스 연속 페이지(_Page2, _Page3...) 탐색 함수
         function checkNextPages(mfr, key) {
             let pageNum = 2;
             function checkNext() {
@@ -866,7 +944,6 @@
             checkNext();
         }
 
-        // 컨트롤러 상태 업데이트
         function updateControls() {
             const controls = document.getElementById('imgControls');
             const indicator = document.getElementById('pageIndicator');
@@ -879,7 +956,6 @@
             }
         }
 
-        // 이미지 슬라이드 넘기기 함수
         function changeImage(direction) {
             if (currentImages.length <= 1) return;
             
@@ -901,7 +977,6 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
-        // 2. 제원 매뉴얼 다운로드 팝업 관련 함수
         async function openManualModal() {
             document.getElementById('manualModal').style.display = 'flex';
             
