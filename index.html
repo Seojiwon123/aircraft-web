@@ -72,7 +72,7 @@
             text-overflow: ellipsis;
         }
 
-        /* 💡 기종 다중 선택(체크박스) 직사각형 드롭다운 전용 스타일 */
+        /* 💡 기종 다중 선택(체크박스 & 제조사 탭) 직사각형 드롭다운 전용 스타일 */
         .multi-select-btn {
             padding: 8px 12px;
             border: 1px solid #cbd5e0;
@@ -96,7 +96,7 @@
             top: 100%;
             left: 0;
             margin-top: 4px;
-            width: 260px;
+            width: 290px;
             background-color: white;
             border: 1px solid #cbd5e0;
             border-radius: 6px;
@@ -111,6 +111,29 @@
             border-bottom: 1px solid #edf2f7;
             padding-bottom: 8px;
             margin-bottom: 8px;
+        }
+        /* 💡 제조사 분류 탭 버튼 스타일 */
+        .mfr-filter-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+        .mfr-tab-btn {
+            flex: 1;
+            padding: 4px 0;
+            font-size: 11px;
+            font-weight: bold;
+            background-color: #f7fafc;
+            border: 1px solid #cbd5e0;
+            border-radius: 3px;
+            cursor: pointer;
+            color: #4a5568;
+            text-align: center;
+        }
+        .mfr-tab-btn.active {
+            background-color: #2b6cb0;
+            color: white;
+            border-color: #2b6cb0;
         }
         .btn-check-action {
             background-color: #edf2f7;
@@ -136,7 +159,7 @@
             outline: none;
         }
         .multi-select-list {
-            max-height: 200px;
+            max-height: 180px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -511,7 +534,7 @@
             </select>
         </div>
 
-        <!-- 💡 [신규] 기종 다중 선택 직사각형 멀티 패널 -->
+        <!-- 💡 기종 다중 선택 직사각형 멀티 패널 (제조사 분류 탭 포함) -->
         <div class="filter-group" id="modelMultiSelectGroup">
             <label>✈️ 기종/형식:</label>
             <div class="multi-select-btn" onclick="toggleModelPanel(event)">
@@ -520,13 +543,22 @@
             </div>
             
             <div class="multi-select-panel" id="modelSelectPanel" onclick="event.stopPropagation()">
+                <!-- 💡 제조사 분류 선택 탭 -->
+                <div class="mfr-filter-tabs">
+                    <button class="mfr-tab-btn active" onclick="switchModelMfrTab('ALL')">전체</button>
+                    <button class="mfr-tab-btn" onclick="switchModelMfrTab('Boeing')">Boeing</button>
+                    <button class="mfr-tab-btn" onclick="switchModelMfrTab('Airbus')">Airbus</button>
+                    <button class="mfr-tab-btn" onclick="switchModelMfrTab('Others')">기타</button>
+                </div>
+
                 <div class="multi-select-header">
-                    <span style="font-size:12px; font-weight:bold; color:#4a5568;">기종 다중 선택</span>
+                    <span style="font-size:11px; font-weight:bold; color:#718096;" id="mfrTabStatusText">전체 기종</span>
                     <div>
-                        <button class="btn-check-action" onclick="selectAllModels(true)">전체선택</button>
-                        <button class="btn-check-action" onclick="selectAllModels(false)">전체해제</button>
+                        <button class="btn-check-action" onclick="selectAllModelsInCurrentTab(true)">선택</button>
+                        <button class="btn-check-action" onclick="selectAllModelsInCurrentTab(false)">해제</button>
                     </div>
                 </div>
+                
                 <input type="text" id="modelSearchInput" class="multi-select-search" placeholder="기종 검색..." oninput="filterModelList()">
                 <div class="multi-select-list" id="modelListContainer">
                     <!-- 스크립트에서 자동 생성 -->
@@ -658,9 +690,10 @@
         let currentImages = [];
         let currentImgIndex = 0;
 
-        // 💡 [신규] 기종 다중 선택 상태 관리
+        // 기종 다중 선택 및 제조사 탭 관리 상태
         let allModelNames = [];
         let selectedModels = new Set();
+        let currentMfrTab = 'ALL';
 
         let zoomScale = 1;
         let translateY = 0;
@@ -695,7 +728,7 @@
 
                 populateBizOptions(rawGlobalData.rows);
                 populateSearchFieldOptions(activeRawHeaders);
-                populateModelOptions(rawGlobalData.rows); // 💡 기종 다중 옵션 생성
+                populateModelOptions(rawGlobalData.rows);
                 updateOwnerOptions();
                 renderTableRows(rawGlobalData.rows);
 
@@ -706,7 +739,14 @@
             }
         }
 
-        // 💡 [신규] 데이터에서 전체 기종 목록 추출 및 체크박스 생성
+        // 💡 기종 제조사 구분 함수 (Boeing / Airbus / Others)
+        function getModelMfr(modelName) {
+            const upper = modelName.toUpperCase();
+            if (upper.startsWith('B7') || upper.startsWith('BOEING')) return 'Boeing';
+            if (upper.startsWith('A3') || upper.startsWith('A2') || upper.startsWith('AIRBUS')) return 'Airbus';
+            return 'Others';
+        }
+
         function populateModelOptions(rows) {
             const modelsSet = new Set();
             rows.forEach(row => {
@@ -715,18 +755,49 @@
             });
 
             allModelNames = Array.from(modelsSet).sort((a, b) => a.localeCompare(b, 'en'));
-            selectedModels = new Set(allModelNames); // 초기엔 전체 선택
+            selectedModels = new Set(allModelNames);
 
-            renderModelCheckboxes(allModelNames);
+            renderModelCheckboxes();
             updateModelBtnLabel();
         }
 
-        function renderModelCheckboxes(modelsToRender) {
+        // 💡 제조사 탭 전환 함수
+        function switchModelMfrTab(mfr) {
+            currentMfrTab = mfr;
+            const tabs = document.querySelectorAll('.mfr-tab-btn');
+            tabs.forEach(tab => {
+                if (tab.innerText === (mfr === 'ALL' ? '전체' : mfr)) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            const statusText = document.getElementById('mfrTabStatusText');
+            if (statusText) {
+                statusText.innerText = (mfr === 'ALL') ? '전체 기종' : `${mfr} 기종`;
+            }
+
+            renderModelCheckboxes();
+        }
+
+        function getFilteredModelsByCurrentTab() {
+            const keyword = document.getElementById('modelSearchInput').value.toLowerCase().trim();
+            return allModelNames.filter(m => {
+                const matchesMfr = (currentMfrTab === 'ALL') || (getModelMfr(m) === currentMfrTab);
+                const matchesKw = m.toLowerCase().includes(keyword);
+                return matchesMfr && matchesKw;
+            });
+        }
+
+        function renderModelCheckboxes() {
             const container = document.getElementById('modelListContainer');
             container.innerHTML = '';
 
+            const modelsToRender = getFilteredModelsByCurrentTab();
+
             if (modelsToRender.length === 0) {
-                container.innerHTML = '<div style="font-size:12px; color:#a0aec0; text-align:center; padding:10px;">검색 결과 없음</div>';
+                container.innerHTML = '<div style="font-size:12px; color:#a0aec0; text-align:center; padding:10px;">해당하는 기종이 없습니다.</div>';
                 return;
             }
 
@@ -750,16 +821,13 @@
             panel.style.display = isVisible ? 'none' : 'block';
         }
 
-        // 패널 외부 클릭 시 드롭다운 닫기
         document.addEventListener('click', function() {
             const panel = document.getElementById('modelSelectPanel');
             if (panel) panel.style.display = 'none';
         });
 
         function filterModelList() {
-            const keyword = document.getElementById('modelSearchInput').value.toLowerCase().trim();
-            const filtered = allModelNames.filter(m => m.toLowerCase().includes(keyword));
-            renderModelCheckboxes(filtered);
+            renderModelCheckboxes();
         }
 
         function onModelCheckChange(modelName, isChecked) {
@@ -772,18 +840,15 @@
             applyFilters();
         }
 
-        function selectAllModels(select) {
-            if (select) {
-                selectedModels = new Set(allModelNames);
-            } else {
-                selectedModels.clear();
-            }
+        // 💡 현재 탭 기종들만 한 번에 선택 / 해제
+        function selectAllModelsInCurrentTab(select) {
+            const currentTabModels = getFilteredModelsByCurrentTab();
+            currentTabModels.forEach(m => {
+                if (select) selectedModels.add(m);
+                else selectedModels.delete(m);
+            });
             
-            // 현재 화면의 체크박스 상태 업데이트
-            const searchKw = document.getElementById('modelSearchInput').value.toLowerCase().trim();
-            const filtered = allModelNames.filter(m => m.toLowerCase().includes(searchKw));
-            renderModelCheckboxes(filtered);
-            
+            renderModelCheckboxes();
             updateModelBtnLabel();
             applyFilters();
         }
@@ -887,7 +952,6 @@
             });
         }
 
-        // 💡 [수정] 기종 체크박스 필터링 조건 추가
         function applyFilters() {
             if (!rawGlobalData) return;
             const selectedBiz = document.getElementById('bizSelect').value;
@@ -899,7 +963,6 @@
                 const matchesBiz = !selectedBiz || row['사업구분'] === selectedBiz;
                 const matchesOwner = !selectedOwner || row['항공사'] === selectedOwner;
                 
-                // 기종 체크박스 일치 조건
                 const rowModel = (row['형식'] || row['기종'] || '').trim();
                 const matchesModel = selectedModels.has(rowModel);
 
@@ -924,11 +987,9 @@
             document.getElementById('searchFieldSelect').value = '';
             document.getElementById('searchInput').value = '';
             
-            // 기종 전체 선택 리셋
             selectedModels = new Set(allModelNames);
             document.getElementById('modelSearchInput').value = '';
-            renderModelCheckboxes(allModelNames);
-            updateModelBtnLabel();
+            switchModelMfrTab('ALL');
 
             updateOwnerOptions();
             renderTableRows(rawGlobalData.rows);
