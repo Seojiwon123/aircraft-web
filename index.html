@@ -72,7 +72,7 @@
             text-overflow: ellipsis;
         }
 
-        /* 💡 기종 다중 선택(체크박스 & 제조사 탭) 직사각형 드롭다운 전용 스타일 */
+        /* 기종 다중 선택(체크박스 & 제조사 탭) 직사각형 드롭다운 전용 스타일 */
         .multi-select-btn {
             padding: 8px 12px;
             border: 1px solid #cbd5e0;
@@ -112,7 +112,6 @@
             padding-bottom: 8px;
             margin-bottom: 8px;
         }
-        /* 💡 제조사 분류 탭 버튼 스타일 */
         .mfr-filter-tabs {
             display: flex;
             gap: 4px;
@@ -158,12 +157,15 @@
             margin-bottom: 8px;
             outline: none;
         }
+        
+        /* 💡 overscroll-behavior: contain 추가로 페이지 스크롤 차단 */
         .multi-select-list {
             max-height: 180px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             gap: 6px;
+            overscroll-behavior: contain;
         }
         .multi-select-item {
             display: flex;
@@ -459,6 +461,15 @@
             z-index: 2010;
         }
 
+        /* 💡 매뉴얼 목록 드롭다운 영역도 overscroll-behavior: contain 동일 적용 */
+        .manual-list-container {
+            max-height: 280px;
+            overflow-y: auto;
+            border: 1px solid #edf2f7;
+            border-radius: 4px;
+            padding: 8px;
+            overscroll-behavior: contain;
+        }
         .manufacturer-tab {
             display: flex;
             gap: 8px;
@@ -480,13 +491,6 @@
             background-color: #2b6cb0;
             color: white;
             border-color: #2b6cb0;
-        }
-        .manual-list-container {
-            max-height: 280px;
-            overflow-y: auto;
-            border: 1px solid #edf2f7;
-            border-radius: 4px;
-            padding: 8px;
         }
         .manual-item {
             display: flex;
@@ -534,7 +538,7 @@
             </select>
         </div>
 
-        <!-- 💡 기종 다중 선택 직사각형 멀티 패널 (제조사 분류 탭 포함) -->
+        <!-- 기종 다중 선택 직사각형 멀티 패널 -->
         <div class="filter-group" id="modelMultiSelectGroup">
             <label>✈️ 기종/형식:</label>
             <div class="multi-select-btn" onclick="toggleModelPanel(event)">
@@ -543,7 +547,6 @@
             </div>
             
             <div class="multi-select-panel" id="modelSelectPanel" onclick="event.stopPropagation()">
-                <!-- 💡 제조사 분류 선택 탭 -->
                 <div class="mfr-filter-tabs">
                     <button class="mfr-tab-btn active" onclick="switchModelMfrTab('ALL')">전체</button>
                     <button class="mfr-tab-btn" onclick="switchModelMfrTab('Boeing')">Boeing</button>
@@ -690,7 +693,6 @@
         let currentImages = [];
         let currentImgIndex = 0;
 
-        // 기종 다중 선택 및 제조사 탭 관리 상태
         let allModelNames = [];
         let selectedModels = new Set();
         let currentMfrTab = 'ALL';
@@ -739,7 +741,6 @@
             }
         }
 
-        // 💡 기종 제조사 구분 함수 (Boeing / Airbus / Others)
         function getModelMfr(modelName) {
             const upper = modelName.toUpperCase();
             if (upper.startsWith('B7') || upper.startsWith('BOEING')) return 'Boeing';
@@ -761,7 +762,6 @@
             updateModelBtnLabel();
         }
 
-        // 💡 제조사 탭 전환 함수
         function switchModelMfrTab(mfr) {
             currentMfrTab = mfr;
             const tabs = document.querySelectorAll('.mfr-tab-btn');
@@ -840,7 +840,6 @@
             applyFilters();
         }
 
-        // 💡 현재 탭 기종들만 한 번에 선택 / 해제
         function selectAllModelsInCurrentTab(select) {
             const currentTabModels = getFilteredModelsByCurrentTab();
             currentTabModels.forEach(m => {
