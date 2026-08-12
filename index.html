@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>대한민국 항공기 등록 현황 & 제원 정보</title>
 
-    <!-- 💡 1. 엑셀 내보내기용 SheetJS 라이브러리 추가 -->
+    <!-- 💡 1. 엑셀 내보내기용 SheetJS 라이브러리 -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
     <style>
@@ -84,7 +84,7 @@
         }
         .btn-reset:hover { background-color: #cbd5e0; }
 
-        /* 💡 2. 엑셀 다운로드 버튼 전용 스타일 */
+        /* 엑셀 다운로드 버튼 전용 스타일 */
         .btn-excel-export {
             background-color: #276749;
             color: white;
@@ -261,7 +261,7 @@
             max-height: 250px;
             object-fit: contain;
             border-radius: 4px;
-            cursor: pointer;
+            cursor: zoom-in;
             transition: transform 0.2s;
         }
         .spec-image:hover {
@@ -310,6 +310,41 @@
         }
         .spec-label { font-weight: bold; color: #4a5568; }
         .spec-value { color: #2d3748; }
+
+        /* 💡 2. 도면 원본 대형 풀스크린 라이트박스 전용 스타일 */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-color: rgba(0, 0, 0, 0.88);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            cursor: zoom-out;
+        }
+        .lightbox-content {
+            max-width: 92vw;
+            max-height: 92vh;
+            object-fit: contain;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            background-color: #ffffff;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.2s;
+        }
+        .lightbox-close:hover {
+            color: #ef4444;
+        }
 
         /* --- 제원 매뉴얼 다운로드 모달 전용 스타일 --- */
         .manufacturer-tab {
@@ -396,7 +431,6 @@
         </div>
 
         <button class="btn-reset" onclick="resetFilters()">🔄 필터 초기화</button>
-        <!-- 💡 3. 엑셀 내보내기 버튼 추가 -->
         <button class="btn-excel-export" onclick="exportToExcel()">📊 엑셀 다운로드</button>
         <button class="btn-manual-open" onclick="openManualModal()">📁 항공기 제원 다운로드</button>
 
@@ -449,6 +483,12 @@
 
             <button class="btn-close" onclick="closeModal('manualModal')">닫기</button>
         </div>
+    </div>
+
+    <!-- 💡 3. 도면 풀스크린 확대 라이트박스 모달 -->
+    <div id="lightboxOverlay" class="lightbox-overlay" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightboxImg" class="lightbox-content" src="" alt="도면 확대" onclick="event.stopPropagation();">
     </div>
 
     <script>
@@ -599,7 +639,7 @@
         function onBizChange() { updateOwnerOptions(); applyFilters(); }
 
         function renderTableRows(rowsToRender) {
-            currentFilteredRows = rowsToRender; // 현재 검색/필터링 결과 저장
+            currentFilteredRows = rowsToRender;
 
             const tbody = document.getElementById('aircraftTableBody');
             document.getElementById('dataCount').innerText = `총 ${rowsToRender.length}대 검색됨 (전체 ${rawGlobalData.rows.length}대)`;
@@ -669,14 +709,13 @@
             renderTableRows(rawGlobalData.rows);
         }
 
-        // 💡 4. 현재 필터링된 테이블 데이터 엑셀 내보내기 함수
+        // 현재 필터링된 테이블 데이터 엑셀 내보내기 함수
         function exportToExcel() {
             if (!currentFilteredRows || currentFilteredRows.length === 0) {
                 alert("다운로드할 데이터가 없습니다.");
                 return;
             }
 
-            // 엑셀 헤더 및 행 데이터 가공
             const excelData = currentFilteredRows.map((row, index) => {
                 const rowObj = {};
                 activeHeaders.forEach((header, i) => {
@@ -690,22 +729,19 @@
                 return rowObj;
             });
 
-            // SheetJS를 활용한 워크시트 생성
             const worksheet = XLSX.utils.json_to_sheet(excelData);
             const workbook = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(workbook, worksheet, "항공기_등록현황");
 
-            // 오늘 날짜 구하기 (파일명용 YYYYMMDD)
             const today = new Date();
             const dateStr = today.getFullYear() +
                 String(today.getMonth() + 1).padStart(2, '0') +
                 String(today.getDate()).padStart(2, '0');
 
-            // 엑셀 파일 다운로드 실행
             XLSX.writeFile(workbook, `대한민국_항공기_등록현황_${dateStr}.xlsx`);
         }
 
-        // 1. 기종 상세제원 팝업 관련 함수 (대문자 Page 파일명 매칭 적용)
+        // 1. 기종 상세제원 팝업 관련 함수
         async function openModal(rawModelName) {
             let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
             let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
@@ -724,12 +760,10 @@
                 currentImgIndex = 0;
 
                 if (spec.mfr === 'Airbus') {
-                    // 에어버스: 대문자 '_Page1.png' 적용 및 연속 체킹
                     const firstPage = `AC Photo/Airbus/${matchedKey}_Page1.png`;
                     currentImages.push(firstPage);
                     checkNextPages(spec.mfr, matchedKey);
                 } else {
-                    // 보잉 및 기타 단일 파일
                     currentImages.push(`AC Photo/${spec.mfr}/${matchedKey}.png`);
                 }
 
@@ -750,11 +784,13 @@
                         
                         <!-- 우측: 항공기 도면 이미지 및 슬라이더 영역 -->
                         <div class="spec-right">
+                            <!-- 💡 클릭 시 원본 풀스크린 라이트박스 오픈 함수(openLightbox) 연동 -->
                             <img id="specImg" 
                                  src="${currentImages[0]}" 
                                  alt="${matchedKey} 도면" 
                                  class="spec-image" 
-                                 onclick="window.open(this.src, '_blank')"
+                                 title="클릭 시 크게 보기"
+                                 onclick="openLightbox(this.src)"
                                  onerror="handleImgError(this)">
                             
                             <div id="noImgText" class="no-image-text" style="display:none;">
@@ -777,6 +813,32 @@
             modal.style.display = 'flex';
         }
 
+        // 💡 4. 도면 풀스크린 라이트박스 제어 함수
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightboxOverlay');
+            const lightboxImg = document.getElementById('lightboxImg');
+            if (lightbox && lightboxImg) {
+                lightboxImg.src = imgSrc;
+                lightbox.style.display = 'flex';
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightboxOverlay');
+            if (lightbox) {
+                lightbox.style.display = 'none';
+            }
+        }
+
+        // ESC 키 입력 시 라이트박스 및 모달 닫기
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+                closeModal('specModal');
+                closeModal('manualModal');
+            }
+        });
+
         // 이미지 로드 에러 처리
         function handleImgError(imgElem) {
             imgElem.style.display = 'none';
@@ -784,7 +846,7 @@
             document.getElementById('imgControls').style.display = 'none';
         }
 
-        // 에어버스 연속 페이지(_Page2, _Page3...) 탐색 함수 (대문자 Page 적용)
+        // 에어버스 연속 페이지(_Page2, _Page3...) 탐색 함수
         function checkNextPages(mfr, key) {
             let pageNum = 2;
             function checkNext() {
