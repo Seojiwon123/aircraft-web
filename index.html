@@ -759,7 +759,6 @@
             updateModelBtnLabel();
         }
 
-        // 💡 제조사 탭 선택 처리 (자바스크립트 'Others' <-> HTML '기타' 활성화 처리 수정)
         function switchModelMfrTab(mfr) {
             currentMfrTab = mfr;
             const tabs = document.querySelectorAll('.mfr-tab-btn');
@@ -974,6 +973,7 @@
             renderTableRows(filteredRows);
         }
 
+        // 💡 [수정] 필터 초기화 시 기종 버튼 라벨('전체 기종') 즉시 갱신 처리
         function resetFilters() {
             document.getElementById('bizSelect').value = '';
             document.getElementById('ownerSelect').value = '';
@@ -983,6 +983,7 @@
             selectedModels = new Set(allModelNames);
             document.getElementById('modelSearchInput').value = '';
             switchModelMfrTab('ALL');
+            updateModelBtnLabel(); // 👈 기종/형식 버튼 문구 리셋 호출
 
             updateOwnerOptions();
             renderTableRows(rawGlobalData.rows);
