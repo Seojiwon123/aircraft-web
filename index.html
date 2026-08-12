@@ -106,7 +106,7 @@
         }
         .multi-select-header {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             border-bottom: 1px solid #edf2f7;
             padding-bottom: 8px;
@@ -158,7 +158,6 @@
             outline: none;
         }
         
-        /* 💡 overscroll-behavior: contain 추가로 페이지 스크롤 차단 */
         .multi-select-list {
             max-height: 180px;
             overflow-y: auto;
@@ -461,7 +460,6 @@
             z-index: 2010;
         }
 
-        /* 💡 매뉴얼 목록 드롭다운 영역도 overscroll-behavior: contain 동일 적용 */
         .manual-list-container {
             max-height: 280px;
             overflow-y: auto;
@@ -555,10 +553,9 @@
                 </div>
 
                 <div class="multi-select-header">
-                    <span style="font-size:11px; font-weight:bold; color:#718096;" id="mfrTabStatusText">전체 기종</span>
                     <div>
-                        <button class="btn-check-action" onclick="selectAllModelsInCurrentTab(true)">전체선택</button>
-                        <button class="btn-check-action" onclick="selectAllModelsInCurrentTab(false)">전체해제</button>
+                        <button class="btn-check-action" onclick="selectAllModelsInCurrentTab(true)">선택</button>
+                        <button class="btn-check-action" onclick="selectAllModelsInCurrentTab(false)">해제</button>
                     </div>
                 </div>
                 
@@ -635,7 +632,7 @@
         <div class="lightbox-wrapper">
             <img id="lightboxImg" class="lightbox-content" src="" alt="도면 확대" onclick="event.stopPropagation();">
         </div>
-        <div class="lightbox-guide">🔍 Ctrl + 마우스 휠: 확대/축소</div>
+        <div class="lightbox-guide">🔍 Ctrl + 마우스 휠: 확대/축소 | 마우스 휠: 범위 내 위아래 이동</div>
     </div>
 
     <script>
@@ -762,21 +759,18 @@
             updateModelBtnLabel();
         }
 
+        // 💡 제조사 탭 선택 처리 (자바스크립트 'Others' <-> HTML '기타' 활성화 처리 수정)
         function switchModelMfrTab(mfr) {
             currentMfrTab = mfr;
             const tabs = document.querySelectorAll('.mfr-tab-btn');
             tabs.forEach(tab => {
-                if (tab.innerText === (mfr === 'ALL' ? '전체' : mfr)) {
+                const txt = tab.innerText.trim();
+                if ((mfr === 'ALL' && txt === '전체') || (mfr === txt) || (mfr === 'Others' && txt === '기타')) {
                     tab.classList.add('active');
                 } else {
                     tab.classList.remove('active');
                 }
             });
-
-            const statusText = document.getElementById('mfrTabStatusText');
-            if (statusText) {
-                statusText.innerText = (mfr === 'ALL') ? '전체 기종' : `${mfr} 기종`;
-            }
 
             renderModelCheckboxes();
         }
