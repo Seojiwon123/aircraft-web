@@ -241,7 +241,7 @@
             align-items: center;
         }
 
-        /* --- 테이블 및 클릭 정렬 헤더 스타일 --- */
+        /* --- 테이블 및 선택적 정렬 헤더 스타일 --- */
         .table-container {
             width: 100%;
             overflow-x: auto;
@@ -270,7 +270,7 @@
             font-weight: 600;
             user-select: none;
         }
-        /* 💡 정렬 가능한 헤더 전용 스타일 */
+        /* 정렬 가능한 지정 5개 컬럼 전용 스타일 */
         th.sortable {
             cursor: pointer;
             transition: background-color 0.2s;
@@ -701,6 +701,9 @@
         const EXCLUDED_COLUMNS = ['감항증명유효기간'];
         const FILTER_EXCLUDED_COLUMNS = ['사업구분', '항공사', '소유자', '감항증명유효기간'];
 
+        // 💡 [선택적 정렬 적용 항목] 요청하신 수치 및 날짜 관련 핵심 5개 항목만 정렬 허용
+        const SORTABLE_COLUMNS = ['제작일자', '기령(년)', '기령', '등록일자', '좌석', '최대이륙중량'];
+
         let rawGlobalData = null;
         let activeHeaders = [];
         let activeRawHeaders = [];
@@ -714,9 +717,8 @@
         let selectedModels = new Set();
         let currentMfrTab = 'ALL';
 
-        // 💡 [신규] 컬럼 클릭 정렬 전역 상태
         let currentSortColumn = null;
-        let currentSortOrder = 'asc'; // 'asc' 또는 'desc'
+        let currentSortOrder = 'asc';
 
         let zoomScale = 1;
         let translateY = 0;
@@ -755,7 +757,7 @@
             }
         }
 
-        // 💡 [신규] 클릭 정렬이 가능한 테이블 헤더 생성 및 상태 표시
+        // 💡 [수정] 지정된 5개 칼럼에만 정렬 스타일과 이벤트를 할당하는 함수
         function renderTableHeader() {
             const headerRow = document.getElementById('tableHeaderRow');
             headerRow.innerHTML = '';
@@ -765,9 +767,10 @@
                 const th = document.createElement('th');
                 th.style.width = columnWidths[header] || '110px';
 
-                if (header === '상세 제원') {
-                    th.innerText = header;
-                } else {
+                // 지정된 5개 칼럼 항목에만 정렬 기능 적용
+                const isSortableColumn = SORTABLE_COLUMNS.includes(header) || SORTABLE_COLUMNS.includes(rawCol);
+
+                if (isSortableColumn) {
                     th.classList.add('sortable');
                     
                     let sortIconStr = '↕';
@@ -778,13 +781,14 @@
 
                     th.innerHTML = `${header}<span class="sort-icon">${sortIconStr}</span>`;
                     th.onclick = () => handleSortClick(rawCol);
+                } else {
+                    th.innerText = header;
                 }
 
                 headerRow.appendChild(th);
             });
         }
 
-        // 💡 [신규] 헤더 클릭 시 정렬 컬럼 및 차순 변경
         function handleSortClick(rawCol) {
             if (currentSortColumn === rawCol) {
                 currentSortOrder = (currentSortOrder === 'asc') ? 'desc' : 'asc';
@@ -796,9 +800,32 @@
             applyFilters();
         }
 
-        // 💡 [신규] 값의 타입을 자동 추론하여 스마트 정렬하는 비교 함수
+        // 💡 [수정] 날짜 문자열(YY.MM.DD / YYYY.MM.DD) 정밀 파싱 함수
+        function parseCustomDate(valStr) {
+            if (!valStr || valStr === '-' || valStr === 'nan') return 0;
+            
+            const parts = String(valStr).trim().split(/[\.\-\/]/);
+            if (parts.length === 3) {
+                let y = parseInt(parts[0], 10);
+                let m = parseInt(parts[1], 10) - 1;
+                let d = parseInt(parts[2], 10);
+
+                if (isNaN(y) || isNaN(m) || isNaN(d)) return 0;
+
+                // 2자리 연도 표기 (예: 98 -> 1998, 05 -> 2005)
+                if (y < 100) {
+                    y = y > 30 ? 1900 + y : 2000 + y;
+                }
+                return new Date(y, m, d).getTime();
+            }
+            return 0;
+        }
+
+        // 💡 [수정] 날짜 및 수치 데이터 스마트 정렬 비교 로직
         function sortRowsData(rows) {
             if (!currentSortColumn) return rows;
+
+            const isDateField = currentSortColumn.includes('일자') || currentSortColumn.includes('날짜');
 
             return [...rows].sort((a, b) => {
                 let valA = a[currentSortColumn];
@@ -807,19 +834,26 @@
                 if (valA === undefined || valA === null || valA === '-') valA = '';
                 if (valB === undefined || valB === null || valB === '-') valB = '';
 
-                // 숫자인 경우 (예: 기령, 좌석수, 최대이륙중량 등)
-                let numA = parseFloat(String(valA).replace(/,/g, ''));
-                let numB = parseFloat(String(valB).replace(/,/g, ''));
-
-                let isNumA = !isNaN(numA) && isFinite(numA);
-                let isNumB = !isNaN(numB) && isFinite(numB);
-
                 let comparison = 0;
 
-                if (isNumA && isNumB) {
-                    comparison = numA - numB;
+                if (isDateField) {
+                    // 1. 날짜 타입인 경우 연/월/일 파싱 비교
+                    let timeA = parseCustomDate(valA);
+                    let timeB = parseCustomDate(valB);
+                    comparison = timeA - timeB;
                 } else {
-                    comparison = String(valA).localeCompare(String(valB), 'ko', { numeric: true });
+                    // 2. 수치 데이터인 경우 (기령, 좌석, 최대이륙중량 등)
+                    let numA = parseFloat(String(valA).replace(/,/g, ''));
+                    let numB = parseFloat(String(valB).replace(/,/g, ''));
+
+                    let isNumA = !isNaN(numA) && isFinite(numA);
+                    let isNumB = !isNaN(numB) && isFinite(numB);
+
+                    if (isNumA && isNumB) {
+                        comparison = numA - numB;
+                    } else {
+                        comparison = String(valA).localeCompare(String(valB), 'ko', { numeric: true });
+                    }
                 }
 
                 return currentSortOrder === 'asc' ? comparison : -comparison;
@@ -1058,7 +1092,7 @@
                 return matchesBiz && matchesOwner && matchesModel && matchesKeyword;
             });
 
-            // 💡 클릭 정렬 상태 적용
+            // 선택된 정렬 적용
             filteredRows = sortRowsData(filteredRows);
 
             renderTableRows(filteredRows);
@@ -1070,7 +1104,6 @@
             document.getElementById('searchFieldSelect').value = '';
             document.getElementById('searchInput').value = '';
             
-            // 💡 정렬 상태 초기화
             currentSortColumn = null;
             currentSortOrder = 'asc';
             renderTableHeader();
