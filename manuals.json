@@ -168,6 +168,11 @@
       "path": "AC/Airbus/A340(-500, -600).pdf"
     },
     {
+      "title": "A350(-and)",
+      "filename": "A350(-and).pdf",
+      "path": "AC/Airbus/A350(-and).pdf"
+    },
+    {
       "title": "A380",
       "filename": "A380.pdf",
       "path": "AC/Airbus/A380.pdf"
