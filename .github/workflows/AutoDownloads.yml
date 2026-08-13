@@ -51,7 +51,7 @@ jobs:
       run: |
         python generate_manuals.py
 
-    # 5. 변경된 파일 전체(data.json, AC/ 폴더 하위 파일들, manuals.json) Commit & Push
+    # 5. 변경된 파일 전체 Commit & Push
     - name: Commit and Push Changes
       run: |
         git config --global user.name "GitHub Actions Bot"
