@@ -233,12 +233,18 @@
         .status-bar {
             background-color: #ebf8ff;
             border-left: 4px solid #3182ce;
-            padding: 12px 15px;
+            padding: 8px 15px;
             margin-bottom: 15px;
             font-size: 14px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
+            gap: 12px;
+        }
+        .status-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         /* --- 테이블 및 선택적 정렬 헤더 스타일 --- */
@@ -542,6 +548,7 @@
 
     <!-- 🔍 검색 및 카테고리 필터 패널 -->
     <div class="filter-panel">
+        <!-- 1. 사업구분 -->
         <div class="filter-group">
             <label for="bizSelect">📋 사업구분:</label>
             <select id="bizSelect" class="select-filter" onchange="onBizChange()">
@@ -549,6 +556,7 @@
             </select>
         </div>
 
+        <!-- 2. 항공사/소유자 -->
         <div class="filter-group">
             <label for="ownerSelect">🏢 항공사/소유자:</label>
             <select id="ownerSelect" class="select-filter" onchange="applyFilters()">
@@ -556,7 +564,7 @@
             </select>
         </div>
 
-        <!-- 기종 다중 선택 직사각형 멀티 패널 -->
+        <!-- 3. 기종/형식 (멀티 선택) -->
         <div class="filter-group" id="modelMultiSelectGroup">
             <label>✈️ 기종/형식:</label>
             <div class="multi-select-btn" onclick="toggleModelPanel(event)">
@@ -586,6 +594,15 @@
             </div>
         </div>
 
+        <!-- 4. 공항 (정치장 정규화 드롭다운) -->
+        <div class="filter-group">
+            <label for="airportSelect">📍 공항:</label>
+            <select id="airportSelect" class="select-filter" onchange="applyFilters()">
+                <option value="">전체 공항</option>
+            </select>
+        </div>
+
+        <!-- 5. 검색항목 및 검색어 -->
         <div class="filter-group">
             <label for="searchFieldSelect">🔍 검색항목:</label>
             <select id="searchFieldSelect" class="select-filter" onchange="applyFilters()">
@@ -595,13 +612,16 @@
         </div>
 
         <button class="btn-reset" onclick="resetFilters()">🔄 필터 초기화</button>
-        <button class="btn-excel-export" onclick="exportToExcel()">📊 엑셀 다운로드</button>
-        <button class="btn-manual-open" onclick="openManualModal()">📁 항공기 제원 다운로드</button>
 
         <div id="lastUpdated" class="last-updated"></div>
     </div>
     
+    <!-- 💡 하단 상태 바 (다운로드 버튼 및 검색 건수표시) -->
     <div class="status-bar">
+        <div class="status-bar-actions">
+            <button class="btn-excel-export" onclick="exportToExcel()">📊 엑셀 다운로드</button>
+            <button class="btn-manual-open" onclick="openManualModal()">📁 항공기 제원 다운로드</button>
+        </div>
         <div id="dataCount">데이터 불러오는 중...</div>
     </div>
 
@@ -700,9 +720,10 @@
 
         const EXCLUDED_COLUMNS = ['감항증명유효기간'];
         const FILTER_EXCLUDED_COLUMNS = ['사업구분', '항공사', '소유자', '감항증명유효기간'];
-
-        // 💡 [선택적 정렬 적용 항목] 요청하신 수치 및 날짜 관련 핵심 5개 항목만 정렬 허용
         const SORTABLE_COLUMNS = ['제작일자', '기령(년)', '기령', '등록일자', '좌석', '최대이륙중량'];
+
+        // 대한민국 국제공항 대표 키워드 리스트
+        const INT_AIRPORT_KEYS = ['김포', '인천', '제주', '김해', '대구', '청주', '무안', '양양'];
 
         let rawGlobalData = null;
         let activeHeaders = [];
@@ -747,6 +768,7 @@
                 populateBizOptions(rawGlobalData.rows);
                 populateSearchFieldOptions(activeRawHeaders);
                 populateModelOptions(rawGlobalData.rows);
+                populateAirportOptions(rawGlobalData.rows);
                 updateOwnerOptions();
                 renderTableRows(rawGlobalData.rows);
 
@@ -757,7 +779,6 @@
             }
         }
 
-        // 💡 [수정] 지정된 5개 칼럼에만 정렬 스타일과 이벤트를 할당하는 함수
         function renderTableHeader() {
             const headerRow = document.getElementById('tableHeaderRow');
             headerRow.innerHTML = '';
@@ -767,7 +788,6 @@
                 const th = document.createElement('th');
                 th.style.width = columnWidths[header] || '110px';
 
-                // 지정된 5개 칼럼 항목에만 정렬 기능 적용
                 const isSortableColumn = SORTABLE_COLUMNS.includes(header) || SORTABLE_COLUMNS.includes(rawCol);
 
                 if (isSortableColumn) {
@@ -800,7 +820,6 @@
             applyFilters();
         }
 
-        // 💡 [수정] 날짜 문자열(YY.MM.DD / YYYY.MM.DD) 정밀 파싱 함수
         function parseCustomDate(valStr) {
             if (!valStr || valStr === '-' || valStr === 'nan') return 0;
             
@@ -812,7 +831,6 @@
 
                 if (isNaN(y) || isNaN(m) || isNaN(d)) return 0;
 
-                // 2자리 연도 표기 (예: 98 -> 1998, 05 -> 2005)
                 if (y < 100) {
                     y = y > 30 ? 1900 + y : 2000 + y;
                 }
@@ -821,7 +839,6 @@
             return 0;
         }
 
-        // 💡 [수정] 날짜 및 수치 데이터 스마트 정렬 비교 로직
         function sortRowsData(rows) {
             if (!currentSortColumn) return rows;
 
@@ -837,12 +854,10 @@
                 let comparison = 0;
 
                 if (isDateField) {
-                    // 1. 날짜 타입인 경우 연/월/일 파싱 비교
                     let timeA = parseCustomDate(valA);
                     let timeB = parseCustomDate(valB);
                     comparison = timeA - timeB;
                 } else {
-                    // 2. 수치 데이터인 경우 (기령, 좌석, 최대이륙중량 등)
                     let numA = parseFloat(String(valA).replace(/,/g, ''));
                     let numB = parseFloat(String(valB).replace(/,/g, ''));
 
@@ -879,6 +894,41 @@
 
             renderModelCheckboxes();
             updateModelBtnLabel();
+        }
+
+        /* 💡 정치장 중 '공항'으로 끝나는 값 정규화 및 드롭다운 생성 */
+        function populateAirportOptions(rows) {
+            const airportSelect = document.getElementById('airportSelect');
+            const airportSet = new Set();
+
+            rows.forEach(row => {
+                const rawLoc = (row['정치장'] || '').trim();
+                if (rawLoc.endsWith('공항')) {
+                    // 국제공항 키워드가 포함되면 'OO국제공항'으로 정규화
+                    const matchedIntl = INT_AIRPORT_KEYS.find(key => rawLoc.includes(key));
+                    if (matchedIntl) {
+                        airportSet.add(`${matchedIntl}국제공항`);
+                    } else {
+                        // 일반 공항은 공항명 단어 추출 (예: 울산공항)
+                        const match = rawLoc.match(/([가-힣A-Za-z0-9]+공항)$/);
+                        if (match) {
+                            airportSet.add(match[1]);
+                        } else {
+                            airportSet.add(rawLoc);
+                        }
+                    }
+                }
+            });
+
+            airportSelect.innerHTML = '<option value="">전체 공항</option>';
+            
+            // 가나다 순 정렬하여 드롭다운 옵션 추가
+            Array.from(airportSet).sort((a, b) => a.localeCompare(b, 'ko')).forEach(airportName => {
+                const opt = document.createElement('option');
+                opt.value = airportName;
+                opt.innerText = airportName;
+                airportSelect.appendChild(opt);
+            });
         }
 
         function switchModelMfrTab(mfr) {
@@ -1070,6 +1120,7 @@
             if (!rawGlobalData) return;
             const selectedBiz = document.getElementById('bizSelect').value;
             const selectedOwner = document.getElementById('ownerSelect').value;
+            const selectedAirport = document.getElementById('airportSelect').value;
             const targetField = document.getElementById('searchFieldSelect').value;
             const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
 
@@ -1080,8 +1131,21 @@
                 const rowModel = (row['형식'] || row['기종'] || '').trim();
                 const matchesModel = selectedModels.has(rowModel);
 
-                let matchesKeyword = true;
+                /* 💡 공항 필터링 (양방향 매칭) */
+                let matchesAirport = true;
+                if (selectedAirport) {
+                    const rawLoc = (row['정치장'] || '').trim();
+                    // 선택된 공항이 국제공항인 경우 (예: 김포국제공항) -> '김포' 키워드와 '공항' 매칭
+                    const intlKey = INT_AIRPORT_KEYS.find(k => selectedAirport.startsWith(k));
+                    if (intlKey) {
+                        matchesAirport = rawLoc.includes(intlKey) && rawLoc.endsWith('공항');
+                    } else {
+                        // 일반 공항인 경우 (예: 울산공항)
+                        matchesAirport = rawLoc.endsWith('공항') && rawLoc.includes(selectedAirport);
+                    }
+                }
 
+                let matchesKeyword = true;
                 if (keyword) {
                     if (targetField) {
                         matchesKeyword = String(row[targetField] || '').toLowerCase().includes(keyword);
@@ -1089,18 +1153,17 @@
                         matchesKeyword = Object.values(row).some(val => String(val).toLowerCase().includes(keyword));
                     }
                 }
-                return matchesBiz && matchesOwner && matchesModel && matchesKeyword;
+                return matchesBiz && matchesOwner && matchesModel && matchesAirport && matchesKeyword;
             });
 
-            // 선택된 정렬 적용
             filteredRows = sortRowsData(filteredRows);
-
             renderTableRows(filteredRows);
         }
 
         function resetFilters() {
             document.getElementById('bizSelect').value = '';
             document.getElementById('ownerSelect').value = '';
+            document.getElementById('airportSelect').value = '';
             document.getElementById('searchFieldSelect').value = '';
             document.getElementById('searchInput').value = '';
             
@@ -1148,7 +1211,6 @@
             XLSX.writeFile(workbook, `대한민국_항공기_등록현황_${dateStr}.xlsx`);
         }
 
-        // 1. 기종 상세제원 팝업 관련 함수
         async function openModal(rawModelName) {
             let cleanName = rawModelName.toUpperCase().replace(/[\s-]/g, '');
             let sortedKeys = Object.keys(aircraftSpecs).sort((a, b) => b.length - a.length);
@@ -1178,7 +1240,6 @@
 
                 modalBody.innerHTML = `
                     <div class="spec-container">
-                        <!-- 좌측: 텍스트 제원표 -->
                         <div class="spec-left">
                             <div class="spec-item"><span class="spec-label">제조사</span><span class="spec-value">${spec.mfr}</span></div>
                             <div class="spec-item"><span class="spec-label">전장 (길이)</span><span class="spec-value">${spec.length}</span></div>
@@ -1189,7 +1250,6 @@
                             <div class="spec-item"><span class="spec-label">최대이륙중량(MTOW)</span><span class="spec-value">${spec.mtow}</span></div>
                         </div>
                         
-                        <!-- 우측: 항공기 도면 이미지 및 슬라이더 영역 -->
                         <div class="spec-right">
                             <img id="specImg" 
                                  src="${currentImages[0]}" 
@@ -1218,7 +1278,6 @@
             modal.style.display = 'flex';
         }
 
-        // 돋보기(Ctrl + 마우스 휠: 확대/축소 & 마우스 휠: 범위 내 위아래 이동) 로직
         function openLightbox(imgSrc) {
             const lightbox = document.getElementById('lightboxOverlay');
             const lightboxImg = document.getElementById('lightboxImg');
