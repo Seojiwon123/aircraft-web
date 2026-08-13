@@ -1,6 +1,7 @@
 import os
 import time
 import json
+import re
 import pandas as pd
 from playwright.sync_api import sync_playwright
 
@@ -48,8 +49,33 @@ def download_atis_excel():
         finally:
             browser.close()
 
+def format_mtow(val):
+    """최대이륙중량 수치를 '11,874 kg' 포맷으로 정제하는 함수"""
+    if pd.isna(val):
+        return '-'
+    
+    val_str = str(val).strip()
+    if val_str in ['', '-', 'nan', 'None']:
+        return '-'
+    
+    # 소수점 이하(.0) 정제
+    if val_str.endswith('.0'):
+        val_str = val_str[:-2]
+        
+    # 숫자(정수) 부분만 추출
+    clean_num_str = re.sub(r'[^\d]', '', val_str)
+    
+    if clean_num_str:
+        try:
+            num = int(clean_num_str)
+            return f"{num:,} kg"
+        except ValueError:
+            return val_str
+            
+    return '-'
+
 def process_atis_excel(excel_path):
-    """2단계: 다운로드받은 엑셀을 정렬(항공사 가나다순 -> 형식 ABC순) 후 data.json으로 변환"""
+    """2단계: 다운로드받은 엑셀을 정렬 및 최대이륙중량 포맷팅 후 data.json으로 변환"""
     print("=" * 60)
     print("⚙️ [2/2] 엑셀 데이터 파싱, 정렬 및 data.json 변환 시작")
     print("=" * 60)
@@ -62,7 +88,7 @@ def process_atis_excel(excel_path):
         # ATIS 엑셀 원본은 2번째 줄(header=1)이 데이터 제목
         df = pd.read_excel(excel_path, header=1)
         
-        # 💡 [핵심 추가] 항공사(가나다순) -> 형식/기종(ABC순) 다중 정렬 적용
+        # 항공사(가나다순) -> 형식/기종(ABC순) 다중 정렬 적용
         sort_columns = []
         if '항공사' in df.columns:
             sort_columns.append('항공사')
@@ -72,7 +98,6 @@ def process_atis_excel(excel_path):
             sort_columns.append('기종')
 
         if sort_columns:
-            # fillna('')를 활용해 빈 값으로 인한 정렬 오류 방지 후 오름차순 정렬
             df = df.sort_values(by=sort_columns, ascending=True, na_position='last')
             print(f"📌 데이터 정렬 완료 (정렬 기준: {' -> '.join(sort_columns)})")
 
@@ -90,14 +115,21 @@ def process_atis_excel(excel_path):
             
             for col in raw_headers:
                 val = row[col]
-                if pd.isna(val) or str(val).strip() in ['', '-', 'nan']:
-                    row_data[col] = '-'
+                
+                # 💡 [핵심] 최대이륙중량 표시 형식 정제 적용 ('11,874 kg')
+                if col == '최대이륙중량':
+                    row_data[col] = format_mtow(val)
+                    if row_data[col] != '-':
+                        has_data = True
                 else:
-                    val_str = str(val).strip()
-                    if val_str.endswith('.0'):
-                        val_str = val_str[:-2]
-                    row_data[col] = val_str
-                    has_data = True
+                    if pd.isna(val) or str(val).strip() in ['', '-', 'nan']:
+                        row_data[col] = '-'
+                    else:
+                        val_str = str(val).strip()
+                        if val_str.endswith('.0'):
+                            val_str = val_str[:-2]
+                        row_data[col] = val_str
+                        has_data = True
 
             if has_data:
                 rows.append(row_data)
