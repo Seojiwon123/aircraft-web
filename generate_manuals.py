@@ -1,6 +1,11 @@
 import os
 import json
 
+# 💡 GitHub 계정 및 저장소 정보
+GITHUB_USER = "Seojiwon123"      # 본인 GitHub ID
+REPO_NAME = "aircraft-web"     # 실제 저장소 이름으로 변경 (예: aircraft-status)
+BRANCH_NAME = "main"             # 기본 브랜치명
+
 def generate_manuals_list():
     ac_dir = "AC"
     json_output_path = "manuals.json"
@@ -40,17 +45,20 @@ def generate_manuals_list():
         # 화면에는 확장자(.pdf)만 뗀 실제 파일명 그대로 표시
         display_title = os.path.splitext(filename)[0]
 
+        # 💡 핵심: GitHub Pages 텍스트 포인터 대신 LFS 원본 직접 다운로드 URL 생성
+        raw_download_url = f"https://media.githubusercontent.com/media/{GITHUB_USER}/{REPO_NAME}/{BRANCH_NAME}/{rel_path}"
+
         manuals_data[category].append({
             "title": display_title,
             "filename": filename,
-            "path": rel_path
+            "path": raw_download_url
         })
 
     # manuals.json으로 저장
     with open(json_output_path, "w", encoding="utf-8") as f:
         json.dump(manuals_data, f, ensure_ascii=False, indent=2)
 
-    print(f"🎉 성공: 총 {len(pdf_files)}개의 PDF 파일 목록을 '{json_output_path}'로 자동 생성했습니다!")
+    print(f"🎉 성공: 총 {len(pdf_files)}개의 PDF 파일 목록을 LFS 원본 링크 형태의 '{json_output_path}'로 자동 생성했습니다!")
 
 if __name__ == "__main__":
     generate_manuals_list()
