@@ -6,7 +6,6 @@ from urllib.parse import urljoin, unquote
 from playwright.sync_api import sync_playwright
 
 AIRBUS_URL = "https://www.aircraft.airbus.com/en/customer-care/fleet-wide-care/airport-operations-and-aircraft-characteristics/aircraft-characteristics"
-MAX_FILE_SIZE = 90 * 1024 * 1024  # 90MB 제한 (깃허브 용량 초과 방지)
 
 def clean_airbus_filename(raw_filename, fallback_url=""):
     """
@@ -132,13 +131,6 @@ def download_airbus_manuals():
         try:
             with requests.get(pdf_url, headers=headers, stream=True, timeout=30) as res:
                 if res.status_code != 200:
-                    continue
-
-                # 용량 체킹 (90MB 제한)
-                content_length = res.headers.get('Content-Length')
-                if content_length and int(content_length) > MAX_FILE_SIZE:
-                    size_mb = round(int(content_length) / (1024 * 1024), 2)
-                    print(f"[{idx}] ⚠️ 용량 초과 스킵 ({size_mb} MB > 90 MB): {pdf_url.split('/')[-1]}")
                     continue
 
                 # 서버 파일명 수신
