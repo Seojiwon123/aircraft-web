@@ -871,5 +871,254 @@
         }
       }
     }
+  },
+  "b777_200": {
+    "label": "B777-200",
+    "engines": {
+      "baseline": {
+        "label": "Baseline Airplane",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b777_200_baseline_std.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 625.0,
+              "left": 173.0,
+              "right": 1192.0,
+              "weightMin": 340,
+              "weightMax": 580,
+              "lengthMin": 3,
+              "lengthMax": 15
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b777_200_baseline_std15.png",
+            "axis": {
+              "top": 7.5,
+              "bottom": 615.0,
+              "left": 173.0,
+              "right": 1192.0,
+              "weightMin": 340,
+              "weightMax": 580,
+              "lengthMin": 3,
+              "lengthMax": 15
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "high_gross_weight": {
+        "label": "High Gross Weight Airplane",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b777_200_hgw_std.png",
+            "axis": {
+              "top": 7.5,
+              "bottom": 616.0,
+              "left": 173.0,
+              "right": 1192.0,
+              "weightMin": 440,
+              "weightMax": 680,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b777_200_hgw_std15.png",
+            "axis": {
+              "top": 7.5,
+              "bottom": 622.0,
+              "left": 169.0,
+              "right": 1192.0,
+              "weightMin": 440,
+              "weightMax": 680,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b777_200er": {
+    "label": "B777-200ER",
+    "engines": {
+      "baseline": {
+        "label": "Baseline Airplane",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b777_200_baseline_std.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 625.0,
+              "left": 173.0,
+              "right": 1192.0,
+              "weightMin": 340,
+              "weightMax": 580,
+              "lengthMin": 3,
+              "lengthMax": 15
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b777_200_baseline_std15.png",
+            "axis": {
+              "top": 7.5,
+              "bottom": 615.0,
+              "left": 173.0,
+              "right": 1192.0,
+              "weightMin": 340,
+              "weightMax": 580,
+              "lengthMin": 3,
+              "lengthMax": 15
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "high_gross_weight": {
+        "label": "High Gross Weight Airplane",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b777_200_hgw_std.png",
+            "axis": {
+              "top": 7.5,
+              "bottom": 616.0,
+              "left": 173.0,
+              "right": 1192.0,
+              "weightMin": 440,
+              "weightMax": 680,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b777_200_hgw_std15.png",
+            "axis": {
+              "top": 7.5,
+              "bottom": 622.0,
+              "left": 169.0,
+              "right": 1192.0,
+              "weightMin": 440,
+              "weightMax": 680,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b777_300": {
+    "label": "B777-300",
+    "engines": {
+      "90k": {
+        "label": "Typical 90K Engine",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b777_300_90k_std.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 621.0,
+              "left": 171.0,
+              "right": 1192.0,
+              "weightMin": 440,
+              "weightMax": 680,
+              "lengthMin": 5,
+              "lengthMax": 17
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b777_300_90k_std15.png",
+            "axis": {
+              "top": 7.5,
+              "bottom": 619.0,
+              "left": 179.0,
+              "right": 1192.0,
+              "weightMin": 440,
+              "weightMax": 680,
+              "lengthMin": 5,
+              "lengthMax": 17
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "98k": {
+        "label": "Typical 98K Engine",
+        "conditions": {
+          "std": {
+            "label": "Standard Day [WARNING: source PDF page shows duplicate of +27F chart - see note]",
+            "image": "RunwayCharts/b777_300_98k_std.png",
+            "axis": {
+              "top": 7.5,
+              "bottom": 623.0,
+              "left": 168.0,
+              "right": 1192.0,
+              "weightMin": 440,
+              "weightMax": 680,
+              "lengthMin": 5,
+              "lengthMax": 17
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b777_300_98k_std15.png",
+            "axis": {
+              "top": 7.5,
+              "bottom": 623.0,
+              "left": 168.0,
+              "right": 1192.0,
+              "weightMin": 440,
+              "weightMax": 680,
+              "lengthMin": 5,
+              "lengthMax": 17
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
   }
 }
