@@ -723,11 +723,25 @@
 
             <div style="margin-bottom:14px;">
                 <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">✈️ 기종 선택</label>
-                <select id="runwayModelSelect" class="select-filter" onchange="onRunwayModelChange()">
+                <select id="runwayAircraftSelect" class="select-filter" onchange="onRunwayAircraftChange()">
                     <option value="">-- 불러오는 중... --</option>
                 </select>
-                <div id="runwayLoadStatus" style="font-size:12px; color:#718096; margin-top:6px;">
-                </div>
+                <div id="runwayLoadStatus" style="font-size:12px; color:#718096; margin-top:6px;"></div>
+            </div>
+            
+            <div style="margin-bottom:14px;">
+                <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">🔧 엔진 선택</label>
+                <select id="runwayEngineSelect" class="select-filter" onchange="onRunwayEngineChange()" disabled>
+                    <option value="">-- 기종을 먼저 선택하세요 --</option>
+                </select>
+            </div>
+            
+            <div style="margin-bottom:14px;">
+                <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">🌡️ 온도조건 선택</label>
+                <select id="runwayConditionSelect" class="select-filter" onchange="onRunwayConditionChange()" disabled>
+                    <option value="">-- 엔진을 먼저 선택하세요 --</option>
+                </select>
+            </div>
             </div>
 
             <div id="runwayNoSelection" class="runway-placeholder">
@@ -1582,24 +1596,22 @@
 
         loadAircraftData();
         async function loadRunwayChartsList() {
-            const select = document.getElementById('runwayModelSelect');
+            const select = document.getElementById('runwayAircraftSelect');
             const status = document.getElementById('runwayLoadStatus');
             try {
                 const response = await fetch('runway_charts.json');
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 runwayChartsData = await response.json();
-
+                
                 select.innerHTML = '<option value="">-- 기종을 선택하세요 --</option>';
                 Object.keys(runwayChartsData).forEach(key => {
-                    const chart = runwayChartsData[key];
                     const opt = document.createElement('option');
                     opt.value = key;
-                    opt.innerText = chart.label;
+                    opt.innerText = runwayChartsData[key].label;
                     select.appendChild(opt);
                 });
-                
                 status.style.color = '#276749';
-                status.innerText = `✔ ${Object.keys(runwayChartsData).length}개 그래프 불러옴`;
+                status.innerText = `✔ ${Object.keys(runwayChartsData).length}개 기종 불러옴`;
             } catch (err) {
                 select.innerHTML = '<option value="">불러오기 실패</option>';
                 status.style.color = '#e53e3e';
@@ -1614,15 +1626,71 @@
         let runwayBaseM = null;
         let runwayIsDragging = false;
 
-        function onRunwayModelChange() {
-            const key = document.getElementById('runwayModelSelect').value;
+        let runwaySelectedAircraft = null;
+        let runwaySelectedEngine = null;
+        
+        function onRunwayAircraftChange() {
+            const key = document.getElementById('runwayAircraftSelect').value;
+            runwaySelectedAircraft = key ? runwayChartsData[key] : null;
+            runwaySelectedEngine = null;
+            currentChart = null;
             resetRunwayCanvas();
-            if (!key || !runwayChartsData) {
+            document.getElementById('runwayChartArea').style.display = 'none';
+            document.getElementById('runwayNoSelection').style.display = 'block';
+            
+            const engineSelect = document.getElementById('runwayEngineSelect');
+            const conditionSelect = document.getElementById('runwayConditionSelect');
+            conditionSelect.innerHTML = '<option value="">-- 엔진을 먼저 선택하세요 --</option>';
+            conditionSelect.disabled = true;
+            
+            if (!runwaySelectedAircraft) {
+                engineSelect.innerHTML = '<option value="">-- 기종을 먼저 선택하세요 --</option>';
+                engineSelect.disabled = true;
+                return;
+            }
+            engineSelect.innerHTML = '<option value="">-- 엔진을 선택하세요 --</option>';
+            Object.keys(runwaySelectedAircraft.engines).forEach(key => {
+                const opt = document.createElement('option');
+                opt.value = key;
+                opt.innerText = runwaySelectedAircraft.engines[key].label;
+                engineSelect.appendChild(opt);
+            });
+            engineSelect.disabled = false;
+        }
+        
+        function onRunwayEngineChange() {
+            const key = document.getElementById('runwayEngineSelect').value;
+            runwaySelectedEngine = (key && runwaySelectedAircraft) ? runwaySelectedAircraft.engines[key] : null;
+            currentChart = null;
+            resetRunwayCanvas();
+            document.getElementById('runwayChartArea').style.display = 'none';
+            document.getElementById('runwayNoSelection').style.display = 'block';   
+            
+            const conditionSelect = document.getElementById('runwayConditionSelect');
+            if (!runwaySelectedEngine) {
+                conditionSelect.innerHTML = '<option value="">-- 엔진을 먼저 선택하세요 --</option>';
+                conditionSelect.disabled = true;
+                return;
+            }
+            conditionSelect.innerHTML = '<option value="">-- 온도조건을 선택하세요 --</option>';
+            Object.keys(runwaySelectedEngine.conditions).forEach(key => {
+                const opt = document.createElement('option');
+                opt.value = key;
+                opt.innerText = runwaySelectedEngine.conditions[key].label;
+                conditionSelect.appendChild(opt);
+            });
+            conditionSelect.disabled = false;
+        }
+        
+        function onRunwayConditionChange() {
+            const key = document.getElementById('runwayConditionSelect').value;
+            resetRunwayCanvas();
+            if (!key || !runwaySelectedEngine) {
                 document.getElementById('runwayChartArea').style.display = 'none';
                 document.getElementById('runwayNoSelection').style.display = 'block';
                 return;
             }
-            currentChart = runwayChartsData[key];
+            currentChart = runwaySelectedEngine.conditions[key];
             document.getElementById('runwayNoSelection').style.display = 'none';
             document.getElementById('runwayChartArea').style.display = 'block';
             
@@ -1637,6 +1705,7 @@
             };
             runwayImg.src = currentChart.image;
         }
+        
         function redrawRunwayCanvas() {
             const canvas = document.getElementById('runwayCanvas');
             const ctx = canvas.getContext('2d');
