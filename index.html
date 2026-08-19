@@ -730,15 +730,15 @@
 
                 <div style="display:flex; gap:12px; align-items:flex-end; margin-bottom:10px; flex-wrap:wrap;">
                     <div>
-                        <label style="font-size:12px; font-weight:bold; color:#4a5568; display:block; margin-bottom:5px;">이륙중량 (1,000 lb)</label>
-                        <input type="number" id="runwayWeightInput" class="select-filter" style="width:140px;">
+                        <label style="font-size:12px; font-weight:bold; color:#4a5568; display:block; margin-bottom:5px;">이륙중량 (lb)</label>
+                        <input type="number" id="runwayWeightInput" class="select-filter" style="width:160px;">
                     </div>
                     <button class="btn-manual-open" onclick="showRunwayGuideLine()">가이드선 표시</button>
                     <button class="btn-reset" onclick="resetRunwayCanvas()">초기화</button>
                 </div>
 
                 <div id="runwayGuideHint" class="runway-hint">
-                    ① 무게 입력 후 [가이드선 표시] → ② 세로선이 원하는 곡선과 만나는 지점 근처를 클릭 → ③ 자동 스냅
+                    ① 무게 입력 후 [가이드선 표시] → ② 그래프 위에서 마우스를 누른 채 위아래로 움직여 원하는 곡선에 맞추기
                 </div>
 
                 <div id="runwayReadout" class="readout-grid" style="display:none;">
@@ -1600,11 +1600,10 @@
         let currentChart = null;
         let runwayImg = null;
         let runwayScale = 1;
-        let runwayOffCanvas = document.createElement('canvas');
-        let runwayOffCtx = runwayOffCanvas.getContext('2d', { willReadFrequently: true });
         let runwayGuideCol = null;
-        let runwaySnapped = null;
+        let runwaySnapped = null;   // { row } 만 저장 (가로선 위치)
         let runwayBaseM = null;
+        let runwayIsDragging = false;
 
         function onRunwayModelChange() {
             const key = document.getElementById('runwayModelSelect').value;
@@ -1617,13 +1616,9 @@
             currentChart = runwayChartsData[key];
             document.getElementById('runwayNoSelection').style.display = 'none';
             document.getElementById('runwayChartArea').style.display = 'block';
-
+            
             runwayImg = new Image();
             runwayImg.onload = () => {
-                runwayOffCanvas.width = runwayImg.naturalWidth;
-                runwayOffCanvas.height = runwayImg.naturalHeight;
-                runwayOffCtx.drawImage(runwayImg, 0, 0);
-
                 const canvas = document.getElementById('runwayCanvas');
                 const maxDisplayW = Math.min(720, runwayImg.naturalWidth);
                 runwayScale = maxDisplayW / runwayImg.naturalWidth;
@@ -1639,7 +1634,7 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(runwayImg, 0, 0, canvas.width, canvas.height);
             const ax = currentChart.axis;
-
+            
             if (runwayGuideCol !== null) {
                 ctx.strokeStyle = 'rgba(220,40,40,0.85)';
                 ctx.lineWidth = 1.5;
@@ -1655,10 +1650,6 @@
                 ctx.moveTo(ax.left * runwayScale, runwaySnapped.row * runwayScale);
                 ctx.lineTo(ax.right * runwayScale, runwaySnapped.row * runwayScale);
                 ctx.stroke();
-                ctx.fillStyle = 'rgba(11,140,80,0.9)';
-                ctx.beginPath();
-                ctx.arc(runwaySnapped.col * runwayScale, runwaySnapped.row * runwayScale, 2.5, 0, Math.PI * 2);
-                ctx.fill();
             }
         }
 
@@ -1682,8 +1673,9 @@
         
         function showRunwayGuideLine() {
             if (!currentChart) return;
-            const w = parseFloat(document.getElementById('runwayWeightInput').value);
-            if (isNaN(w)) { alert('무게를 입력해주세요.'); return; }
+            const wFull = parseFloat(document.getElementById('runwayWeightInput').value);
+            if (isNaN(wFull)) { alert('무게를 입력해주세요.'); return; }
+            const w = wFull / 1000; // 그래프 축 내부 단위(1,000 lb)로 변환
             runwayGuideCol = Math.round(runwayWeightToCol(w));
             runwaySnapped = null;
             document.getElementById('runwayReadout').style.display = 'none';
@@ -1705,44 +1697,45 @@
             if (currentChart) redrawRunwayCanvas();
         }
         
-        document.getElementById('runwayCanvas').addEventListener('click', function(e) {
+        const runwayCanvasEl = document.getElementById('runwayCanvas');
+        
+        runwayCanvasEl.addEventListener('mousedown', function(e) {
             if (runwayGuideCol === null || !currentChart) return;
-            const rect = this.getBoundingClientRect();
-            const clickYdisp = e.clientY - rect.top;
-            const clickRowNat = clickYdisp / runwayScale;
-            
+            runwayIsDragging = true;
+            updateRunwayDrag(e, this);
+        });
+        
+        window.addEventListener('mousemove', function(e) {
+            if (!runwayIsDragging) return;
+            updateRunwayDrag(e, runwayCanvasEl);
+        });
+        
+        window.addEventListener('mouseup', function() {
+            runwayIsDragging = false;
+        });
+        
+        function updateRunwayDrag(e, canvasEl) {
             const ax = currentChart.axis;
-            const colWindow = 2, rowWindow = 45;
-            let best = null, bestDist = Infinity;
-
-            for (let c = runwayGuideCol - colWindow; c <= runwayGuideCol + colWindow; c++) {
-                for (let r = Math.max(Math.round(ax.top)+1, Math.round(clickRowNat - rowWindow));
-                     r <= Math.min(Math.round(ax.bottom)-1, Math.round(clickRowNat + rowWindow)); r++) {
-                    const px = runwayOffCtx.getImageData(c, r, 1, 1).data;
-                    if (runwayIsCurvePixel(px)) {
-                        const dist = Math.abs(r - clickRowNat) + Math.abs(c - runwayGuideCol) * 0.5;
-                        if (dist < bestDist) { bestDist = dist; best = { col: c, row: r }; }
-                    }
-                }
-            }
-            if (!best) { alert('근처에서 곡선을 찾지 못했습니다. 곡선에 더 가깝게 클릭해보세요.'); return; }
-            runwaySnapped = best;
+            const rect = canvasEl.getBoundingClientRect();
+            let yDisp = e.clientY - rect.top;
+            yDisp = Math.max(ax.top * runwayScale, Math.min(ax.bottom * runwayScale, yDisp));
+            const rowNat = yDisp / runwayScale;
+            runwaySnapped = { row: rowNat };
             redrawRunwayCanvas();
-
-            const lenKft = runwayRowToLength(best.row);
+            
+            const lenKft = runwayRowToLength(rowNat);
             const wRead = runwayColToWeight(runwayGuideCol);
             const unitMul = (currentChart.lengthUnit === 'ft') ? 1000 : 1;
             const ft = lenKft * unitMul;
             const m = ft * 0.3048;
             runwayBaseM = m;
             
-            document.getElementById('runwayReadWeight').textContent = wRead.toFixed(1) + ' k lb';
+            document.getElementById('runwayReadWeight').textContent = Math.round(wRead * 1000).toLocaleString() + ' lb';
             document.getElementById('runwayReadFt').textContent = ft.toFixed(0) + ' ft';
             document.getElementById('runwayReadM').textContent = m.toFixed(1) + ' m';
             document.getElementById('runwayReadout').style.display = 'grid';
             document.getElementById('runwayCorrPanel').style.display = 'block';
-            document.getElementById('runwayFinalBox').style.display = 'none';
-        });
+        }
         
         function calcRunwayFinal() {
             if (runwayBaseM === null) return;
