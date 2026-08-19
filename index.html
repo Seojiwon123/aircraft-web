@@ -742,7 +742,7 @@
                 </div>
 
                 <div id="runwayReadout" class="readout-grid" style="display:none;">
-                    <div class="readout-card"><div class="k">읽은 무게</div><div id="runwayReadWeight" class="v">—</div></div>
+                    <div class="readout-card"><div class="k">이륙중량</div><div id="runwayReadWeight" class="v">—</div></div>
                     <div class="readout-card"><div class="k">STD 기본길이 (ft)</div><div id="runwayReadFt" class="v">—</div></div>
                     <div class="readout-card"><div class="k">STD 기본길이 (m)</div><div id="runwayReadM" class="v">—</div></div>
                 </div>
@@ -1724,13 +1724,13 @@
             redrawRunwayCanvas();
             
             const lenKft = runwayRowToLength(rowNat);
-            const wRead = runwayColToWeight(runwayGuideCol);
+            const wInput = parseFloat(document.getElementById('runwayWeightInput').value);
             const unitMul = (currentChart.lengthUnit === 'ft') ? 1000 : 1;
             const ft = lenKft * unitMul;
             const m = ft * 0.3048;
             runwayBaseM = m;
             
-            document.getElementById('runwayReadWeight').textContent = Math.round(wRead * 1000).toLocaleString() + ' lb';
+            document.getElementById('runwayReadWeight').textContent = Math.round(wInput).toLocaleString() + ' lb';
             document.getElementById('runwayReadFt').textContent = ft.toFixed(0) + ' ft';
             document.getElementById('runwayReadM').textContent = m.toFixed(1) + ' m';
             document.getElementById('runwayReadout').style.display = 'grid';
