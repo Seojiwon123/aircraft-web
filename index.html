@@ -540,6 +540,29 @@
             white-space: nowrap;
         }
         .btn-download-file:hover { background-color: #2b6cb0; }
+        .btn-runway-open { 
+            background-color: #c05621;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .btn-runway-open:hover { background-color: #9c4221; }
+        .runway-modal-content { width: 720px !important; max-width: 95% !important; }
+        .runway-placeholder { 
+            border: 2px dashed #cbd5e0;
+            border-radius: 6px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #a0aec0;
+            font-size: 13px;
+            margin: 12px 0;
+        }
     </style>
 </head>
 <body>
@@ -621,6 +644,7 @@
         <div class="status-bar-actions">
             <button class="btn-excel-export" onclick="exportToExcel()">📊 엑셀 다운로드</button>
             <button class="btn-manual-open" onclick="openManualModal()">📁 항공기 제원 다운로드</button>
+            <button class="btn-runway-open" onclick="openRunwayModal()">🛫 활주로 길이 계산기</button>
         </div>
         <div id="dataCount">데이터 불러오는 중...</div>
     </div>
@@ -663,6 +687,12 @@
             </div>
 
             <button class="btn-close" onclick="closeModal('manualModal')">닫기</button>
+        </div>
+    </div>
+
+    <div id="runwayModal" class="modal-overlay">
+        <div class="modal-content runway-modal-content">
+            ...(이하 데모 파일과 동일)...
         </div>
     </div>
 
@@ -1411,6 +1441,9 @@
 
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
+        }
+        function openRunwayModal() {
+            document.getElementById('runwayModal').style.display = 'flex';
         }
 
         async function openManualModal() {
