@@ -120,5 +120,756 @@
         }
       }
     }
+  },
+  "b767_200": {
+    "label": "B767-200",
+    "engines": {
+      "jt9d_cf6_80a": {
+        "label": "JT9D-7R4D/7R4E, CF6-80A/80A2",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_200_p0.png",
+            "axis": {
+              "top": 31.89,
+              "bottom": 1368.24,
+              "left": 263.12,
+              "right": 1152.16,
+              "weightMin": 220,
+              "weightMax": 380,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std17": {
+            "label": "Standard Day +17F (+17C)",
+            "image": "RunwayCharts/b767_200_p1.png",
+            "axis": {
+              "top": 30.91,
+              "bottom": 1340.63,
+              "left": 254.99,
+              "right": 1153.64,
+              "weightMin": 220,
+              "weightMax": 380,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "cf6_80c2b2": {
+        "label": "CF6-80C2B2, PW4052",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_200_p2.png",
+            "axis": {
+              "top": 29.29,
+              "bottom": 1247.59,
+              "left": 241.61,
+              "right": 1156.07,
+              "weightMin": 220,
+              "weightMax": 400,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std17": {
+            "label": "Standard Day +17F (+17C)",
+            "image": "RunwayCharts/b767_200_p3.png",
+            "axis": {
+              "top": 29.27,
+              "bottom": 1241.71,
+              "left": 241.46,
+              "right": 1156.1,
+              "weightMin": 220,
+              "weightMax": 400,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b767_200er": {
+    "label": "B767-200ER",
+    "engines": {
+      "jt9d_cf6_80a": {
+        "label": "JT9D-7R4D/7R4E, CF6-80A/80A2",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_200_p0.png",
+            "axis": {
+              "top": 31.89,
+              "bottom": 1368.24,
+              "left": 263.12,
+              "right": 1152.16,
+              "weightMin": 220,
+              "weightMax": 380,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std17": {
+            "label": "Standard Day +17F (+17C)",
+            "image": "RunwayCharts/b767_200_p1.png",
+            "axis": {
+              "top": 30.91,
+              "bottom": 1340.63,
+              "left": 254.99,
+              "right": 1153.64,
+              "weightMin": 220,
+              "weightMax": 380,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "cf6_80c2b2": {
+        "label": "CF6-80C2B2, PW4052",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_200_p2.png",
+            "axis": {
+              "top": 29.29,
+              "bottom": 1247.59,
+              "left": 241.61,
+              "right": 1156.07,
+              "weightMin": 220,
+              "weightMax": 400,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std17": {
+            "label": "Standard Day +17F (+17C)",
+            "image": "RunwayCharts/b767_200_p3.png",
+            "axis": {
+              "top": 29.27,
+              "bottom": 1241.71,
+              "left": 241.46,
+              "right": 1156.1,
+              "weightMin": 220,
+              "weightMax": 400,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "cf6_80c2b4_pw4056_rb211524g": {
+        "label": "CF6-80C2B4, PW4056, RB211-524G",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_200er_p4.png",
+            "axis": {
+              "top": 29.27,
+              "bottom": 1239.51,
+              "left": 241.46,
+              "right": 1156.1,
+              "weightMin": 220,
+              "weightMax": 400,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std17": {
+            "label": "Standard Day +17F (+17C)",
+            "image": "RunwayCharts/b767_200er_p5.png",
+            "axis": {
+              "top": 29.83,
+              "bottom": 1208.95,
+              "left": 246.12,
+              "right": 1155.25,
+              "weightMin": 220,
+              "weightMax": 400,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b767_300er": {
+    "label": "B767-300ER",
+    "engines": {
+      "cf6_80c2b4_pw4056_rb211524g": {
+        "label": "CF6-80C2B4, PW4056, RB211-524G",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_300er_p0.png",
+            "axis": {
+              "top": 28.69,
+              "bottom": 1199.28,
+              "left": 236.7,
+              "right": 1156.96,
+              "weightMin": 240,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std17": {
+            "label": "Standard Day +17F (+17C)",
+            "image": "RunwayCharts/b767_300er_p1.png",
+            "axis": {
+              "top": 29.21,
+              "bottom": 1250.4,
+              "left": 241.02,
+              "right": 1156.18,
+              "weightMin": 240,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "cf6_80c2b64_pw4060_rb211524h": {
+        "label": "CF6-80C2B6/B64, PW4060, RB211-524H",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_300er_p2.png",
+            "axis": {
+              "top": 29.23,
+              "bottom": 1240.93,
+              "left": 241.17,
+              "right": 1156.15,
+              "weightMin": 240,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +15C",
+            "image": "RunwayCharts/b767_300er_p3.png",
+            "axis": {
+              "top": 29.76,
+              "bottom": 1243.15,
+              "left": 245.51,
+              "right": 1155.36,
+              "weightMin": 240,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "cf6_80c2b7f": {
+        "label": "CF6-80C2B7F",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_300er_p4.png",
+            "axis": {
+              "top": 28.25,
+              "bottom": 1135.02,
+              "left": 233.08,
+              "right": 1157.62,
+              "weightMin": 220,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +15C",
+            "image": "RunwayCharts/b767_300er_p5.png",
+            "axis": {
+              "top": 27.71,
+              "bottom": 1113.39,
+              "left": 228.64,
+              "right": 1158.43,
+              "weightMin": 220,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "pw4062": {
+        "label": "PW4062",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_300er_p6.png",
+            "axis": {
+              "top": 29.48,
+              "bottom": 1177.89,
+              "left": 243.24,
+              "right": 1155.77,
+              "weightMin": 220,
+              "weightMax": 400,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +15C",
+            "image": "RunwayCharts/b767_300er_p7.png",
+            "axis": {
+              "top": 27.73,
+              "bottom": 1114.73,
+              "left": 228.77,
+              "right": 1158.41,
+              "weightMin": 220,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b767_300f": {
+    "label": "B767-300 Freighter",
+    "engines": {
+      "cf6_80c2b4_pw4056_rb211524g": {
+        "label": "CF6-80C2B4, PW4056, RB211-524G",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_300er_p0.png",
+            "axis": {
+              "top": 28.69,
+              "bottom": 1199.28,
+              "left": 236.7,
+              "right": 1156.96,
+              "weightMin": 240,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std17": {
+            "label": "Standard Day +17F (+17C)",
+            "image": "RunwayCharts/b767_300er_p1.png",
+            "axis": {
+              "top": 29.21,
+              "bottom": 1250.4,
+              "left": 241.02,
+              "right": 1156.18,
+              "weightMin": 240,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "cf6_80c2b64_pw4060_rb211524h": {
+        "label": "CF6-80C2B6/B64, PW4060, RB211-524H",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_300er_p2.png",
+            "axis": {
+              "top": 29.23,
+              "bottom": 1240.93,
+              "left": 241.17,
+              "right": 1156.15,
+              "weightMin": 240,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +15C",
+            "image": "RunwayCharts/b767_300er_p3.png",
+            "axis": {
+              "top": 29.76,
+              "bottom": 1243.15,
+              "left": 245.51,
+              "right": 1155.36,
+              "weightMin": 240,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "cf6_80c2b7f": {
+        "label": "CF6-80C2B7F",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_300f_p4.png",
+            "axis": {
+              "top": 28.25,
+              "bottom": 1132.9,
+              "left": 233.08,
+              "right": 1157.62,
+              "weightMin": 220,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +15C",
+            "image": "RunwayCharts/b767_300f_p5.png",
+            "axis": {
+              "top": 28.42,
+              "bottom": 1128.24,
+              "left": 234.46,
+              "right": 1157.37,
+              "weightMin": 220,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "pw4062": {
+        "label": "PW4062",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b767_300f_p6.png",
+            "axis": {
+              "top": 28.66,
+              "bottom": 1131.94,
+              "left": 236.42,
+              "right": 1157.01,
+              "weightMin": 220,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +15C",
+            "image": "RunwayCharts/b767_300f_p7.png",
+            "axis": {
+              "top": 27.96,
+              "bottom": 1134.3,
+              "left": 230.63,
+              "right": 1158.07,
+              "weightMin": 220,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b767_400er": {
+    "label": "B767-400ER",
+    "engines": {
+      "cf6_80c2b8f": {
+        "label": "CF6-80C2B8F",
+        "conditions": {
+          "std_dry": {
+            "label": "Standard Day, Dry Runway",
+            "image": "RunwayCharts/b767_400er_p0.png",
+            "axis": {
+              "top": 29.45,
+              "bottom": 1111.66,
+              "left": 242.94,
+              "right": 1155.83,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std17_dry": {
+            "label": "Standard Day +17F (+17C), Dry Runway",
+            "image": "RunwayCharts/b767_400er_p1.png",
+            "axis": {
+              "top": 29.76,
+              "bottom": 1118.91,
+              "left": 245.51,
+              "right": 1155.36,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std_wet": {
+            "label": "Standard Day, Wet Smooth Runway",
+            "image": "RunwayCharts/b767_400er_p2.png",
+            "axis": {
+              "top": 28.5,
+              "bottom": 1123.75,
+              "left": 235.15,
+              "right": 1157.24,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15_wet": {
+            "label": "Standard Day +15C, Wet Smooth Runway",
+            "image": "RunwayCharts/b767_400er_p3.png",
+            "axis": {
+              "top": 28.92,
+              "bottom": 1128.43,
+              "left": 238.55,
+              "right": 1156.63,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "cf6_80c2b7f1": {
+        "label": "CF6-80C2B7F1",
+        "conditions": {
+          "std_dry": {
+            "label": "Standard Day, Dry Runway",
+            "image": "RunwayCharts/b767_400er_p4.png",
+            "axis": {
+              "top": 29.41,
+              "bottom": 1125.74,
+              "left": 242.65,
+              "right": 1155.88,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15_dry": {
+            "label": "Standard Day +15C, Dry Runway",
+            "image": "RunwayCharts/b767_400er_p5.png",
+            "axis": {
+              "top": 29.57,
+              "bottom": 1123.11,
+              "left": 243.99,
+              "right": 1155.64,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std_wet": {
+            "label": "Standard Day, Wet Smooth Runway",
+            "image": "RunwayCharts/b767_400er_p6.png",
+            "axis": {
+              "top": 29.23,
+              "bottom": 1126.92,
+              "left": 241.17,
+              "right": 1156.15,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15_wet": {
+            "label": "Standard Day +15C, Wet Smooth Runway",
+            "image": "RunwayCharts/b767_400er_p7.png",
+            "axis": {
+              "top": 29.06,
+              "bottom": 1123.73,
+              "left": 239.71,
+              "right": 1156.42,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "pw4062": {
+        "label": "PW4062",
+        "conditions": {
+          "std_dry": {
+            "label": "Standard Day, Dry Runway",
+            "image": "RunwayCharts/b767_400er_p8.png",
+            "axis": {
+              "top": 28.83,
+              "bottom": 1124.32,
+              "left": 237.84,
+              "right": 1156.76,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15_dry": {
+            "label": "Standard Day +15C, Dry Runway",
+            "image": "RunwayCharts/b767_400er_p9.png",
+            "axis": {
+              "top": 28.83,
+              "bottom": 1136.58,
+              "left": 237.84,
+              "right": 1156.76,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std_wet": {
+            "label": "Standard Day, Wet Smooth Runway",
+            "image": "RunwayCharts/b767_400er_p10.png",
+            "axis": {
+              "top": 28.49,
+              "bottom": 1128.07,
+              "left": 235.01,
+              "right": 1157.27,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15_wet": {
+            "label": "Standard Day +15C, Wet Smooth Runway",
+            "image": "RunwayCharts/b767_400er_p11.png",
+            "axis": {
+              "top": 29.34,
+              "bottom": 1131.78,
+              "left": 242.05,
+              "right": 1155.99,
+              "weightMin": 280,
+              "weightMax": 480,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
   }
 }
