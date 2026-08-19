@@ -1120,5 +1120,385 @@
         }
       }
     }
+  },
+  "b777_200lr": {
+    "label": "B777-200LR",
+    "engines": {
+      "ge90_110b1l": {
+        "label": "GE90-110B1L Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b777_200lr_ge90_110b1l_std.png",
+            "axis": {
+              "top": 8.5,
+              "bottom": 697.0,
+              "left": 163.0,
+              "right": 1191.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b777_200lr_ge90_110b1l_std15.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27": {
+            "label": "Standard Day +49F (+27C)",
+            "image": "RunwayCharts/b777_200lr_ge90_110b1l_std27.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std33": {
+            "label": "Standard Day +59F (+33C)",
+            "image": "RunwayCharts/b777_200lr_ge90_110b1l_std33.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "ge90_115bl": {
+        "label": "GE90-115BL Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b777_200lr_ge90_115bl_std.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b777_200lr_ge90_115bl_std15.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27": {
+            "label": "Standard Day +49F (+27C)",
+            "image": "RunwayCharts/b777_200lr_ge90_115bl_std27.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 699.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std33": {
+            "label": "Standard Day +59F (+33C)",
+            "image": "RunwayCharts/b777_200lr_ge90_115bl_std33.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 699.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b777_300er": {
+    "label": "B777-300ER",
+    "engines": {
+      "ge90_115bl": {
+        "label": "GE90-115BL Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b777_300er_ge90_115bl_std.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b777_300er_ge90_115bl_std15.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27": {
+            "label": "Standard Day +49F (+27C)",
+            "image": "RunwayCharts/b777_300er_ge90_115bl_std27.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 702.5,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std33": {
+            "label": "Standard Day +59F (+33C)",
+            "image": "RunwayCharts/b777_300er_ge90_115bl_std33.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.5,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b777f": {
+    "label": "B777F",
+    "engines": {
+      "ge90_110b1l": {
+        "label": "GE90-110B1L Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b777f_ge90_110b1l_std.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b777f_ge90_110b1l_std15.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27": {
+            "label": "Standard Day +49F (+27C)",
+            "image": "RunwayCharts/b777f_ge90_110b1l_std27.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 701.0,
+              "left": 163.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std33": {
+            "label": "Standard Day +59F (+33C)",
+            "image": "RunwayCharts/b777f_ge90_110b1l_std33.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 701.0,
+              "left": 163.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "ge90_115bl": {
+        "label": "GE90-115BL Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b777f_ge90_115bl_std.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 699.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b777f_ge90_115bl_std15.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27": {
+            "label": "Standard Day +49F (+27C)",
+            "image": "RunwayCharts/b777f_ge90_115bl_std27.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 701.5,
+              "left": 163.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std33": {
+            "label": "Standard Day +59F (+33C)",
+            "image": "RunwayCharts/b777f_ge90_115bl_std33.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 700.0,
+              "left": 162.0,
+              "right": 1192.0,
+              "weightMin": 300,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
   }
 }
