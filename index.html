@@ -696,10 +696,10 @@
 
             <div style="margin-bottom:14px;">
                 <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">✈️ 기종 선택</label>
-                <select id="runwayModelSelect" class="select-filter">
-                    <option value="">-- 기종을 선택하세요 --</option>
-                    <option value="b767_300_std">B767-300 (CF6-80A/80A2) STD</option>
-                </select>
+                <select id="runwayModelSelect" class="select-filter" onchange="onRunwayModelChange()">
+                    <option value="">-- 불러오는 중... --</option>
+                <div id="runwayLoadStatus" style="font-size:12px; color:#718096; margin-top:6px;">
+                </div>
             </div>
 
             <div class="runway-placeholder">
@@ -1461,8 +1461,13 @@
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
+        let runwayChartsData = null;
+
         function openRunwayModal() {
             document.getElementById('runwayModal').style.display = 'flex';
+            if (!runwayChartsData) {
+                loadRunwayChartsList();
+            }
         }
 
         async function openManualModal() {
@@ -1515,6 +1520,37 @@
         loadAircraftData();
         function openRunwayModal() {
             document.getElementById('runwayModal').style.display = 'flex';
+        }
+        async function loadRunwayChartsList() {
+            const select = document.getElementById('runwayModelSelect');
+            const status = document.getElementById('runwayLoadStatus');
+            try {
+                const response = await fetch('runway_charts.json');
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                runwayChartsData = await response.json();
+
+                select.innerHTML = '<option value="">-- 기종을 선택하세요 --</option>';
+                Object.keys(runwayChartsData).forEach(key => {
+                    const chart = runwayChartsData[key];
+                    const opt = document.createElement('option');
+                    opt.value = key;
+                    opt.innerText = chart.label;
+                    select.appendChild(opt);
+                });
+                
+                status.style.color = '#276749';
+                status.innerText = `✔ ${Object.keys(runwayChartsData).length}개 그래프 불러옴`;
+            } catch (err) {
+                select.innerHTML = '<option value="">불러오기 실패</option>';
+                status.style.color = '#e53e3e';
+                status.innerText = '❌ runway_charts.json 로드 실패: ' + err.message;
+            }
+        }
+        function onRunwayModelChange() {
+            const key = document.getElementById('runwayModelSelect').value;
+            if (!key || !runwayChartsData) return;
+            console.log('선택됨:', key, runwayChartsData[key]);
+            // 다음 단계에서 여기에 그래프 로딩 로직 연결
         }
     </script>
 </body>
