@@ -553,7 +553,12 @@
             white-space: nowrap;
         }
         .btn-runway-open:hover { background-color: #9c4221; }
-        .runway-modal-content { width: 720px !important; max-width: 95% !important; }
+        .runway-modal-content {
+            width: 720px !important;
+            max-width: 95% !important;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
         .runway-placeholder { 
             border: 2px dashed #cbd5e0;
             border-radius: 6px;
