@@ -3,7 +3,7 @@
     "label": "B767-300",
     "engines": {
       "cf6_80a": {
-        "label": "CF6-80A/80A2",
+        "label": "CF6-80A/80A2 Engines",
         "conditions": {
           "std": {
             "label": "Standard Day",
@@ -42,7 +42,7 @@
         }
       },
       "jt9d": {
-        "label": "JT9D-7R4D/7R4E",
+        "label": "JT9D-7R4D/7R4E Engines",
         "conditions": {
           "std": {
             "label": "Standard Day",
@@ -81,7 +81,7 @@
         }
       },
       "cf6_80c2b2": {
-        "label": "CF6-80C2B2,PW4052",
+        "label": "CF6-80C2B2,PW4052 Engines",
         "conditions": {
           "std": {
             "label": "Standard Day",
