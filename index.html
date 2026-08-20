@@ -1604,7 +1604,7 @@
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 runwayChartsData = await response.json();
                 
-                select.innerHTML = '<option value="">-- 기종을 선택하세요 --</option>';
+                select.innerHTML = '<option value="">기종을 선택하세요</option>';
                 Object.keys(runwayChartsData).forEach(key => {
                     const opt = document.createElement('option');
                     opt.value = key;
@@ -1640,11 +1640,11 @@
             
             const engineSelect = document.getElementById('runwayEngineSelect');
             const conditionSelect = document.getElementById('runwayConditionSelect');
-            conditionSelect.innerHTML = '<option value="">-- 엔진을 먼저 선택하세요 --</option>';
+            conditionSelect.innerHTML = '<option value="">엔진을 먼저 선택하세요</option>';
             conditionSelect.disabled = true;
             
             if (!runwaySelectedAircraft) {
-                engineSelect.innerHTML = '<option value="">-- 기종을 먼저 선택하세요 --</option>';
+                engineSelect.innerHTML = '<option value="">기종을 먼저 선택하세요</option>';
                 engineSelect.disabled = true;
                 return;
             }
