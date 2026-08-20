@@ -1611,8 +1611,7 @@
                     opt.innerText = runwayChartsData[key].label;
                     select.appendChild(opt);
                 });
-                status.style.color = '#276749';
-                status.innerText = `✔ ${Object.keys(runwayChartsData).length}개 기종 불러옴`;
+                status.style.color = '#276749';                
             } catch (err) {
                 select.innerHTML = '<option value="">불러오기 실패</option>';
                 status.style.color = '#e53e3e';
