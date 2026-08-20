@@ -1604,7 +1604,7 @@
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 runwayChartsData = await response.json();
                 
-                select.innerHTML = '<option value="">기종을 선택하세요</option>';
+                select.innerHTML = '<option value="">-- 기종을 선택하세요 --</option>';
                 Object.keys(runwayChartsData).forEach(key => {
                     const opt = document.createElement('option');
                     opt.value = key;
