@@ -1500,5 +1500,458 @@
         }
       }
     }
+  },
+  "b787_8": {
+    "label": "B787-8",
+    "engines": {
+      "typical": {
+        "label": "Typical Thrust Rating",
+        "conditions": {
+          "std_dry": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b787_8_typical_std.png",
+            "axis": {
+              "top": 8.3,
+              "bottom": 816.0,
+              "left": 179.9,
+              "right": 1182.9,
+              "weightMin": 340,
+              "weightMax": 520,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27_dry": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b787_8_typical_std27.png",
+            "axis": {
+              "top": 8.3,
+              "bottom": 816.0,
+              "left": 182.1,
+              "right": 1182.9,
+              "weightMin": 340,
+              "weightMax": 520,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std45_dry": {
+            "label": "Standard Day +45F (+25C)",
+            "image": "RunwayCharts/b787_8_typical_std45.png",
+            "axis": {
+              "top": 8.2,
+              "bottom": 814.5,
+              "left": 181.8,
+              "right": 1183.0,
+              "weightMin": 340,
+              "weightMax": 520,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std61_dry": {
+            "label": "Standard Day +61F (+34C)",
+            "image": "RunwayCharts/b787_8_typical_std61.png",
+            "axis": {
+              "top": 8.3,
+              "bottom": 816.0,
+              "left": 181.0,
+              "right": 1182.9,
+              "weightMin": 340,
+              "weightMax": 520,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "hithrust": {
+        "label": "High Thrust Rating",
+        "conditions": {
+          "std_dry": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b787_8_hithrust_std.png",
+            "axis": {
+              "top": 8.3,
+              "bottom": 816.7,
+              "left": 180.1,
+              "right": 1183.5,
+              "weightMin": 340,
+              "weightMax": 520,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27_dry": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b787_8_hithrust_std27.png",
+            "axis": {
+              "top": 8.2,
+              "bottom": 814.5,
+              "left": 181.8,
+              "right": 1183.0,
+              "weightMin": 340,
+              "weightMax": 520,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std45_dry": {
+            "label": "Standard Day +45F (+25C)",
+            "image": "RunwayCharts/b787_8_hithrust_std45.png",
+            "axis": {
+              "top": 8.2,
+              "bottom": 815.2,
+              "left": 181.4,
+              "right": 1183.0,
+              "weightMin": 340,
+              "weightMax": 520,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std61_dry": {
+            "label": "Standard Day +61F (+34C)",
+            "image": "RunwayCharts/b787_8_hithrust_std61.png",
+            "axis": {
+              "top": 8.3,
+              "bottom": 816.3,
+              "left": 182.2,
+              "right": 1183.5,
+              "weightMin": 340,
+              "weightMax": 520,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b787_9": {
+    "label": "B787-9",
+    "engines": {
+      "typical": {
+        "label": "Typical Thrust Rating",
+        "conditions": {
+          "std_dry": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b787_9_typical_std.png",
+            "axis": {
+              "top": 8.2,
+              "bottom": 793.1,
+              "left": 162.4,
+              "right": 1191.8,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27_dry": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b787_9_typical_std27.png",
+            "axis": {
+              "top": 8.1,
+              "bottom": 790.5,
+              "left": 163.8,
+              "right": 1191.9,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std45_dry": {
+            "label": "Standard Day +45F (+25C)",
+            "image": "RunwayCharts/b787_9_typical_std45.png",
+            "axis": {
+              "top": 8.1,
+              "bottom": 793.1,
+              "left": 165.6,
+              "right": 1191.9,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std61_dry": {
+            "label": "Standard Day +61F (+34C)",
+            "image": "RunwayCharts/b787_9_typical_std61.png",
+            "axis": {
+              "top": 8.3,
+              "bottom": 815.6,
+              "left": 170.2,
+              "right": 1172.8,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "hithrust": {
+        "label": "High Thrust Rating",
+        "conditions": {
+          "std_dry": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b787_9_hithrust_std.png",
+            "axis": {
+              "top": 8.2,
+              "bottom": 793.5,
+              "left": 162.4,
+              "right": 1191.8,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27_dry": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b787_9_hithrust_std27.png",
+            "axis": {
+              "top": 8.1,
+              "bottom": 791.7,
+              "left": 164.1,
+              "right": 1191.9,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std45_dry": {
+            "label": "Standard Day +45F (+25C)",
+            "image": "RunwayCharts/b787_9_hithrust_std45.png",
+            "axis": {
+              "top": 8.1,
+              "bottom": 792.9,
+              "left": 163.3,
+              "right": 1191.4,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std61_dry": {
+            "label": "Standard Day +61F (+34C)",
+            "image": "RunwayCharts/b787_9_hithrust_std61.png",
+            "axis": {
+              "top": 8.4,
+              "bottom": 817.0,
+              "left": 166.6,
+              "right": 1172.7,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b787_10": {
+    "label": "B787-10",
+    "engines": {
+      "typical": {
+        "label": "Typical Thrust Rating",
+        "conditions": {
+          "std_dry": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b787_10_typical_std.png",
+            "axis": {
+              "top": 8.2,
+              "bottom": 792.8,
+              "left": 163.8,
+              "right": 1191.8,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27_dry": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b787_10_typical_std27.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 783.2,
+              "left": 175.9,
+              "right": 1192.0,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std45_dry": {
+            "label": "Standard Day +45F (+25C)",
+            "image": "RunwayCharts/b787_10_typical_std45.png",
+            "axis": {
+              "top": 8.1,
+              "bottom": 783.6,
+              "left": 175.8,
+              "right": 1191.9,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std61_dry": {
+            "label": "Standard Day +61F (+34C)",
+            "image": "RunwayCharts/b787_10_typical_std61.png",
+            "axis": {
+              "top": 8.4,
+              "bottom": 807.7,
+              "left": 181.0,
+              "right": 1173.1,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "hithrust": {
+        "label": "High Thrust Rating",
+        "conditions": {
+          "std_dry": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b787_10_hithrust_std.png",
+            "axis": {
+              "top": 8.2,
+              "bottom": 792.2,
+              "left": 163.4,
+              "right": 1191.8,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27_dry": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b787_10_hithrust_std27.png",
+            "axis": {
+              "top": 8.1,
+              "bottom": 783.2,
+              "left": 175.7,
+              "right": 1191.9,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std45_dry": {
+            "label": "Standard Day +45F (+25C)",
+            "image": "RunwayCharts/b787_10_hithrust_std45.png",
+            "axis": {
+              "top": 8.1,
+              "bottom": 783.1,
+              "left": 175.6,
+              "right": 1191.9,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std61_dry": {
+            "label": "Standard Day +61F (+34C)",
+            "image": "RunwayCharts/b787_10_hithrust_std61.png",
+            "axis": {
+              "top": 8.3,
+              "bottom": 807.6,
+              "left": 181.1,
+              "right": 1173.5,
+              "weightMin": 380,
+              "weightMax": 560,
+              "lengthMin": 4,
+              "lengthMax": 16
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
   }
 }
