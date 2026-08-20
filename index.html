@@ -733,14 +733,14 @@
                 <div>
                     <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">🔧 엔진 선택</label>
                     <select id="runwayEngineSelect" class="select-filter" onchange="onRunwayEngineChange()" disabled>
-                        <option value="">-- 기종을 먼저 선택하세요 --</option>
+                        <option value="">기종을 먼저 선택하세요</option>
                     </select>
                 </div>
                 
                 <div>
-                    <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">🌡️ 온도조건 선택</label>
+                    <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">🌡️ 온도 선택</label>
                     <select id="runwayConditionSelect" class="select-filter" onchange="onRunwayConditionChange()" disabled>
-                        <option value="">-- 엔진을 먼저 선택하세요 --</option>
+                        <option value="">엔진을 먼저 선택하세요</option>
                     </select>
                 </div>
             </div>            
@@ -1668,11 +1668,11 @@
             
             const conditionSelect = document.getElementById('runwayConditionSelect');
             if (!runwaySelectedEngine) {
-                conditionSelect.innerHTML = '<option value="">-- 엔진을 먼저 선택하세요 --</option>';
+                conditionSelect.innerHTML = '<option value="">엔진을 먼저 선택하세요</option>';
                 conditionSelect.disabled = true;
                 return;
             }
-            conditionSelect.innerHTML = '<option value="">-- 온도조건을 선택하세요 --</option>';
+            conditionSelect.innerHTML = '<option value="">-- 온도를 선택하세요 --</option>';
             Object.keys(runwaySelectedEngine.conditions).forEach(key => {
                 const opt = document.createElement('option');
                 opt.value = key;
