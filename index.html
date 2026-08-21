@@ -1711,9 +1711,9 @@
         }
         
         function runwayWeightUnitShort(weightUnit) {
-            // "1000 lb" -> "lb", "1000 kg" -> "kg" 등, 못 찾으면 원문 그대로
+            // "1000 lb" -> "lb", "1000 kg" -> "kg", "1000 t" -> "t" 등, 못 찾으면 원문 그대로
             if (!weightUnit) return 'lb';
-            const m = weightUnit.match(/(kg|lb)/i);
+            const m = weightUnit.match(/(kg|lb|t)\b/i);
             return m ? m[1].toLowerCase() : weightUnit;
         }
 
@@ -1781,6 +1781,7 @@
 
         function runwayIsCurvePixel(px) {
             if (currentChart.curveColor === 'blue') return (px[2] - px[0]) > 30;
+            if (currentChart.curveColor === 'magenta') return (px[0] > 180 && px[2] > 180 && px[1] < 120);
             if (currentChart.curveColor === 'multi') {
                 // 색상이 여러 개인 차트(예: 압력고도별 색 구분): 배경(연노랑)보다
                 // 뚜렷이 어둡거나 채도가 있는 픽셀이면 곡선/격자로 간주
@@ -1792,11 +1793,21 @@
             return gray < 170;
         }
         
+        function runwayWeightInputDivisor(chart) {
+            // 사용자가 입력한 무게값을 축 내부 단위로 바꿀 때 나눌 값.
+            // "1000 lb", "1000 kg"처럼 축이 "천 단위"로 표시된 경우는 1000으로 나눠야
+            // 사용자가 실제 중량(예: 480000 lb)을 그대로 입력할 수 있다.
+            // 반면 "t"(톤)처럼 축 값 자체가 이미 사람이 입력하기 자연스러운 크기(예: 560)인
+            // 경우에는 나누면 안 되므로, 조건 JSON에 weightInputDivisor를 명시할 수 있게 했다.
+            if (chart && typeof chart.weightInputDivisor === 'number') return chart.weightInputDivisor;
+            return 1000;
+        }
+
         function showRunwayGuideLine() {
             if (!currentChart) return;
             const wFull = parseFloat(document.getElementById('runwayWeightInput').value);
             if (isNaN(wFull)) { alert('무게를 입력해주세요.'); return; }
-            const w = wFull / 1000; // 그래프 축 내부 단위(1,000 lb 또는 1,000 kg)로 변환
+            const w = wFull / runwayWeightInputDivisor(currentChart); // 그래프 축 내부 단위로 변환
             runwayGuideFixed = Math.round(runwayWeightToFixedPos(w));
             runwaySnapped = null;
             document.getElementById('runwayReadout').style.display = 'none';
