@@ -1953,5 +1953,480 @@
         }
       }
     }
+  },
+  "a330_200": {
+    "label": "A330-200",
+    "engines": {
+      "pw4000": {
+        "label": "PW 4000 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a330_200_pw4000_isa.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 646.33,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a330_200_pw4000_isa15.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 646.33,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      },
+      "trent700": {
+        "label": "RR Trent 700 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a330_200_trent700_isa.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 646.33,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a330_200_trent700_isa15.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 646.33,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      },
+      "cf6_80e1": {
+        "label": "GE CF6-80E1 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a330_200_cf6_80e1_isa.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 646.33,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a330_200_cf6_80e1_isa15.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 646.33,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      }
+    }
+  },
+  "a330_300": {
+    "label": "A330-300",
+    "engines": {
+      "pw4000": {
+        "label": "PW 4000 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a330_300_pw4000_isa.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 646.33,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a330_300_pw4000_isa15.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 646.33,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      },
+      "trent700": {
+        "label": "RR Trent 700 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a330_300_trent700_isa.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 646.33,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a330_300_trent700_isa15.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 646.33,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      },
+      "cf6_80e1": {
+        "label": "GE CF6-80E1 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a330_300_cf6_80e1_isa.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 646.33,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a330_300_cf6_80e1_isa15.png",
+            "axis": {
+              "top": 9.04,
+              "bottom": 646.84,
+              "left": 231.3,
+              "right": 1165.1,
+              "weightMin": 170,
+              "weightMax": 250,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      }
+    }
+  },
+  "a330_200f": {
+    "label": "A330-200F",
+    "engines": {
+      "pw4000": {
+        "label": "PW 4000 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a330_200f_pw4000_isa.png",
+            "axis": {
+              "top": 9.58,
+              "bottom": 568.92,
+              "left": 231.1,
+              "right": 1164.7,
+              "weightMin": 170,
+              "weightMax": 240,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a330_200f_pw4000_isa15.png",
+            "axis": {
+              "top": 9.58,
+              "bottom": 568.92,
+              "left": 231.1,
+              "right": 1164.7,
+              "weightMin": 170,
+              "weightMax": 240,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      },
+      "trent700": {
+        "label": "RR Trent 700 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a330_200f_trent700_isa.png",
+            "axis": {
+              "top": 9.58,
+              "bottom": 568.92,
+              "left": 231.1,
+              "right": 1164.7,
+              "weightMin": 170,
+              "weightMax": 240,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a330_200f_trent700_isa15.png",
+            "axis": {
+              "top": 9.58,
+              "bottom": 568.92,
+              "left": 231.1,
+              "right": 1164.7,
+              "weightMin": 170,
+              "weightMax": 240,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      }
+    }
+  },
+  "a330_800": {
+    "label": "A330-800",
+    "engines": {
+      "trent7000": {
+        "label": "RR Trent 7000 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a330_800_trent7000_isa.png",
+            "axis": {
+              "top": 9.41,
+              "bottom": 575.86,
+              "left": 231.01,
+              "right": 1164.88,
+              "weightMin": 155,
+              "weightMax": 255,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a330_800_trent7000_isa15.png",
+            "axis": {
+              "top": 9.41,
+              "bottom": 575.86,
+              "left": 231.01,
+              "right": 1164.88,
+              "weightMin": 155,
+              "weightMax": 255,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      }
+    }
+  },
+  "a330_900": {
+    "label": "A330-900",
+    "engines": {
+      "trent7000": {
+        "label": "RR Trent 7000 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a330_900_trent7000_isa.png",
+            "axis": {
+              "top": 9.41,
+              "bottom": 575.86,
+              "left": 231.01,
+              "right": 1164.88,
+              "weightMin": 155,
+              "weightMax": 255,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a330_900_trent7000_isa15.png",
+            "axis": {
+              "top": 9.41,
+              "bottom": 575.86,
+              "left": 231.01,
+              "right": 1164.88,
+              "weightMin": 155,
+              "weightMax": 255,
+              "lengthMin": 1,
+              "lengthMax": 5
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      }
+    }
   }
 }
