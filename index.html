@@ -1763,24 +1763,20 @@
 
         // 무게값(w, 축 내부 단위)을 "고정 가이드선" 좌표로 변환.
         // 무게가 가로축이면 컬럼(x), 세로축이면 행(y)을 반환한다.
+        // weightMinPos/weightMaxPos를 직접 사용하므로 어느 쪽이 왼쪽/위쪽인지와 무관하게 동작한다
+        // (예: A350은 왼쪽=최댓값/오른쪽=최솟값으로 Boeing/A330과 반대 방향).
         function runwayWeightToFixedPos(w) {
             const ax = currentChart.axis;
-            if (isWeightAxisVertical()) {
-                // 세로축: 위쪽=weightMax, 아래쪽=weightMin (기존 length 세로축과 동일한 관례)
-                return ax.top + (ax.weightMax - w) * (ax.bottom - ax.top) / (ax.weightMax - ax.weightMin);
-            }
-            return ax.left + (w - ax.weightMin) * (ax.right - ax.left) / (ax.weightMax - ax.weightMin);
+            const t = (w - ax.weightMin) / (ax.weightMax - ax.weightMin);
+            return ax.weightMinPos + t * (ax.weightMaxPos - ax.weightMinPos);
         }
 
         // 사용자가 드래그로 맞춘 좌표(pos, 무게축과 수직 방향)를 길이값으로 변환.
+        // lengthMinPos/lengthMaxPos를 직접 사용하므로 방향에 무관하게 동작한다.
         function runwayPosToLength(pos) {
             const ax = currentChart.axis;
-            if (isWeightAxisVertical()) {
-                // 길이가 가로축: 왼쪽=lengthMin, 오른쪽=lengthMax
-                return ax.lengthMin + (pos - ax.left) * (ax.lengthMax - ax.lengthMin) / (ax.right - ax.left);
-            }
-            // 길이가 세로축: 위쪽=lengthMax, 아래쪽=lengthMin
-            return ax.lengthMax + (pos - ax.top) * (ax.lengthMin - ax.lengthMax) / (ax.bottom - ax.top);
+            const t = (pos - ax.lengthMinPos) / (ax.lengthMaxPos - ax.lengthMinPos);
+            return ax.lengthMin + t * (ax.lengthMax - ax.lengthMin);
         }
 
         function runwayIsCurvePixel(px) {
