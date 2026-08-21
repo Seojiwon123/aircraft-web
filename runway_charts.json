@@ -3077,5 +3077,193 @@
         }
       }
     }
+  },
+  "b747_8": {
+    "label": "B747-8",
+    "engines": {
+      "gennx2b67": {
+        "label": "GEnx-2B67 Series",
+        "conditions": {
+          "std_dry": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_8_std.png",
+            "axis": {
+              "top": 75.9,
+              "bottom": 667.43,
+              "left": 194.25,
+              "right": 1179.71,
+              "weightMin": 500,
+              "weightMax": 1000,
+              "lengthMin": 4,
+              "lengthMax": 16,
+              "weightMinPos": 194.25,
+              "weightMaxPos": 1179.71,
+              "lengthMinPos": 667.43,
+              "lengthMaxPos": 75.9
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27_dry": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b747_8_std27.png",
+            "axis": {
+              "top": 145.99,
+              "bottom": 738.17,
+              "left": 194.25,
+              "right": 1179.71,
+              "weightMin": 500,
+              "weightMax": 1000,
+              "lengthMin": 4,
+              "lengthMax": 16,
+              "weightMinPos": 194.25,
+              "weightMaxPos": 1179.71,
+              "lengthMinPos": 738.17,
+              "lengthMaxPos": 145.99
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std45_dry": {
+            "label": "Standard Day +45F (+25C)",
+            "image": "RunwayCharts/b747_8_std45.png",
+            "axis": {
+              "top": 80.2,
+              "bottom": 671.3,
+              "left": 193.96,
+              "right": 1179.83,
+              "weightMin": 500,
+              "weightMax": 1000,
+              "lengthMin": 4,
+              "lengthMax": 16,
+              "weightMinPos": 193.96,
+              "weightMaxPos": 1179.83,
+              "lengthMinPos": 671.3,
+              "lengthMaxPos": 80.2
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std63_dry": {
+            "label": "Standard Day +63F (+35C)",
+            "image": "RunwayCharts/b747_8_std63.png",
+            "axis": {
+              "top": 147.99,
+              "bottom": 740.17,
+              "left": 194.25,
+              "right": 1179.71,
+              "weightMin": 500,
+              "weightMax": 1000,
+              "lengthMin": 4,
+              "lengthMax": 16,
+              "weightMinPos": 194.25,
+              "weightMaxPos": 1179.71,
+              "lengthMinPos": 740.17,
+              "lengthMaxPos": 147.99
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b747_8f": {
+    "label": "B747-8F",
+    "engines": {
+      "gennx2b67": {
+        "label": "GEnx-2B67 Series",
+        "conditions": {
+          "std_dry": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_8_std.png",
+            "axis": {
+              "top": 75.9,
+              "bottom": 667.43,
+              "left": 194.25,
+              "right": 1179.71,
+              "weightMin": 500,
+              "weightMax": 1000,
+              "lengthMin": 4,
+              "lengthMax": 16,
+              "weightMinPos": 194.25,
+              "weightMaxPos": 1179.71,
+              "lengthMinPos": 667.43,
+              "lengthMaxPos": 75.9
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27_dry": {
+            "label": "Standard Day +27F (+15C)",
+            "image": "RunwayCharts/b747_8_std27.png",
+            "axis": {
+              "top": 145.99,
+              "bottom": 738.17,
+              "left": 194.25,
+              "right": 1179.71,
+              "weightMin": 500,
+              "weightMax": 1000,
+              "lengthMin": 4,
+              "lengthMax": 16,
+              "weightMinPos": 194.25,
+              "weightMaxPos": 1179.71,
+              "lengthMinPos": 738.17,
+              "lengthMaxPos": 145.99
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std45_dry": {
+            "label": "Standard Day +45F (+25C)",
+            "image": "RunwayCharts/b747_8_std45.png",
+            "axis": {
+              "top": 80.2,
+              "bottom": 671.3,
+              "left": 193.96,
+              "right": 1179.83,
+              "weightMin": 500,
+              "weightMax": 1000,
+              "lengthMin": 4,
+              "lengthMax": 16,
+              "weightMinPos": 193.96,
+              "weightMaxPos": 1179.83,
+              "lengthMinPos": 671.3,
+              "lengthMaxPos": 80.2
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std63_dry": {
+            "label": "Standard Day +63F (+35C)",
+            "image": "RunwayCharts/b747_8_std63.png",
+            "axis": {
+              "top": 147.99,
+              "bottom": 740.17,
+              "left": 194.25,
+              "right": 1179.71,
+              "weightMin": 500,
+              "weightMax": 1000,
+              "lengthMin": 4,
+              "lengthMax": 16,
+              "weightMinPos": 194.25,
+              "weightMaxPos": 1179.71,
+              "lengthMinPos": 740.17,
+              "lengthMaxPos": 147.99
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
   }
 }
