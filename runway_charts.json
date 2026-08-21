@@ -2919,49 +2919,49 @@
             "label": "ISA Conditions",
             "image": "RunwayCharts/a350_900_trentxwb_isa.png",
             "axis": {
-              "top": 136.0,
-              "bottom": 1438.0,
-              "left": 12.0,
-              "right": 949.0,
+              "top": 8.08,
+              "bottom": 721.54,
+              "left": 96.98,
+              "right": 1095.58,
               "weightMin": 150,
               "weightMax": 290,
               "lengthMin": 1.5,
               "lengthMax": 5.5,
-              "weightMinPos": 942.38,
-              "weightMaxPos": 11.62,
-              "lengthMinPos": 1437.98,
-              "lengthMaxPos": 136.24
+              "weightMinPos": 721.54,
+              "weightMaxPos": 8.08,
+              "lengthMinPos": 96.98,
+              "lengthMaxPos": 1095.58
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
             "weightUnit": "1000 kg",
             "lengthUnit": "1000 m",
-            "weightAxis": "horizontal",
-            "lengthAxis": "vertical"
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
           },
           "isa15_dry": {
             "label": "ISA+15 Conditions",
             "image": "RunwayCharts/a350_900_trentxwb_isa15.png",
             "axis": {
-              "top": 136.0,
-              "bottom": 1438.0,
-              "left": 12.0,
-              "right": 949.0,
+              "top": 8.08,
+              "bottom": 721.54,
+              "left": 96.98,
+              "right": 1095.58,
               "weightMin": 150,
               "weightMax": 290,
               "lengthMin": 1.5,
               "lengthMax": 5.5,
-              "weightMinPos": 942.38,
-              "weightMaxPos": 11.62,
-              "lengthMinPos": 1437.98,
-              "lengthMaxPos": 136.24
+              "weightMinPos": 721.54,
+              "weightMaxPos": 8.08,
+              "lengthMinPos": 96.98,
+              "lengthMaxPos": 1095.58
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
             "weightUnit": "1000 kg",
             "lengthUnit": "1000 m",
-            "weightAxis": "horizontal",
-            "lengthAxis": "vertical"
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
           }
         }
       }
