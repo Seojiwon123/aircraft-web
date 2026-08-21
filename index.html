@@ -754,7 +754,7 @@
 
                 <div style="display:flex; gap:12px; align-items:flex-end; margin-bottom:10px; flex-wrap:wrap;">
                     <div>
-                        <label style="font-size:12px; font-weight:bold; color:#4a5568; display:block; margin-bottom:5px;">이륙중량 (lb)</label>
+                        <label id="runwayWeightLabel" style="font-size:12px; font-weight:bold; color:#4a5568; display:block; margin-bottom:5px;">이륙중량 (lb)</label>
                         <input type="number" id="runwayWeightInput" class="select-filter" style="width:160px;">
                     </div>
                     <button class="btn-manual-open" onclick="showRunwayGuideLine()">가이드선 표시</button>
@@ -762,7 +762,7 @@
                 </div>
 
                 <div id="runwayGuideHint" class="runway-hint">
-                    ① 무게 입력 후 [가이드선 표시] → ② 그래프 위에서 마우스를 누른 채 위아래로 움직여 원하는 곡선에 맞추기
+                    ① 무게 입력 후 [가이드선 표시] → ② 그래프 위에서 마우스를 누른 채 움직여 원하는 곡선에 맞추기
                 </div>
 
                 <div id="runwayReadout" class="readout-grid" style="display:none;">
@@ -1621,8 +1621,8 @@
         let currentChart = null;
         let runwayImg = null;
         let runwayScale = 1;
-        let runwayGuideCol = null;
-        let runwaySnapped = null;   // { row } 만 저장 (가로선 위치)
+        let runwayGuideFixed = null;  // 무게 입력으로 정해지는 고정 가이드선 좌표 (가로형 기종: col / 세로형 기종: row)
+        let runwaySnapped = null;     // { pos } 만 저장 -- 사용자가 드래그로 맞춘 좌표 (가로형: row / 세로형: col)
         let runwayBaseM = null;
         let runwayIsDragging = false;
 
@@ -1693,7 +1693,11 @@
             currentChart = runwaySelectedEngine.conditions[key];
             document.getElementById('runwayNoSelection').style.display = 'none';
             document.getElementById('runwayChartArea').style.display = 'block';
-            
+
+            // 무게 입력 단위 라벨: 기종마다 축 기준 단위가 다를 수 있음 (Boeing=lb, Airbus=kg 등)
+            const weightUnitLabel = runwayWeightUnitShort(currentChart.weightUnit);
+            document.getElementById('runwayWeightLabel').textContent = `이륙중량 (${weightUnitLabel})`;
+
             runwayImg = new Image();
             runwayImg.onload = () => {
                 const canvas = document.getElementById('runwayCanvas');
@@ -1706,45 +1710,88 @@
             runwayImg.src = currentChart.image;
         }
         
+        function runwayWeightUnitShort(weightUnit) {
+            // "1000 lb" -> "lb", "1000 kg" -> "kg" 등, 못 찾으면 원문 그대로
+            if (!weightUnit) return 'lb';
+            const m = weightUnit.match(/(kg|lb)/i);
+            return m ? m[1].toLowerCase() : weightUnit;
+        }
+
+        function isWeightAxisVertical() {
+            // JSON에 weightAxis 필드가 없으면 기존 기종들과 동일하게 "무게=가로축"이 기본값
+            return !!currentChart && currentChart.weightAxis === 'vertical';
+        }
+
         function redrawRunwayCanvas() {
             const canvas = document.getElementById('runwayCanvas');
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(runwayImg, 0, 0, canvas.width, canvas.height);
             const ax = currentChart.axis;
-            
-            if (runwayGuideCol !== null) {
+            const vertical = isWeightAxisVertical();
+
+            if (runwayGuideFixed !== null) {
                 ctx.strokeStyle = 'rgba(220,40,40,0.85)';
                 ctx.lineWidth = 1.5;
                 ctx.beginPath();
-                ctx.moveTo(runwayGuideCol * runwayScale, ax.top * runwayScale);
-                ctx.lineTo(runwayGuideCol * runwayScale, ax.bottom * runwayScale);
+                if (vertical) {
+                    // 무게가 세로축인 기종: 무게 가이드선은 가로선
+                    ctx.moveTo(ax.left * runwayScale, runwayGuideFixed * runwayScale);
+                    ctx.lineTo(ax.right * runwayScale, runwayGuideFixed * runwayScale);
+                } else {
+                    // 기본(Boeing 등): 무게 가이드선은 세로선
+                    ctx.moveTo(runwayGuideFixed * runwayScale, ax.top * runwayScale);
+                    ctx.lineTo(runwayGuideFixed * runwayScale, ax.bottom * runwayScale);
+                }
                 ctx.stroke();
             }
             if (runwaySnapped) {
                 ctx.strokeStyle = 'rgba(11,140,80,0.9)';
                 ctx.lineWidth = 1.5;
                 ctx.beginPath();
-                ctx.moveTo(ax.left * runwayScale, runwaySnapped.row * runwayScale);
-                ctx.lineTo(ax.right * runwayScale, runwaySnapped.row * runwayScale);
+                if (vertical) {
+                    // 드래그로 맞추는 선은 무게 가이드선과 수직 방향 -- 세로선
+                    ctx.moveTo(runwaySnapped.pos * runwayScale, ax.top * runwayScale);
+                    ctx.lineTo(runwaySnapped.pos * runwayScale, ax.bottom * runwayScale);
+                } else {
+                    ctx.moveTo(ax.left * runwayScale, runwaySnapped.pos * runwayScale);
+                    ctx.lineTo(ax.right * runwayScale, runwaySnapped.pos * runwayScale);
+                }
                 ctx.stroke();
             }
         }
 
-        function runwayWeightToCol(w) {
+        // 무게값(w, 축 내부 단위)을 "고정 가이드선" 좌표로 변환.
+        // 무게가 가로축이면 컬럼(x), 세로축이면 행(y)을 반환한다.
+        function runwayWeightToFixedPos(w) {
             const ax = currentChart.axis;
+            if (isWeightAxisVertical()) {
+                // 세로축: 위쪽=weightMax, 아래쪽=weightMin (기존 length 세로축과 동일한 관례)
+                return ax.top + (ax.weightMax - w) * (ax.bottom - ax.top) / (ax.weightMax - ax.weightMin);
+            }
             return ax.left + (w - ax.weightMin) * (ax.right - ax.left) / (ax.weightMax - ax.weightMin);
         }
-        function runwayRowToLength(row) {
+
+        // 사용자가 드래그로 맞춘 좌표(pos, 무게축과 수직 방향)를 길이값으로 변환.
+        function runwayPosToLength(pos) {
             const ax = currentChart.axis;
-            return ax.lengthMax + (row - ax.top) * (ax.lengthMin - ax.lengthMax) / (ax.bottom - ax.top);
+            if (isWeightAxisVertical()) {
+                // 길이가 가로축: 왼쪽=lengthMin, 오른쪽=lengthMax
+                return ax.lengthMin + (pos - ax.left) * (ax.lengthMax - ax.lengthMin) / (ax.right - ax.left);
+            }
+            // 길이가 세로축: 위쪽=lengthMax, 아래쪽=lengthMin
+            return ax.lengthMax + (pos - ax.top) * (ax.lengthMin - ax.lengthMax) / (ax.bottom - ax.top);
         }
-        function runwayColToWeight(col) {
-            const ax = currentChart.axis;
-            return ax.weightMin + (col - ax.left) * (ax.weightMax - ax.weightMin) / (ax.right - ax.left);
-        }
+
         function runwayIsCurvePixel(px) {
             if (currentChart.curveColor === 'blue') return (px[2] - px[0]) > 30;
+            if (currentChart.curveColor === 'multi') {
+                // 색상이 여러 개인 차트(예: 압력고도별 색 구분): 배경(연노랑)보다
+                // 뚜렷이 어둡거나 채도가 있는 픽셀이면 곡선/격자로 간주
+                const gray = 0.299*px[0] + 0.587*px[1] + 0.114*px[2];
+                const sat = Math.max(px[0],px[1],px[2]) - Math.min(px[0],px[1],px[2]);
+                return gray < 200 || sat > 30;
+            }
             const gray = 0.299*px[0] + 0.587*px[1] + 0.114*px[2];
             return gray < 170;
         }
@@ -1753,8 +1800,8 @@
             if (!currentChart) return;
             const wFull = parseFloat(document.getElementById('runwayWeightInput').value);
             if (isNaN(wFull)) { alert('무게를 입력해주세요.'); return; }
-            const w = wFull / 1000; // 그래프 축 내부 단위(1,000 lb)로 변환
-            runwayGuideCol = Math.round(runwayWeightToCol(w));
+            const w = wFull / 1000; // 그래프 축 내부 단위(1,000 lb 또는 1,000 kg)로 변환
+            runwayGuideFixed = Math.round(runwayWeightToFixedPos(w));
             runwaySnapped = null;
             document.getElementById('runwayReadout').style.display = 'none';
             document.getElementById('runwayCorrPanel').style.display = 'none';
@@ -1763,7 +1810,7 @@
         }
 
         function resetRunwayCanvas() {
-            runwayGuideCol = null;
+            runwayGuideFixed = null;
             runwaySnapped = null;
             runwayBaseM = null;
             const ro = document.getElementById('runwayReadout');
@@ -1778,7 +1825,7 @@
         const runwayCanvasEl = document.getElementById('runwayCanvas');
         
         runwayCanvasEl.addEventListener('mousedown', function(e) {
-            if (runwayGuideCol === null || !currentChart) return;
+            if (runwayGuideFixed === null || !currentChart) return;
             runwayIsDragging = true;
             updateRunwayDrag(e, this);
         });
@@ -1792,23 +1839,42 @@
             runwayIsDragging = false;
         });
         
+        function runwayLengthToMeters(lenValueRaw, lengthUnit) {
+            // lenValueRaw는 축 내부 단위 값 (예: 2.5는 "2.5천 ft" 또는 "2.5천 m"를 의미)
+            if (lengthUnit === '1000 m') {
+                const m = lenValueRaw * 1000;
+                return { ft: m / 0.3048, m };
+            }
+            // 기본(Boeing 등): lengthUnit === 'ft'는 실제로는 "1000 ft" 단위를 의미
+            const ft = lenValueRaw * 1000;
+            return { ft, m: ft * 0.3048 };
+        }
+
         function updateRunwayDrag(e, canvasEl) {
             const ax = currentChart.axis;
+            const vertical = isWeightAxisVertical();
             const rect = canvasEl.getBoundingClientRect();
-            let yDisp = e.clientY - rect.top;
-            yDisp = Math.max(ax.top * runwayScale, Math.min(ax.bottom * runwayScale, yDisp));
-            const rowNat = yDisp / runwayScale;
-            runwaySnapped = { row: rowNat };
+            let posDisp, posNat;
+            if (vertical) {
+                // 길이가 가로축: 마우스 좌우 이동을 col로 변환, [left, right] 범위로 clamp
+                posDisp = e.clientX - rect.left;
+                posDisp = Math.max(ax.left * runwayScale, Math.min(ax.right * runwayScale, posDisp));
+            } else {
+                // 길이가 세로축(기존 방식): 마우스 상하 이동을 row로 변환, [top, bottom] 범위로 clamp
+                posDisp = e.clientY - rect.top;
+                posDisp = Math.max(ax.top * runwayScale, Math.min(ax.bottom * runwayScale, posDisp));
+            }
+            posNat = posDisp / runwayScale;
+            runwaySnapped = { pos: posNat };
             redrawRunwayCanvas();
             
-            const lenKft = runwayRowToLength(rowNat);
+            const lenRaw = runwayPosToLength(posNat);
             const wInput = parseFloat(document.getElementById('runwayWeightInput').value);
-            const unitMul = (currentChart.lengthUnit === 'ft') ? 1000 : 1;
-            const ft = lenKft * unitMul;
-            const m = ft * 0.3048;
+            const { ft, m } = runwayLengthToMeters(lenRaw, currentChart.lengthUnit);
             runwayBaseM = m;
             
-            document.getElementById('runwayReadWeight').textContent = Math.round(wInput).toLocaleString() + ' lb';
+            const weightUnitLabel = runwayWeightUnitShort(currentChart.weightUnit);
+            document.getElementById('runwayReadWeight').textContent = Math.round(wInput).toLocaleString() + ' ' + weightUnitLabel;
             document.getElementById('runwayReadFt').textContent = ft.toFixed(0) + ' ft';
             document.getElementById('runwayReadM').textContent = m.toFixed(1) + ' m';
             document.getElementById('runwayReadout').style.display = 'grid';
