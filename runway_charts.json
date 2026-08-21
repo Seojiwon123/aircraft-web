@@ -16,7 +16,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 297.5,
+              "weightMaxPos": 1179.5,
+              "lengthMinPos": 1189.0,
+              "lengthMaxPos": 11.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -33,7 +37,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 297.0,
+              "weightMaxPos": 1180.5,
+              "lengthMinPos": 1192.5,
+              "lengthMaxPos": 11.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -55,7 +63,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 297.0,
+              "weightMaxPos": 1180.5,
+              "lengthMinPos": 1194.5,
+              "lengthMaxPos": 11.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -72,7 +84,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 297.0,
+              "weightMaxPos": 1179.5,
+              "lengthMinPos": 1182.0,
+              "lengthMaxPos": 11.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -94,7 +110,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 297.5,
+              "weightMaxPos": 1179.5,
+              "lengthMinPos": 1199.5,
+              "lengthMaxPos": 11.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -111,7 +131,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 297.5,
+              "weightMaxPos": 1180.0,
+              "lengthMinPos": 1194.5,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -138,7 +162,11 @@
               "weightMin": 220,
               "weightMax": 380,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 327.0,
+              "weightMaxPos": 1188.0,
+              "lengthMinPos": 1307.0,
+              "lengthMaxPos": 12.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -155,7 +183,11 @@
               "weightMin": 220,
               "weightMax": 380,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 328.0,
+              "weightMaxPos": 1188.0,
+              "lengthMinPos": 1304.5,
+              "lengthMaxPos": 11.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -177,7 +209,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 302.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1192.5,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -194,7 +230,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 301.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1190.5,
+              "lengthMaxPos": 11.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -221,7 +261,11 @@
               "weightMin": 220,
               "weightMax": 380,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 327.0,
+              "weightMaxPos": 1188.0,
+              "lengthMinPos": 1307.0,
+              "lengthMaxPos": 12.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -238,7 +282,11 @@
               "weightMin": 220,
               "weightMax": 380,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 328.0,
+              "weightMaxPos": 1188.0,
+              "lengthMinPos": 1304.5,
+              "lengthMaxPos": 11.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -260,7 +308,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 302.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1192.5,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -277,7 +329,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 301.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1190.5,
+              "lengthMaxPos": 11.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -299,7 +355,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 300.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1188.0,
+              "lengthMaxPos": 11.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -316,7 +376,11 @@
               "weightMin": 220,
               "weightMax": 400,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 301.0,
+              "weightMaxPos": 1187.0,
+              "lengthMinPos": 1163.5,
+              "lengthMaxPos": 11.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -343,7 +407,11 @@
               "weightMin": 240,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 300.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1175.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -360,7 +428,11 @@
               "weightMin": 240,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 300.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1197.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -382,7 +454,11 @@
               "weightMin": 240,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 300.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1186.5,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -399,7 +475,11 @@
               "weightMin": 240,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 302.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1194.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -421,7 +501,11 @@
               "weightMin": 220,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 259.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1125.5,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -438,7 +522,11 @@
               "weightMin": 220,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 258.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1126.5,
+              "lengthMaxPos": 11.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -460,7 +548,11 @@
               "weightMin": 220,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 258.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1122.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -477,7 +569,11 @@
               "weightMin": 220,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 258.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1127.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -504,7 +600,11 @@
               "weightMin": 240,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 300.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1175.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -521,7 +621,11 @@
               "weightMin": 240,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 300.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1197.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -543,7 +647,11 @@
               "weightMin": 240,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 300.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1186.5,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -560,7 +668,11 @@
               "weightMin": 240,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 302.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1194.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -582,7 +694,11 @@
               "weightMin": 220,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 258.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1123.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -599,7 +715,11 @@
               "weightMin": 220,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 259.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1126.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -621,7 +741,11 @@
               "weightMin": 220,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 258.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1125.5,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -638,7 +762,11 @@
               "weightMin": 220,
               "weightMax": 420,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 258.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1126.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -665,7 +793,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 250.0,
+              "weightMaxPos": 1188.0,
+              "lengthMinPos": 1124.0,
+              "lengthMaxPos": 11.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -682,7 +814,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 251.0,
+              "weightMaxPos": 1188.0,
+              "lengthMinPos": 1134.0,
+              "lengthMaxPos": 12.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -699,7 +835,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 249.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1126.5,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -716,7 +856,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 250.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1136.5,
+              "lengthMaxPos": 11.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -738,7 +882,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 250.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1137.5,
+              "lengthMaxPos": 11.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -755,7 +903,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 250.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1137.0,
+              "lengthMaxPos": 11.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -772,7 +924,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 250.0,
+              "weightMaxPos": 1188.0,
+              "lengthMinPos": 1135.5,
+              "lengthMaxPos": 11.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -789,7 +945,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 250.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1131.5,
+              "lengthMaxPos": 11.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -811,7 +971,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 250.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1131.5,
+              "lengthMaxPos": 11.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -828,7 +992,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 250.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1142.5,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -845,7 +1013,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 249.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1131.0,
+              "lengthMaxPos": 10.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -862,7 +1034,11 @@
               "weightMin": 280,
               "weightMax": 480,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 267.0,
+              "weightMaxPos": 1189.0,
+              "lengthMinPos": 1122.5,
+              "lengthMaxPos": 11.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -889,7 +1065,11 @@
               "weightMin": 340,
               "weightMax": 580,
               "lengthMin": 3,
-              "lengthMax": 15
+              "lengthMax": 15,
+              "weightMinPos": 173.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 625.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -906,7 +1086,11 @@
               "weightMin": 340,
               "weightMax": 580,
               "lengthMin": 3,
-              "lengthMax": 15
+              "lengthMax": 15,
+              "weightMinPos": 173.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 615.0,
+              "lengthMaxPos": 7.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -928,7 +1112,11 @@
               "weightMin": 440,
               "weightMax": 680,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 173.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 616.0,
+              "lengthMaxPos": 7.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -945,7 +1133,11 @@
               "weightMin": 440,
               "weightMax": 680,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 169.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 622.0,
+              "lengthMaxPos": 7.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -972,7 +1164,11 @@
               "weightMin": 340,
               "weightMax": 580,
               "lengthMin": 3,
-              "lengthMax": 15
+              "lengthMax": 15,
+              "weightMinPos": 173.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 625.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -989,7 +1185,11 @@
               "weightMin": 340,
               "weightMax": 580,
               "lengthMin": 3,
-              "lengthMax": 15
+              "lengthMax": 15,
+              "weightMinPos": 173.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 615.0,
+              "lengthMaxPos": 7.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -1011,7 +1211,11 @@
               "weightMin": 440,
               "weightMax": 680,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 173.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 616.0,
+              "lengthMaxPos": 7.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -1028,7 +1232,11 @@
               "weightMin": 440,
               "weightMax": 680,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 169.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 622.0,
+              "lengthMaxPos": 7.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -1055,7 +1263,11 @@
               "weightMin": 440,
               "weightMax": 680,
               "lengthMin": 5,
-              "lengthMax": 17
+              "lengthMax": 17,
+              "weightMinPos": 171.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 621.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -1072,7 +1284,11 @@
               "weightMin": 440,
               "weightMax": 680,
               "lengthMin": 5,
-              "lengthMax": 17
+              "lengthMax": 17,
+              "weightMinPos": 179.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 619.0,
+              "lengthMaxPos": 7.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -1094,7 +1310,11 @@
               "weightMin": 440,
               "weightMax": 680,
               "lengthMin": 5,
-              "lengthMax": 17
+              "lengthMax": 17,
+              "weightMinPos": 168.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 623.0,
+              "lengthMaxPos": 7.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -1111,7 +1331,11 @@
               "weightMin": 440,
               "weightMax": 680,
               "lengthMin": 5,
-              "lengthMax": 17
+              "lengthMax": 17,
+              "weightMinPos": 168.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 623.0,
+              "lengthMaxPos": 7.5
             },
             "curveColor": "blue",
             "weightUnit": "1000 lb",
@@ -1138,7 +1362,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 163.0,
+              "weightMaxPos": 1191.0,
+              "lengthMinPos": 697.0,
+              "lengthMaxPos": 8.5
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1155,7 +1383,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1172,7 +1404,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1189,7 +1425,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1211,7 +1451,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1228,7 +1472,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1245,7 +1493,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 699.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1262,7 +1514,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 699.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1289,7 +1545,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1306,7 +1566,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1323,7 +1587,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 702.5,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1340,7 +1608,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.5,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1367,7 +1639,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1384,7 +1660,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1401,7 +1681,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 163.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 701.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1418,7 +1702,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 163.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 701.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1440,7 +1728,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 699.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1457,7 +1749,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1474,7 +1770,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 163.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 701.5,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1491,7 +1791,11 @@
               "weightMin": 300,
               "weightMax": 800,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 162.0,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 700.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1518,7 +1822,11 @@
               "weightMin": 340,
               "weightMax": 520,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 181.56,
+              "weightMaxPos": 1182.49,
+              "lengthMinPos": 676.08,
+              "lengthMaxPos": 7.84
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1535,7 +1843,11 @@
               "weightMin": 340,
               "weightMax": 520,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 182.56,
+              "weightMaxPos": 1182.87,
+              "lengthMinPos": 676.14,
+              "lengthMaxPos": 8.16
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1552,7 +1864,11 @@
               "weightMin": 340,
               "weightMax": 520,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 182.56,
+              "weightMaxPos": 1182.87,
+              "lengthMinPos": 674.57,
+              "lengthMaxPos": 8.2
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1569,7 +1885,11 @@
               "weightMin": 340,
               "weightMax": 520,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 181.56,
+              "weightMaxPos": 1182.49,
+              "lengthMinPos": 676.14,
+              "lengthMaxPos": 8.16
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1591,7 +1911,11 @@
               "weightMin": 340,
               "weightMax": 520,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 181.74,
+              "weightMaxPos": 1182.84,
+              "lengthMinPos": 676.8,
+              "lengthMaxPos": 7.9
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1608,7 +1932,11 @@
               "weightMin": 340,
               "weightMax": 520,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 182.56,
+              "weightMaxPos": 1182.87,
+              "lengthMinPos": 674.57,
+              "lengthMaxPos": 8.2
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1625,7 +1953,11 @@
               "weightMin": 340,
               "weightMax": 520,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 181.58,
+              "weightMaxPos": 1182.52,
+              "lengthMinPos": 675.08,
+              "lengthMaxPos": 8.38
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1642,7 +1974,11 @@
               "weightMin": 340,
               "weightMax": 520,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 182.56,
+              "weightMaxPos": 1182.87,
+              "lengthMinPos": 676.14,
+              "lengthMaxPos": 8.16
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1669,7 +2005,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 164.6,
+              "weightMaxPos": 1137.66,
+              "lengthMinPos": 655.91,
+              "lengthMaxPos": 8.19
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1686,7 +2026,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 166.06,
+              "weightMaxPos": 1137.63,
+              "lengthMinPos": 654.0,
+              "lengthMaxPos": 8.05
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1703,7 +2047,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 165.65,
+              "weightMaxPos": 1137.71,
+              "lengthMinPos": 656.03,
+              "lengthMaxPos": 8.17
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1720,7 +2068,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 172.34,
+              "weightMaxPos": 1172.42,
+              "lengthMinPos": 675.49,
+              "lengthMaxPos": 8.25
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1742,7 +2094,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 164.45,
+              "weightMaxPos": 1137.53,
+              "lengthMinPos": 657.0,
+              "lengthMaxPos": 7.78
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1759,7 +2115,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 165.92,
+              "weightMaxPos": 1137.57,
+              "lengthMinPos": 655.55,
+              "lengthMaxPos": 7.47
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1776,7 +2136,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 165.6,
+              "weightMaxPos": 1137.48,
+              "lengthMinPos": 656.0,
+              "lengthMaxPos": 8.0
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1793,7 +2157,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 169.33,
+              "weightMaxPos": 1172.38,
+              "lengthMinPos": 676.25,
+              "lengthMaxPos": 8.06
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1820,7 +2188,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 165.51,
+              "weightMaxPos": 1136.94,
+              "lengthMinPos": 656.28,
+              "lengthMaxPos": 8.35
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1837,7 +2209,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 177.61,
+              "weightMaxPos": 1137.59,
+              "lengthMinPos": 647.99,
+              "lengthMaxPos": 7.77
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1854,7 +2230,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 177.31,
+              "weightMaxPos": 1137.68,
+              "lengthMinPos": 648.93,
+              "lengthMaxPos": 8.04
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1871,7 +2251,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 182.68,
+              "weightMaxPos": 1173.25,
+              "lengthMinPos": 668.45,
+              "lengthMaxPos": 8.48
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1893,7 +2277,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 164.96,
+              "weightMaxPos": 1136.69,
+              "lengthMinPos": 656.16,
+              "lengthMaxPos": 8.42
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1910,7 +2298,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 177.28,
+              "weightMaxPos": 1137.61,
+              "lengthMinPos": 647.85,
+              "lengthMaxPos": 7.93
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1927,7 +2319,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 176.82,
+              "weightMaxPos": 1137.77,
+              "lengthMinPos": 647.39,
+              "lengthMaxPos": 8.06
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1944,7 +2340,11 @@
               "weightMin": 380,
               "weightMax": 560,
               "lengthMin": 4,
-              "lengthMax": 16
+              "lengthMax": 16,
+              "weightMinPos": 183.0,
+              "weightMaxPos": 1173.54,
+              "lengthMinPos": 667.94,
+              "lengthMaxPos": 8.48
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -1971,7 +2371,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.33,
+              "weightMaxPos": 9.0,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -1991,7 +2395,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.33,
+              "weightMaxPos": 9.0,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2016,7 +2424,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.33,
+              "weightMaxPos": 9.0,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2036,7 +2448,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.33,
+              "weightMaxPos": 9.0,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2061,7 +2477,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.33,
+              "weightMaxPos": 9.0,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2081,7 +2501,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.33,
+              "weightMaxPos": 9.0,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2111,7 +2535,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.33,
+              "weightMaxPos": 9.0,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2131,7 +2559,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.33,
+              "weightMaxPos": 9.0,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2156,7 +2588,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.33,
+              "weightMaxPos": 9.0,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2176,7 +2612,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.33,
+              "weightMaxPos": 9.0,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2201,7 +2641,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.33,
+              "weightMaxPos": 9.0,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2221,7 +2665,11 @@
               "weightMin": 170,
               "weightMax": 250,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 646.84,
+              "weightMaxPos": 9.04,
+              "lengthMinPos": 231.3,
+              "lengthMaxPos": 1165.1
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2251,7 +2699,11 @@
               "weightMin": 170,
               "weightMax": 240,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 568.92,
+              "weightMaxPos": 9.58,
+              "lengthMinPos": 231.1,
+              "lengthMaxPos": 1164.7
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2271,7 +2723,11 @@
               "weightMin": 170,
               "weightMax": 240,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 568.92,
+              "weightMaxPos": 9.58,
+              "lengthMinPos": 231.1,
+              "lengthMaxPos": 1164.7
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2296,7 +2752,11 @@
               "weightMin": 170,
               "weightMax": 240,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 568.92,
+              "weightMaxPos": 9.58,
+              "lengthMinPos": 231.1,
+              "lengthMaxPos": 1164.7
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2316,7 +2776,11 @@
               "weightMin": 170,
               "weightMax": 240,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 568.92,
+              "weightMaxPos": 9.58,
+              "lengthMinPos": 231.1,
+              "lengthMaxPos": 1164.7
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2346,7 +2810,11 @@
               "weightMin": 155,
               "weightMax": 255,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 575.86,
+              "weightMaxPos": 9.41,
+              "lengthMinPos": 231.01,
+              "lengthMaxPos": 1164.88
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2366,7 +2834,11 @@
               "weightMin": 155,
               "weightMax": 255,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 575.86,
+              "weightMaxPos": 9.41,
+              "lengthMinPos": 231.01,
+              "lengthMaxPos": 1164.88
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2396,7 +2868,11 @@
               "weightMin": 155,
               "weightMax": 255,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 575.86,
+              "weightMaxPos": 9.41,
+              "lengthMinPos": 231.01,
+              "lengthMaxPos": 1164.88
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2416,7 +2892,11 @@
               "weightMin": 155,
               "weightMax": 255,
               "lengthMin": 1,
-              "lengthMax": 5
+              "lengthMax": 5,
+              "weightMinPos": 575.86,
+              "weightMaxPos": 9.41,
+              "lengthMinPos": 231.01,
+              "lengthMaxPos": 1164.88
             },
             "curveColor": "multi",
             "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
@@ -2424,6 +2904,64 @@
             "lengthUnit": "1000 m",
             "weightAxis": "vertical",
             "lengthAxis": "horizontal"
+          }
+        }
+      }
+    }
+  },
+  "a350_900": {
+    "label": "A350-900",
+    "engines": {
+      "trentxwb": {
+        "label": "RR Trent XWB Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a350_900_trentxwb_isa.png",
+            "axis": {
+              "top": 136.0,
+              "bottom": 1438.0,
+              "left": 12.0,
+              "right": 949.0,
+              "weightMin": 150,
+              "weightMax": 290,
+              "lengthMin": 1.5,
+              "lengthMax": 5.5,
+              "weightMinPos": 942.38,
+              "weightMaxPos": 11.62,
+              "lengthMinPos": 1437.98,
+              "lengthMaxPos": 136.24
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "horizontal",
+            "lengthAxis": "vertical"
+          },
+          "isa15_dry": {
+            "label": "ISA+15 Conditions",
+            "image": "RunwayCharts/a350_900_trentxwb_isa15.png",
+            "axis": {
+              "top": 136.0,
+              "bottom": 1438.0,
+              "left": 12.0,
+              "right": 949.0,
+              "weightMin": 150,
+              "weightMax": 290,
+              "lengthMin": 1.5,
+              "lengthMax": 5.5,
+              "weightMinPos": 942.38,
+              "weightMaxPos": 11.62,
+              "lengthMinPos": 1437.98,
+              "lengthMaxPos": 136.24
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "weightAxis": "horizontal",
+            "lengthAxis": "vertical"
           }
         }
       }
