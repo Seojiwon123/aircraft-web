@@ -2966,5 +2966,116 @@
         }
       }
     }
+  },
+  "a380_800": {
+    "label": "A380-800",
+    "engines": {
+      "trent900": {
+        "label": "RR Trent 900 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a380_800_trent900_isa.png",
+            "axis": {
+              "top": 93.21,
+              "bottom": 625.59,
+              "left": 79.46,
+              "right": 1091.99,
+              "weightMin": 300,
+              "weightMax": 650,
+              "lengthMin": 1.5,
+              "lengthMax": 5.5,
+              "weightMinPos": 625.59,
+              "weightMaxPos": 93.21,
+              "lengthMinPos": 79.46,
+              "lengthMaxPos": 1091.99
+            },
+            "curveColor": "magenta",
+            "weightUnit": "t",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal",
+            "weightInputDivisor": 1
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a380_800_trent900_isa15.png",
+            "axis": {
+              "top": 91.5,
+              "bottom": 626.63,
+              "left": 81.36,
+              "right": 1098.42,
+              "weightMin": 300,
+              "weightMax": 650,
+              "lengthMin": 1.5,
+              "lengthMax": 5.5,
+              "weightMinPos": 626.63,
+              "weightMaxPos": 91.5,
+              "lengthMinPos": 81.36,
+              "lengthMaxPos": 1098.42
+            },
+            "curveColor": "magenta",
+            "weightUnit": "t",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal",
+            "weightInputDivisor": 1
+          }
+        }
+      },
+      "gp7200": {
+        "label": "Engine Alliance GP 7200 Series",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a380_800_gp7200_isa.png",
+            "axis": {
+              "top": 82.86,
+              "bottom": 612.61,
+              "left": 80.62,
+              "right": 1087.82,
+              "weightMin": 300,
+              "weightMax": 650,
+              "lengthMin": 1.5,
+              "lengthMax": 5.5,
+              "weightMinPos": 612.61,
+              "weightMaxPos": 82.86,
+              "lengthMinPos": 80.62,
+              "lengthMaxPos": 1087.82
+            },
+            "curveColor": "magenta",
+            "weightUnit": "t",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal",
+            "weightInputDivisor": 1
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C (+27°F) Conditions",
+            "image": "RunwayCharts/a380_800_gp7200_isa15.png",
+            "axis": {
+              "top": 91.64,
+              "bottom": 623.27,
+              "left": 80.63,
+              "right": 1089.7,
+              "weightMin": 300,
+              "weightMax": 650,
+              "lengthMin": 1.5,
+              "lengthMax": 5.5,
+              "weightMinPos": 623.27,
+              "weightMaxPos": 91.64,
+              "lengthMinPos": 80.63,
+              "lengthMaxPos": 1089.7
+            },
+            "curveColor": "magenta",
+            "weightUnit": "t",
+            "lengthUnit": "1000 m",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal",
+            "weightInputDivisor": 1
+          }
+        }
+      }
+    }
   }
 }
