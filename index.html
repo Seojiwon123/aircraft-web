@@ -216,8 +216,8 @@
             top: 100%;
             left: 0;
             margin-top: 4px;
-            width: 220px;
-            min-width: 220px;
+            width: 300px;
+            min-width: 300px;
             background-color: white;
             border: 1px solid #cbd5e0;
             border-radius: 6px;
@@ -225,6 +225,10 @@
             z-index: 500;
             padding: 6px;
             box-sizing: border-box;
+        }
+        .runway-select-panel.align-right {
+            left: auto;
+            right: 0;
         }
         .runway-select-list {
             max-height: 272px;
@@ -237,9 +241,9 @@
             cursor: pointer;
             color: #2d3748;
             border-radius: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.4;
         }
         .runway-select-item:hover {
             background-color: #ebf4ff;
@@ -825,7 +829,7 @@
                             <span id="runwayConditionBtnLabel">엔진을 먼저 선택</span>
                             <span style="color:#a0aec0;">▾</span>
                         </div>
-                        <div class="runway-select-panel" id="runwayConditionPanel" onclick="event.stopPropagation()">
+                        <div class="runway-select-panel align-right" id="runwayConditionPanel" onclick="event.stopPropagation()">
                             <div class="runway-select-list" id="runwayConditionList"></div>
                         </div>
                     </div>
@@ -1793,7 +1797,7 @@
             document.getElementById('runwayConditionBtn').dataset.value = '';
             runwayConditionKeys = [];
             renderRunwayConditionList();
-            setRunwaySelectBtn('Condition', '엔진을 먼저 선택', false);
+            setRunwaySelectBtn('Condition', '엔진을 먼저 선택하세요', false);
 
             document.getElementById('runwayEngineBtn').dataset.value = '';
             if (!runwaySelectedAircraft) {
