@@ -3265,5 +3265,495 @@
         }
       }
     }
+  },
+  "b747_400": {
+    "label": "B747-400",
+    "engines": {
+      "cf6_80c2b1": {
+        "label": "CF6-80C2B1 Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_400_cf6_80c2b1_std.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 737.93,
+              "left": 212.89,
+              "right": 1191.0,
+              "weightMin": 500,
+              "weightMax": 900,
+              "lengthMin": 5,
+              "lengthMax": 17,
+              "weightMinPos": 212.89,
+              "weightMaxPos": 1191.0,
+              "lengthMinPos": 737.93,
+              "lengthMaxPos": 9.0
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std31": {
+            "label": "Standard Day +31°F (+17.2°C)",
+            "image": "RunwayCharts/b747_400_cf6_80c2b1_std31.png",
+            "axis": {
+              "top": 9.0,
+              "bottom": 734.7,
+              "left": 210.6,
+              "right": 1191.0,
+              "weightMin": 500,
+              "weightMax": 900,
+              "lengthMin": 5,
+              "lengthMax": 17,
+              "weightMinPos": 210.6,
+              "weightMaxPos": 1191.0,
+              "lengthMinPos": 734.7,
+              "lengthMaxPos": 9.0
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "pw4056": {
+        "label": "PW-4056 Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_400_pw4056_std.png",
+            "axis": {
+              "top": 8.89,
+              "bottom": 727.7,
+              "left": 224.0,
+              "right": 1191.11,
+              "weightMin": 500,
+              "weightMax": 900,
+              "lengthMin": 5,
+              "lengthMax": 17,
+              "weightMinPos": 224.0,
+              "weightMaxPos": 1191.11,
+              "lengthMinPos": 727.7,
+              "lengthMaxPos": 8.89
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std33": {
+            "label": "Standard Day +33°F (+18.3°C)",
+            "image": "RunwayCharts/b747_400_pw4056_std33.png",
+            "axis": {
+              "top": 8.84,
+              "bottom": 728.72,
+              "left": 224.45,
+              "right": 1191.16,
+              "weightMin": 500,
+              "weightMax": 900,
+              "lengthMin": 5,
+              "lengthMax": 17,
+              "weightMinPos": 224.45,
+              "weightMaxPos": 1191.16,
+              "lengthMinPos": 728.72,
+              "lengthMaxPos": 8.84
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "rb211_524g2": {
+        "label": "RB211-524G2 Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_400_rb211_524g2_std.png",
+            "axis": {
+              "top": 8.71,
+              "bottom": 725.98,
+              "left": 224.67,
+              "right": 1191.29,
+              "weightMin": 500,
+              "weightMax": 900,
+              "lengthMin": 5,
+              "lengthMax": 17,
+              "weightMinPos": 224.67,
+              "weightMaxPos": 1191.29,
+              "lengthMinPos": 725.98,
+              "lengthMaxPos": 8.71
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std27": {
+            "label": "Standard Day +27°F (+15°C)",
+            "image": "RunwayCharts/b747_400_rb211_524g2_std27.png",
+            "axis": {
+              "top": 8.73,
+              "bottom": 728.26,
+              "left": 222.78,
+              "right": 1191.27,
+              "weightMin": 500,
+              "weightMax": 900,
+              "lengthMin": 5,
+              "lengthMax": 17,
+              "weightMinPos": 222.78,
+              "weightMaxPos": 1191.27,
+              "lengthMinPos": 728.26,
+              "lengthMaxPos": 8.73
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b747_400f": {
+    "label": "B747-400 Freighter",
+    "engines": {
+      "cf6_80c2b1": {
+        "label": "CF6-80C2B1 Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_400f_cf6_80c2b1_std.png",
+            "axis": {
+              "top": 8.71,
+              "bottom": 725.75,
+              "left": 224.2,
+              "right": 1191.29,
+              "weightMin": 500,
+              "weightMax": 900,
+              "lengthMin": 5,
+              "lengthMax": 17,
+              "weightMinPos": 224.2,
+              "weightMaxPos": 1191.29,
+              "lengthMinPos": 725.75,
+              "lengthMaxPos": 8.71
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std31": {
+            "label": "Standard Day +31°F (+17.2°C)",
+            "image": "RunwayCharts/b747_400f_cf6_80c2b1_std31.png",
+            "axis": {
+              "top": 8.77,
+              "bottom": 730.7,
+              "left": 223.98,
+              "right": 1191.23,
+              "weightMin": 500,
+              "weightMax": 900,
+              "lengthMin": 5,
+              "lengthMax": 17,
+              "weightMinPos": 223.98,
+              "weightMaxPos": 1191.23,
+              "lengthMinPos": 730.7,
+              "lengthMaxPos": 8.77
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b747_400er": {
+    "label": "B747-400ER",
+    "engines": {
+      "cf6_80c2b5f": {
+        "label": "CF6-80C2B5F Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_400er_cf6_80c2b5f_std.png",
+            "axis": {
+              "top": 8.0,
+              "bottom": 703.78,
+              "left": 172.34,
+              "right": 1192.0,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 172.34,
+              "weightMaxPos": 1192.0,
+              "lengthMinPos": 703.78,
+              "lengthMaxPos": 8.0
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std31": {
+            "label": "Standard Day +31°F (+17.2°C)",
+            "image": "RunwayCharts/b747_400er_cf6_80c2b5f_std31.png",
+            "axis": {
+              "top": 8.16,
+              "bottom": 704.44,
+              "left": 171.89,
+              "right": 1191.84,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 171.89,
+              "weightMaxPos": 1191.84,
+              "lengthMinPos": 704.44,
+              "lengthMaxPos": 8.16
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "pw4062": {
+        "label": "PW-4062 Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_400er_pw4062_std.png",
+            "axis": {
+              "top": 8.24,
+              "bottom": 713.74,
+              "left": 172.53,
+              "right": 1191.76,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 172.53,
+              "weightMaxPos": 1191.76,
+              "lengthMinPos": 713.74,
+              "lengthMaxPos": 8.24
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std31": {
+            "label": "Standard Day +31°F (+17°C)",
+            "image": "RunwayCharts/b747_400er_pw4062_std31.png",
+            "axis": {
+              "top": 8.38,
+              "bottom": 713.18,
+              "left": 171.59,
+              "right": 1191.62,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 171.59,
+              "weightMaxPos": 1191.62,
+              "lengthMinPos": 713.18,
+              "lengthMaxPos": 8.38
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "rb211_524h8t": {
+        "label": "RB211-524H8-T Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_400er_rb211_524h8t_std.png",
+            "axis": {
+              "top": 8.24,
+              "bottom": 711.21,
+              "left": 171.9,
+              "right": 1191.76,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 171.9,
+              "weightMaxPos": 1191.76,
+              "lengthMinPos": 711.21,
+              "lengthMaxPos": 8.24
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std31": {
+            "label": "Standard Day +31°F (+17°C)",
+            "image": "RunwayCharts/b747_400er_rb211_524h8t_std31.png",
+            "axis": {
+              "top": 8.22,
+              "bottom": 709.37,
+              "left": 172.13,
+              "right": 1191.78,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 172.13,
+              "weightMaxPos": 1191.78,
+              "lengthMinPos": 709.37,
+              "lengthMaxPos": 8.22
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b747_400erf": {
+    "label": "B747-400ER Freighter",
+    "engines": {
+      "cf6_80c2b5f": {
+        "label": "CF6-80C2B5F Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_400erf_cf6_80c2b5f_std.png",
+            "axis": {
+              "top": 8.39,
+              "bottom": 709.6,
+              "left": 171.67,
+              "right": 1191.61,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 171.67,
+              "weightMaxPos": 1191.61,
+              "lengthMinPos": 709.6,
+              "lengthMaxPos": 8.39
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std31": {
+            "label": "Standard Day +31°F (+17°C)",
+            "image": "RunwayCharts/b747_400erf_cf6_80c2b5f_std31.png",
+            "axis": {
+              "top": 8.23,
+              "bottom": 713.03,
+              "left": 172.29,
+              "right": 1191.77,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 172.29,
+              "weightMaxPos": 1191.77,
+              "lengthMinPos": 713.03,
+              "lengthMaxPos": 8.23
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "pw4062": {
+        "label": "PW-4062 Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_400erf_pw4062_std.png",
+            "axis": {
+              "top": 8.15,
+              "bottom": 710.33,
+              "left": 171.74,
+              "right": 1191.85,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 171.74,
+              "weightMaxPos": 1191.85,
+              "lengthMinPos": 710.33,
+              "lengthMaxPos": 8.15
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std31": {
+            "label": "Standard Day +31°F (+17°C)",
+            "image": "RunwayCharts/b747_400erf_pw4062_std31.png",
+            "axis": {
+              "top": 8.31,
+              "bottom": 713.24,
+              "left": 172.22,
+              "right": 1191.69,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 172.22,
+              "weightMaxPos": 1191.69,
+              "lengthMinPos": 713.24,
+              "lengthMaxPos": 8.31
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      },
+      "rb211_524h8t": {
+        "label": "RB211-524H8-T Engines",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b747_400erf_rb211_524h8t_std.png",
+            "axis": {
+              "top": 8.24,
+              "bottom": 713.14,
+              "left": 171.9,
+              "right": 1191.76,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 171.9,
+              "weightMaxPos": 1191.76,
+              "lengthMinPos": 713.14,
+              "lengthMaxPos": 8.24
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std31": {
+            "label": "Standard Day +31°F (+17°C)",
+            "image": "RunwayCharts/b747_400erf_rb211_524h8t_std31.png",
+            "axis": {
+              "top": 8.23,
+              "bottom": 711.88,
+              "left": 172.21,
+              "right": 1191.77,
+              "weightMin": 550,
+              "weightMax": 950,
+              "lengthMin": 5,
+              "lengthMax": 16,
+              "weightMinPos": 172.21,
+              "weightMaxPos": 1191.77,
+              "lengthMinPos": 711.88,
+              "lengthMaxPos": 8.23
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
   }
 }
