@@ -1999,7 +1999,7 @@
             "image": "RunwayCharts/b787_9_typical_std.png",
             "axis": {
               "top": 8.19,
-              "bottom": 655.91,
+              "bottom": 711.0,
               "left": 164.6,
               "right": 1137.66,
               "weightMin": 380,
@@ -2008,7 +2008,7 @@
               "lengthMax": 16,
               "weightMinPos": 164.6,
               "weightMaxPos": 1137.66,
-              "lengthMinPos": 655.91,
+              "lengthMinPos": 711.0,
               "lengthMaxPos": 8.19
             },
             "curveColor": "black",
@@ -2020,7 +2020,7 @@
             "image": "RunwayCharts/b787_9_typical_std27.png",
             "axis": {
               "top": 8.05,
-              "bottom": 654.0,
+              "bottom": 709.0,
               "left": 166.06,
               "right": 1137.63,
               "weightMin": 380,
@@ -2029,7 +2029,7 @@
               "lengthMax": 16,
               "weightMinPos": 166.06,
               "weightMaxPos": 1137.63,
-              "lengthMinPos": 654.0,
+              "lengthMinPos": 709.0,
               "lengthMaxPos": 8.05
             },
             "curveColor": "black",
@@ -2041,7 +2041,7 @@
             "image": "RunwayCharts/b787_9_typical_std45.png",
             "axis": {
               "top": 8.17,
-              "bottom": 656.03,
+              "bottom": 711.0,
               "left": 165.65,
               "right": 1137.71,
               "weightMin": 380,
@@ -2050,7 +2050,7 @@
               "lengthMax": 16,
               "weightMinPos": 165.65,
               "weightMaxPos": 1137.71,
-              "lengthMinPos": 656.03,
+              "lengthMinPos": 711.0,
               "lengthMaxPos": 8.17
             },
             "curveColor": "black",
@@ -2062,7 +2062,7 @@
             "image": "RunwayCharts/b787_9_typical_std61.png",
             "axis": {
               "top": 8.25,
-              "bottom": 675.49,
+              "bottom": 732.5,
               "left": 172.34,
               "right": 1172.42,
               "weightMin": 380,
@@ -2071,7 +2071,7 @@
               "lengthMax": 16,
               "weightMinPos": 172.34,
               "weightMaxPos": 1172.42,
-              "lengthMinPos": 675.49,
+              "lengthMinPos": 732.5,
               "lengthMaxPos": 8.25
             },
             "curveColor": "black",
@@ -2088,7 +2088,7 @@
             "image": "RunwayCharts/b787_9_hithrust_std.png",
             "axis": {
               "top": 7.78,
-              "bottom": 657.0,
+              "bottom": 712.0,
               "left": 164.45,
               "right": 1137.53,
               "weightMin": 380,
@@ -2097,7 +2097,7 @@
               "lengthMax": 16,
               "weightMinPos": 164.45,
               "weightMaxPos": 1137.53,
-              "lengthMinPos": 657.0,
+              "lengthMinPos": 712.0,
               "lengthMaxPos": 7.78
             },
             "curveColor": "black",
@@ -2109,7 +2109,7 @@
             "image": "RunwayCharts/b787_9_hithrust_std27.png",
             "axis": {
               "top": 7.47,
-              "bottom": 655.55,
+              "bottom": 711.0,
               "left": 165.92,
               "right": 1137.57,
               "weightMin": 380,
@@ -2118,7 +2118,7 @@
               "lengthMax": 16,
               "weightMinPos": 165.92,
               "weightMaxPos": 1137.57,
-              "lengthMinPos": 655.55,
+              "lengthMinPos": 711.0,
               "lengthMaxPos": 7.47
             },
             "curveColor": "black",
@@ -2130,7 +2130,7 @@
             "image": "RunwayCharts/b787_9_hithrust_std45.png",
             "axis": {
               "top": 8.0,
-              "bottom": 656.0,
+              "bottom": 711.5,
               "left": 165.6,
               "right": 1137.48,
               "weightMin": 380,
@@ -2139,7 +2139,7 @@
               "lengthMax": 16,
               "weightMinPos": 165.6,
               "weightMaxPos": 1137.48,
-              "lengthMinPos": 656.0,
+              "lengthMinPos": 711.5,
               "lengthMaxPos": 8.0
             },
             "curveColor": "black",
@@ -2151,7 +2151,7 @@
             "image": "RunwayCharts/b787_9_hithrust_std61.png",
             "axis": {
               "top": 8.06,
-              "bottom": 676.25,
+              "bottom": 733.0,
               "left": 169.33,
               "right": 1172.38,
               "weightMin": 380,
@@ -2160,7 +2160,7 @@
               "lengthMax": 16,
               "weightMinPos": 169.33,
               "weightMaxPos": 1172.38,
-              "lengthMinPos": 676.25,
+              "lengthMinPos": 733.0,
               "lengthMaxPos": 8.06
             },
             "curveColor": "black",
