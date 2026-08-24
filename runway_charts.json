@@ -27,7 +27,7 @@
             "lengthUnit": "ft"
           },
           "std18": {
-            "label": "Standard Day +18C",
+            "label": "Standard Day +18°C",
             "image": "RunwayCharts/b767_300_cf6_80a_std18.png",
             "axis": {
               "top": 11.5,
@@ -74,7 +74,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +15C",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b767_300_jt9d_std15.png",
             "axis": {
               "top": 11.0,
@@ -121,7 +121,7 @@
             "lengthUnit": "ft"
           },
           "std17": {
-            "label": "Standard Day +17C",
+            "label": "Standard Day +17°C",
             "image": "RunwayCharts/b767_300_cf6_80c2b2_std17.png",
             "axis": {
               "top": 10.5,
@@ -173,7 +173,7 @@
             "lengthUnit": "ft"
           },
           "std17": {
-            "label": "Standard Day +31F (+17C)",
+            "label": "Standard Day +17°C",
             "image": "RunwayCharts/b767_200_200er_jt9d_std17.png",
             "axis": {
               "top": 11.5,
@@ -220,7 +220,7 @@
             "lengthUnit": "ft"
           },
           "std17": {
-            "label": "Standard Day +31F (+17C)",
+            "label": "Standard Day +17°C",
             "image": "RunwayCharts/b767_200_200er_cf6_80c2b2_pw4052_std17.png",
             "axis": {
               "top": 11.0,
@@ -272,7 +272,7 @@
             "lengthUnit": "ft"
           },
           "std17": {
-            "label": "Standard Day +31F (+17C)",
+            "label": "Standard Day +17°C",
             "image": "RunwayCharts/b767_200_200er_jt9d_std17.png",
             "axis": {
               "top": 11.5,
@@ -319,7 +319,7 @@
             "lengthUnit": "ft"
           },
           "std17": {
-            "label": "Standard Day +31F (+17C)",
+            "label": "Standard Day +17°C",
             "image": "RunwayCharts/b767_200_200er_cf6_80c2b2_pw4052_std17.png",
             "axis": {
               "top": 11.0,
@@ -366,7 +366,7 @@
             "lengthUnit": "ft"
           },
           "std17": {
-            "label": "Standard Day +31F (+17C)",
+            "label": "Standard Day +17°C",
             "image": "RunwayCharts/b767_200er_cf6_80c2b4_pw4056_rb211524g_std17.png",
             "axis": {
               "top": 11.5,
@@ -418,7 +418,7 @@
             "lengthUnit": "ft"
           },
           "std17": {
-            "label": "Standard Day +31F (+17C)",
+            "label": "Standard Day +17°C",
             "image": "RunwayCharts/b767_300er_300f_cf6_80c2b4_pw4056_rb211524g_std17.png",
             "axis": {
               "top": 10.5,
@@ -465,7 +465,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b767_300er_300f_cf6_80c2b64_pw4060_rb211524h_std15.png",
             "axis": {
               "top": 10.5,
@@ -512,7 +512,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b767_300er_cf6_80c2b7f_std15.png",
             "axis": {
               "top": 11.0,
@@ -559,7 +559,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b767_300er_pw4062_std15.png",
             "axis": {
               "top": 10.5,
@@ -611,7 +611,7 @@
             "lengthUnit": "ft"
           },
           "std17": {
-            "label": "Standard Day +31F (+17C)",
+            "label": "Standard Day +17°C",
             "image": "RunwayCharts/b767_300er_300f_cf6_80c2b4_pw4056_rb211524g_std17.png",
             "axis": {
               "top": 10.5,
@@ -658,7 +658,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b767_300er_300f_cf6_80c2b64_pw4060_rb211524h_std15.png",
             "axis": {
               "top": 10.5,
@@ -705,7 +705,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b767_300f_cf6_80c2b7f_std15.png",
             "axis": {
               "top": 10.5,
@@ -752,7 +752,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b767_300f_pw4062_std15.png",
             "axis": {
               "top": 10.5,
@@ -804,7 +804,7 @@
             "lengthUnit": "ft"
           },
           "std17_dry": {
-            "label": "Standard Day +31F (+17C), Dry Runway",
+            "label": "Standard Day +17°C, Dry Runway",
             "image": "RunwayCharts/b767_400er_cf6_80c2b8f_std17_dry.png",
             "axis": {
               "top": 12.0,
@@ -846,7 +846,7 @@
             "lengthUnit": "ft"
           },
           "std15_wet": {
-            "label": "Standard Day +27F (+15C), Wet Smooth Runway",
+            "label": "Standard Day +15°C, Wet Smooth Runway",
             "image": "RunwayCharts/b767_400er_cf6_80c2b8f_std17_wet.png",
             "axis": {
               "top": 11.5,
@@ -893,7 +893,7 @@
             "lengthUnit": "ft"
           },
           "std15_dry": {
-            "label": "Standard Day +27F (+15C), Dry Runway",
+            "label": "Standard Day +15°C, Dry Runway",
             "image": "RunwayCharts/b767_400er_cf6_80c2b7f1_std17_dry.png",
             "axis": {
               "top": 11.5,
@@ -935,7 +935,7 @@
             "lengthUnit": "ft"
           },
           "std15_wet": {
-            "label": "Standard Day +27F (+15C), Wet Smooth Runway",
+            "label": "Standard Day +15°C, Wet Smooth Runway",
             "image": "RunwayCharts/b767_400er_cf6_80c2b7f1_std17_wet.png",
             "axis": {
               "top": 11.0,
@@ -982,7 +982,7 @@
             "lengthUnit": "ft"
           },
           "std15_dry": {
-            "label": "Standard Day +27F (+15C), Dry Runway",
+            "label": "Standard Day +15°C, Dry Runway",
             "image": "RunwayCharts/b767_400er_pw4062_std17_dry.png",
             "axis": {
               "top": 10.5,
@@ -1024,7 +1024,7 @@
             "lengthUnit": "ft"
           },
           "std15_wet": {
-            "label": "Standard Day +27F (+15C), Wet Smooth Runway",
+            "label": "Standard Day +15°C, Wet Smooth Runway",
             "image": "RunwayCharts/b767_400er_pw4062_std17_wet.png",
             "axis": {
               "top": 11.0,
@@ -1076,7 +1076,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b777_200_baseline_std15.png",
             "axis": {
               "top": 7.5,
@@ -1123,7 +1123,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b777_200_hgw_std15.png",
             "axis": {
               "top": 7.5,
@@ -1175,7 +1175,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b777_200_baseline_std15.png",
             "axis": {
               "top": 7.5,
@@ -1222,7 +1222,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b777_200_hgw_std15.png",
             "axis": {
               "top": 7.5,
@@ -1274,7 +1274,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b777_300_90k_std15.png",
             "axis": {
               "top": 7.5,
@@ -1321,7 +1321,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b777_300_98k_std15.png",
             "axis": {
               "top": 7.5,
@@ -1373,7 +1373,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b777_200lr_ge90_110b1l_std15.png",
             "axis": {
               "top": 8.0,
@@ -1394,7 +1394,7 @@
             "lengthUnit": "ft"
           },
           "std27": {
-            "label": "Standard Day +49F (+27C)",
+            "label": "Standard Day +27°C",
             "image": "RunwayCharts/b777_200lr_ge90_110b1l_std27.png",
             "axis": {
               "top": 8.0,
@@ -1415,7 +1415,7 @@
             "lengthUnit": "ft"
           },
           "std33": {
-            "label": "Standard Day +59F (+33C)",
+            "label": "Standard Day +33°C",
             "image": "RunwayCharts/b777_200lr_ge90_110b1l_std33.png",
             "axis": {
               "top": 8.0,
@@ -1462,7 +1462,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b777_200lr_ge90_115bl_std15.png",
             "axis": {
               "top": 8.0,
@@ -1483,7 +1483,7 @@
             "lengthUnit": "ft"
           },
           "std27": {
-            "label": "Standard Day +49F (+27C)",
+            "label": "Standard Day +27°C",
             "image": "RunwayCharts/b777_200lr_ge90_115bl_std27.png",
             "axis": {
               "top": 8.0,
@@ -1504,7 +1504,7 @@
             "lengthUnit": "ft"
           },
           "std33": {
-            "label": "Standard Day +59F (+33C)",
+            "label": "Standard Day +33°C",
             "image": "RunwayCharts/b777_200lr_ge90_115bl_std33.png",
             "axis": {
               "top": 8.0,
@@ -1556,7 +1556,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b777_300er_ge90_115bl_std15.png",
             "axis": {
               "top": 8.0,
@@ -1577,7 +1577,7 @@
             "lengthUnit": "ft"
           },
           "std27": {
-            "label": "Standard Day +49F (+27C)",
+            "label": "Standard Day +27°C",
             "image": "RunwayCharts/b777_300er_ge90_115bl_std27.png",
             "axis": {
               "top": 8.0,
@@ -1598,7 +1598,7 @@
             "lengthUnit": "ft"
           },
           "std33": {
-            "label": "Standard Day +59F (+33C)",
+            "label": "Standard Day +33°C",
             "image": "RunwayCharts/b777_300er_ge90_115bl_std33.png",
             "axis": {
               "top": 8.0,
@@ -1650,7 +1650,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b777f_ge90_110b1l_std15.png",
             "axis": {
               "top": 8.0,
@@ -1671,7 +1671,7 @@
             "lengthUnit": "ft"
           },
           "std27": {
-            "label": "Standard Day +49F (+27C)",
+            "label": "Standard Day +27°C",
             "image": "RunwayCharts/b777f_ge90_110b1l_std27.png",
             "axis": {
               "top": 8.0,
@@ -1692,7 +1692,7 @@
             "lengthUnit": "ft"
           },
           "std33": {
-            "label": "Standard Day +59F (+33C)",
+            "label": "Standard Day +33°C",
             "image": "RunwayCharts/b777f_ge90_110b1l_std33.png",
             "axis": {
               "top": 8.0,
@@ -1739,7 +1739,7 @@
             "lengthUnit": "ft"
           },
           "std15": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b777f_ge90_115bl_std15.png",
             "axis": {
               "top": 8.0,
@@ -1760,7 +1760,7 @@
             "lengthUnit": "ft"
           },
           "std27": {
-            "label": "Standard Day +49F (+27C)",
+            "label": "Standard Day +27°C",
             "image": "RunwayCharts/b777f_ge90_115bl_std27.png",
             "axis": {
               "top": 8.0,
@@ -1781,7 +1781,7 @@
             "lengthUnit": "ft"
           },
           "std33": {
-            "label": "Standard Day +59F (+33C)",
+            "label": "Standard Day +33°C",
             "image": "RunwayCharts/b777f_ge90_115bl_std33.png",
             "axis": {
               "top": 8.0,
@@ -1833,7 +1833,7 @@
             "lengthUnit": "ft"
           },
           "std27_dry": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b787_8_typical_std27.png",
             "axis": {
               "top": 8.16,
@@ -1854,7 +1854,7 @@
             "lengthUnit": "ft"
           },
           "std45_dry": {
-            "label": "Standard Day +45F (+25C)",
+            "label": "Standard Day +25°C",
             "image": "RunwayCharts/b787_8_typical_std45.png",
             "axis": {
               "top": 8.2,
@@ -1875,7 +1875,7 @@
             "lengthUnit": "ft"
           },
           "std61_dry": {
-            "label": "Standard Day +61F (+34C)",
+            "label": "Standard Day +34°C",
             "image": "RunwayCharts/b787_8_typical_std61.png",
             "axis": {
               "top": 8.16,
@@ -1922,7 +1922,7 @@
             "lengthUnit": "ft"
           },
           "std27_dry": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b787_8_hithrust_std27.png",
             "axis": {
               "top": 8.2,
@@ -1943,7 +1943,7 @@
             "lengthUnit": "ft"
           },
           "std45_dry": {
-            "label": "Standard Day +45F (+25C)",
+            "label": "Standard Day +25°C",
             "image": "RunwayCharts/b787_8_hithrust_std45.png",
             "axis": {
               "top": 8.38,
@@ -1964,7 +1964,7 @@
             "lengthUnit": "ft"
           },
           "std61_dry": {
-            "label": "Standard Day +61F (+34C)",
+            "label": "Standard Day +34°C",
             "image": "RunwayCharts/b787_8_hithrust_std61.png",
             "axis": {
               "top": 8.16,
@@ -2016,7 +2016,7 @@
             "lengthUnit": "ft"
           },
           "std27_dry": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b787_9_typical_std27.png",
             "axis": {
               "top": 8.05,
@@ -2037,7 +2037,7 @@
             "lengthUnit": "ft"
           },
           "std45_dry": {
-            "label": "Standard Day +45F (+25C)",
+            "label": "Standard Day +25°C",
             "image": "RunwayCharts/b787_9_typical_std45.png",
             "axis": {
               "top": 8.17,
@@ -2058,7 +2058,7 @@
             "lengthUnit": "ft"
           },
           "std61_dry": {
-            "label": "Standard Day +61F (+34C)",
+            "label": "Standard Day +34°C",
             "image": "RunwayCharts/b787_9_typical_std61.png",
             "axis": {
               "top": 8.25,
@@ -2105,7 +2105,7 @@
             "lengthUnit": "ft"
           },
           "std27_dry": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b787_9_hithrust_std27.png",
             "axis": {
               "top": 7.47,
@@ -2126,7 +2126,7 @@
             "lengthUnit": "ft"
           },
           "std45_dry": {
-            "label": "Standard Day +45F (+25C)",
+            "label": "Standard Day +25°C",
             "image": "RunwayCharts/b787_9_hithrust_std45.png",
             "axis": {
               "top": 8.0,
@@ -2147,7 +2147,7 @@
             "lengthUnit": "ft"
           },
           "std61_dry": {
-            "label": "Standard Day +61F (+34C)",
+            "label": "Standard Day +34°C",
             "image": "RunwayCharts/b787_9_hithrust_std61.png",
             "axis": {
               "top": 8.06,
@@ -2199,7 +2199,7 @@
             "lengthUnit": "ft"
           },
           "std27_dry": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b787_10_typical_std27.png",
             "axis": {
               "top": 7.77,
@@ -2220,7 +2220,7 @@
             "lengthUnit": "ft"
           },
           "std45_dry": {
-            "label": "Standard Day +45F (+25C)",
+            "label": "Standard Day +25°C",
             "image": "RunwayCharts/b787_10_typical_std45.png",
             "axis": {
               "top": 8.04,
@@ -2241,7 +2241,7 @@
             "lengthUnit": "ft"
           },
           "std61_dry": {
-            "label": "Standard Day +61F (+34C)",
+            "label": "Standard Day +34°C",
             "image": "RunwayCharts/b787_10_typical_std61.png",
             "axis": {
               "top": 8.48,
@@ -2288,7 +2288,7 @@
             "lengthUnit": "ft"
           },
           "std27_dry": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b787_10_hithrust_std27.png",
             "axis": {
               "top": 7.93,
@@ -2309,7 +2309,7 @@
             "lengthUnit": "ft"
           },
           "std45_dry": {
-            "label": "Standard Day +45F (+25C)",
+            "label": "Standard Day +25°C",
             "image": "RunwayCharts/b787_10_hithrust_std45.png",
             "axis": {
               "top": 8.06,
@@ -2330,7 +2330,7 @@
             "lengthUnit": "ft"
           },
           "std61_dry": {
-            "label": "Standard Day +61F (+34C)",
+            "label": "Standard Day +34°C",
             "image": "RunwayCharts/b787_10_hithrust_std61.png",
             "axis": {
               "top": 8.48,
@@ -2385,7 +2385,7 @@
             "lengthAxis": "horizontal"
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a330_200_pw4000_isa15.png",
             "axis": {
               "top": 9.0,
@@ -2438,7 +2438,7 @@
             "lengthAxis": "horizontal"
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a330_200_trent700_isa15.png",
             "axis": {
               "top": 9.0,
@@ -2491,7 +2491,7 @@
             "lengthAxis": "horizontal"
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a330_200_cf6_80e1_isa15.png",
             "axis": {
               "top": 9.0,
@@ -2549,7 +2549,7 @@
             "lengthAxis": "horizontal"
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a330_300_pw4000_isa15.png",
             "axis": {
               "top": 9.0,
@@ -2602,7 +2602,7 @@
             "lengthAxis": "horizontal"
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a330_300_trent700_isa15.png",
             "axis": {
               "top": 9.0,
@@ -2655,7 +2655,7 @@
             "lengthAxis": "horizontal"
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a330_300_cf6_80e1_isa15.png",
             "axis": {
               "top": 9.04,
@@ -2713,7 +2713,7 @@
             "lengthAxis": "horizontal"
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a330_200f_pw4000_isa15.png",
             "axis": {
               "top": 9.58,
@@ -2766,7 +2766,7 @@
             "lengthAxis": "horizontal"
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a330_200f_trent700_isa15.png",
             "axis": {
               "top": 9.58,
@@ -2824,7 +2824,7 @@
             "lengthAxis": "horizontal"
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a330_800_trent7000_isa15.png",
             "axis": {
               "top": 9.41,
@@ -2882,7 +2882,7 @@
             "lengthAxis": "horizontal"
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a330_900_trent7000_isa15.png",
             "axis": {
               "top": 9.41,
@@ -2940,7 +2940,7 @@
             "lengthAxis": "horizontal"
           },
           "isa15_dry": {
-            "label": "ISA+15 Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a350_900_trentxwb_isa15.png",
             "axis": {
               "top": 8.08,
@@ -2998,7 +2998,7 @@
             "weightInputDivisor": 1
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a380_800_trent900_isa15.png",
             "axis": {
               "top": 91.5,
@@ -3051,7 +3051,7 @@
             "weightInputDivisor": 1
           },
           "isa15_dry": {
-            "label": "ISA +15°C (+27°F) Conditions",
+            "label": "ISA +15°C Conditions",
             "image": "RunwayCharts/a380_800_gp7200_isa15.png",
             "axis": {
               "top": 91.64,
@@ -3106,7 +3106,7 @@
             "lengthUnit": "ft"
           },
           "std27_dry": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b747_8_std27.png",
             "axis": {
               "top": 145.99,
@@ -3127,7 +3127,7 @@
             "lengthUnit": "ft"
           },
           "std45_dry": {
-            "label": "Standard Day +45F (+25C)",
+            "label": "Standard Day +25°C",
             "image": "RunwayCharts/b747_8_std45.png",
             "axis": {
               "top": 80.2,
@@ -3148,7 +3148,7 @@
             "lengthUnit": "ft"
           },
           "std63_dry": {
-            "label": "Standard Day +63F (+35C)",
+            "label": "Standard Day +35°C",
             "image": "RunwayCharts/b747_8_std63.png",
             "axis": {
               "top": 147.99,
@@ -3200,7 +3200,7 @@
             "lengthUnit": "ft"
           },
           "std27_dry": {
-            "label": "Standard Day +27F (+15C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b747_8_std27.png",
             "axis": {
               "top": 145.99,
@@ -3221,7 +3221,7 @@
             "lengthUnit": "ft"
           },
           "std45_dry": {
-            "label": "Standard Day +45F (+25C)",
+            "label": "Standard Day +25°C",
             "image": "RunwayCharts/b747_8_std45.png",
             "axis": {
               "top": 80.2,
@@ -3242,7 +3242,7 @@
             "lengthUnit": "ft"
           },
           "std63_dry": {
-            "label": "Standard Day +63F (+35C)",
+            "label": "Standard Day +35°C",
             "image": "RunwayCharts/b747_8_std63.png",
             "axis": {
               "top": 147.99,
