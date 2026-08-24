@@ -179,6 +179,71 @@
             cursor: pointer;
         }
 
+        /* 활주로 계산기 - 기종 선택 커스텀 드롭다운(스크롤형, 약 10개 표시) */
+        .runway-select-wrap {
+            position: relative;
+        }
+        .runway-select-btn {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #2d3748;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .runway-select-btn.disabled {
+            cursor: not-allowed;
+            color: #a0aec0;
+            background-color: #f7fafc;
+        }
+        .runway-select-panel {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 4px;
+            width: 100%;
+            min-width: 220px;
+            background-color: white;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 500;
+            padding: 6px;
+            box-sizing: border-box;
+        }
+        .runway-select-list {
+            max-height: 340px;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+        }
+        .runway-select-item {
+            padding: 8px 10px;
+            font-size: 13px;
+            cursor: pointer;
+            color: #2d3748;
+            border-radius: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .runway-select-item:hover {
+            background-color: #ebf4ff;
+        }
+        .runway-select-item.selected {
+            background-color: #2b6cb0;
+            color: white;
+        }
         .btn-reset {
             background-color: #e2e8f0;
             color: #4a5568;
@@ -724,9 +789,15 @@
             <div class="corr-grid" style="margin-bottom:14px;">
                 <div>
                     <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">✈️ 기종 선택</label>
-                    <select id="runwayAircraftSelect" class="select-filter" onchange="onRunwayAircraftChange()">
-                        <option value="">-- 불러오는 중... --</option>
-                    </select>
+                    <div class="runway-select-wrap">
+                        <div class="runway-select-btn" id="runwayAircraftBtn" onclick="toggleRunwayAircraftPanel(event)">
+                            <span id="runwayAircraftBtnLabel">-- 불러오는 중... --</span>
+                            <span style="color:#a0aec0;">▾</span>
+                        </div>
+                        <div class="runway-select-panel" id="runwayAircraftPanel" onclick="event.stopPropagation()">
+                            <div class="runway-select-list" id="runwayAircraftList"></div>
+                        </div>
+                    </div>
                     <div id="runwayLoadStatus" style="font-size:12px; color:#718096; margin-top:6px;"></div>
                 </div>
                 
@@ -1596,27 +1667,88 @@
         }
 
         loadAircraftData();
+        // 자연 정렬(natural sort): 영문 오름차순 우선, 이어지는 숫자는 숫자 값으로 비교
+        // 예) A320 -> A321 -> A330 -> A350 -> A380, B737 -> B747 -> B777 -> B787
+        function naturalCompareLabel(a, b) {
+            const re = /(\d+)|(\D+)/g;
+            const ax = a.match(re) || [];
+            const bx = b.match(re) || [];
+            const len = Math.max(ax.length, bx.length);
+            for (let i = 0; i < len; i++) {
+                const av = ax[i], bv = bx[i];
+                if (av === undefined) return -1;
+                if (bv === undefined) return 1;
+                const aIsNum = /^\d+$/.test(av);
+                const bIsNum = /^\d+$/.test(bv);
+                if (aIsNum && bIsNum) {
+                    const diff = parseInt(av, 10) - parseInt(bv, 10);
+                    if (diff) return diff;
+                } else {
+                    const cmp = av.localeCompare(bv);
+                    if (cmp) return cmp;
+                }
+            }
+            return 0;
+        }
+
+        let runwaySortedAircraftKeys = [];
+
         async function loadRunwayChartsList() {
-            const select = document.getElementById('runwayAircraftSelect');
+            const btnLabel = document.getElementById('runwayAircraftBtnLabel');
             const status = document.getElementById('runwayLoadStatus');
             try {
                 const response = await fetch('runway_charts.json');
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 runwayChartsData = await response.json();
-                
-                select.innerHTML = '<option value="">-- 기종을 선택하세요 --</option>';
-                Object.keys(runwayChartsData).forEach(key => {
-                    const opt = document.createElement('option');
-                    opt.value = key;
-                    opt.innerText = runwayChartsData[key].label;
-                    select.appendChild(opt);
-                });
-                status.style.color = '#276749';                
+
+                runwaySortedAircraftKeys = Object.keys(runwayChartsData)
+                    .sort((a, b) => naturalCompareLabel(runwayChartsData[a].label, runwayChartsData[b].label));
+
+                renderRunwayAircraftList();
+                btnLabel.innerText = '-- 기종을 선택하세요 --';
+                status.style.color = '#276749';
             } catch (err) {
-                select.innerHTML = '<option value="">불러오기 실패</option>';
+                btnLabel.innerText = '불러오기 실패';
                 status.style.color = '#e53e3e';
                 status.innerText = '❌ runway_charts.json 로드 실패: ' + err.message;
             }
+        }
+
+        function renderRunwayAircraftList() {
+            const list = document.getElementById('runwayAircraftList');
+            const btn = document.getElementById('runwayAircraftBtn');
+            const selectedKey = btn.dataset.value || '';
+            list.innerHTML = '';
+            runwaySortedAircraftKeys.forEach(key => {
+                const item = document.createElement('div');
+                item.className = 'runway-select-item' + (key === selectedKey ? ' selected' : '');
+                item.innerText = runwayChartsData[key].label;
+                item.onclick = () => selectRunwayAircraft(key);
+                list.appendChild(item);
+            });
+        }
+
+        function toggleRunwayAircraftPanel(e) {
+            e.stopPropagation();
+            const btn = document.getElementById('runwayAircraftBtn');
+            if (btn.classList.contains('disabled')) return;
+            const panel = document.getElementById('runwayAircraftPanel');
+            const isVisible = panel.style.display === 'block';
+            panel.style.display = isVisible ? 'none' : 'block';
+        }
+
+        document.addEventListener('click', function() {
+            const panel = document.getElementById('runwayAircraftPanel');
+            if (panel) panel.style.display = 'none';
+        });
+
+        function selectRunwayAircraft(key) {
+            const btn = document.getElementById('runwayAircraftBtn');
+            btn.dataset.value = key;
+            document.getElementById('runwayAircraftBtnLabel').innerText = runwayChartsData[key].label;
+            document.getElementById('runwayAircraftPanel').style.display = 'none';
+            renderRunwayAircraftList();
+            onRunwayAircraftChange(key);
         }
         let currentChart = null;
         let runwayImg = null;
@@ -1629,8 +1761,7 @@
         let runwaySelectedAircraft = null;
         let runwaySelectedEngine = null;
         
-        function onRunwayAircraftChange() {
-            const key = document.getElementById('runwayAircraftSelect').value;
+        function onRunwayAircraftChange(key) {
             runwaySelectedAircraft = key ? runwayChartsData[key] : null;
             runwaySelectedEngine = null;
             currentChart = null;
