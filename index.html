@@ -808,14 +808,14 @@
                 <div>
                     <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">🔧 엔진 선택</label>
                     <select id="runwayEngineSelect" class="select-filter" onchange="onRunwayEngineChange()" disabled>
-                        <option value="">기종을 먼저 선택하세요</option>
+                        <option value="">기종을 먼저 선택</option>
                     </select>
                 </div>
                 
                 <div>
                     <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">🌡️ 온도 선택</label>
                     <select id="runwayConditionSelect" class="select-filter" onchange="onRunwayConditionChange()" disabled>
-                        <option value="">엔진을 먼저 선택하세요</option>
+                        <option value="">엔진을 먼저 선택</option>
                     </select>
                 </div>
             </div>            
@@ -1709,7 +1709,7 @@
                     .sort((a, b) => naturalCompareLabel(runwayChartsData[a].label, runwayChartsData[b].label));
 
                 renderRunwayAircraftList();
-                btnLabel.innerText = '-- 기종을 선택하세요 --';
+                btnLabel.innerText = '-- 기종 선택 --';
                 status.style.color = '#276749';
             } catch (err) {
                 btnLabel.innerText = '불러오기 실패';
@@ -1783,7 +1783,7 @@
                 engineSelect.disabled = true;
                 return;
             }
-            engineSelect.innerHTML = '<option value="">-- 엔진을 선택하세요 --</option>';
+            engineSelect.innerHTML = '<option value="">-- 엔진 선택 --</option>';
             Object.keys(runwaySelectedAircraft.engines).forEach(key => {
                 const opt = document.createElement('option');
                 opt.value = key;
@@ -1807,7 +1807,7 @@
                 conditionSelect.disabled = true;
                 return;
             }
-            conditionSelect.innerHTML = '<option value="">-- 온도를 선택하세요 --</option>';
+            conditionSelect.innerHTML = '<option value="">-- 온도 선택 --</option>';
             Object.keys(runwaySelectedEngine.conditions).forEach(key => {
                 const opt = document.createElement('option');
                 opt.value = key;
