@@ -854,7 +854,7 @@
                         <input type="number" id="runwayWeightInput" class="select-filter" style="width:160px;">
                     </div>
                     <button class="btn-manual-open" onclick="showRunwayGuideLine()">가이드선 표시</button>
-                    <button class="btn-reset" onclick="resetRunwayCanvas()">초기화</button>
+                    <button class="btn-reset" onclick="resetRunwayModal()">초기화</button>
                 </div>
 
                 <div id="runwayGuideHint" class="runway-hint">
@@ -2040,6 +2040,40 @@
             document.getElementById('runwayCorrPanel').style.display = 'none';
             document.getElementById('runwayFinalBox').style.display = 'none';
             redrawRunwayCanvas();
+        }
+
+        function resetRunwayModal() {
+            // 기종/엔진/온도 선택 초기화
+            runwaySelectedAircraft = null;
+            runwaySelectedEngine = null;
+            currentChart = null;
+
+            document.getElementById('runwayAircraftBtn').dataset.value = '';
+            document.getElementById('runwayAircraftBtnLabel').textContent = '기종 선택';
+            renderRunwayAircraftList();
+
+            runwayEngineKeys = [];
+            document.getElementById('runwayEngineBtn').dataset.value = '';
+            renderRunwayEngineList();
+            setRunwaySelectBtn('Engine', '기종을 먼저 선택하세요', false);
+
+            runwayConditionKeys = [];
+            document.getElementById('runwayConditionBtn').dataset.value = '';
+            renderRunwayConditionList();
+            setRunwaySelectBtn('Condition', '엔진을 먼저 선택하세요', false);
+
+            closeRunwayPanelsExcept(null);
+
+            // 입력값 초기화
+            document.getElementById('runwayWeightInput').value = '';
+            document.getElementById('runwayElev').value = 0;
+            document.getElementById('runwayTemp').value = 0;
+            document.getElementById('runwaySlope').value = 0;
+
+            // 그래프/가이드선/결과 표시 초기화
+            resetRunwayCanvas();
+            document.getElementById('runwayChartArea').style.display = 'none';
+            document.getElementById('runwayNoSelection').style.display = 'block';
         }
 
         function resetRunwayCanvas() {
