@@ -216,8 +216,8 @@
             top: 100%;
             left: 0;
             margin-top: 4px;
-            width: 300px;
-            min-width: 300px;
+            width: 220px;
+            min-width: 220px;
             background-color: white;
             border: 1px solid #cbd5e0;
             border-radius: 6px;
@@ -229,6 +229,10 @@
         .runway-select-panel.align-right {
             left: auto;
             right: 0;
+        }
+        .runway-select-panel.engine-wide {
+            width: 300px;
+            min-width: 300px;
         }
         .runway-select-list {
             max-height: 272px;
@@ -816,7 +820,7 @@
                             <span id="runwayEngineBtnLabel">기종을 먼저 선택</span>
                             <span style="color:#a0aec0;">▾</span>
                         </div>
-                        <div class="runway-select-panel" id="runwayEnginePanel" onclick="event.stopPropagation()">
+                        <div class="runway-select-panel engine-wide" id="runwayEnginePanel" onclick="event.stopPropagation()">
                             <div class="runway-select-list" id="runwayEngineList"></div>
                         </div>
                     </div>
