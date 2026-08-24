@@ -103,12 +103,12 @@
   ],
   "Airbus": [
     {
-      "title": "A220(ARP)",
+      "title": "A220(-2026)",
       "filename": "A220(-2026).pdf",
       "path": "https://media.githubusercontent.com/media/Seojiwon123/aircraft-web/main/AC/Airbus/A220(-2026).pdf"
     },
     {
-      "title": "A220(ACP)",
+      "title": "A220(-ACP, -00)",
       "filename": "A220(-ACP, -00).pdf",
       "path": "https://media.githubusercontent.com/media/Seojiwon123/aircraft-web/main/AC/Airbus/A220(-ACP, -00).pdf"
     },
@@ -168,7 +168,7 @@
       "path": "https://media.githubusercontent.com/media/Seojiwon123/aircraft-web/main/AC/Airbus/A340(-500, -600).pdf"
     },
     {
-      "title": "A350",
+      "title": "A350(-and)",
       "filename": "A350(-and).pdf",
       "path": "https://media.githubusercontent.com/media/Seojiwon123/aircraft-web/main/AC/Airbus/A350(-and).pdf"
     },
