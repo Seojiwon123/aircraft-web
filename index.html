@@ -807,16 +807,28 @@
                 
                 <div>
                     <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">🔧 엔진 선택</label>
-                    <select id="runwayEngineSelect" class="select-filter" onchange="onRunwayEngineChange()" disabled>
-                        <option value="">기종을 먼저 선택</option>
-                    </select>
+                    <div class="runway-select-wrap">
+                        <div class="runway-select-btn disabled" id="runwayEngineBtn" onclick="toggleRunwayEnginePanel(event)">
+                            <span id="runwayEngineBtnLabel">기종을 먼저 선택</span>
+                            <span style="color:#a0aec0;">▾</span>
+                        </div>
+                        <div class="runway-select-panel" id="runwayEnginePanel" onclick="event.stopPropagation()">
+                            <div class="runway-select-list" id="runwayEngineList"></div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div>
                     <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">🌡️ 온도 선택</label>
-                    <select id="runwayConditionSelect" class="select-filter" onchange="onRunwayConditionChange()" disabled>
-                        <option value="">엔진을 먼저 선택</option>
-                    </select>
+                    <div class="runway-select-wrap">
+                        <div class="runway-select-btn disabled" id="runwayConditionBtn" onclick="toggleRunwayConditionPanel(event)">
+                            <span id="runwayConditionBtnLabel">엔진을 먼저 선택</span>
+                            <span style="color:#a0aec0;">▾</span>
+                        </div>
+                        <div class="runway-select-panel" id="runwayConditionPanel" onclick="event.stopPropagation()">
+                            <div class="runway-select-list" id="runwayConditionList"></div>
+                        </div>
+                    </div>
                 </div>
             </div>            
 
@@ -1736,14 +1748,17 @@
             e.stopPropagation();
             const btn = document.getElementById('runwayAircraftBtn');
             if (btn.classList.contains('disabled')) return;
+            closeRunwayPanelsExcept('runwayAircraftPanel');
             const panel = document.getElementById('runwayAircraftPanel');
             const isVisible = panel.style.display === 'block';
             panel.style.display = isVisible ? 'none' : 'block';
         }
 
         document.addEventListener('click', function() {
-            const panel = document.getElementById('runwayAircraftPanel');
-            if (panel) panel.style.display = 'none';
+            ['runwayAircraftPanel', 'runwayEnginePanel', 'runwayConditionPanel'].forEach(id => {
+                const panel = document.getElementById(id);
+                if (panel) panel.style.display = 'none';
+            });
         });
 
         function selectRunwayAircraft(key) {
@@ -1764,7 +1779,9 @@
 
         let runwaySelectedAircraft = null;
         let runwaySelectedEngine = null;
-        
+        let runwayEngineKeys = [];
+        let runwayConditionKeys = [];
+
         function onRunwayAircraftChange(key) {
             runwaySelectedAircraft = key ? runwayChartsData[key] : null;
             runwaySelectedEngine = null;
@@ -1772,53 +1789,118 @@
             resetRunwayCanvas();
             document.getElementById('runwayChartArea').style.display = 'none';
             document.getElementById('runwayNoSelection').style.display = 'block';
-            
-            const engineSelect = document.getElementById('runwayEngineSelect');
-            const conditionSelect = document.getElementById('runwayConditionSelect');
-            conditionSelect.innerHTML = '<option value="">엔진을 먼저 선택하세요</option>';
-            conditionSelect.disabled = true;
-            
+
+            document.getElementById('runwayConditionBtn').dataset.value = '';
+            runwayConditionKeys = [];
+            renderRunwayConditionList();
+            setRunwaySelectBtn('Condition', '엔진을 먼저 선택하세요', false);
+
+            document.getElementById('runwayEngineBtn').dataset.value = '';
             if (!runwaySelectedAircraft) {
-                engineSelect.innerHTML = '<option value="">기종을 먼저 선택하세요</option>';
-                engineSelect.disabled = true;
+                runwayEngineKeys = [];
+                renderRunwayEngineList();
+                setRunwaySelectBtn('Engine', '기종을 먼저 선택하세요', false);
                 return;
             }
-            engineSelect.innerHTML = '<option value="">엔진 선택</option>';
-            Object.keys(runwaySelectedAircraft.engines).forEach(key => {
-                const opt = document.createElement('option');
-                opt.value = key;
-                opt.innerText = runwaySelectedAircraft.engines[key].label;
-                engineSelect.appendChild(opt);
-            });
-            engineSelect.disabled = false;
+            runwayEngineKeys = Object.keys(runwaySelectedAircraft.engines);
+            renderRunwayEngineList();
+            setRunwaySelectBtn('Engine', '엔진 선택', true);
         }
-        
-        function onRunwayEngineChange() {
-            const key = document.getElementById('runwayEngineSelect').value;
+
+        function renderRunwayEngineList() {
+            const list = document.getElementById('runwayEngineList');
+            const selectedKey = document.getElementById('runwayEngineBtn').dataset.value || '';
+            list.innerHTML = '';
+            runwayEngineKeys.forEach(key => {
+                const item = document.createElement('div');
+                item.className = 'runway-select-item' + (key === selectedKey ? ' selected' : '');
+                item.innerText = runwaySelectedAircraft.engines[key].label;
+                item.onclick = () => selectRunwayEngine(key);
+                list.appendChild(item);
+            });
+        }
+
+        function toggleRunwayEnginePanel(e) {
+            e.stopPropagation();
+            const btn = document.getElementById('runwayEngineBtn');
+            if (btn.classList.contains('disabled')) return;
+            closeRunwayPanelsExcept('runwayEnginePanel');
+            const panel = document.getElementById('runwayEnginePanel');
+            panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function selectRunwayEngine(key) {
+            document.getElementById('runwayEngineBtn').dataset.value = key;
+            document.getElementById('runwayEngineBtnLabel').innerText = runwaySelectedAircraft.engines[key].label;
+            document.getElementById('runwayEnginePanel').style.display = 'none';
+            renderRunwayEngineList();
+            onRunwayEngineChange(key);
+        }
+
+        function onRunwayEngineChange(key) {
             runwaySelectedEngine = (key && runwaySelectedAircraft) ? runwaySelectedAircraft.engines[key] : null;
             currentChart = null;
             resetRunwayCanvas();
             document.getElementById('runwayChartArea').style.display = 'none';
-            document.getElementById('runwayNoSelection').style.display = 'block';   
-            
-            const conditionSelect = document.getElementById('runwayConditionSelect');
+            document.getElementById('runwayNoSelection').style.display = 'block';
+
+            document.getElementById('runwayConditionBtn').dataset.value = '';
             if (!runwaySelectedEngine) {
-                conditionSelect.innerHTML = '<option value="">엔진을 먼저 선택하세요</option>';
-                conditionSelect.disabled = true;
+                runwayConditionKeys = [];
+                renderRunwayConditionList();
+                setRunwaySelectBtn('Condition', '엔진을 먼저 선택하세요', false);
                 return;
             }
-            conditionSelect.innerHTML = '<option value="">온도 선택</option>';
-            Object.keys(runwaySelectedEngine.conditions).forEach(key => {
-                const opt = document.createElement('option');
-                opt.value = key;
-                opt.innerText = runwaySelectedEngine.conditions[key].label;
-                conditionSelect.appendChild(opt);
-            });
-            conditionSelect.disabled = false;
+            runwayConditionKeys = Object.keys(runwaySelectedEngine.conditions);
+            renderRunwayConditionList();
+            setRunwaySelectBtn('Condition', '온도 선택', true);
         }
-        
-        function onRunwayConditionChange() {
-            const key = document.getElementById('runwayConditionSelect').value;
+
+        function renderRunwayConditionList() {
+            const list = document.getElementById('runwayConditionList');
+            const selectedKey = document.getElementById('runwayConditionBtn').dataset.value || '';
+            list.innerHTML = '';
+            runwayConditionKeys.forEach(key => {
+                const item = document.createElement('div');
+                item.className = 'runway-select-item' + (key === selectedKey ? ' selected' : '');
+                item.innerText = runwaySelectedEngine.conditions[key].label;
+                item.onclick = () => selectRunwayCondition(key);
+                list.appendChild(item);
+            });
+        }
+
+        function toggleRunwayConditionPanel(e) {
+            e.stopPropagation();
+            const btn = document.getElementById('runwayConditionBtn');
+            if (btn.classList.contains('disabled')) return;
+            closeRunwayPanelsExcept('runwayConditionPanel');
+            const panel = document.getElementById('runwayConditionPanel');
+            panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function selectRunwayCondition(key) {
+            document.getElementById('runwayConditionBtn').dataset.value = key;
+            document.getElementById('runwayConditionBtnLabel').innerText = runwaySelectedEngine.conditions[key].label;
+            document.getElementById('runwayConditionPanel').style.display = 'none';
+            renderRunwayConditionList();
+            onRunwayConditionChange(key);
+        }
+
+        function setRunwaySelectBtn(name, label, enabled) {
+            const btn = document.getElementById('runway' + name + 'Btn');
+            document.getElementById('runway' + name + 'BtnLabel').innerText = label;
+            if (enabled) btn.classList.remove('disabled'); else btn.classList.add('disabled');
+        }
+
+        function closeRunwayPanelsExcept(exceptId) {
+            ['runwayAircraftPanel', 'runwayEnginePanel', 'runwayConditionPanel'].forEach(id => {
+                if (id === exceptId) return;
+                const panel = document.getElementById(id);
+                if (panel) panel.style.display = 'none';
+            });
+        }
+
+        function onRunwayConditionChange(key) {
             resetRunwayCanvas();
             if (!key || !runwaySelectedEngine) {
                 document.getElementById('runwayChartArea').style.display = 'none';
