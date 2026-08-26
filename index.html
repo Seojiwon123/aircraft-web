@@ -298,6 +298,23 @@
         }
         .btn-manual-open:hover { background-color: #2c5282; }
 
+        .btn-history {
+            background-color: #6b46c1;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background 0.2s;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-history:hover { background-color: #553c9a; }
+
         .unit-switch {
             display: inline-flex;
             border: 1px solid #cbd5e0;
@@ -913,6 +930,34 @@
                     </div>
                     <button class="btn-manual-open" onclick="showRunwayGuideLine()">가이드선 표시</button>
                     <button class="btn-reset" onclick="resetRunwayModal()">초기화</button>
+                    <button class="btn-history" onclick="toggleRunwayHistoryPanel()">📋 계산 이력 (<span id="runwayHistoryCount">0</span>) <span id="runwayHistoryToggleIcon">▸</span></button>
+                </div>
+
+                <div id="runwayHistorySection">
+                    <div id="runwayHistoryPanel" style="display:none; margin-bottom:14px;">
+                        <div style="overflow-x:auto;">
+                            <table class="runway-history-table" style="display:none;">
+                                <thead>
+                                    <tr>
+                                        <th>기종</th>
+                                        <th>엔진</th>
+                                        <th>조건</th>
+                                        <th>입력무게</th>
+                                        <th>표고(m)</th>
+                                        <th>기온(℃)</th>
+                                        <th>경사(%)</th>
+                                        <th>최종보정거리(m)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="runwayHistoryTbody"></tbody>
+                            </table>
+                        </div>
+                        <div id="runwayHistoryEmpty" class="runway-hint" style="margin-top:6px;">아직 계산 이력이 없습니다.</div>
+                        <div style="display:flex; gap:8px; margin-top:10px;">
+                            <button class="btn-excel-export" onclick="exportRunwayHistoryToExcel()">📊 계산 이력 다운로드</button>
+                            <button class="btn-reset" onclick="clearRunwayHistory()">이력 전체 삭제</button>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="runwayGuideHint" class="runway-hint">
@@ -938,36 +983,7 @@
                     </div>
                 </div>
 
-                <div id="runwayHistorySection" style="margin-top:14px;">
-                    <div class="runway-history-toggle" onclick="toggleRunwayHistoryPanel()">
-                        <span id="runwayHistoryToggleIcon" style="font-size:12px; color:#4a5568;">▸</span>
-                        <span style="font-size:13px; font-weight:bold; color:#4a5568;">계산 이력 (<span id="runwayHistoryCount">0</span>건)</span>
-                    </div>
-                    <div id="runwayHistoryPanel" style="display:none; margin-top:8px;">
-                        <div style="overflow-x:auto;">
-                            <table class="runway-history-table" style="display:none;">
-                                <thead>
-                                    <tr>
-                                        <th>기종</th>
-                                        <th>엔진</th>
-                                        <th>조건</th>
-                                        <th>입력무게</th>
-                                        <th>표고(m)</th>
-                                        <th>기온(℃)</th>
-                                        <th>경사(%)</th>
-                                        <th>최종보정거리(m)</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="runwayHistoryTbody"></tbody>
-                            </table>
-                        </div>
-                        <div id="runwayHistoryEmpty" class="runway-hint" style="margin-top:6px;">아직 계산 이력이 없습니다.</div>
-                        <div style="display:flex; gap:8px; margin-top:10px;">
-                            <button class="btn-excel-export" onclick="exportRunwayHistoryToExcel()">📊 계산 이력 다운로드</button>
-                            <button class="btn-reset" onclick="clearRunwayHistory()">이력 전체 삭제</button>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="disclaimer">
                     <b>참고용 근사치입니다.</b> 실제 설계에는 항공기 제조사 원본 자료로 재검증이 필요합니다.
