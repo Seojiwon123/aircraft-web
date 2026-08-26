@@ -327,6 +327,29 @@
             background-color: #e2e8f0;
         }
 
+        .runway-history-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        .runway-history-table th, .runway-history-table td {
+            border: 1px solid #e2e8f0;
+            padding: 6px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .runway-history-table th {
+            background-color: #f7fafc;
+            color: #4a5568;
+        }
+        .runway-history-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+
         .last-updated {
             position: absolute;
             right: 18px;
@@ -912,6 +935,37 @@
                     <div id="runwayFinalBox" class="final-box" style="display:none;">
                         <span class="label">최종 소요 활주로 길이</span>
                         <span id="runwayFinalVal" class="value">— m</span>
+                    </div>
+                </div>
+
+                <div id="runwayHistorySection" style="margin-top:14px;">
+                    <div class="runway-history-toggle" onclick="toggleRunwayHistoryPanel()">
+                        <span id="runwayHistoryToggleIcon" style="font-size:12px; color:#4a5568;">▸</span>
+                        <span style="font-size:13px; font-weight:bold; color:#4a5568;">계산 이력 (<span id="runwayHistoryCount">0</span>건)</span>
+                    </div>
+                    <div id="runwayHistoryPanel" style="display:none; margin-top:8px;">
+                        <div style="overflow-x:auto;">
+                            <table class="runway-history-table" style="display:none;">
+                                <thead>
+                                    <tr>
+                                        <th>기종</th>
+                                        <th>엔진</th>
+                                        <th>조건</th>
+                                        <th>입력무게</th>
+                                        <th>표고(m)</th>
+                                        <th>기온(℃)</th>
+                                        <th>경사(%)</th>
+                                        <th>최종보정거리(m)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="runwayHistoryTbody"></tbody>
+                            </table>
+                        </div>
+                        <div id="runwayHistoryEmpty" class="runway-hint" style="margin-top:6px;">아직 계산 이력이 없습니다.</div>
+                        <div style="display:flex; gap:8px; margin-top:10px;">
+                            <button class="btn-excel-export" onclick="exportRunwayHistoryToExcel()">📊 이력 엑셀 다운로드</button>
+                            <button class="btn-reset" onclick="clearRunwayHistory()">이력 전체 삭제</button>
+                        </div>
                     </div>
                 </div>
 
@@ -1820,6 +1874,7 @@
         let runwaySnapped = null;     // { pos } 만 저장 -- 사용자가 드래그로 맞춘 좌표 (가로형: row / 세로형: col)
         let runwayBaseM = null;
         let runwayWeightUnitPref = 'kg';  // 사용자가 입력창에 타이핑하는 단위. 브라우저에 저장하지 않고 매번 kg로 시작.
+        let runwayHistory = [];  // 계산 이력. 세션(메모리)에만 유지하고 새로고침하면 사라진다.
         let runwayIsDragging = false;
 
         let runwaySelectedAircraft = null;
@@ -2346,6 +2401,85 @@
             
             document.getElementById('runwayFinalVal').textContent = L3.toFixed(1) + ' m';
             document.getElementById('runwayFinalBox').style.display = 'flex';
+
+            // 계산 결과를 이력에 추가. 이 계산에 실제로 쓰인 값들을 그대로 기록한다.
+            const wInputUnit = parseFloat(document.getElementById('runwayWeightInput').value);
+            runwayHistory.push({
+                aircraft: (runwaySelectedAircraft && runwaySelectedAircraft.label) || '-',
+                engine: (runwaySelectedEngine && runwaySelectedEngine.label) || '-',
+                condition: (currentChart && currentChart.label) || '-',
+                weight: isNaN(wInputUnit) ? '-' : Math.round(wInputUnit).toLocaleString() + ' ' + runwayWeightUnitPref,
+                elev,
+                temp: isNaN(tempActual) ? 0 : tempActual,
+                slope,
+                finalM: Number(L3.toFixed(1))
+            });
+            renderRunwayHistory();
+        }
+
+        function toggleRunwayHistoryPanel() {
+            const panel = document.getElementById('runwayHistoryPanel');
+            const icon = document.getElementById('runwayHistoryToggleIcon');
+            const isOpen = panel.style.display !== 'none';
+            panel.style.display = isOpen ? 'none' : 'block';
+            icon.textContent = isOpen ? '▸' : '▾';
+        }
+
+        function renderRunwayHistory() {
+            document.getElementById('runwayHistoryCount').textContent = runwayHistory.length;
+            const tbody = document.getElementById('runwayHistoryTbody');
+            tbody.innerHTML = runwayHistory.map(h => `
+                <tr>
+                    <td>${h.aircraft}</td>
+                    <td>${h.engine}</td>
+                    <td>${h.condition}</td>
+                    <td>${h.weight}</td>
+                    <td>${h.elev}</td>
+                    <td>${h.temp}</td>
+                    <td>${h.slope}</td>
+                    <td>${h.finalM.toLocaleString()}</td>
+                </tr>
+            `).join('');
+
+            const hasHistory = runwayHistory.length > 0;
+            document.querySelector('#runwayHistoryPanel table').style.display = hasHistory ? 'table' : 'none';
+            document.getElementById('runwayHistoryEmpty').style.display = hasHistory ? 'none' : 'block';
+        }
+
+        function exportRunwayHistoryToExcel() {
+            if (runwayHistory.length === 0) {
+                alert('내보낼 계산 이력이 없습니다.');
+                return;
+            }
+            const excelData = runwayHistory.map((h, index) => ({
+                '순번': index + 1,
+                '기종': h.aircraft,
+                '엔진': h.engine,
+                '조건': h.condition,
+                '입력무게': h.weight,
+                '공항 표고(m)': h.elev,
+                '실제 기온(℃)': h.temp,
+                '활주로 경사(%)': h.slope,
+                '최종 보정거리(m)': h.finalM
+            }));
+
+            const worksheet = XLSX.utils.json_to_sheet(excelData);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, '활주로_계산_이력');
+
+            const today = new Date();
+            const dateStr = today.getFullYear() +
+                String(today.getMonth() + 1).padStart(2, '0') +
+                String(today.getDate()).padStart(2, '0');
+
+            XLSX.writeFile(workbook, `활주로_계산_이력_${dateStr}.xlsx`);
+        }
+
+        function clearRunwayHistory() {
+            if (runwayHistory.length === 0) return;
+            if (!confirm('계산 이력을 모두 삭제할까요? 이 작업은 되돌릴 수 없습니다.')) return;
+            runwayHistory = [];
+            renderRunwayHistory();
         }
     </script>
 </body>
