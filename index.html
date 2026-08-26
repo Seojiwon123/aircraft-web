@@ -2125,6 +2125,22 @@
             const nativeUnit = runwayChartNativeUnit(currentChart);
             const wFull = runwayConvertWeight(wInputUnit, runwayWeightUnitPref, nativeUnit);
             const w = wFull / runwayWeightInputDivisor(currentChart); // 그래프 축 내부 단위로 변환
+
+            // 무게 범위 검증: 이 차트가 실제로 표시하는 축 범위(weightMin~weightMax)를 벗어나면
+            // 가이드선이 그래프 바깥으로 나가버리므로, 미리 막고 유효 범위를 사용자가 고른 단위로 안내한다.
+            const ax = currentChart.axis;
+            if (w < ax.weightMin || w > ax.weightMax) {
+                const divisor = runwayWeightInputDivisor(currentChart);
+                const minNative = ax.weightMin * divisor;
+                const maxNative = ax.weightMax * divisor;
+                const minDisplay = runwayConvertWeight(minNative, nativeUnit, runwayWeightUnitPref);
+                const maxDisplay = runwayConvertWeight(maxNative, nativeUnit, runwayWeightUnitPref);
+                const lo = Math.round(Math.min(minDisplay, maxDisplay));
+                const hi = Math.round(Math.max(minDisplay, maxDisplay));
+                alert(`입력하신 무게가 이 차트의 유효 범위를 벗어났습니다.\n허용 범위: ${lo.toLocaleString()} ~ ${hi.toLocaleString()} ${runwayWeightUnitPref}`);
+                return;
+            }
+
             runwayGuideFixed = Math.round(runwayWeightToFixedPos(w));
             runwaySnapped = null;
             document.getElementById('runwayReadout').style.display = 'none';
