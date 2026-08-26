@@ -2003,6 +2003,19 @@
         // 남아있는 숫자가 어느 단위인지 헷갈릴 수 있으므로).
         function setRunwayWeightUnitPref(unit) {
             if (unit !== 'kg' && unit !== 'lb') return;
+            if (unit === runwayWeightUnitPref) return; // 이미 선택된 단위면 아무 것도 하지 않음
+
+            const oldUnit = runwayWeightUnitPref;
+            const inputEl = document.getElementById('runwayWeightInput');
+
+            // 입력창에 유효한 숫자가 있으면, 그 값을 새 단위로 즉시 환산해서 다시 채운다.
+            // (예: 787000 lb 입력 중 lb->kg 전환 시 자동으로 356977로 바뀜)
+            const oldVal = parseFloat(inputEl.value);
+            if (!isNaN(oldVal)) {
+                const converted = runwayConvertWeight(oldVal, oldUnit, unit);
+                inputEl.value = Math.round(converted);
+            }
+
             runwayWeightUnitPref = unit;
 
             const switchEl = document.getElementById('runwayWeightUnitSwitch');
@@ -2012,7 +2025,6 @@
                 });
             }
 
-            document.getElementById('runwayWeightInput').value = '';
             if (currentChart) {
                 document.getElementById('runwayWeightLabel').textContent = `이륙중량 (${unit})`;
             }
