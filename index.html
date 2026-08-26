@@ -2256,10 +2256,33 @@
             applyRunwaySnappedPos(posNat);
         }
 
-        // 키보드 방향키로 미세조정: 마우스 드래그(1px 단위)보다 5배 세밀하게(0.2px 단위) 조정.
+        // 키보드 방향키로 미세조정.
+        // 예전에는 "픽셀"을 고정(0.1px)했었는데, 차트마다 크롭 해상도/축 범위가 달라
+        // 픽셀당 실제 거리가 기종마다 제각각이라 실제 이동량도 들쭉날쭉했다.
+        // 대신 "실제 거리(0.1m)"를 고정하고, 그에 필요한 픽셀 이동량을 차트마다 즉석에서 역산한다.
         // 무게축이 세로(vertical)면 길이축은 가로라서 ←/→, 기본(가로)이면 길이축은 세로라서 ↑/↓ 사용.
         // 텍스트 입력창(이륙중량/표고/기온/경사)에 포커스가 있을 때는 그 입력창의 기본 동작을 방해하지 않도록 무시한다.
-        const RUNWAY_KEY_STEP = 0.1;
+        const RUNWAY_KEY_STEP_METERS = 0.1;
+
+        // currentChart의 축 눈금(픽셀 <-> 실제 길이 대응)을 이용해, 0.1m 이동에 필요한
+        // native px 이동량을 계산한다. 계산이 불가능한 예외 상황(축 정보 없음 등)에서는
+        // 예전 기본값이었던 0.1px로 안전하게 대체한다.
+        function runwayKeyStepPx() {
+            if (!currentChart) return 0.1;
+            const ax = currentChart.axis;
+            const spanPos = ax.lengthMaxPos - ax.lengthMinPos;   // native px
+            const spanVal = ax.lengthMax - ax.lengthMin;          // 축 내부 단위(예: "1000 ft"/"1000 m" 스케일)
+            if (!spanPos) return 0.1;
+            const rawPerPx = spanVal / spanPos;                   // 내부 단위 / px
+
+            // 내부 단위 -> m 환산 계수. runwayLengthToMeters()와 동일한 규칙을 따른다.
+            const internalToMeters = (currentChart.lengthUnit === '1000 m') ? 1000 : (1000 * 0.3048);
+            const metersPerPx = Math.abs(rawPerPx) * internalToMeters;
+            if (!metersPerPx) return 0.1;
+
+            return RUNWAY_KEY_STEP_METERS / metersPerPx;
+        }
+
         window.addEventListener('keydown', function(e) {
             const modal = document.getElementById('runwayModal');
             if (!modal || modal.style.display !== 'flex') return;
@@ -2268,13 +2291,14 @@
             if (activeTag === 'INPUT' || activeTag === 'TEXTAREA' || activeTag === 'SELECT') return;
 
             const vertical = isWeightAxisVertical();
+            const stepPx = runwayKeyStepPx();
             let delta = 0;
             if (vertical) {
-                if (e.key === 'ArrowLeft') delta = -RUNWAY_KEY_STEP;
-                else if (e.key === 'ArrowRight') delta = RUNWAY_KEY_STEP;
+                if (e.key === 'ArrowLeft') delta = -stepPx;
+                else if (e.key === 'ArrowRight') delta = stepPx;
             } else {
-                if (e.key === 'ArrowUp') delta = -RUNWAY_KEY_STEP;
-                else if (e.key === 'ArrowDown') delta = RUNWAY_KEY_STEP;
+                if (e.key === 'ArrowUp') delta = -stepPx;
+                else if (e.key === 'ArrowDown') delta = stepPx;
             }
             if (delta === 0) return;
             e.preventDefault();
