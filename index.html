@@ -298,35 +298,6 @@
         }
         .btn-manual-open:hover { background-color: #2c5282; }
 
-        .unit-switch {
-            display: inline-flex;
-            border: 1px solid #cbd5e0;
-            border-radius: 4px;
-            overflow: hidden;
-            height: 38px;
-            box-sizing: border-box;
-        }
-        .unit-switch-btn {
-            background-color: #f7fafc;
-            color: #4a5568;
-            border: none;
-            padding: 0 12px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: bold;
-            transition: background 0.2s, color 0.2s;
-        }
-        .unit-switch-btn + .unit-switch-btn {
-            border-left: 1px solid #cbd5e0;
-        }
-        .unit-switch-btn.active {
-            background-color: #2b6cb0;
-            color: white;
-        }
-        .unit-switch-btn:not(.active):hover {
-            background-color: #e2e8f0;
-        }
-
         .last-updated {
             position: absolute;
             right: 18px;
@@ -879,14 +850,8 @@
 
                 <div style="display:flex; gap:12px; align-items:flex-end; margin-bottom:10px; flex-wrap:wrap;">
                     <div>
-                        <label id="runwayWeightLabel" style="font-size:12px; font-weight:bold; color:#4a5568; display:block; margin-bottom:5px;">이륙중량 (kg)</label>
-                        <div style="display:flex; gap:6px;">
-                            <input type="number" id="runwayWeightInput" class="select-filter" style="width:130px;">
-                            <div class="unit-switch" id="runwayWeightUnitSwitch">
-                                <button type="button" class="unit-switch-btn active" data-unit="kg" onclick="setRunwayWeightUnitPref('kg')">kg</button>
-                                <button type="button" class="unit-switch-btn" data-unit="lb" onclick="setRunwayWeightUnitPref('lb')">lb</button>
-                            </div>
-                        </div>
+                        <label id="runwayWeightLabel" style="font-size:12px; font-weight:bold; color:#4a5568; display:block; margin-bottom:5px;">이륙중량 (lb)</label>
+                        <input type="number" id="runwayWeightInput" class="select-filter" style="width:160px;">
                     </div>
                     <button class="btn-manual-open" onclick="showRunwayGuideLine()">가이드선 표시</button>
                     <button class="btn-reset" onclick="resetRunwayModal()">초기화</button>
@@ -1819,7 +1784,6 @@
         let runwayGuideFixed = null;  // 무게 입력으로 정해지는 고정 가이드선 좌표 (가로형 기종: col / 세로형 기종: row)
         let runwaySnapped = null;     // { pos } 만 저장 -- 사용자가 드래그로 맞춘 좌표 (가로형: row / 세로형: col)
         let runwayBaseM = null;
-        let runwayWeightUnitPref = 'kg';  // 사용자가 입력창에 타이핑하는 단위. 브라우저에 저장하지 않고 매번 kg로 시작.
         let runwayIsDragging = false;
 
         let runwaySelectedAircraft = null;
@@ -1956,9 +1920,9 @@
             document.getElementById('runwayNoSelection').style.display = 'none';
             document.getElementById('runwayChartArea').style.display = 'block';
 
-            // 무게 입력 단위 라벨: 차트 자체의 축 단위(kg/lb/t)와 무관하게, 사용자가 고른 단위(kg/lb)를 표시.
-            // 실제 축 단위 변환은 showRunwayGuideLine()에서 처리한다.
-            document.getElementById('runwayWeightLabel').textContent = `이륙중량 (${runwayWeightUnitPref})`;
+            // 무게 입력 단위 라벨: 기종마다 축 기준 단위가 다를 수 있음 (Boeing=lb, Airbus=kg 등)
+            const weightUnitLabel = runwayWeightUnitShort(currentChart.weightUnit);
+            document.getElementById('runwayWeightLabel').textContent = `이륙중량 (${weightUnitLabel})`;
 
             runwayImg = new Image();
             runwayImg.onload = () => {
@@ -1972,50 +1936,11 @@
             runwayImg.src = currentChart.image;
         }
         
-        // 차트 축이 실제로 요구하는 "원본" 단위(kg/lb/t). 사용자 입력값을 이 단위로 환산해서
-        // 기존 축 계산 로직(runwayWeightToFixedPos 등)에 그대로 넘긴다.
-        function runwayChartNativeUnit(chart) {
-            if (!chart || !chart.weightUnit) return 'lb';
-            const m = chart.weightUnit.match(/(kg|lb|t)\b/i);
-            return m ? m[1].toLowerCase() : 'lb';
-        }
-
-        // kg <-> lb <-> t 변환. value를 fromUnit에서 toUnit으로 바꾼 값을 반환한다.
-        // t(톤)는 kg와 단순히 1000배 관계이므로 kg 계열로 취급한다.
-        const KG_PER_LB = 0.45359237;
-        function runwayConvertWeight(value, fromUnit, toUnit) {
-            if (fromUnit === toUnit || !isFinite(value)) return value;
-            // 먼저 kg으로 통일
-            let kg;
-            if (fromUnit === 'kg') kg = value;
-            else if (fromUnit === 't') kg = value * 1000;
-            else if (fromUnit === 'lb') kg = value * KG_PER_LB;
-            else kg = value;
-            // kg에서 목표 단위로 변환
-            if (toUnit === 'kg') return kg;
-            if (toUnit === 't') return kg / 1000;
-            if (toUnit === 'lb') return kg / KG_PER_LB;
-            return kg;
-        }
-
-        // kg/lb 토글 버튼 클릭 핸들러.
-        // 결정사항: 선택을 브라우저에 저장하지 않고, 전환 시 입력창은 비운다(단위가 바뀌면
-        // 남아있는 숫자가 어느 단위인지 헷갈릴 수 있으므로).
-        function setRunwayWeightUnitPref(unit) {
-            if (unit !== 'kg' && unit !== 'lb') return;
-            runwayWeightUnitPref = unit;
-
-            const switchEl = document.getElementById('runwayWeightUnitSwitch');
-            if (switchEl) {
-                switchEl.querySelectorAll('.unit-switch-btn').forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.unit === unit);
-                });
-            }
-
-            document.getElementById('runwayWeightInput').value = '';
-            if (currentChart) {
-                document.getElementById('runwayWeightLabel').textContent = `이륙중량 (${unit})`;
-            }
+        function runwayWeightUnitShort(weightUnit) {
+            // "1000 lb" -> "lb", "1000 kg" -> "kg", "1000 t" -> "t" 등, 못 찾으면 원문 그대로
+            if (!weightUnit) return 'lb';
+            const m = weightUnit.match(/(kg|lb|t)\b/i);
+            return m ? m[1].toLowerCase() : weightUnit;
         }
 
         function isWeightAxisVertical() {
@@ -2106,12 +2031,8 @@
 
         function showRunwayGuideLine() {
             if (!currentChart) return;
-            const wInputUnit = parseFloat(document.getElementById('runwayWeightInput').value);
-            if (isNaN(wInputUnit)) { alert('무게를 입력해주세요.'); return; }
-            // 사용자가 고른 단위(kg/lb) -> 이 차트의 원본 축 단위(kg/lb/t)로 변환.
-            // 변환은 항상 풀 정밀도로 계산하고, 반올림은 화면 표시 시점에만 적용한다.
-            const nativeUnit = runwayChartNativeUnit(currentChart);
-            const wFull = runwayConvertWeight(wInputUnit, runwayWeightUnitPref, nativeUnit);
+            const wFull = parseFloat(document.getElementById('runwayWeightInput').value);
+            if (isNaN(wFull)) { alert('무게를 입력해주세요.'); return; }
             const w = wFull / runwayWeightInputDivisor(currentChart); // 그래프 축 내부 단위로 변환
             runwayGuideFixed = Math.round(runwayWeightToFixedPos(w));
             runwaySnapped = null;
@@ -2142,9 +2063,6 @@
             setRunwaySelectBtn('Condition', '엔진을 먼저 선택', false);
 
             closeRunwayPanelsExcept(null);
-
-            // 무게 단위 선택도 kg 기본값으로 초기화 (브라우저에 저장하지 않는 정책)
-            setRunwayWeightUnitPref('kg');
 
             // 입력값 초기화
             document.getElementById('runwayWeightInput').value = '';
@@ -2218,8 +2136,8 @@
             const { ft, m } = runwayLengthToMeters(lenRaw, currentChart.lengthUnit);
             runwayBaseM = m;
 
-            // 판독값은 항상 사용자가 입력창에 타이핑한 단위(kg/lb) 그대로 표시한다.
-            document.getElementById('runwayReadWeight').textContent = Math.round(wInput).toLocaleString() + ' ' + runwayWeightUnitPref;
+            const weightUnitLabel = runwayWeightUnitShort(currentChart.weightUnit);
+            document.getElementById('runwayReadWeight').textContent = Math.round(wInput).toLocaleString() + ' ' + weightUnitLabel;
             document.getElementById('runwayReadFt').textContent = ft.toFixed(0) + ' ft';
             document.getElementById('runwayReadM').textContent = m.toFixed(1) + ' m';
             document.getElementById('runwayReadout').style.display = 'grid';
