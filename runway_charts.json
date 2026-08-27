@@ -3760,7 +3760,7 @@
     "label": "B737-600",
     "engines": {
       "cfm56_7b18_7b20": {
-        "label": "CFM56-7B18/-7B20 Engines at 20,000 LB SLST",
+        "label": "CFM56-7B18/-7B20 Engines",
         "conditions": {
           "std": {
             "label": "Standard Day",
@@ -3784,7 +3784,7 @@
             "lengthUnit": "ft"
           },
           "std27": {
-            "label": "Standard Day +27°F (+15°C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b737_600_cfm56_7b18_7b20_std27.png",
             "axis": {
               "top": 10.0,
@@ -3805,7 +3805,7 @@
             "lengthUnit": "ft"
           },
           "std40": {
-            "label": "Standard Day +40°F (+22.2°C)",
+            "label": "Standard Day +22.2°C",
             "image": "RunwayCharts/b737_600_cfm56_7b18_7b20_std40.png",
             "axis": {
               "top": 9.0,
@@ -3826,7 +3826,7 @@
             "lengthUnit": "ft"
           },
           "std63": {
-            "label": "Standard Day +63°F (+35°C)",
+            "label": "Standard Day +35°C",
             "image": "RunwayCharts/b737_600_cfm56_7b18_7b20_std63.png",
             "axis": {
               "top": 9.0,
@@ -3849,7 +3849,7 @@
         }
       },
       "cfm56_7b22": {
-        "label": "CFM56-7B22 Engines at 22,000 LB SLST",
+        "label": "CFM56-7B22 Engines",
         "conditions": {
           "std": {
             "label": "Standard Day",
@@ -3873,7 +3873,7 @@
             "lengthUnit": "ft"
           },
           "std27": {
-            "label": "Standard Day +27°F (+15°C)",
+            "label": "Standard Day +15°C",
             "image": "RunwayCharts/b737_600_cfm56_7b22_std27.png",
             "axis": {
               "top": 11.0,
@@ -3894,7 +3894,7 @@
             "lengthUnit": "ft"
           },
           "std45": {
-            "label": "Standard Day +45°F (+25°C)",
+            "label": "Standard Day +25°C",
             "image": "RunwayCharts/b737_600_cfm56_7b22_std45.png",
             "axis": {
               "top": 10.0,
@@ -3915,7 +3915,7 @@
             "lengthUnit": "ft"
           },
           "std63": {
-            "label": "Standard Day +63°F (+35°C)",
+            "label": "Standard Day +35°C",
             "image": "RunwayCharts/b737_600_cfm56_7b22_std63.png",
             "axis": {
               "top": 11.0,
