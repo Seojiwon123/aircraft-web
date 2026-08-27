@@ -3785,20 +3785,20 @@
           },
           "std27": {
             "label": "Standard Day +15°C",
-            "image": "RunwayCharts/b737_600_cfm56_7b18_7b20_std15.png",
+            "image": "RunwayCharts/b737_600_cfm56_7b18_7b20_std27.png",
             "axis": {
-              "top": 32.57,
-              "bottom": 950.52,
-              "left": 271.97,
-              "right": 1189.43,
+              "top": 12.05,
+              "bottom": 930.14,
+              "left": 267.18,
+              "right": 1185.39,
               "weightMin": 90,
               "weightMax": 150,
               "lengthMin": 3,
               "lengthMax": 15,
-              "weightMinPos": 271.97,
-              "weightMaxPos": 1189.43,
-              "lengthMinPos": 950.52,
-              "lengthMaxPos": 32.57
+              "weightMinPos": 267.18,
+              "weightMaxPos": 1185.39,
+              "lengthMinPos": 930.14,
+              "lengthMaxPos": 12.05
             },
             "curveColor": "black",
             "weightUnit": "1000 lb",
@@ -3806,7 +3806,7 @@
           },
           "std40": {
             "label": "Standard Day +22.2°C",
-            "image": "RunwayCharts/b737_600_cfm56_7b18_7b20_std22.png",
+            "image": "RunwayCharts/b737_600_cfm56_7b18_7b20_std40.png",
             "axis": {
               "top": 12.23,
               "bottom": 927.23,
@@ -3827,7 +3827,7 @@
           },
           "std63": {
             "label": "Standard Day +35°C",
-            "image": "RunwayCharts/b737_600_cfm56_7b18_7b20_std35.png",
+            "image": "RunwayCharts/b737_600_cfm56_7b18_7b20_std63.png",
             "axis": {
               "top": 11.66,
               "bottom": 931.52,
@@ -3874,7 +3874,7 @@
           },
           "std27": {
             "label": "Standard Day +15°C",
-            "image": "RunwayCharts/b737_600_cfm56_7b22_std15.png",
+            "image": "RunwayCharts/b737_600_cfm56_7b22_std27.png",
             "axis": {
               "top": 13.58,
               "bottom": 928.42,
@@ -3895,7 +3895,7 @@
           },
           "std45": {
             "label": "Standard Day +25°C",
-            "image": "RunwayCharts/b737_600_cfm56_7b22_std25.png",
+            "image": "RunwayCharts/b737_600_cfm56_7b22_std45.png",
             "axis": {
               "top": 13.32,
               "bottom": 924.23,
@@ -3916,7 +3916,7 @@
           },
           "std63": {
             "label": "Standard Day +35°C",
-            "image": "RunwayCharts/b737_600_cfm56_7b22_std35.png",
+            "image": "RunwayCharts/b737_600_cfm56_7b22_std63.png",
             "axis": {
               "top": 13.58,
               "bottom": 928.42,
