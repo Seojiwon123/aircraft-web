@@ -715,8 +715,37 @@
             font-size: 13px;
             margin: 12px 0;
         }
-        .canvas-wrap { position: relative; overflow-x: auto; border: 1px solid #cbd5e0; border-radius: 8px; margin-bottom: 12px; }
+        .canvas-wrap { position: relative; overflow: hidden; border: 1px solid #cbd5e0; border-radius: 8px; margin-bottom: 12px; }
         #runwayCanvas { display: block; cursor: crosshair; max-width: 100%; }
+        .runway-zoom-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .btn-zoom {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 6px;
+            background-color: rgba(45,55,72,0.82);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .btn-zoom:hover { background-color: rgba(45,55,72,1); }
+        .btn-zoom.active { background-color: #2c7a7b; }
+        .btn-zoom:disabled { opacity: 0.35; cursor: default; }
+        .btn-zoom:disabled:hover { background-color: rgba(45,55,72,0.82); }
         .runway-hint { font-size: 12px; color: #0b5d5d; background: #e3f0ef; border-radius: 6px; padding: 8px 12px; margin-bottom: 10px; line-height:1.5; }
         .readout-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 14px; }
         .readout-card { background: #fbfcfd; border: 1px solid #cbd5e0; border-radius: 8px; padding: 10px 12px; }
@@ -915,7 +944,14 @@
             </div>
 
             <div id="runwayChartArea" style="display:none;">
-                <div class="canvas-wrap"><canvas id="runwayCanvas"></canvas></div>
+                <div class="canvas-wrap" id="runwayCanvasWrap">
+                    <canvas id="runwayCanvas"></canvas>
+                    <div class="runway-zoom-controls">
+                        <button type="button" class="btn-zoom" id="runwayZoomInBtn" onclick="runwayZoomIn()" title="확대">+</button>
+                        <button type="button" class="btn-zoom" id="runwayZoomOutBtn" onclick="runwayZoomOut()" title="축소">−</button>
+                        <button type="button" class="btn-zoom" id="runwayPanModeBtn" onclick="toggleRunwayPanMode()" title="이동 모드">✋</button>
+                    </div>
+                </div>
 
                 <div style="display:flex; gap:12px; align-items:flex-end; margin-bottom:10px; flex-wrap:wrap;">
                     <div>
@@ -1892,6 +1928,12 @@
         let runwayWeightUnitPref = 'kg';  // 사용자가 입력창에 타이핑하는 단위. 브라우저에 저장하지 않고 매번 kg로 시작.
         let runwayHistory = [];  // 계산 이력. 세션(메모리)에만 유지하고 새로고침하면 사라진다.
         let runwayIsDragging = false;
+        let runwayZoom = 1;           // 그래프 확대 배율 (1 = 원본 맞춤 크기)
+        let runwayPanX = 0;           // 확대 시 화면 이동량 (CSS px, translate 기준)
+        let runwayPanY = 0;
+        let runwayPanMode = false;    // true면 드래그가 "화면 이동", false면 기존처럼 "가이드선 조정"
+        let runwayIsPanning = false;
+        let runwayPanStartX = 0, runwayPanStartY = 0, runwayPanOriginX = 0, runwayPanOriginY = 0;
 
         let runwaySelectedAircraft = null;
         let runwaySelectedEngine = null;
@@ -2038,6 +2080,7 @@
                 runwayScale = maxDisplayW / runwayImg.naturalWidth;
                 canvas.width = runwayImg.naturalWidth * runwayScale;
                 canvas.height = runwayImg.naturalHeight * runwayScale;
+                resetRunwayZoom();
                 redrawRunwayCanvas();
             };
             runwayImg.src = currentChart.image;
@@ -2143,6 +2186,99 @@
                 }
                 ctx.stroke();
             }
+        }
+
+        // ===== 그래프 확대/축소 + 이동(팬) =====
+        const RUNWAY_ZOOM_MIN = 1;
+        const RUNWAY_ZOOM_MAX = 4;
+        const RUNWAY_ZOOM_STEP = 1.25;
+
+        // 현재 zoom/pan 상태를 실제 canvas 엘리먼트의 CSS transform으로 반영.
+        // transform-origin을 (0,0)으로 고정해서, panX/panY는 항상 "스케일과 무관한
+        // 화면(CSS) 픽셀 단위 이동량"으로 취급할 수 있다.
+        function runwayApplyTransform() {
+            const canvas = document.getElementById('runwayCanvas');
+            if (!canvas) return;
+            canvas.style.transformOrigin = '0 0';
+            canvas.style.transform = `translate(${runwayPanX}px, ${runwayPanY}px) scale(${runwayZoom})`;
+        }
+
+        // 확대된 캔버스가 뷰포트(canvas-wrap) 밖으로 과도하게 벗어나지 않도록 pan 값을 clamp.
+        function clampRunwayPan() {
+            const wrap = document.getElementById('runwayCanvasWrap');
+            const canvas = document.getElementById('runwayCanvas');
+            if (!wrap || !canvas) return;
+            const viewW = wrap.clientWidth;
+            const viewH = wrap.clientHeight;
+            const scaledW = canvas.width * runwayZoom;
+            const scaledH = canvas.height * runwayZoom;
+            const minX = Math.min(0, viewW - scaledW);
+            const minY = Math.min(0, viewH - scaledH);
+            runwayPanX = Math.max(minX, Math.min(0, runwayPanX));
+            runwayPanY = Math.max(minY, Math.min(0, runwayPanY));
+        }
+
+        function runwayUpdateZoomButtonsState() {
+            const zin = document.getElementById('runwayZoomInBtn');
+            const zout = document.getElementById('runwayZoomOutBtn');
+            if (zin) zin.disabled = runwayZoom >= RUNWAY_ZOOM_MAX - 1e-6;
+            if (zout) zout.disabled = runwayZoom <= RUNWAY_ZOOM_MIN + 1e-6;
+        }
+
+        // factor를 현재 zoom에 곱해 확대/축소. 뷰포트 중앙이 계속 같은 그래프 지점을
+        // 가리키도록 pan도 같이 재계산한다 (지도 확대/축소와 동일한 방식).
+        function runwayZoomBy(factor) {
+            if (!currentChart) return;
+            const wrap = document.getElementById('runwayCanvasWrap');
+            if (!wrap) return;
+            const viewW = wrap.clientWidth;
+            const viewH = wrap.clientHeight;
+            const oldZoom = runwayZoom;
+            const newZoom = Math.max(RUNWAY_ZOOM_MIN, Math.min(RUNWAY_ZOOM_MAX, oldZoom * factor));
+            if (newZoom === oldZoom) return;
+
+            const imgX = (viewW / 2 - runwayPanX) / oldZoom;
+            const imgY = (viewH / 2 - runwayPanY) / oldZoom;
+            runwayZoom = newZoom;
+            runwayPanX = viewW / 2 - imgX * runwayZoom;
+            runwayPanY = viewH / 2 - imgY * runwayZoom;
+            clampRunwayPan();
+            runwayApplyTransform();
+            runwayUpdateZoomButtonsState();
+
+            // 원본 크기(100%)로 돌아오면 이동모드가 의미 없으므로 자동으로 조정모드로 전환
+            if (runwayZoom <= RUNWAY_ZOOM_MIN + 1e-6 && runwayPanMode) {
+                toggleRunwayPanMode();
+            }
+        }
+
+        function runwayZoomIn() { runwayZoomBy(RUNWAY_ZOOM_STEP); }
+        function runwayZoomOut() { runwayZoomBy(1 / RUNWAY_ZOOM_STEP); }
+
+        // "조정 모드"(기본, 클릭 드래그 = 가이드선 이동) <-> "이동 모드"(클릭 드래그 = 화면 이동) 전환.
+        // 요청사항: 버튼 색상 변화만으로 현재 모드를 표시.
+        function toggleRunwayPanMode() {
+            runwayPanMode = !runwayPanMode;
+            const btn = document.getElementById('runwayPanModeBtn');
+            if (btn) btn.classList.toggle('active', runwayPanMode);
+            const canvas = document.getElementById('runwayCanvas');
+            if (canvas) canvas.style.cursor = runwayPanMode ? 'grab' : 'crosshair';
+        }
+
+        // 확대/이동 상태를 원본(100%, 중앙)으로 되돌린다.
+        // 새 차트를 열 때, 그리고 "초기화" 버튼을 눌렀을 때 호출된다.
+        function resetRunwayZoom() {
+            runwayZoom = 1;
+            runwayPanX = 0;
+            runwayPanY = 0;
+            runwayIsPanning = false;
+            runwayPanMode = false;
+            const btn = document.getElementById('runwayPanModeBtn');
+            if (btn) btn.classList.remove('active');
+            const canvas = document.getElementById('runwayCanvas');
+            if (canvas) canvas.style.cursor = 'crosshair';
+            runwayApplyTransform();
+            runwayUpdateZoomButtonsState();
         }
 
         // 무게값(w, 축 내부 단위)을 "고정 가이드선" 좌표로 변환.
@@ -2261,6 +2397,7 @@
             runwayGuideFixed = null;
             runwaySnapped = null;
             runwayBaseM = null;
+            resetRunwayZoom();
             const ro = document.getElementById('runwayReadout');
             if (ro) ro.style.display = 'none';
             const cp = document.getElementById('runwayCorrPanel');
@@ -2273,18 +2410,39 @@
         const runwayCanvasEl = document.getElementById('runwayCanvas');
         
         runwayCanvasEl.addEventListener('mousedown', function(e) {
-            if (runwayGuideFixed === null || !currentChart) return;
+            if (!currentChart) return;
+            if (runwayPanMode) {
+                runwayIsPanning = true;
+                runwayPanStartX = e.clientX;
+                runwayPanStartY = e.clientY;
+                runwayPanOriginX = runwayPanX;
+                runwayPanOriginY = runwayPanY;
+                runwayCanvasEl.style.cursor = 'grabbing';
+                return;
+            }
+            if (runwayGuideFixed === null) return;
             runwayIsDragging = true;
             updateRunwayDrag(e, this);
         });
         
         window.addEventListener('mousemove', function(e) {
+            if (runwayIsPanning) {
+                runwayPanX = runwayPanOriginX + (e.clientX - runwayPanStartX);
+                runwayPanY = runwayPanOriginY + (e.clientY - runwayPanStartY);
+                clampRunwayPan();
+                runwayApplyTransform();
+                return;
+            }
             if (!runwayIsDragging) return;
             updateRunwayDrag(e, runwayCanvasEl);
         });
         
         window.addEventListener('mouseup', function() {
             runwayIsDragging = false;
+            if (runwayIsPanning) {
+                runwayIsPanning = false;
+                if (runwayPanMode) runwayCanvasEl.style.cursor = 'grab';
+            }
         });
         
         function runwayLengthToMeters(lenValueRaw, lengthUnit) {
@@ -2332,11 +2490,12 @@
             let posDisp, posNat;
             if (vertical) {
                 // 길이가 가로축: 마우스 좌우 이동을 col로 변환, [left, right] 범위로 clamp
-                posDisp = e.clientX - rect.left;
+                // rect는 확대(zoom)된 화면 기준 크기이므로, runwayZoom으로 나눠 캔버스 원본 좌표로 환산
+                posDisp = (e.clientX - rect.left) / runwayZoom;
                 posDisp = Math.max(ax.left * runwayScale, Math.min(ax.right * runwayScale, posDisp));
             } else {
                 // 길이가 세로축(기존 방식): 마우스 상하 이동을 row로 변환, [top, bottom] 범위로 clamp
-                posDisp = e.clientY - rect.top;
+                posDisp = (e.clientY - rect.top) / runwayZoom;
                 posDisp = Math.max(ax.top * runwayScale, Math.min(ax.bottom * runwayScale, posDisp));
             }
             posNat = posDisp / runwayScale;
