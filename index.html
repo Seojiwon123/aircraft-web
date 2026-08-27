@@ -756,6 +756,24 @@
         .final-box { margin-top: 12px; background: #1a202c; color: #fff; border-radius: 8px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: baseline; }
         .final-box .label { font-size: 12px; color: #cbd5e0; font-weight: bold; }
         .final-box .value { font-family: monospace; font-size: 22px; font-weight: bold; }
+        .calc-steps-panel {
+            background: #fbfcfd;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
+        .calc-step { margin-bottom: 16px; }
+        .calc-step:last-child { margin-bottom: 0; }
+        .calc-step-title { font-size: 13px; font-weight: bold; color: #2c7a7b; margin-bottom: 6px; }
+        .calc-step-sub { font-family: monospace; font-size: 12.5px; color: #718096; margin-bottom: 6px; }
+        .calc-eq { display: flex; font-family: monospace; font-size: 13px; color: #4a5568; line-height: 1.75; }
+        .calc-eq .calc-lhs { width: 26px; flex-shrink: 0; font-weight: bold; color: #2d3748; }
+        .calc-eq .calc-rhs { white-space: pre; }
+        .calc-eq.result { border-top: 1px dashed #cbd5e0; margin-top: 4px; padding-top: 6px; }
+        .calc-eq.result .calc-rhs { font-weight: bold; color: #1a202c; }
+        .calc-final { display: flex; justify-content: space-between; align-items: baseline; margin-top: 14px; padding-top: 10px; border-top: 1px solid #cbd5e0; }
+        .calc-final .k { font-size: 13px; font-weight: bold; color: #4a5568; }
+        .calc-final .v { font-family: monospace; font-size: 16px; font-weight: bold; color: #1a202c; }
         .disclaimer { background: #fbf1de; color: #8a5a12; border-radius: 8px; padding: 10px 14px; font-size: 11.5px; margin-top: 14px; line-height: 1.6; }
 
         .select-filter::-webkit-outer-spin-button,
@@ -1016,6 +1034,14 @@
                     <div id="runwayFinalBox" class="final-box" style="display:none;">
                         <span class="label">최종 소요 활주로 길이</span>
                         <span id="runwayFinalVal" class="value">— m</span>
+                    </div>
+
+                    <div id="runwayCalcStepsSection" style="margin-top:10px; display:none;">
+                        <div class="runway-history-toggle" onclick="toggleRunwayCalcSteps()">
+                            <span id="runwayCalcStepsIcon" style="font-size:12px; color:#4a5568;">▸</span>
+                            <span style="font-size:13px; font-weight:bold; color:#4a5568;">계산 근거 보기</span>
+                        </div>
+                        <div id="runwayCalcStepsPanel" class="calc-steps-panel" style="display:none; margin-top:8px;"></div>
                     </div>
                 </div>
 
@@ -2404,6 +2430,8 @@
             if (cp) cp.style.display = 'none';
             const fb = document.getElementById('runwayFinalBox');
             if (fb) fb.style.display = 'none';
+            const cs = document.getElementById('runwayCalcStepsSection');
+            if (cs) cs.style.display = 'none';
             if (currentChart) redrawRunwayCanvas();
         }
         
@@ -2577,6 +2605,9 @@
             document.getElementById('runwayFinalVal').textContent = L3.toFixed(1) + ' m';
             document.getElementById('runwayFinalBox').style.display = 'flex';
 
+            renderRunwayCalcSteps({ L0, elev, tempActual, slope, stdTempAtElev, conditionOffsetC, correctedStdTemp, L1, L2, L3 });
+            document.getElementById('runwayCalcStepsSection').style.display = 'block';
+
             // 계산 결과를 이력에 추가. 이 계산에 실제로 쓰인 값들을 그대로 기록한다.
             const wInputUnit = parseFloat(document.getElementById('runwayWeightInput').value);
             runwayHistory.push({
@@ -2590,6 +2621,67 @@
                 finalM: Number(L3.toFixed(1))
             });
             renderRunwayHistory();
+        }
+
+        function toggleRunwayCalcSteps() {
+            const panel = document.getElementById('runwayCalcStepsPanel');
+            const icon = document.getElementById('runwayCalcStepsIcon');
+            const isOpen = panel.style.display !== 'none';
+            panel.style.display = isOpen ? 'none' : 'block';
+            icon.textContent = isOpen ? '▸' : '▾';
+        }
+
+        // 숫자를 "1,562.0" 같은 천단위 콤마 + 소수 자릿수 고정 형태로 변환.
+        function fmtCalc(x, digits = 1) {
+            return x.toLocaleString('ko-KR', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+        }
+
+        // 한 줄의 "L1 = ..." 또는 이어지는 "  = ..." 행을 만드는 헬퍼.
+        // lhs가 빈 문자열이면 왼쪽 변수명 칸을 비워서, 등호(=)가 세로로 쭉 맞춰진다.
+        function calcEqRow(lhs, rhs, isResult = false) {
+            return `<div class="calc-eq${isResult ? ' result' : ''}"><span class="calc-lhs">${lhs}</span><span class="calc-rhs">= ${rhs}</span></div>`;
+        }
+
+        // 계산 근거 패널에 "기본 공식 -> 숫자 대입 -> 중간 결과" 3줄씩, 총 3단계를 렌더링.
+        function renderRunwayCalcSteps({ L0, elev, tempActual, slope, stdTempAtElev, conditionOffsetC, correctedStdTemp, L1, L2, L3 }) {
+            const elevFactor = 1 + 0.07 * elev / 300;
+            const tempDiff = tempActual - correctedStdTemp;
+            const tempFactor = 1 + 0.01 * tempDiff;
+            const slopeFactor = 1 + 0.1 * slope;
+
+            let html = '';
+
+            // ① 표고 보정
+            html += '<div class="calc-step">';
+            html += '<div class="calc-step-title">① 표고 보정</div>';
+            html += calcEqRow('L1', `L0 × (1 + 0.07 × 표고 ÷ 300)`);
+            html += calcEqRow('', `${fmtCalc(L0)} × (1 + 0.07 × ${fmtCalc(elev, 0)} ÷ 300)`);
+            html += calcEqRow('', `${fmtCalc(L0)} × ${fmtCalc(elevFactor, 3)}`);
+            html += calcEqRow('', `${fmtCalc(L1)} m`, true);
+            html += '</div>';
+
+            // ② 기온 보정
+            html += '<div class="calc-step">';
+            html += '<div class="calc-step-title">② 기온 보정</div>';
+            html += `<div class="calc-step-sub">표준기온 = 15 − 6.5 × (표고 ÷ 1000)${conditionOffsetC ? ' + 조건 보정' : ''} = ${fmtCalc(correctedStdTemp)} ℃</div>`;
+            html += calcEqRow('L2', `L1 × (1 + 0.01 × (실제기온 − 표준기온))`);
+            html += calcEqRow('', `${fmtCalc(L1)} × (1 + 0.01 × (${fmtCalc(tempActual)} − ${fmtCalc(correctedStdTemp)}))`);
+            html += calcEqRow('', `${fmtCalc(L1)} × ${fmtCalc(tempFactor, 3)}`);
+            html += calcEqRow('', `${fmtCalc(L2)} m`, true);
+            html += '</div>';
+
+            // ③ 경사 보정
+            html += '<div class="calc-step">';
+            html += '<div class="calc-step-title">③ 경사 보정</div>';
+            html += calcEqRow('L3', `L2 × (1 + 0.1 × 경사)`);
+            html += calcEqRow('', `${fmtCalc(L2)} × (1 + 0.1 × ${fmtCalc(slope, 2)})`);
+            html += calcEqRow('', `${fmtCalc(L2)} × ${fmtCalc(slopeFactor, 3)}`);
+            html += calcEqRow('', `${fmtCalc(L3)} m`, true);
+            html += '</div>';
+
+            html += `<div class="calc-final"><span class="k">최종 소요 활주로 길이</span><span class="v">${fmtCalc(L3)} m</span></div>`;
+
+            document.getElementById('runwayCalcStepsPanel').innerHTML = html;
         }
 
         function toggleRunwayHistoryPanel() {
