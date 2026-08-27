@@ -3943,7 +3943,7 @@
     "label": "B737-700",
     "engines": {
       "cfm56_7b20_7b22_7b24": {
-        "label": "CFM56-7B20/-7B22/-7B24 Engines at 20,000 LB SLST",
+        "label": "CFM56-7B20/-7B22/-7B24 Engines",
         "conditions": {
           "std": {
             "label": "Standard Day",
@@ -4032,7 +4032,7 @@
         }
       },
       "cfm56_7b26": {
-        "label": "CFM56-7B26 Engines at 26,000 LB SLST",
+        "label": "CFM56-7B26 Engines",
         "conditions": {
           "std": {
             "label": "Standard Day",
@@ -4126,7 +4126,7 @@
     "label": "B737-700W",
     "engines": {
       "cfm56_7b20_7b22_7b24": {
-        "label": "CFM56-7B20/-7B22/-7B24 Engines at 20,000 LB SLST",
+        "label": "CFM56-7B20/-7B22/-7B24 Engines",
         "conditions": {
           "std": {
             "label": "Standard Day",
@@ -4215,7 +4215,7 @@
         }
       },
       "cfm56_7b26": {
-        "label": "CFM56-7B26 Engines at 26,000 LB SLST",
+        "label": "CFM56-7B26 Engines",
         "conditions": {
           "std": {
             "label": "Standard Day",
