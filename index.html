@@ -2640,11 +2640,6 @@
 
         // 계산 근거 패널에 "기본 공식 -> 숫자 대입 -> 중간 결과" 3줄씩, 총 3단계를 렌더링.
         function renderRunwayCalcSteps({ L0, elev, tempActual, slope, stdTempAtElev, conditionOffsetC, correctedStdTemp, L1, L2, L3 }) {
-            const elevFactor = 1 + 0.07 * elev / 300;
-            const tempDiff = tempActual - correctedStdTemp;
-            const tempFactor = 1 + 0.01 * tempDiff;
-            const slopeFactor = 1 + 0.1 * slope;
-
             let html = '';
 
             // ① 표고 보정
@@ -2652,7 +2647,6 @@
             html += '<div class="calc-step-title">① 표고 보정</div>';
             html += calcEqRow('L1', `L0 × (1 + 0.07 × 표고 ÷ 300)`);
             html += calcEqRow('', `${fmtCalc(L0)} × (1 + 0.07 × ${fmtCalc(elev, 0)} ÷ 300)`);
-            html += calcEqRow('', `${fmtCalc(L0)} × ${fmtCalc(elevFactor, 3)}`);
             html += calcEqRow('', `${fmtCalc(L1)} m`, true);
             html += '</div>';
 
@@ -2662,7 +2656,6 @@
             html += `<div class="calc-step-sub">표준기온 = 15 − 6.5 × (표고 ÷ 1000)${conditionOffsetC ? ' + 조건 보정' : ''} = ${fmtCalc(correctedStdTemp)} ℃</div>`;
             html += calcEqRow('L2', `L1 × (1 + 0.01 × (실제기온 − 표준기온))`);
             html += calcEqRow('', `${fmtCalc(L1)} × (1 + 0.01 × (${fmtCalc(tempActual)} − ${fmtCalc(correctedStdTemp)}))`);
-            html += calcEqRow('', `${fmtCalc(L1)} × ${fmtCalc(tempFactor, 3)}`);
             html += calcEqRow('', `${fmtCalc(L2)} m`, true);
             html += '</div>';
 
@@ -2671,7 +2664,6 @@
             html += '<div class="calc-step-title">③ 경사 보정</div>';
             html += calcEqRow('L3', `L2 × (1 + 0.1 × 경사)`);
             html += calcEqRow('', `${fmtCalc(L2)} × (1 + 0.1 × ${fmtCalc(slope, 2)})`);
-            html += calcEqRow('', `${fmtCalc(L2)} × ${fmtCalc(slopeFactor, 3)}`);
             html += calcEqRow('', `${fmtCalc(L3)} m`, true);
             html += '</div>';
 
