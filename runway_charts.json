@@ -5961,5 +5961,338 @@
         }
       }
     }
+  },
+  "a321_100": {
+    "label": "A321-100",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56 Series Engine",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a321_100_200_cfm56_isa.png",
+            "axis": {
+              "top": 241.92,
+              "bottom": 948.78,
+              "left": 175.55,
+              "right": 1037.85,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 948.78,
+              "weightMaxPos": 241.92,
+              "lengthMinPos": 175.55,
+              "lengthMaxPos": 1037.85
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C Conditions",
+            "image": "RunwayCharts/a321_100_200_cfm56_isa15.png",
+            "axis": {
+              "top": 241.92,
+              "bottom": 948.78,
+              "left": 175.55,
+              "right": 1037.85,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 948.78,
+              "weightMaxPos": 241.92,
+              "lengthMinPos": 175.55,
+              "lengthMaxPos": 1037.85
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      },
+      "iaev2500": {
+        "label": "IAE V2500 Series Engine",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a321_100_200_iaev2500_isa.png",
+            "axis": {
+              "top": 166.47,
+              "bottom": 881.33,
+              "left": 192.21,
+              "right": 1052.54,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 881.33,
+              "weightMaxPos": 166.47,
+              "lengthMinPos": 192.21,
+              "lengthMaxPos": 1052.54
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C Conditions",
+            "image": "RunwayCharts/a321_100_200_iaev2500_isa15.png",
+            "axis": {
+              "top": 241.92,
+              "bottom": 948.78,
+              "left": 175.55,
+              "right": 1037.85,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 948.78,
+              "weightMaxPos": 241.92,
+              "lengthMinPos": 175.55,
+              "lengthMaxPos": 1037.85
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      }
+    }
+  },
+  "a321_200": {
+    "label": "A321-200",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56 Series Engine",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a321_100_200_cfm56_isa.png",
+            "axis": {
+              "top": 241.92,
+              "bottom": 948.78,
+              "left": 175.55,
+              "right": 1037.85,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 948.78,
+              "weightMaxPos": 241.92,
+              "lengthMinPos": 175.55,
+              "lengthMaxPos": 1037.85
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C Conditions",
+            "image": "RunwayCharts/a321_100_200_cfm56_isa15.png",
+            "axis": {
+              "top": 241.92,
+              "bottom": 948.78,
+              "left": 175.55,
+              "right": 1037.85,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 948.78,
+              "weightMaxPos": 241.92,
+              "lengthMinPos": 175.55,
+              "lengthMaxPos": 1037.85
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      },
+      "iaev2500": {
+        "label": "IAE V2500 Series Engine",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a321_100_200_iaev2500_isa.png",
+            "axis": {
+              "top": 166.47,
+              "bottom": 881.33,
+              "left": 192.21,
+              "right": 1052.54,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 881.33,
+              "weightMaxPos": 166.47,
+              "lengthMinPos": 192.21,
+              "lengthMaxPos": 1052.54
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C Conditions",
+            "image": "RunwayCharts/a321_100_200_iaev2500_isa15.png",
+            "axis": {
+              "top": 241.92,
+              "bottom": 948.78,
+              "left": 175.55,
+              "right": 1037.85,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 948.78,
+              "weightMaxPos": 241.92,
+              "lengthMinPos": 175.55,
+              "lengthMaxPos": 1037.85
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      }
+    }
+  },
+  "a321neo": {
+    "label": "A321neo",
+    "engines": {
+      "leap1a": {
+        "label": "LEAP-1A Series Engine",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a321neo_leap1a_isa.png",
+            "axis": {
+              "top": 273.33,
+              "bottom": 987.04,
+              "left": 165.04,
+              "right": 1036.18,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 987.04,
+              "weightMaxPos": 273.33,
+              "lengthMinPos": 165.04,
+              "lengthMaxPos": 1036.18
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C Conditions",
+            "image": "RunwayCharts/a321neo_leap1a_isa15.png",
+            "axis": {
+              "top": 273.33,
+              "bottom": 987.04,
+              "left": 165.04,
+              "right": 1036.18,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 987.04,
+              "weightMaxPos": 273.33,
+              "lengthMinPos": 165.04,
+              "lengthMaxPos": 1036.18
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      },
+      "pw": {
+        "label": "PW Engines",
+        "conditions": {
+          "isa_dry": {
+            "label": "ISA Conditions",
+            "image": "RunwayCharts/a321neo_pw_isa.png",
+            "axis": {
+              "top": 273.33,
+              "bottom": 987.04,
+              "left": 165.04,
+              "right": 1036.18,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 987.04,
+              "weightMaxPos": 273.33,
+              "lengthMinPos": 165.04,
+              "lengthMaxPos": 1036.18
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          },
+          "isa15_dry": {
+            "label": "ISA +15°C Conditions",
+            "image": "RunwayCharts/a321neo_pw_isa15.png",
+            "axis": {
+              "top": 273.33,
+              "bottom": 987.04,
+              "left": 165.04,
+              "right": 1036.18,
+              "weightMin": 100,
+              "weightMax": 240,
+              "lengthMin": 2,
+              "lengthMax": 18,
+              "weightMinPos": 987.04,
+              "weightMaxPos": 273.33,
+              "lengthMinPos": 165.04,
+              "lengthMaxPos": 1036.18
+            },
+            "curveColor": "multi",
+            "curveNote": "5 curves distinguished by color per airport pressure altitude (0/2000/4000/6000/8000 ft) -- see in-image legend, not separately encoded",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "weightAxis": "vertical",
+            "lengthAxis": "horizontal"
+          }
+        }
+      }
+    }
   }
 }
