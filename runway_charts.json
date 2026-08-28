@@ -5585,5 +5585,381 @@
         }
       }
     }
+  },
+  "b737_900": {
+    "label": "B737-900",
+    "engines": {
+      "cfm56_7b24_7b26": {
+        "label": "CFM56-7B24/-7B26 Engines at 24,000 LB SLST",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b737_900_900w_cfm56_7b24_7b26_std.png",
+            "axis": {
+              "top": 12.85,
+              "bottom": 736.15,
+              "left": 214.08,
+              "right": 1178.85,
+              "weightMin": 100,
+              "weightMax": 180,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 214.08,
+              "weightMaxPos": 1178.85,
+              "lengthMinPos": 736.15,
+              "lengthMaxPos": 12.85
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +15°C",
+            "image": "RunwayCharts/b737_900_900w_cfm56_7b24_7b26_std15.png",
+            "axis": {
+              "top": 12.65,
+              "bottom": 737.15,
+              "left": 214.21,
+              "right": 1178.92,
+              "weightMin": 100,
+              "weightMax": 180,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 214.21,
+              "weightMaxPos": 1178.92,
+              "lengthMinPos": 737.15,
+              "lengthMaxPos": 12.65
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std25": {
+            "label": "Standard Day +25°C",
+            "image": "RunwayCharts/b737_900_900w_cfm56_7b24_7b26_std25.png",
+            "axis": {
+              "top": 13.2,
+              "bottom": 735.0,
+              "left": 214.19,
+              "right": 1178.81,
+              "weightMin": 100,
+              "weightMax": 180,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 214.19,
+              "weightMaxPos": 1178.81,
+              "lengthMinPos": 735.0,
+              "lengthMaxPos": 13.2
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std35": {
+            "label": "Standard Day +35°C",
+            "image": "RunwayCharts/b737_900_900w_cfm56_7b24_7b26_std35.png",
+            "axis": {
+              "top": 12.65,
+              "bottom": 737.15,
+              "left": 214.21,
+              "right": 1178.92,
+              "weightMin": 100,
+              "weightMax": 180,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 214.21,
+              "weightMaxPos": 1178.92,
+              "lengthMinPos": 737.15,
+              "lengthMaxPos": 12.65
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b737_900w": {
+    "label": "B737-900W",
+    "engines": {
+      "cfm56_7b24_7b26": {
+        "label": "CFM56-7B24/-7B26 Engines at 24,000 LB SLST",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b737_900_900w_cfm56_7b24_7b26_std.png",
+            "axis": {
+              "top": 12.85,
+              "bottom": 736.15,
+              "left": 214.08,
+              "right": 1178.85,
+              "weightMin": 100,
+              "weightMax": 180,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 214.08,
+              "weightMaxPos": 1178.85,
+              "lengthMinPos": 736.15,
+              "lengthMaxPos": 12.85
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +15°C",
+            "image": "RunwayCharts/b737_900_900w_cfm56_7b24_7b26_std15.png",
+            "axis": {
+              "top": 12.65,
+              "bottom": 737.15,
+              "left": 214.21,
+              "right": 1178.92,
+              "weightMin": 100,
+              "weightMax": 180,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 214.21,
+              "weightMaxPos": 1178.92,
+              "lengthMinPos": 737.15,
+              "lengthMaxPos": 12.65
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std25": {
+            "label": "Standard Day +25°C",
+            "image": "RunwayCharts/b737_900_900w_cfm56_7b24_7b26_std25.png",
+            "axis": {
+              "top": 13.2,
+              "bottom": 735.0,
+              "left": 214.19,
+              "right": 1178.81,
+              "weightMin": 100,
+              "weightMax": 180,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 214.19,
+              "weightMaxPos": 1178.81,
+              "lengthMinPos": 735.0,
+              "lengthMaxPos": 13.2
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std35": {
+            "label": "Standard Day +35°C",
+            "image": "RunwayCharts/b737_900_900w_cfm56_7b24_7b26_std35.png",
+            "axis": {
+              "top": 12.65,
+              "bottom": 737.15,
+              "left": 214.21,
+              "right": 1178.92,
+              "weightMin": 100,
+              "weightMax": 180,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 214.21,
+              "weightMaxPos": 1178.92,
+              "lengthMinPos": 737.15,
+              "lengthMaxPos": 12.65
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b737_900er": {
+    "label": "B737-900ER",
+    "engines": {
+      "cfm56_7b26_7b27": {
+        "label": "CFM56-7B26/-7B27 Engines at 26,000 LB SLST",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b737_900er_900erw_cfm56_7b26_7b27_std.png",
+            "axis": {
+              "top": 10.6,
+              "bottom": 611.2,
+              "left": 178.76,
+              "right": 1182.08,
+              "weightMin": 100,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 178.76,
+              "weightMaxPos": 1182.08,
+              "lengthMinPos": 611.2,
+              "lengthMaxPos": 10.6
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +15°C",
+            "image": "RunwayCharts/b737_900er_900erw_cfm56_7b26_7b27_std15.png",
+            "axis": {
+              "top": 10.52,
+              "bottom": 613.23,
+              "left": 178.83,
+              "right": 1182.01,
+              "weightMin": 100,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 178.83,
+              "weightMaxPos": 1182.01,
+              "lengthMinPos": 613.23,
+              "lengthMaxPos": 10.52
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std25": {
+            "label": "Standard Day +25°C",
+            "image": "RunwayCharts/b737_900er_900erw_cfm56_7b26_7b27_std25.png",
+            "axis": {
+              "top": 11.0,
+              "bottom": 614.0,
+              "left": 178.76,
+              "right": 1182.08,
+              "weightMin": 100,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 178.76,
+              "weightMaxPos": 1182.08,
+              "lengthMinPos": 614.0,
+              "lengthMaxPos": 11.0
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std35": {
+            "label": "Standard Day +35°C",
+            "image": "RunwayCharts/b737_900er_900erw_cfm56_7b26_7b27_std35.png",
+            "axis": {
+              "top": 11.0,
+              "bottom": 614.0,
+              "left": 178.76,
+              "right": 1182.08,
+              "weightMin": 100,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 178.76,
+              "weightMaxPos": 1182.08,
+              "lengthMinPos": 614.0,
+              "lengthMaxPos": 11.0
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
+  },
+  "b737_900erw": {
+    "label": "B737-900ERW",
+    "engines": {
+      "cfm56_7b26_7b27": {
+        "label": "CFM56-7B26/-7B27 Engines at 26,000 LB SLST",
+        "conditions": {
+          "std": {
+            "label": "Standard Day",
+            "image": "RunwayCharts/b737_900er_900erw_cfm56_7b26_7b27_std.png",
+            "axis": {
+              "top": 10.6,
+              "bottom": 611.2,
+              "left": 178.76,
+              "right": 1182.08,
+              "weightMin": 100,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 178.76,
+              "weightMaxPos": 1182.08,
+              "lengthMinPos": 611.2,
+              "lengthMaxPos": 10.6
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std15": {
+            "label": "Standard Day +15°C",
+            "image": "RunwayCharts/b737_900er_900erw_cfm56_7b26_7b27_std15.png",
+            "axis": {
+              "top": 10.52,
+              "bottom": 613.23,
+              "left": 178.83,
+              "right": 1182.01,
+              "weightMin": 100,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 178.83,
+              "weightMaxPos": 1182.01,
+              "lengthMinPos": 613.23,
+              "lengthMaxPos": 10.52
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std25": {
+            "label": "Standard Day +25°C",
+            "image": "RunwayCharts/b737_900er_900erw_cfm56_7b26_7b27_std25.png",
+            "axis": {
+              "top": 11.0,
+              "bottom": 614.0,
+              "left": 178.76,
+              "right": 1182.08,
+              "weightMin": 100,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 178.76,
+              "weightMaxPos": 1182.08,
+              "lengthMinPos": 614.0,
+              "lengthMaxPos": 11.0
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          },
+          "std35": {
+            "label": "Standard Day +35°C",
+            "image": "RunwayCharts/b737_900er_900erw_cfm56_7b26_7b27_std35.png",
+            "axis": {
+              "top": 11.0,
+              "bottom": 614.0,
+              "left": 178.76,
+              "right": 1182.08,
+              "weightMin": 100,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 15,
+              "weightMinPos": 178.76,
+              "weightMaxPos": 1182.08,
+              "lengthMinPos": 614.0,
+              "lengthMaxPos": 11.0
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "ft"
+          }
+        }
+      }
+    }
   }
 }
