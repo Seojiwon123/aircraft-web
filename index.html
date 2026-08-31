@@ -699,6 +699,22 @@
             white-space: nowrap;
         }
         .btn-runway-open:hover { background-color: #9c4221; }
+        .btn-feedback {
+            background-color: #6b46c1;
+            color: white;
+            text-decoration: none;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background 0.2s;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+        }
+        .btn-feedback:hover { background-color: #553c9a; }
         .runway-modal-content {
             width: 720px !important;
             max-width: 95% !important;
@@ -866,6 +882,7 @@
             <button class="btn-excel-export" onclick="exportToExcel()">📊 엑셀 다운로드</button>
             <button class="btn-manual-open" onclick="openManualModal()">📁 항공기 제원 다운로드</button>
             <button class="btn-runway-open" onclick="openRunwayModal()">🛫 활주로 이륙길이 계산기</button>
+            <a class="btn-feedback" href="https://forms.gle/dAuQRS8z1GRD6Nnk7" target="_blank" rel="noopener noreferrer">🔧 제보하기</a>
         </div>
         <div id="dataCount">데이터 불러오는 중...</div>
     </div>
