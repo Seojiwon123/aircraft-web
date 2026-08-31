@@ -2676,7 +2676,7 @@
             html += '<div class="calc-step">';
             html += '<div class="calc-step-title">① 표고 보정</div>';
             html += calcEqRow('L1', `L0 × (1 + 0.07 × 표고 ÷ 300)`);
-            html += calcEqRow('', `${fmtCalc(L0)} × (1 + 0.07 × ${fmtCalc(elev, 0)} ÷ 300)`);
+            html += calcEqRow('', `${fmtCalc(L0)} × (1 + 0.07 × ${fmtCalc(elev, 1)} ÷ 300)`);
             html += calcEqRow('', `${fmtCalc(L1)} m`, true);
             html += '</div>';
 
