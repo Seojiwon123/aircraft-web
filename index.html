@@ -275,6 +275,10 @@
             color: white;
             border: none;
             padding: 8px 14px;
+            height: 35px;
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
             border-radius: 4px;
             cursor: pointer;
             font-size: 13px;
@@ -289,6 +293,10 @@
             color: white;
             border: none;
             padding: 8px 14px;
+            height: 35px;
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
             border-radius: 4px;
             cursor: pointer;
             font-size: 13px;
@@ -691,6 +699,10 @@
             color: white;
             border: none;
             padding: 8px 14px;
+            height: 35px;
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
             border-radius: 4px;
             cursor: pointer;
             font-size: 13px;
@@ -702,19 +714,17 @@
         .btn-feedback {
             background-color: #6b46c1;
             color: white;
-            text-decoration: none;
             border: none;
             padding: 8px 14px;
+            height: 35px;
             border-radius: 4px;
             cursor: pointer;
-            font-family: inherit;
             font-size: 13px;
             font-weight: bold;
             transition: background 0.2s;
             white-space: nowrap;
             display: inline-flex;
             align-items: center;
-            line-height: normal;
             box-sizing: border-box;
         }
         .btn-feedback:hover { background-color: #553c9a; }
@@ -885,7 +895,7 @@
             <button class="btn-excel-export" onclick="exportToExcel()">📊 엑셀 다운로드</button>
             <button class="btn-manual-open" onclick="openManualModal()">📁 항공기 제원 다운로드</button>
             <button class="btn-runway-open" onclick="openRunwayModal()">🛫 활주로 이륙길이 계산기</button>
-            <a class="btn-feedback" href="https://forms.gle/dAuQRS8z1GRD6Nnk7" target="_blank" rel="noopener noreferrer">🔧 제보하기</a>
+            <button class="btn-feedback" onclick="window.open('https://forms.gle/dAuQRS8z1GRD6Nnk7', '_blank', 'noopener,noreferrer')">🔧 제보하기</button>
         </div>
         <div id="dataCount">데이터 불러오는 중...</div>
     </div>
