@@ -2035,7 +2035,7 @@
             const btnLabel = document.getElementById('runwayAircraftBtnLabel');
             const status = document.getElementById('runwayLoadStatus');
             try {
-                const response = await fetch('runway_charts.json');
+                const response = await fetch('runway_charts.json?t=' + new Date().getTime());
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 runwayChartsData = await response.json();
 
@@ -2895,7 +2895,7 @@
         async function loadLandingChartsList() {
             const btnLabel = document.getElementById('landingAircraftBtnLabel');
             try {
-                const response = await fetch('landing_charts.json');
+                const response = await fetch('landing_charts.json?t=' + new Date().getTime());
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 landingChartsData = await response.json();
 
