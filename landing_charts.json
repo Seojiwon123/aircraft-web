@@ -7,7 +7,7 @@
         "conditions": {
           "isa": {
             "label": "Landing Field Length - ISA Conditions",
-            "image": "RunwayCharts/a321_100_200_landing_cfm56.png",
+            "image": "RunwayCharts_Landing/a321_100_200_landing_cfm56.png",
             "axis": {
               "top": 94.5, "bottom": 958, "left": 270, "right": 1143,
               "weightMin": 80, "weightMax": 200,
@@ -27,7 +27,7 @@
         "conditions": {
           "isa": {
             "label": "Landing Field Length - ISA Conditions",
-            "image": "RunwayCharts/a321_100_200_landing_iaev2500.png",
+            "image": "RunwayCharts_Landing/a321_100_200_landing_iaev2500.png",
             "axis": {
               "top": 94.5, "bottom": 958, "left": 270, "right": 1143,
               "weightMin": 80, "weightMax": 200,
@@ -52,7 +52,7 @@
         "conditions": {
           "isa": {
             "label": "Landing Field Length - ISA Conditions",
-            "image": "RunwayCharts/a321neo_landing_leap.png",
+            "image": "RunwayCharts_Landing/a321neo_landing_leap.png",
             "axis": {
               "top": 125, "bottom": 1265, "left": 345, "right": 1127,
               "weightMin": 120, "weightMax": 200,
@@ -72,7 +72,7 @@
         "conditions": {
           "isa": {
             "label": "Landing Field Length - ISA Conditions",
-            "image": "RunwayCharts/a321neo_landing_pw.png",
+            "image": "RunwayCharts_Landing/a321neo_landing_pw.png",
             "axis": {
               "top": 125, "bottom": 1075, "left": 345, "right": 1127,
               "weightMin": 120, "weightMax": 200,
