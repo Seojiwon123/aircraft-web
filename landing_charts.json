@@ -9,16 +9,28 @@
             "label": "Landing Field Length - ISA Conditions",
             "image": "RunwayCharts_Landing/a321_100_200_landing_cfm56.png",
             "axis": {
-              "top": 94.5, "bottom": 958, "left": 270, "right": 1143,
-              "weightMin": 80, "weightMax": 200,
-              "lengthMin": 3, "lengthMax": 9
+              "top": 94.5,
+              "bottom": 958,
+              "left": 270,
+              "right": 1143,
+              "weightMin": 80,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 9
             },
             "curveColor": "magenta",
             "weightUnit": "1000 lb",
             "lengthUnit": "1000 ft",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
-            "curveFamilyValues": [0, 2000, 4000, 6000, 8000, 10000]
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
           }
         }
       },
@@ -29,16 +41,28 @@
             "label": "Landing Field Length - ISA Conditions",
             "image": "RunwayCharts_Landing/a321_100_200_landing_iaev2500.png",
             "axis": {
-              "top": 94.5, "bottom": 958, "left": 270, "right": 1143,
-              "weightMin": 80, "weightMax": 200,
-              "lengthMin": 3, "lengthMax": 9
+              "top": 94.5,
+              "bottom": 958,
+              "left": 270,
+              "right": 1143,
+              "weightMin": 80,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 9
             },
             "curveColor": "magenta",
             "weightUnit": "1000 lb",
             "lengthUnit": "1000 ft",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
-            "curveFamilyValues": [0, 2000, 4000, 6000, 8000, 10000]
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
           }
         }
       }
@@ -54,16 +78,28 @@
             "label": "Landing Field Length - ISA Conditions",
             "image": "RunwayCharts_Landing/a321neo_landing_leap.png",
             "axis": {
-              "top": 125, "bottom": 1265, "left": 356, "right": 1127,
-              "weightMin": 120, "weightMax": 200,
-              "lengthMin": 3, "lengthMax": 9
+              "top": 125,
+              "bottom": 1265,
+              "left": 356,
+              "right": 1127,
+              "weightMin": 120,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 9
             },
             "curveColor": "magenta",
             "weightUnit": "1000 lb",
             "lengthUnit": "1000 ft",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
-            "curveFamilyValues": [0, 2000, 4000, 6000, 8000, 10000]
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
           }
         }
       },
@@ -74,16 +110,363 @@
             "label": "Landing Field Length - ISA Conditions",
             "image": "RunwayCharts_Landing/a321neo_landing_pw.png",
             "axis": {
-              "top": 125, "bottom": 1075, "left": 356, "right": 1127,
-              "weightMin": 120, "weightMax": 200,
-              "lengthMin": 3, "lengthMax": 8
+              "top": 125,
+              "bottom": 1075,
+              "left": 356,
+              "right": 1127,
+              "weightMin": 120,
+              "weightMax": 200,
+              "lengthMin": 3,
+              "lengthMax": 8
             },
             "curveColor": "magenta",
             "weightUnit": "1000 lb",
             "lengthUnit": "1000 ft",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
-            "curveFamilyValues": [0, 2000, 4000, 6000, 8000, 10000]
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "a330200": {
+    "label": "A330-200",
+    "engines": {
+      "pw4000": {
+        "label": "PW 4000 Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - ISA Conditions",
+            "image": "RunwayCharts_Landing/a330_200_landing_pw4000.png",
+            "axis": {
+              "top": 9,
+              "bottom": 738,
+              "left": 209,
+              "right": 1143,
+              "weightMin": 140,
+              "weightMax": 200,
+              "lengthMin": 1,
+              "lengthMax": 3
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "1000 ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
+          }
+        }
+      },
+      "trent700": {
+        "label": "RR Trent 700 Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - ISA Conditions",
+            "image": "RunwayCharts_Landing/a330_200_landing_trent700.png",
+            "axis": {
+              "top": 9,
+              "bottom": 738,
+              "left": 209,
+              "right": 1143,
+              "weightMin": 140,
+              "weightMax": 200,
+              "lengthMin": 1,
+              "lengthMax": 3
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "1000 ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
+          }
+        }
+      },
+      "cf680e1": {
+        "label": "GE CF6-80E1 Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - ISA Conditions",
+            "image": "RunwayCharts_Landing/a330_200_landing_cf680e1.png",
+            "axis": {
+              "top": 9,
+              "bottom": 738,
+              "left": 209,
+              "right": 1143,
+              "weightMin": 140,
+              "weightMax": 200,
+              "lengthMin": 1,
+              "lengthMax": 3
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "1000 ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "a330200f": {
+    "label": "A330-200F",
+    "engines": {
+      "pw4000": {
+        "label": "PW 4000 Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - ISA Conditions",
+            "image": "RunwayCharts_Landing/a330_200f_landing_pw4000.png",
+            "axis": {
+              "top": 9,
+              "bottom": 738,
+              "left": 209,
+              "right": 1143,
+              "weightMin": 140,
+              "weightMax": 200,
+              "lengthMin": 1,
+              "lengthMax": 3
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "1000 ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
+          }
+        }
+      },
+      "trent700": {
+        "label": "RR Trent 700 Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - ISA Conditions",
+            "image": "RunwayCharts_Landing/a330_200f_landing_trent700.png",
+            "axis": {
+              "top": 9,
+              "bottom": 738,
+              "left": 209,
+              "right": 1143,
+              "weightMin": 140,
+              "weightMax": 200,
+              "lengthMin": 1,
+              "lengthMax": 3
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "1000 ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "a330300": {
+    "label": "A330-300",
+    "engines": {
+      "pw4000": {
+        "label": "PW 4000 Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - ISA Conditions",
+            "image": "RunwayCharts_Landing/a330_300_landing_pw4000.png",
+            "axis": {
+              "top": 9,
+              "bottom": 738,
+              "left": 209,
+              "right": 1143,
+              "weightMin": 160,
+              "weightMax": 200,
+              "lengthMin": 1,
+              "lengthMax": 3
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "1000 ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
+          }
+        }
+      },
+      "trent700": {
+        "label": "RR Trent 700 Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - ISA Conditions",
+            "image": "RunwayCharts_Landing/a330_300_landing_trent700.png",
+            "axis": {
+              "top": 9,
+              "bottom": 738,
+              "left": 209,
+              "right": 1143,
+              "weightMin": 160,
+              "weightMax": 200,
+              "lengthMin": 1,
+              "lengthMax": 3
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "1000 ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
+          }
+        }
+      },
+      "cf680e1": {
+        "label": "GE CF6-80E1 Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - ISA Conditions",
+            "image": "RunwayCharts_Landing/a330_300_landing_cf680e1.png",
+            "axis": {
+              "top": 9,
+              "bottom": 738,
+              "left": 209,
+              "right": 1143,
+              "weightMin": 160,
+              "weightMax": 200,
+              "lengthMin": 1,
+              "lengthMax": 3
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "1000 ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "a330800": {
+    "label": "A330-800",
+    "engines": {
+      "trent7000": {
+        "label": "RR Trent 7000 Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - ISA Conditions",
+            "image": "RunwayCharts_Landing/a330_800_landing_trent7000.png",
+            "axis": {
+              "top": 9,
+              "bottom": 778,
+              "left": 209,
+              "right": 1143,
+              "weightMin": 140,
+              "weightMax": 200,
+              "lengthMin": 1,
+              "lengthMax": 3
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "1000 ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "a330900": {
+    "label": "A330-900",
+    "engines": {
+      "trent7000": {
+        "label": "RR Trent 7000 Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - ISA Conditions",
+            "image": "RunwayCharts_Landing/a330_900_landing_trent7000.png",
+            "axis": {
+              "top": 9,
+              "bottom": 781,
+              "left": 209,
+              "right": 1143,
+              "weightMin": 140,
+              "weightMax": 200,
+              "lengthMin": 1.4,
+              "lengthMax": 2.9
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "1000 ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
           }
         }
       }
