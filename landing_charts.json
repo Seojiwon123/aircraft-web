@@ -158,7 +158,7 @@
             },
             "curveColor": "multi",
             "weightUnit": "1000 kg",
-            "lengthUnit": "1000 ft",
+            "lengthUnit": "1000 m",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
             "curveFamilyValues": [
@@ -189,7 +189,7 @@
             },
             "curveColor": "multi",
             "weightUnit": "1000 kg",
-            "lengthUnit": "1000 ft",
+            "lengthUnit": "1000 m",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
             "curveFamilyValues": [
@@ -220,7 +220,7 @@
             },
             "curveColor": "multi",
             "weightUnit": "1000 kg",
-            "lengthUnit": "1000 ft",
+            "lengthUnit": "1000 m",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
             "curveFamilyValues": [
@@ -256,7 +256,7 @@
             },
             "curveColor": "multi",
             "weightUnit": "1000 kg",
-            "lengthUnit": "1000 ft",
+            "lengthUnit": "1000 m",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
             "curveFamilyValues": [
@@ -287,7 +287,7 @@
             },
             "curveColor": "multi",
             "weightUnit": "1000 kg",
-            "lengthUnit": "1000 ft",
+            "lengthUnit": "1000 m",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
             "curveFamilyValues": [
@@ -323,7 +323,7 @@
             },
             "curveColor": "multi",
             "weightUnit": "1000 kg",
-            "lengthUnit": "1000 ft",
+            "lengthUnit": "1000 m",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
             "curveFamilyValues": [
@@ -354,7 +354,7 @@
             },
             "curveColor": "multi",
             "weightUnit": "1000 kg",
-            "lengthUnit": "1000 ft",
+            "lengthUnit": "1000 m",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
             "curveFamilyValues": [
@@ -385,7 +385,7 @@
             },
             "curveColor": "multi",
             "weightUnit": "1000 kg",
-            "lengthUnit": "1000 ft",
+            "lengthUnit": "1000 m",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
             "curveFamilyValues": [
@@ -421,7 +421,7 @@
             },
             "curveColor": "multi",
             "weightUnit": "1000 kg",
-            "lengthUnit": "1000 ft",
+            "lengthUnit": "1000 m",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
             "curveFamilyValues": [
@@ -457,7 +457,7 @@
             },
             "curveColor": "multi",
             "weightUnit": "1000 kg",
-            "lengthUnit": "1000 ft",
+            "lengthUnit": "1000 m",
             "curveFamily": "airfieldElevation",
             "curveFamilyUnit": "1000 ft",
             "curveFamilyValues": [
