@@ -48,7 +48,7 @@
     "label": "A321neo",
     "engines": {
       "leap": {
-        "label": "Leap",
+        "label": "Leap Engines",
         "conditions": {
           "isa": {
             "label": "Landing Field Length - ISA Conditions",
@@ -68,7 +68,7 @@
         }
       },
       "pw": {
-        "label": "PW",
+        "label": "PW Engines",
         "conditions": {
           "isa": {
             "label": "Landing Field Length - ISA Conditions",
