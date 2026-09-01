@@ -54,7 +54,7 @@
             "label": "Landing Field Length - ISA Conditions",
             "image": "RunwayCharts_Landing/a321neo_landing_leap.png",
             "axis": {
-              "top": 125, "bottom": 1265, "left": 345, "right": 1127,
+              "top": 125, "bottom": 1265, "left": 356, "right": 1127,
               "weightMin": 120, "weightMax": 200,
               "lengthMin": 3, "lengthMax": 9
             },
@@ -74,7 +74,7 @@
             "label": "Landing Field Length - ISA Conditions",
             "image": "RunwayCharts_Landing/a321neo_landing_pw.png",
             "axis": {
-              "top": 125, "bottom": 1075, "left": 345, "right": 1127,
+              "top": 125, "bottom": 1075, "left": 356, "right": 1127,
               "weightMin": 120, "weightMax": 200,
               "lengthMin": 3, "lengthMax": 8
             },
