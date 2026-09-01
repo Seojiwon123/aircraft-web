@@ -2662,15 +2662,18 @@
             const ax = currentChart.axis;
             const vertical = isWeightAxisVertical();
             const rect = canvasEl.getBoundingClientRect();
+            // rect는 CSS 렌더링 크기이므로, 화면 폭이 좁아 캔버스가 축소 표시되면
+            // 캔버스의 실제 픽셀 크기와 달라진다. 이 비율을 직접 반영해야 정확하다.
+            const scaleX = canvasEl.width / rect.width;
+            const scaleY = canvasEl.height / rect.height;
             let posDisp, posNat;
             if (vertical) {
                 // 길이가 가로축: 마우스 좌우 이동을 col로 변환, [left, right] 범위로 clamp
-                // rect는 확대(zoom)된 화면 기준 크기이므로, runwayZoom으로 나눠 캔버스 원본 좌표로 환산
-                posDisp = (e.clientX - rect.left) / runwayZoom;
+                posDisp = (e.clientX - rect.left) * scaleX;
                 posDisp = Math.max(ax.left * runwayScale, Math.min(ax.right * runwayScale, posDisp));
             } else {
                 // 길이가 세로축(기존 방식): 마우스 상하 이동을 row로 변환, [top, bottom] 범위로 clamp
-                posDisp = (e.clientY - rect.top) / runwayZoom;
+                posDisp = (e.clientY - rect.top) * scaleY;
                 posDisp = Math.max(ax.top * runwayScale, Math.min(ax.bottom * runwayScale, posDisp));
             }
             posNat = posDisp / runwayScale;
@@ -3323,12 +3326,17 @@
             const ax = currentLandingChart.axis;
             const vertical = isLandingWeightAxisVertical();
             const rect = canvasEl.getBoundingClientRect();
+            // rect는 CSS로 렌더링된 화면상 크기라서, 화면 폭이 좁아 캔버스가 축소 표시되면
+            // 캔버스의 실제 픽셀 크기(width/height)와 달라진다. 이 비율을 직접 반영해야
+            // zoom 여부와 화면 크기에 관계없이 클릭 위치가 정확히 매핑된다.
+            const scaleX = canvasEl.width / rect.width;
+            const scaleY = canvasEl.height / rect.height;
             let posDisp, posNat;
             if (vertical) {
-                posDisp = (e.clientX - rect.left) / landingZoom;
+                posDisp = (e.clientX - rect.left) * scaleX;
                 posDisp = Math.max(ax.left * landingScale, Math.min(ax.right * landingScale, posDisp));
             } else {
-                posDisp = (e.clientY - rect.top) / landingZoom;
+                posDisp = (e.clientY - rect.top) * scaleY;
                 posDisp = Math.max(ax.top * landingScale, Math.min(ax.bottom * landingScale, posDisp));
             }
             posNat = posDisp / landingScale;
