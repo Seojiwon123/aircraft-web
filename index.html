@@ -895,6 +895,7 @@
             <button class="btn-excel-export" onclick="exportToExcel()">📊 엑셀 다운로드</button>
             <button class="btn-manual-open" onclick="openManualModal()">📁 항공기 제원 다운로드</button>
             <button class="btn-runway-open" onclick="openRunwayModal()">🛫 활주로 이륙길이 계산기</button>
+            <button class="btn-runway-open" onclick="openLandingModal()">🛬 활주로 착륙길이 계산기</button>
             <button class="btn-feedback" onclick="window.open('https://forms.gle/dAuQRS8z1GRD6Nnk7', '_blank', 'noopener,noreferrer')">🔧 제보하기</button>
         </div>
         <div id="dataCount">데이터 불러오는 중...</div>
@@ -1079,6 +1080,48 @@
             </div>
 
             <button class="btn-close" onclick="closeModal('runwayModal')">닫기</button>
+        </div>
+    </div>
+
+    <!-- 2-2. 활주로 착륙길이 계산기 팝업 (초안 - 뼈대만) -->
+    <div id="landingModal" class="modal-overlay">
+        <div class="modal-content runway-modal-content">
+            <div class="modal-header">🛬 활주로 착륙길이 계산기</div>
+
+            <div class="corr-grid" style="margin-bottom:14px;">
+                <div>
+                    <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">✈️ 기종 선택</label>
+                    <div class="runway-select-wrap">
+                        <div class="runway-select-btn" id="landingAircraftBtn" onclick="toggleLandingAircraftPanel(event)">
+                            <span id="landingAircraftBtnLabel">-- 선택하세요 --</span>
+                            <span style="color:#a0aec0;">▾</span>
+                        </div>
+                        <div class="runway-select-panel" id="landingAircraftPanel" onclick="event.stopPropagation()">
+                            <div class="runway-select-list" id="landingAircraftList"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label style="font-size:13px; font-weight:bold; color:#4a5568; display:block; margin-bottom:6px;">🔧 엔진 선택</label>
+                    <div class="runway-select-wrap">
+                        <div class="runway-select-btn disabled" id="landingEngineBtn" onclick="toggleLandingEnginePanel(event)">
+                            <span id="landingEngineBtnLabel">기종을 먼저 선택</span>
+                            <span style="color:#a0aec0;">▾</span>
+                        </div>
+                        <div class="runway-select-panel engine-wide" id="landingEnginePanel" onclick="event.stopPropagation()">
+                            <div class="runway-select-list" id="landingEngineList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="runway-placeholder">
+                🚧 착륙길이 계산기는 준비중입니다.<br>
+                조만간 업데이트될 예정이니 조금만 기다려 주세요.
+            </div>
+
+            <button class="btn-close" onclick="closeModal('landingModal')">닫기</button>
         </div>
     </div>
 
@@ -1829,6 +1872,44 @@
             document.getElementById(modalId).style.display = 'none';
         }
         let runwayChartsData = null;
+
+        function openLandingModal() {
+            document.getElementById('landingModal').style.display = 'flex';
+        }
+
+        function closeLandingPanelsExcept(exceptId) {
+            ['landingAircraftPanel', 'landingEnginePanel'].forEach(id => {
+                if (id !== exceptId) {
+                    const p = document.getElementById(id);
+                    if (p) p.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleLandingAircraftPanel(e) {
+            e.stopPropagation();
+            const btn = document.getElementById('landingAircraftBtn');
+            if (btn.classList.contains('disabled')) return;
+            closeLandingPanelsExcept('landingAircraftPanel');
+            const panel = document.getElementById('landingAircraftPanel');
+            panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function toggleLandingEnginePanel(e) {
+            e.stopPropagation();
+            const btn = document.getElementById('landingEngineBtn');
+            if (btn.classList.contains('disabled')) return;
+            closeLandingPanelsExcept('landingEnginePanel');
+            const panel = document.getElementById('landingEnginePanel');
+            panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        }
+
+        document.addEventListener('click', function() {
+            ['landingAircraftPanel', 'landingEnginePanel'].forEach(id => {
+                const panel = document.getElementById(id);
+                if (panel) panel.style.display = 'none';
+            });
+        });
 
         function openRunwayModal() {
             document.getElementById('runwayModal').style.display = 'flex';
