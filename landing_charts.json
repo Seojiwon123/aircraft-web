@@ -507,5 +507,42 @@
         }
       }
     }
+  },
+  "a380800": {
+    "label": "A380-800",
+    "engines": {
+      "ge": {
+        "label": "Engine Alliance GP7200 / RR Trent 900",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Dry Runway",
+            "image": "RunwayCharts_Landing/a380_800_landing.png",
+            "axis": {
+              "top": 81,
+              "bottom": 596,
+              "left": 100,
+              "right": 1080,
+              "weightMin": 280,
+              "weightMax": 460,
+              "lengthMin": 1.4,
+              "lengthMax": 2.8
+            },
+            "curveColor": "magenta",
+            "weightUnit": "t",
+            "weightInputDivisor": 1,
+            "lengthUnit": "1000 m",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
+          }
+        }
+      }
+    }
   }
 }
