@@ -546,7 +546,7 @@
     }
   },
   "b737600": {
-    "label": "*B737-600",
+    "label": "B737-600",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
