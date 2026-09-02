@@ -482,18 +482,15 @@
             "label": "Landing Field Length",
             "image": "RunwayCharts_Landing/a350_900_landing_trentxwb.png",
             "axis": {
-              "top": 96,
-              "bottom": 1205,
-              "left": 189,
-              "right": 1061,
+              "top": 169,
+              "bottom": 952,
+              "left": 118,
+              "right": 1112,
               "weightMin": 130,
               "weightMax": 210,
               "lengthMin": 1.2,
-              "lengthMax": 2.6,
-              "lengthMinPos": 1061,
-              "lengthMaxPos": 189
+              "lengthMax": 2.6
             },
-            "weightAxis": "vertical",
             "curveColor": "multi",
             "weightUnit": "1000 kg",
             "lengthUnit": "1000 m",
