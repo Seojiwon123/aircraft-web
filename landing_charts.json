@@ -471,5 +471,44 @@
         }
       }
     }
+  },
+  "a350900": {
+    "label": "A350-900",
+    "engines": {
+      "trentxwb": {
+        "label": "Trent XWB Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length",
+            "image": "RunwayCharts_Landing/a350_900_landing_trentxwb.png",
+            "axis": {
+              "top": 96,
+              "bottom": 1205,
+              "left": 189,
+              "right": 1061,
+              "weightMin": 130,
+              "weightMax": 210,
+              "lengthMin": 1.2,
+              "lengthMax": 2.6,
+              "lengthMinPos": 1061,
+              "lengthMaxPos": 189
+            },
+            "weightAxis": "vertical",
+            "curveColor": "multi",
+            "weightUnit": "1000 kg",
+            "lengthUnit": "1000 m",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "1000 ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ]
+          }
+        }
+      }
+    }
   }
 }
