@@ -546,7 +546,7 @@
     }
   },
   "b737600": {
-    "label": "B737-600",
+    "label": "737-600",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -556,7 +556,7 @@
             "image": "RunwayCharts_Landing/b737_600_landing_cfm56.png",
             "axis": {
               "top": 5,
-              "bottom": 842,
+              "bottom": 840,
               "left": 267,
               "right": 1105,
               "weightMin": 70,
@@ -583,7 +583,7 @@
     }
   },
   "b737700": {
-    "label": "B737-700",
+    "label": "737-700",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -592,8 +592,8 @@
             "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
             "axis": {
-              "top": 5,
-              "bottom": 848,
+              "top": 6,
+              "bottom": 838,
               "left": 270,
               "right": 1103,
               "weightMin": 80,
@@ -620,7 +620,7 @@
     }
   },
   "b737700c": {
-    "label": "B737-700C",
+    "label": "737-700C",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -629,8 +629,8 @@
             "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
             "axis": {
-              "top": 5,
-              "bottom": 848,
+              "top": 6,
+              "bottom": 838,
               "left": 270,
               "right": 1103,
               "weightMin": 80,
@@ -657,7 +657,7 @@
     }
   },
   "b737700cw": {
-    "label": "B737-700CW",
+    "label": "737-700CW",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -666,8 +666,8 @@
             "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
             "axis": {
-              "top": 5,
-              "bottom": 848,
+              "top": 6,
+              "bottom": 838,
               "left": 270,
               "right": 1103,
               "weightMin": 80,
@@ -694,7 +694,7 @@
     }
   },
   "b737700er": {
-    "label": "B737-700ER",
+    "label": "737-700ER",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -703,8 +703,8 @@
             "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
             "axis": {
-              "top": 5,
-              "bottom": 848,
+              "top": 6,
+              "bottom": 838,
               "left": 270,
               "right": 1103,
               "weightMin": 80,
@@ -731,7 +731,7 @@
     }
   },
   "b737700erw": {
-    "label": "B737-700ERW",
+    "label": "737-700ERW",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -740,8 +740,8 @@
             "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
             "axis": {
-              "top": 5,
-              "bottom": 848,
+              "top": 6,
+              "bottom": 838,
               "left": 270,
               "right": 1103,
               "weightMin": 80,
@@ -768,7 +768,7 @@
     }
   },
   "b737700w": {
-    "label": "B737-700W",
+    "label": "737-700W",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -777,8 +777,8 @@
             "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
             "axis": {
-              "top": 5,
-              "bottom": 848,
+              "top": 6,
+              "bottom": 838,
               "left": 270,
               "right": 1103,
               "weightMin": 80,
@@ -805,7 +805,7 @@
     }
   },
   "b737800": {
-    "label": "B737-800",
+    "label": "737-800",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -814,8 +814,8 @@
             "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b737_800_landing_cfm56.png",
             "axis": {
-              "top": 5,
-              "bottom": 849,
+              "top": 6,
+              "bottom": 845,
               "left": 263,
               "right": 1106,
               "weightMin": 90,
@@ -842,7 +842,7 @@
     }
   },
   "b737800bcf": {
-    "label": "B737-800BCF",
+    "label": "737-800BCF",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -851,8 +851,8 @@
             "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b737_800_landing_cfm56.png",
             "axis": {
-              "top": 5,
-              "bottom": 849,
+              "top": 6,
+              "bottom": 845,
               "left": 263,
               "right": 1106,
               "weightMin": 90,
@@ -879,7 +879,7 @@
     }
   },
   "b737800w": {
-    "label": "B737-800W",
+    "label": "737-800W",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -888,8 +888,8 @@
             "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b737_800_landing_cfm56.png",
             "axis": {
-              "top": 5,
-              "bottom": 849,
+              "top": 6,
+              "bottom": 845,
               "left": 263,
               "right": 1106,
               "weightMin": 90,
@@ -916,7 +916,7 @@
     }
   },
   "b737900": {
-    "label": "B737-900",
+    "label": "737-900",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -926,7 +926,7 @@
             "image": "RunwayCharts_Landing/b737_900_landing_cfm56.png",
             "axis": {
               "top": 5,
-              "bottom": 849,
+              "bottom": 846,
               "left": 263,
               "right": 1106,
               "weightMin": 90,
@@ -953,7 +953,7 @@
     }
   },
   "b737900er": {
-    "label": "B737-900ER",
+    "label": "737-900ER",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -963,7 +963,7 @@
             "image": "RunwayCharts_Landing/b737_900er_landing_cfm56.png",
             "axis": {
               "top": 5,
-              "bottom": 850,
+              "bottom": 847,
               "left": 261,
               "right": 1107,
               "weightMin": 100,
@@ -990,7 +990,7 @@
     }
   },
   "b737900erw": {
-    "label": "B737-900ERW",
+    "label": "737-900ERW",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -1000,7 +1000,7 @@
             "image": "RunwayCharts_Landing/b737_900er_landing_cfm56.png",
             "axis": {
               "top": 5,
-              "bottom": 850,
+              "bottom": 847,
               "left": 261,
               "right": 1107,
               "weightMin": 100,
@@ -1027,7 +1027,7 @@
     }
   },
   "b737900w": {
-    "label": "B737-900W",
+    "label": "737-900W",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -1037,7 +1037,7 @@
             "image": "RunwayCharts_Landing/b737_900_landing_cfm56.png",
             "axis": {
               "top": 5,
-              "bottom": 849,
+              "bottom": 846,
               "left": 263,
               "right": 1106,
               "weightMin": 90,
