@@ -544,5 +544,523 @@
         }
       }
     }
+  },
+  "b737600": {
+    "label": "737-600",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_600_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 842,
+              "left": 267,
+              "right": 1105,
+              "weightMin": 70,
+              "weightMax": 130,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737700": {
+    "label": "737-700",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 848,
+              "left": 270,
+              "right": 1103,
+              "weightMin": 80,
+              "weightMax": 140,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737700c": {
+    "label": "737-700C",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 848,
+              "left": 270,
+              "right": 1103,
+              "weightMin": 80,
+              "weightMax": 140,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737700cw": {
+    "label": "737-700CW",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 848,
+              "left": 270,
+              "right": 1103,
+              "weightMin": 80,
+              "weightMax": 140,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737700er": {
+    "label": "737-700ER",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 848,
+              "left": 270,
+              "right": 1103,
+              "weightMin": 80,
+              "weightMax": 140,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737700erw": {
+    "label": "737-700ERW",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 848,
+              "left": 270,
+              "right": 1103,
+              "weightMin": 80,
+              "weightMax": 140,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737700w": {
+    "label": "737-700W",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_700_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 848,
+              "left": 270,
+              "right": 1103,
+              "weightMin": 80,
+              "weightMax": 140,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737800": {
+    "label": "737-800",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_800_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 849,
+              "left": 263,
+              "right": 1106,
+              "weightMin": 90,
+              "weightMax": 160,
+              "lengthMin": 3,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737800bcf": {
+    "label": "737-800BCF",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_800_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 849,
+              "left": 263,
+              "right": 1106,
+              "weightMin": 90,
+              "weightMax": 160,
+              "lengthMin": 3,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737800w": {
+    "label": "737-800W",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_800_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 849,
+              "left": 263,
+              "right": 1106,
+              "weightMin": 90,
+              "weightMax": 160,
+              "lengthMin": 3,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737900": {
+    "label": "737-900",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_900_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 849,
+              "left": 263,
+              "right": 1106,
+              "weightMin": 90,
+              "weightMax": 160,
+              "lengthMin": 3,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737900er": {
+    "label": "737-900ER",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_900er_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 850,
+              "left": 261,
+              "right": 1107,
+              "weightMin": 100,
+              "weightMax": 170,
+              "lengthMin": 3,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737900erw": {
+    "label": "737-900ERW",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_900er_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 850,
+              "left": 261,
+              "right": 1107,
+              "weightMin": 100,
+              "weightMax": 170,
+              "lengthMin": 3,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b737900w": {
+    "label": "737-900W",
+    "engines": {
+      "cfm56": {
+        "label": "CFM56-7B Series",
+        "conditions": {
+          "isa": {
+            "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b737_900_landing_cfm56.png",
+            "axis": {
+              "top": 5,
+              "bottom": 849,
+              "left": 263,
+              "right": 1106,
+              "weightMin": 90,
+              "weightMax": 160,
+              "lengthMin": 3,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
   }
 }
