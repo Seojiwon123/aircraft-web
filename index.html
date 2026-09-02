@@ -3190,18 +3190,38 @@
         }
 
         // 무게/길이 <-> 픽셀 변환.
-        // ⚠️ landing_charts.json에는 아직 weightMinPos/weightMaxPos/lengthMinPos/lengthMaxPos가 없어서,
-        // 기본 방향(무게: 왼쪽=최소/오른쪽=최대, 길이: 아래=최소/위=최대)을 그대로 가정한다.
-        // 이 방향이 반대인 기종이 나오면 axis에 Pos 필드를 추가해서 대응해야 한다.
+        // 각 차트의 axis.weightAxis 값("vertical"이면 무게가 세로축, 없으면 기존처럼 가로축)에 따라
+        // 어느 픽셀 범위를 무게/길이에 대응시킬지 자동으로 분기한다.
+        // 기본 방향(override 없을 때): 무게=가로축이면 왼쪽=최소/오른쪽=최대, 무게=세로축이면 아래=최소/위=최대,
+        // 길이는 그 반대쪽 축을 사용한다. 이 기본 방향이 맞지 않는 차트가 나오면
+        // axis에 weightMinPos/weightMaxPos 또는 lengthMinPos/lengthMaxPos를 명시해서 재정의하면 된다.
+        function getLandingWeightPosBounds() {
+            const ax = currentLandingChart.axis;
+            const vertical = isLandingWeightAxisVertical();
+            const minPos = (typeof ax.weightMinPos === 'number') ? ax.weightMinPos : (vertical ? ax.bottom : ax.left);
+            const maxPos = (typeof ax.weightMaxPos === 'number') ? ax.weightMaxPos : (vertical ? ax.top : ax.right);
+            return [minPos, maxPos];
+        }
+
+        function getLandingLengthPosBounds() {
+            const ax = currentLandingChart.axis;
+            const vertical = isLandingWeightAxisVertical();
+            const minPos = (typeof ax.lengthMinPos === 'number') ? ax.lengthMinPos : (vertical ? ax.left : ax.bottom);
+            const maxPos = (typeof ax.lengthMaxPos === 'number') ? ax.lengthMaxPos : (vertical ? ax.right : ax.top);
+            return [minPos, maxPos];
+        }
+
         function landingWeightToFixedPos(w) {
             const ax = currentLandingChart.axis;
+            const [minPos, maxPos] = getLandingWeightPosBounds();
             const t = (w - ax.weightMin) / (ax.weightMax - ax.weightMin);
-            return ax.left + t * (ax.right - ax.left);
+            return minPos + t * (maxPos - minPos);
         }
 
         function landingPosToLength(pos) {
             const ax = currentLandingChart.axis;
-            const t = (pos - ax.bottom) / (ax.top - ax.bottom);
+            const [minPos, maxPos] = getLandingLengthPosBounds();
+            const t = (pos - minPos) / (maxPos - minPos);
             return ax.lengthMin + t * (ax.lengthMax - ax.lengthMin);
         }
 
@@ -3357,7 +3377,8 @@
         function landingKeyStepPx() {
             if (!currentLandingChart) return 0.1;
             const ax = currentLandingChart.axis;
-            const spanPos = ax.top - ax.bottom;
+            const [minPos, maxPos] = getLandingLengthPosBounds();
+            const spanPos = maxPos - minPos;
             const spanVal = ax.lengthMax - ax.lengthMin;
             if (!spanPos) return 0.1;
             const rawPerPx = spanVal / spanPos;
