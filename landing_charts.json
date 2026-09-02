@@ -546,7 +546,7 @@
     }
   },
   "b737600": {
-    "label": "B737-600",
+    "label": "*B737-600",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -557,7 +557,7 @@
             "axis": {
               "top": 5,
               "bottom": 840,
-              "left": 269,
+              "left": 270,
               "right": 1105,
               "weightMin": 70,
               "weightMax": 130,
