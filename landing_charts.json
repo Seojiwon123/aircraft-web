@@ -963,7 +963,7 @@
             "image": "RunwayCharts_Landing/b737_900er_landing_cfm56.png",
             "axis": {
               "top": 6,
-              "bottom": 847,
+              "bottom": 846,
               "left": 264,
               "right": 1106,
               "weightMin": 100,
@@ -990,7 +990,7 @@
     }
   },
   "b737900erw": {
-    "label": "737-900ERW",
+    "label": "B737-900ERW",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -999,10 +999,10 @@
             "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b737_900er_landing_cfm56.png",
             "axis": {
-              "top": 5,
-              "bottom": 847,
-              "left": 261,
-              "right": 1107,
+              "top": 6,
+              "bottom": 846,
+              "left": 264,
+              "right": 1106,
               "weightMin": 100,
               "weightMax": 170,
               "lengthMin": 3,
