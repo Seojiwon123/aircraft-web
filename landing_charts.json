@@ -1476,5 +1476,419 @@
         }
       }
     }
+  },
+  "b767200": {
+    "label": "767-200",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_200_landing_flaps30.png",
+            "axis": {
+              "top": 2.1,
+              "bottom": 1111.6,
+              "left": 260.2,
+              "right": 1179.0,
+              "weightMin": 175,
+              "weightMax": 300,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_200_landing_flaps25.png",
+            "axis": {
+              "top": 2.1,
+              "bottom": 1111.6,
+              "left": 260.2,
+              "right": 1178.8,
+              "weightMin": 175,
+              "weightMax": 300,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b767200er": {
+    "label": "767-200ER",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_200_landing_flaps30.png",
+            "axis": {
+              "top": 2.1,
+              "bottom": 1111.6,
+              "left": 260.2,
+              "right": 1179.0,
+              "weightMin": 175,
+              "weightMax": 300,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_200_landing_flaps25.png",
+            "axis": {
+              "top": 2.1,
+              "bottom": 1111.6,
+              "left": 260.2,
+              "right": 1178.8,
+              "weightMin": 175,
+              "weightMax": 300,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b767300": {
+    "label": "767-300",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_300_landing_flaps30.png",
+            "axis": {
+              "top": 2.1,
+              "bottom": 1101.8,
+              "left": 260.9,
+              "right": 1179.0,
+              "weightMin": 200,
+              "weightMax": 325,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_300_landing_flaps25.png",
+            "axis": {
+              "top": 2.1,
+              "bottom": 1104.7,
+              "left": 260.5,
+              "right": 1178.8,
+              "weightMin": 200,
+              "weightMax": 325,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b767300er": {
+    "label": "767-300ER",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_300er_landing_flaps30.png",
+            "axis": {
+              "top": 2.1,
+              "bottom": 1105.4,
+              "left": 260.5,
+              "right": 1178.8,
+              "weightMin": 200,
+              "weightMax": 325,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_300er_landing_flaps25.png",
+            "axis": {
+              "top": 2.1,
+              "bottom": 1098.6,
+              "left": 260.6,
+              "right": 1178.6,
+              "weightMin": 200,
+              "weightMax": 325,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b767300f": {
+    "label": "767-300 Freighter",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_300f_landing_flaps30.png",
+            "axis": {
+              "top": 2.1,
+              "bottom": 1106.0,
+              "left": 259.9,
+              "right": 1178.6,
+              "weightMin": 225,
+              "weightMax": 350,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_300f_landing_flaps25.png",
+            "axis": {
+              "top": 2.1,
+              "bottom": 1101.9,
+              "left": 260.3,
+              "right": 1178.8,
+              "weightMin": 225,
+              "weightMax": 350,
+              "lengthMin": 3,
+              "lengthMax": 9
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b767400er": {
+    "label": "767-400ER",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_400er_landing_flaps30.png",
+            "axis": {
+              "top": 2.2,
+              "bottom": 1029.5,
+              "left": 235.1,
+              "right": 1178.2,
+              "weightMin": 250,
+              "weightMax": 360,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b767_400er_landing_flaps25.png",
+            "axis": {
+              "top": 2.2,
+              "bottom": 1033.7,
+              "left": 235.6,
+              "right": 1178.1,
+              "weightMin": 250,
+              "weightMax": 360,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "blue",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
   }
 }
