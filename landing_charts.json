@@ -1174,7 +1174,7 @@
             "label": "Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b747_8_landing_flaps25_genx.png",
             "axis": {
-              "top": 11.7,
+              "top": 12,
               "bottom": 1255.3,
               "left": 202.5,
               "right": 1177.3,
