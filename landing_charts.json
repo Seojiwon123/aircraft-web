@@ -1073,10 +1073,10 @@
             "label": "Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b747_8_landing_flaps30_genx.png",
             "axis": {
-              "top": 10.2,
-              "bottom": 1124.8,
-              "left": 311.5,
-              "right": 1179.7,
+              "top": 11.4,
+              "bottom": 1266.3,
+              "left": 199.7,
+              "right": 1177.1,
               "weightMin": 450,
               "weightMax": 800,
               "lengthMin": 4,
@@ -1105,10 +1105,10 @@
             "label": "Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b747_8_landing_flaps25_genx.png",
             "axis": {
-              "top": 10.1,
-              "bottom": 1118.3,
-              "left": 310.5,
-              "right": 1179.8,
+              "top": 11.4,
+              "bottom": 1255.3,
+              "left": 201.5,
+              "right": 1177.3,
               "weightMin": 450,
               "weightMax": 800,
               "lengthMin": 4,
@@ -1133,7 +1133,7 @@
     }
   },
   "b7478f": {
-    "label": "B747-8F",
+    "label": "747-8F",
     "engines": {
       "genx_flaps30": {
         "label": "GEnx-2B67 - Flaps 30",
@@ -1142,10 +1142,10 @@
             "label": "Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b747_8_landing_flaps30_genx.png",
             "axis": {
-              "top": 10.5,
-              "bottom": 1124.5,
-              "left": 312.5,
-              "right": 1178.7,
+              "top": 11.4,
+              "bottom": 1266.3,
+              "left": 199.7,
+              "right": 1177.1,
               "weightMin": 450,
               "weightMax": 800,
               "lengthMin": 4,
@@ -1174,10 +1174,10 @@
             "label": "Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b747_8_landing_flaps25_genx.png",
             "axis": {
-              "top": 10.7,
-              "bottom": 1118.3,
-              "left": 312.5,
-              "right": 1179.8,
+              "top": 11.4,
+              "bottom": 1255.3,
+              "left": 201.5,
+              "right": 1177.3,
               "weightMin": 450,
               "weightMax": 800,
               "lengthMin": 4,
