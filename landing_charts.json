@@ -925,7 +925,7 @@
             "label": "Landing Field Length - Flaps 30 (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b737_900_landing_cfm56.png",
             "axis": {
-              "top": 5,
+              "top": 6,
               "bottom": 847,
               "left": 266,
               "right": 1106,
