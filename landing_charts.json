@@ -842,7 +842,7 @@
     }
   },
   "b737800bcf": {
-    "label": "737-800BCF",
+    "label": "B737-800BCF",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -852,8 +852,8 @@
             "image": "RunwayCharts_Landing/b737_800_landing_cfm56.png",
             "axis": {
               "top": 6,
-              "bottom": 845,
-              "left": 263,
+              "bottom": 846,
+              "left": 266,
               "right": 1106,
               "weightMin": 90,
               "weightMax": 160,
@@ -879,7 +879,7 @@
     }
   },
   "b737800w": {
-    "label": "737-800W",
+    "label": "B737-800W",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -889,8 +889,8 @@
             "image": "RunwayCharts_Landing/b737_800_landing_cfm56.png",
             "axis": {
               "top": 6,
-              "bottom": 845,
-              "left": 263,
+              "bottom": 846,
+              "left": 266,
               "right": 1106,
               "weightMin": 90,
               "weightMax": 160,
