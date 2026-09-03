@@ -805,7 +805,7 @@
     }
   },
   "b737800": {
-    "label": "737-800",
+    "label": "B737-800",
     "engines": {
       "cfm56": {
         "label": "CFM56-7B Series",
@@ -815,8 +815,8 @@
             "image": "RunwayCharts_Landing/b737_800_landing_cfm56.png",
             "axis": {
               "top": 6,
-              "bottom": 845,
-              "left": 263,
+              "bottom": 846,
+              "left": 265,
               "right": 1106,
               "weightMin": 90,
               "weightMax": 160,
