@@ -1133,7 +1133,7 @@
     }
   },
   "b7478f": {
-    "label": "B747-8F",
+    "label": "*B747-8F",
     "engines": {
       "genx_flaps30": {
         "label": "GEnx-2B67 - Flaps 30",
@@ -1174,7 +1174,7 @@
             "label": "Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b747_8_landing_flaps25_genx.png",
             "axis": {
-              "top": 12,
+              "top": 13,
               "bottom": 1255.3,
               "left": 202.5,
               "right": 1177.3,
