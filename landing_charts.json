@@ -1064,7 +1064,7 @@
     }
   },
   "b7478": {
-    "label": "747-8",
+    "label": "B747-8",
     "engines": {
       "genx_flaps30": {
         "label": "GEnx-2B67 - Flaps 30",
@@ -1075,7 +1075,7 @@
             "axis": {
               "top": 11.4,
               "bottom": 1266.3,
-              "left": 199.7,
+              "left": 200.7,
               "right": 1177.1,
               "weightMin": 450,
               "weightMax": 800,
