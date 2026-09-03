@@ -1202,7 +1202,7 @@
     }
   },
   "b747400": {
-    "label": "747-400",
+    "label": "B747-400",
     "engines": {
       "flaps30": {
         "label": "Flaps 30",
@@ -1271,7 +1271,7 @@
     }
   },
   "b747400f": {
-    "label": "747-400F",
+    "label": "B747-400F",
     "engines": {
       "flaps30": {
         "label": "Flaps 30",
@@ -1340,7 +1340,7 @@
     }
   },
   "b747400er": {
-    "label": "747-400ER",
+    "label": "B747-400ER",
     "engines": {
       "flaps30": {
         "label": "Flaps 30",
@@ -1409,7 +1409,7 @@
     }
   },
   "b747400erf": {
-    "label": "747-400ERF",
+    "label": "B747-400ERF",
     "engines": {
       "flaps30": {
         "label": "Flaps 30",
