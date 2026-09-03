@@ -1064,7 +1064,7 @@
     }
   },
   "b7478": {
-    "label": "*B747-8",
+    "label": "B747-8",
     "engines": {
       "genx_flaps30": {
         "label": "GEnx-2B67 - Flaps 30",
