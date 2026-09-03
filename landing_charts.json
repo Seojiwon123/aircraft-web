@@ -1200,5 +1200,281 @@
         }
       }
     }
+  },
+  "b747400": {
+    "label": "747-400",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
+            "image": "RunwayCharts_Landing/b747_400_landing_flaps30.png",
+            "axis": {
+              "top": 1.0,
+              "bottom": 641.4,
+              "left": 155.2,
+              "right": 1184.6,
+              "weightMin": 475,
+              "weightMax": 675,
+              "lengthMin": 5,
+              "lengthMax": 11
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
+            "image": "RunwayCharts_Landing/b747_400_landing_flaps25.png",
+            "axis": {
+              "top": 1.0,
+              "bottom": 643.8,
+              "left": 152.2,
+              "right": 1184.3,
+              "weightMin": 475,
+              "weightMax": 675,
+              "lengthMin": 5,
+              "lengthMax": 11
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b747400f": {
+    "label": "747-400F",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
+            "image": "RunwayCharts_Landing/b747_400_landing_flaps30.png",
+            "axis": {
+              "top": 1.0,
+              "bottom": 641.4,
+              "left": 155.2,
+              "right": 1184.6,
+              "weightMin": 475,
+              "weightMax": 675,
+              "lengthMin": 5,
+              "lengthMax": 11
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
+            "image": "RunwayCharts_Landing/b747_400_landing_flaps25.png",
+            "axis": {
+              "top": 1.0,
+              "bottom": 643.8,
+              "left": 152.2,
+              "right": 1184.3,
+              "weightMin": 475,
+              "weightMax": 675,
+              "lengthMin": 5,
+              "lengthMax": 11
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b747400er": {
+    "label": "747-400ER",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
+            "image": "RunwayCharts_Landing/b747_400er_landing_flaps30.png",
+            "axis": {
+              "top": 1.1,
+              "bottom": 743.9,
+              "left": 191.0,
+              "right": 1184.2,
+              "weightMin": 475,
+              "weightMax": 675,
+              "lengthMin": 5,
+              "lengthMax": 11
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
+            "image": "RunwayCharts_Landing/b747_400er_landing_flaps25.png",
+            "axis": {
+              "top": 1.1,
+              "bottom": 744.9,
+              "left": 191.3,
+              "right": 1184.0,
+              "weightMin": 475,
+              "weightMax": 675,
+              "lengthMin": 5,
+              "lengthMax": 11
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b747400erf": {
+    "label": "747-400ERF",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
+            "image": "RunwayCharts_Landing/b747_400er_landing_flaps30.png",
+            "axis": {
+              "top": 1.1,
+              "bottom": 743.9,
+              "left": 191.0,
+              "right": 1184.2,
+              "weightMin": 475,
+              "weightMax": 675,
+              "lengthMin": 5,
+              "lengthMax": 11
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
+            "image": "RunwayCharts_Landing/b747_400er_landing_flaps25.png",
+            "axis": {
+              "top": 1.1,
+              "bottom": 744.9,
+              "left": 191.3,
+              "right": 1184.0,
+              "weightMin": 475,
+              "weightMax": 675,
+              "lengthMin": 5,
+              "lengthMax": 11
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
   }
 }
