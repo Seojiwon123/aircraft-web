@@ -1062,5 +1062,143 @@
         }
       }
     }
+  },
+  "b7478": {
+    "label": "747-8",
+    "engines": {
+      "genx_flaps30": {
+        "label": "GEnx-2B67 - Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b747_8_landing_flaps30_genx.png",
+            "axis": {
+              "top": 10.2,
+              "bottom": 1124.8,
+              "left": 311.5,
+              "right": 1179.7,
+              "weightMin": 450,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 13
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "genx_flaps25": {
+        "label": "GEnx-2B67 - Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b747_8_landing_flaps25_genx.png",
+            "axis": {
+              "top": 10.1,
+              "bottom": 1118.3,
+              "left": 310.5,
+              "right": 1179.8,
+              "weightMin": 450,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 13
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b7478f": {
+    "label": "747-8F",
+    "engines": {
+      "genx_flaps30": {
+        "label": "GEnx-2B67 - Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b747_8_landing_flaps30_genx.png",
+            "axis": {
+              "top": 10.2,
+              "bottom": 1124.8,
+              "left": 311.5,
+              "right": 1179.7,
+              "weightMin": 450,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 13
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "genx_flaps25": {
+        "label": "GEnx-2B67 - Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b747_8_landing_flaps25_genx.png",
+            "axis": {
+              "top": 10.1,
+              "bottom": 1118.3,
+              "left": 310.5,
+              "right": 1179.8,
+              "weightMin": 450,
+              "weightMax": 800,
+              "lengthMin": 4,
+              "lengthMax": 13
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
   }
 }
