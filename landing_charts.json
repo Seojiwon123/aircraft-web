@@ -2304,15 +2304,15 @@
     "label": "787-8",
     "engines": {
       "flaps30": {
-        "label": "Flaps 30 (전 엔진 공통)",
+        "label": "Flaps 30",
         "conditions": {
           "isa": {
             "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b787_8_landing_flaps30.png",
             "axis": {
-              "top": 1.7,
+              "top": 2.7,
               "bottom": 655.8,
-              "left": 214.0,
+              "left": 210.0,
               "right": 1182.7,
               "weightMin": 240,
               "weightMax": 420,
