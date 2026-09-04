@@ -2168,7 +2168,7 @@
     }
   },
   "b777f": {
-    "label": "#777F",
+    "label": "^777F",
     "engines": {
       "ge90110b1l_flaps25": {
         "label": "GE90-110B1L - Flaps 25",
@@ -2242,7 +2242,7 @@
             "image": "RunwayCharts_Landing/b777f_landing_flaps25_ge90115bl.png",
             "axis": {
               "top": 2.6,
-              "bottom": 608,
+              "bottom": 605,
               "left": 173.4,
               "right": 1183.9,
               "weightMin": 400,
