@@ -1938,9 +1938,9 @@
             "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
             "image": "RunwayCharts_Landing/b777_300_landing.png",
             "axis": {
-              "top": 35,
+              "top": 31,
               "bottom": 629,
-              "left": 224,
+              "left": 222,
               "right": 1182.6,
               "weightMin": 340,
               "weightMax": 520,
