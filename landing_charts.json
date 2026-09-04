@@ -2484,15 +2484,15 @@
         }
       },
       "flaps25": {
-        "label": "Flaps 25 (전 엔진 공통)",
+        "label": "Flaps 25",
         "conditions": {
           "isa": {
             "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b787_10_landing_flaps25.png",
             "axis": {
-              "top": 1.8,
-              "bottom": 811.0,
-              "left": 143.3,
+              "top": 2.8,
+              "bottom": 808.0,
+              "left": 145.3,
               "right": 1181.7,
               "weightMin": 280,
               "weightMax": 460,
