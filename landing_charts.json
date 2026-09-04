@@ -2374,7 +2374,7 @@
     }
   },
   "b7879": {
-    "label": "=787-9",
+    "label": "B787-9",
     "engines": {
       "flaps30": {
         "label": "Flaps 30",
@@ -2418,7 +2418,7 @@
             "image": "RunwayCharts_Landing/b787_9_landing_flaps25.png",
             "axis": {
               "top": 2.8,
-              "bottom": 813,
+              "bottom": 810,
               "left": 142.8,
               "right": 1181.9,
               "weightMin": 260,
