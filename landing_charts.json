@@ -2168,7 +2168,7 @@
     }
   },
   "b777f": {
-    "label": "777F",
+    "label": "*777F",
     "engines": {
       "ge90110b1l_flaps25": {
         "label": "GE90-110B1L - Flaps 25",
@@ -2177,9 +2177,9 @@
             "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b777f_landing_flaps25_ge90110b1l.png",
             "axis": {
-              "top": 1.6,
-              "bottom": 610.4,
-              "left": 171.4,
+              "top": 2.6,
+              "bottom": 618.4,
+              "left": 173.4,
               "right": 1183.9,
               "weightMin": 400,
               "weightMax": 600,
