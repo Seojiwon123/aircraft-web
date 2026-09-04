@@ -1890,5 +1890,414 @@
         }
       }
     }
+  },
+  "b777200": {
+    "label": "777-200",
+    "engines": {
+      "standard": {
+        "label": "표준 (엔진 공통)",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
+            "image": "RunwayCharts_Landing/b777_200_landing.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 605.3,
+              "left": 218.9,
+              "right": 1184.1,
+              "weightMin": 300,
+              "weightMax": 460,
+              "lengthMin": 3,
+              "lengthMax": 8
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b777300": {
+    "label": "777-300",
+    "engines": {
+      "standard": {
+        "label": "표준 (엔진 공통)",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
+            "image": "RunwayCharts_Landing/b777_300_landing.png",
+            "axis": {
+              "top": 1.7,
+              "bottom": 631.9,
+              "left": 134.6,
+              "right": 1182.6,
+              "weightMin": 340,
+              "weightMax": 520,
+              "lengthMin": 4,
+              "lengthMax": 9
+            },
+            "curveColor": "multi",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b777200lr": {
+    "label": "777-200LR",
+    "engines": {
+      "ge90110b1l_flaps25": {
+        "label": "GE90-110B1L - Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b777_200lr_landing_flaps25_ge90110b1l.png",
+            "axis": {
+              "top": 1.7,
+              "bottom": 609.0,
+              "left": 170.1,
+              "right": 1183.1,
+              "weightMin": 340,
+              "weightMax": 540,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "ge90110b1l_flaps30": {
+        "label": "GE90-110B1L - Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b777_200lr_landing_flaps30_ge90110b1l.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 617.9,
+              "left": 172.4,
+              "right": 1184.4,
+              "weightMin": 340,
+              "weightMax": 540,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "ge90115bl_flaps25": {
+        "label": "GE90-115BL - Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b777_200lr_landing_flaps25_ge90115bl.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 616.9,
+              "left": 172.2,
+              "right": 1184.4,
+              "weightMin": 340,
+              "weightMax": 540,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "ge90115bl_flaps30": {
+        "label": "GE90-115BL - Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b777_200lr_landing_flaps30_ge90115bl.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 616.9,
+              "left": 172.2,
+              "right": 1184.4,
+              "weightMin": 340,
+              "weightMax": 540,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b777300er": {
+    "label": "777-300ER",
+    "engines": {
+      "flaps25": {
+        "label": "GE90-115BL - Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b777_300er_landing_flaps25.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 618.4,
+              "left": 172.5,
+              "right": 1184.4,
+              "weightMin": 380,
+              "weightMax": 580,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "flaps30": {
+        "label": "GE90-115BL - Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b777_300er_landing_flaps30.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 617.1,
+              "left": 172.7,
+              "right": 1184.4,
+              "weightMin": 380,
+              "weightMax": 580,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b777f": {
+    "label": "777F",
+    "engines": {
+      "ge90110b1l_flaps25": {
+        "label": "GE90-110B1L - Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b777f_landing_flaps25_ge90110b1l.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 610.4,
+              "left": 171.4,
+              "right": 1183.9,
+              "weightMin": 400,
+              "weightMax": 600,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "ge90110b1l_flaps30": {
+        "label": "GE90-110B1L - Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b777f_landing_flaps30_ge90110b1l.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 610.2,
+              "left": 171.3,
+              "right": 1183.9,
+              "weightMin": 400,
+              "weightMax": 600,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "ge90115bl_flaps25": {
+        "label": "GE90-115BL - Flaps 25",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b777f_landing_flaps25_ge90115bl.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 607.2,
+              "left": 171.5,
+              "right": 1184.0,
+              "weightMin": 400,
+              "weightMax": 600,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      },
+      "ge90115bl_flaps30": {
+        "label": "GE90-115BL - Flaps 30",
+        "conditions": {
+          "isa": {
+            "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b777f_landing_flaps30_ge90115bl.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 611.0,
+              "left": 171.5,
+              "right": 1183.9,
+              "weightMin": 400,
+              "weightMax": 600,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ]
+          }
+        }
+      }
+    }
   }
 }
