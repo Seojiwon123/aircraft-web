@@ -2099,7 +2099,7 @@
     }
   },
   "b777300er": {
-    "label": "777-300ER",
+    "label": "*777-300ER",
     "engines": {
       "flaps25": {
         "label": "GE90-115BL - Flaps 25",
@@ -2108,8 +2108,8 @@
             "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b777_300er_landing_flaps25.png",
             "axis": {
-              "top": 1.6,
-              "bottom": 618.4,
+              "top": 2.6,
+              "bottom": 612.4,
               "left": 172.5,
               "right": 1184.4,
               "weightMin": 380,
