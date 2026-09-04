@@ -1966,7 +1966,7 @@
     }
   },
   "b777200lr": {
-    "label": "*777-200LR",
+    "label": "!777-200LR",
     "engines": {
       "ge90110b1l_flaps25": {
         "label": "GE90-110B1L - Flaps 25",
@@ -1977,7 +1977,7 @@
             "axis": {
               "top": 2.7,
               "bottom": 606.0,
-              "left": 170.1,
+              "left": 173.1,
               "right": 1183.1,
               "weightMin": 340,
               "weightMax": 540,
