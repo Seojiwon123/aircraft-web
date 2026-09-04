@@ -2008,7 +2008,7 @@
             "image": "RunwayCharts_Landing/b777_200lr_landing_flaps30_ge90110b1l.png",
             "axis": {
               "top": 2.6,
-              "bottom": 611,
+              "bottom": 610,
               "left": 172.4,
               "right": 1185.4,
               "weightMin": 340,
