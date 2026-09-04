@@ -1939,8 +1939,8 @@
             "image": "RunwayCharts_Landing/b777_300_landing.png",
             "axis": {
               "top": 10,
-              "bottom": 628,
-              "left": 234.6,
+              "bottom": 629,
+              "left": 228,
               "right": 1182.6,
               "weightMin": 340,
               "weightMax": 520,
