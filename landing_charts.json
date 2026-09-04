@@ -2311,8 +2311,8 @@
             "image": "RunwayCharts_Landing/b787_8_landing_flaps30.png",
             "axis": {
               "top": 2.7,
-              "bottom": 655.8,
-              "left": 210.0,
+              "bottom": 651.8,
+              "left": 214.0,
               "right": 1182.7,
               "weightMin": 240,
               "weightMax": 420,
