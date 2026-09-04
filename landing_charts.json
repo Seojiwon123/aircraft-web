@@ -1929,7 +1929,7 @@
     }
   },
   "b777300": {
-    "label": "777-300",
+    "label": "*777-300",
     "engines": {
       "standard": {
         "label": "표준 (엔진 공통)",
@@ -1938,9 +1938,9 @@
             "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
             "image": "RunwayCharts_Landing/b777_300_landing.png",
             "axis": {
-              "top": 1.7,
-              "bottom": 631.9,
-              "left": 134.6,
+              "top": 10,
+              "bottom": 630,
+              "left": 154.6,
               "right": 1182.6,
               "weightMin": 340,
               "weightMax": 520,
