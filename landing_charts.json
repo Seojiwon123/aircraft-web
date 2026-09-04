@@ -1892,10 +1892,10 @@
     }
   },
   "b777200": {
-    "label": "777-200",
+    "label": "B777-200",
     "engines": {
       "standard": {
-        "label": "표준 (엔진 공통)",
+        "label": "엔진 공통",
         "conditions": {
           "isa": {
             "label": "F.A.R. Landing Runway Length (파랑 실선=Dry Runway, 빨강 점선=Wet Runway)",
