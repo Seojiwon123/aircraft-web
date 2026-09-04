@@ -2299,5 +2299,224 @@
         }
       }
     }
+  },
+  "b7878": {
+    "label": "787-8",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30 (전 엔진 공통)",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b787_8_landing_flaps30.png",
+            "axis": {
+              "top": 1.7,
+              "bottom": 655.8,
+              "left": 214.0,
+              "right": 1182.7,
+              "weightMin": 240,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000,
+              14000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25 (전 엔진 공통)",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b787_8_landing_flaps25.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 652.0,
+              "left": 211.7,
+              "right": 1183.6,
+              "weightMin": 240,
+              "weightMax": 420,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000,
+              14000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b7879": {
+    "label": "787-9",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30 (전 엔진 공통)",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b787_9_landing_flaps30.png",
+            "axis": {
+              "top": 1.7,
+              "bottom": 655.0,
+              "left": 212.4,
+              "right": 1182.8,
+              "weightMin": 260,
+              "weightMax": 440,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000,
+              14000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25 (전 엔진 공통)",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b787_9_landing_flaps25.png",
+            "axis": {
+              "top": 1.5,
+              "bottom": 697.8,
+              "left": 297.4,
+              "right": 1184.6,
+              "weightMin": 260,
+              "weightMax": 440,
+              "lengthMin": 4,
+              "lengthMax": 11
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000,
+              14000
+            ]
+          }
+        }
+      }
+    }
+  },
+  "b78710": {
+    "label": "787-10",
+    "engines": {
+      "flaps30": {
+        "label": "Flaps 30 (전 엔진 공통)",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b787_10_landing_flaps30.png",
+            "axis": {
+              "top": 1.7,
+              "bottom": 650.5,
+              "left": 213.6,
+              "right": 1182.9,
+              "weightMin": 280,
+              "weightMax": 460,
+              "lengthMin": 4,
+              "lengthMax": 10
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000,
+              14000
+            ]
+          }
+        }
+      },
+      "flaps25": {
+        "label": "Flaps 25 (전 엔진 공통)",
+        "conditions": {
+          "isa": {
+            "label": "FAA/EASA Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
+            "image": "RunwayCharts_Landing/b787_10_landing_flaps25.png",
+            "axis": {
+              "top": 1.6,
+              "bottom": 693.3,
+              "left": 296.6,
+              "right": 1184.4,
+              "weightMin": 280,
+              "weightMax": 460,
+              "lengthMin": 4,
+              "lengthMax": 11
+            },
+            "curveColor": "black",
+            "weightUnit": "1000 lb",
+            "lengthUnit": "1000 ft",
+            "curveFamily": "airfieldElevation",
+            "curveFamilyUnit": "ft",
+            "curveFamilyValues": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000,
+              14000
+            ]
+          }
+        }
+      }
+    }
   }
 }
