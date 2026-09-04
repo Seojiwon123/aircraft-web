@@ -2109,7 +2109,7 @@
             "image": "RunwayCharts_Landing/b777_300er_landing_flaps25.png",
             "axis": {
               "top": 2.6,
-              "bottom": 612.4,
+              "bottom": 610.4,
               "left": 172.5,
               "right": 1184.4,
               "weightMin": 380,
