@@ -2209,9 +2209,9 @@
             "label": "F.A.R. Landing Runway Length (실선=Wet Runway, 점선=Dry Runway)",
             "image": "RunwayCharts_Landing/b777f_landing_flaps30_ge90110b1l.png",
             "axis": {
-              "top": 1.6,
-              "bottom": 610.2,
-              "left": 171.3,
+              "top": 2.6,
+              "bottom": 609,
+              "left": 173.4,
               "right": 1183.9,
               "weightMin": 400,
               "weightMax": 600,
