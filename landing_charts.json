@@ -1478,7 +1478,7 @@
     }
   },
   "b767200": {
-    "label": "767-200",
+    "label": "B767-200",
     "engines": {
       "flaps30": {
         "label": "Flaps 30",
@@ -1547,7 +1547,7 @@
     }
   },
   "b767200er": {
-    "label": "767-200ER",
+    "label": "B767-200ER",
     "engines": {
       "flaps30": {
         "label": "Flaps 30",
@@ -1616,7 +1616,7 @@
     }
   },
   "b767300": {
-    "label": "767-300",
+    "label": "B767-300",
     "engines": {
       "flaps30": {
         "label": "Flaps 30",
@@ -1685,7 +1685,7 @@
     }
   },
   "b767300er": {
-    "label": "767-300ER",
+    "label": "B767-300ER",
     "engines": {
       "flaps30": {
         "label": "Flaps 30",
@@ -1754,7 +1754,7 @@
     }
   },
   "b767300f": {
-    "label": "767-300 Freighter",
+    "label": "B767-300F",
     "engines": {
       "flaps30": {
         "label": "Flaps 30",
@@ -1823,7 +1823,7 @@
     }
   },
   "b767400er": {
-    "label": "767-400ER",
+    "label": "B767-400ER",
     "engines": {
       "flaps30": {
         "label": "Flaps 30",
